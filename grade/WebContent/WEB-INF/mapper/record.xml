@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="record">
+	<insert id="uploadFile" parameterType="java.util.HashMap">
+		insert into recordFile(user, record1, record2, record3, record4, record5, record6, record7, record8, record9, record10, record11,
+										record12, record13, record14, record15, record16, record17, record18, record19, record20, record21, record22,
+										record23, record24, record25, record26, record27, record28, record29, record30, record31, record32, record33,
+										record34, record35, record36, record37, record38, record39, record40, record41, record42, record43, record44,
+										record45, record46, record47, record48, record49, record50, day)
+		values(#{user}, #{record1}, #{record2}, #{record3}, #{record4}, #{record5}, #{record6}, #{record7}, #{record8}, #{record9},
+					#{record10}, #{record11}, #{record12}, #{record13}, #{record14}, #{record15}, #{record16}, #{record17}, #{record18},
+					#{record19}, #{record20}, #{record21}, #{record22}, #{record23}, #{record24}, #{record25}, #{record26}, #{record27},
+					#{record28}, #{record29}, #{record30}, #{record31}, #{record32}, #{record33}, #{record34}, #{record35}, #{record36},
+					#{record37}, #{record38}, #{record39}, #{record40}, #{record41}, #{record42}, #{record43}, #{record44}, #{record45},
+					#{record46}, #{record47}, #{record48}, #{record49}, #{record50}, now())
+	</insert>
+	<update id="recordFileUpdate" parameterType="java.util.HashMap">
+		update recordFile set record1 = #{record1}, record2 = #{record2}, record3 = #{record3}, record4 = #{record4}, record5 = #{record5},
+		record6 = #{record6}, record7 = #{record7}, record8 = #{record8}, record9 = #{record9}, record10 = #{record10},
+		record11 = #{record11}, record12 = #{record13}, record14 = #{record14}, record15 = #{record15}, record16 = #{record16},
+		record17 = #{record17}, record18 = #{record18}, record19 = #{record19}, record20 = #{record20}, record21 = #{record21},
+		record22 = #{record22}, record23 = #{record23}, record24 = #{record24}, record25 = #{record25}, record26 = #{record26},
+		record27 = #{record27}, record28 = #{record28}, record29 = #{record29}, record30 = #{record30}, record31 = #{record31},
+		record32 = #{record32}, record33 = #{record33}, record34 = #{record34}, record35 = #{record35}, record36 = #{record36},
+		record37 = #{record37}, record38 = #{record38}, record39 = #{record39}, record40 = #{record40}, record41 = #{record41},
+		record42 = #{record42}, record43 = #{record43}, record44 = #{record44}, record45 = #{record45}, record46 = #{record46},
+		record47 = #{record47}, record48 = #{record48}, record49 = #{record49}, record50 = #{record50} where user = #{user}
+	</update>
+	<select id="recordOne" resultType="java.util.HashMap">
+		select * from recordFile where user = #{user} order by auto desc
+	</select>
+	<select id="recordUser" resultType="java.util.HashMap">
+		select * from recordList where user = #{user}
+	</select>
+	<insert id="uploadRecord" parameterType="java.util.HashMap">
+		insert into recordList
+		(recordFile, user, id, name, addr, school, subject, type, year, admission, typical, hschool, pass, award1, award2, award3, career1,
+		career2, career3, autonomous1, autonomous2, autonomous3, extra1, extra2, extra3, club1, club2, club3, help1, help2, help3, soju1,
+		soju2, soju3, paper1, paper2, paper3, etc1, etc2, etc3, reading1, reading2, reading3, special1, special2, special3, grade, award,
+		time, book, day, cert)
+		values
+		(#{recordFile}, #{user}, #{id}, #{name}, #{addr}, #{school}, #{subject}, #{type}, #{year}, #{admission}, #{typical}, #{hschool},
+		#{pass}, #{award1}, #{award2}, #{award3}, #{career1}, #{career2}, #{career3}, #{auto1}, #{auto2}, #{auto3}, #{extra1},
+		#{extra2}, #{extra3}, #{club1}, #{club2}, #{club3}, #{help1}, #{help2}, #{help3}, #{soju1}, #{soju2}, #{soju3}, #{paper1},
+		#{paper2}, #{paper3}, #{etc1}, #{etc2}, #{etc3}, #{reading1}, #{reading2}, #{reading3}, #{special1}, #{special2}, #{special3},
+		#{grade}, #{award}, #{time}, #{book}, now(), '미인증')
+	</insert>
+	<update id="updateRecord" parameterType="java.util.HashMap">
+		update recordList set addr = #{addr}, school = #{school}, subject = #{subject}, type = #{type}, year = #{year}, admission = #{admission},
+		typical = #{typical}, hschool = #{hschool}, pass = #{pass}, award1 = #{award1}, award2 = #{award2}, award3 = #{award3},
+		career1 = #{career1}, career2 = #{career2}, career3 = #{career3}, autonomous1 = #{auto1}, autonomous2 = #{auto2},
+		autonomous3 = #{auto3}, extra1 = #{extra1}, extra2 = #{extra2}, extra3 = #{extra3}, club1 = #{club1}, club2 = #{club2},
+		club3 = #{club3}, help1 = #{help1}, help2 = #{help2}, help3 = #{help3}, soju1 = #{suju1}, soju2 = #{soju2}, soju3 = #{soju3},
+		paper1 = #{paper1}, paper2 = #{paper2}, paper3 = #{paper3}, etc1 = #{etc1}, etc2 = #{etc2}, etc3 = #{etc3}, reading1 = #{reading1},
+		reading2 = #{reading2}, reading3 = #{reading3}, special1 = #{special1}, special2 = #{special2}, special3 = #{special3}, grade = #{grade},
+		award = #{award}, time = #{time}, book = #{book}, day = now()
+		where user = #{user}
+	</update>
+	<select id="recordList" resultType="java.util.HashMap">
+		select a.*, b.*, c.name from recordList a, salesList b, memberList c
+		where a.id = b.id and b.id = c.id and (c.admin = '판매자' or c.admin = '메인관리자')
+		order by a.auto desc limit 12 offset #{page}
+	</select>
+	<select id="count" resultType="java.lang.Integer">
+		select count(*) from recordList a, salesList b where a.id = b.id
+	</select>
+	<select id="recordView" resultType="java.util.HashMap">
+		select * from recordList where auto = #{num}
+	</select>
+	<update id="fileSet" parameterType="java.util.HashMap">
+		update recordList set recordFile = #{auto} where school = #{school}
+	</update>
+	<delete id="deleteRecord">
+		delete from recordList where user = #{user}
+	</delete>
+	<select id="recordList2" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from recordList a, salesList b where a.id = b.id 
+		and (a.school like #{word} or a.subject like #{word})
+		order by a.auto desc limit 12 offset #{page}
+	</select>
+	<select id="count2" resultType="java.lang.Integer">
+		select count(*) from recordList a, salesList b where a.id = b.id
+		and (a.school like #{word} or a.subject like #{word})
+	</select>
+	
+	
+	
+	
+	<insert id="uploadSchool" parameterType="java.util.HashMap">
+		insert into schoolList(user, addr, school, type, subject, pass, uuid, pass1, day, typical, year, hschool)
+		values(#{user}, #{addr}, #{school}, #{type}, #{subject}, #{pass}, #{uuid}, #{pass1}, now(), #{typical}, #{year}, #{hschool})
+	</insert>
+	<select id="schoolList" resultType="java.util.HashMap">
+		select * from schoolList where user = #{user} order by auto desc
+	</select>
+	<insert id="uploadInfo" parameterType="java.util.HashMap">
+		insert into infoList(user, year, grade, hschool, book, time, awards, day)
+		values(#{user}, #{year}, #{grade}, #{hschool}, #{book}, #{time}, #{awards}, now())
+	</insert>
+	<update id="infoUpdate" parameterType="java.util.HashMap">
+		update infoList set year = #{year}, grade = #{grade}, hschool = #{hschool}, book = #{book}, time = #{time},
+		awards = #{awards}, day = now() where user = #{user}
+	</update>
+	<insert id="uploadExam" parameterType="java.util.HashMap">
+		insert into examList(user, examType, examMathType, examExplorType, examInnerType1, examInnerType2, examLangType,
+										point1, point2, point3, point4, point5, point6, point7, point8, point9, point10, point11, point12, point13,
+										point14, point15, point16, point17, point18, point19, point20, point21, point22, point23, point24, point25,
+										point26, point27, point28, passCount, day)
+		values(#{user}, #{examType}, #{examMathType}, #{examExplorType}, #{examInnerType1}, #{examInnerType2}, 
+					#{examLangType}, #{point1}, #{point2}, #{point3}, #{point4}, #{point5}, #{point6}, #{point7}, #{point8}, #{point9},
+					#{point10}, #{point11}, #{point12}, #{point13}, #{point14}, #{point15}, #{point16}, #{point17}, #{point18}, #{point19},
+					#{point20}, #{point21}, #{point22}, #{point23}, #{point24}, #{point25}, #{point26}, #{point27}, #{point28}, #{passCount}, now())
+	</insert>
+	<select id="introList" resultType="java.util.HashMap">
+		select * from schoolList a, infoList b, memberList c, introList d, salesList e
+		where a.user = b.user and a.user = c.auto and a.user = d.user and c.id = e.id and c.type != '탈퇴' and a.school = d.school
+		order by a.auto desc limit 12 offset #{page}
+	</select>
+	<select id="introCount" resultType="java.lang.Integer">
+		select count(*) from schoolList a, infoList b, memberList c, introList d, salesList e
+		where a.user = b.user and a.user = c.auto and a.user = d.user and c.id = e.id and c.type != '탈퇴' and a.school = d.school
+	</select>
+	<select id="infoOne" resultType="java.util.HashMap">
+		select * from infoList where user = #{user}
+	</select>
+	<select id="introOne" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from introList a, schoolList b where a.school = b.school and b.auto = #{num} and a.user = b.user and a.user = #{user}
+	</select>
+	<select id="schoolOne" resultType="java.util.HashMap">
+		select * from schoolList where auto = #{num}
+	</select>
+	<select id="introList2" resultType="java.util.HashMap">
+		select * from schoolList a, infoList b, memberList c, introList d, salesList e
+		where a.user = b.user and a.user = c.auto and a.user = d.user and c.type != '탈퇴' and a.school = d.school and c.id = e.id
+		and (a.school like #{word} or a.subject like #{word})
+		order by a.auto desc limit 12 offset #{page}
+	</select>
+	<select id="introCount2" resultType="java.lang.Integer">
+		select count(*) from schoolList a, infoList b, memberList c, introList d, salesList e
+		where a.user = b.user and a.user = c.auto and a.user = d.user and c.type != '탈퇴' and a.school = d.school and c.id = e.id
+		and (a.school like #{word} or a.subject like #{word})
+	</select>
+</mapper>

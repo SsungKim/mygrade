@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="rank">
+	<select id="rankDay" resultType="java.util.HashMap">
+		select * from rankDay order by auto desc
+	</select>
+	<insert id="newRankDay">
+		insert into rankDay(name) values(#{name})
+	</insert>
+	<select id="rankOneDay" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from rankList where user = #{user} and rankDay = #{rankDay}
+	</select>
+	<insert id="newRank" parameterType="java.util.HashMap">
+		insert into rankList
+		(user, addr, school, grade, rankDay, type, mathType, expType, expType1, expType2, langType, kor, math, eng, his, exp1, exp2, lang, sum, day)
+		values
+		(#{user}, #{addr}, #{school}, #{grade}, #{rankDay}, #{type}, #{mathType}, #{expType}, #{expType1}, #{expType2}, #{langType},
+		#{kor}, #{math}, #{eng}, #{his}, #{exp1}, #{exp2}, #{lang}, #{sum}, now())
+	</insert>
+	<select id="rankList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from rankList where user = #{user} order by auto desc limit 10 offset #{page}
+	</select>
+	<select id="rankCount" resultType="java.lang.Integer">
+		select count(*) from rankList where user = #{user}
+	</select>
+	<select id="rankOne" resultType="java.util.HashMap">
+		select * from rankList where auto = #{num}
+	</select>
+	<select id="rankPeople" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+		select count(*) from rankList where rankDay = #{rankDay} and grade = #{grade} and type = #{type}
+	</select>
+	<select id="korRank" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select *, (select count(*)+1 from rankList
+		where kor > t.kor and grade = #{grade} and rankDay = #{rankDay})
+		as rank from rankList as t 
+		where t.grade = #{grade} and t.rankDay = #{rankDay}
+		order by rank asc
+	</select>
+	<select id="mathRank" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select *, (select count(*)+1 from rankList
+		where math > t.math and grade = #{grade} and rankDay = #{rankDay} and mathType = #{mathType})
+		as rank from rankList as t 
+		where t.grade = #{grade} and t.rankDay = #{rankDay} and mathType = #{mathType}
+		order by rank asc
+	</select>
+	<select id="engRank" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select *, (select count(*)+1 from rankList
+		where eng > t.eng and grade = #{grade} and rankDay = #{rankDay})
+		as rank from rankList as t 
+		where t.grade = #{grade} and t.rankDay = #{rankDay}
+		order by rank asc
+	</select>
+	<select id="hisRank" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select *, (select count(*)+1 from rankList
+		where his > t.his and grade = #{grade} and rankDay = #{rankDay})
+		as rank from rankList as t 
+		where t.grade = #{grade} and t.rankDay = #{rankDay}
+		order by rank asc
+	</select>
+	<select id="exp1Rank" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select *, (select count(*)+1 from rankList
+		where exp1 > t.exp1 and grade = #{grade} and rankDay = #{rankDay} and (expType1 = #{expType1} or expType2 = #{expType1}))
+		as rank from rankList as t 
+		where t.grade = #{grade} and t.rankDay = #{rankDay} and (expType1 = #{expType1} or expType2 = #{expType1})
+		order by rank asc
+	</select>
+	<select id="exp2Rank" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select *, (select count(*)+1 from rankList
+		where exp2 > t.exp2 and grade = #{grade} and rankDay = #{rankDay} and (expType2 = #{expType2} or expType1 = #{expType2}))
+		as rank from rankList as t 
+		where t.grade = #{grade} and t.rankDay = #{rankDay} and (expType2 = #{expType2} or expTYpe1 = #{expType2})
+		order by rank asc
+	</select>
+	<select id="langRank" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select *, (select count(*)+1 from rankList
+		where lang > t.lang and grade = #{grade} and rankDay = #{rankDay} and langType = #{langType})
+		as rank from rankList as t 
+		where t.grade = #{grade} and t.rankDay = #{rankDay} and langType = #{langType}
+		order by rank asc
+	</select>
+	<select id="sumRank" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select *, (select count(*)+1 from rankList
+		where sum > t.sum and grade = #{grade} and rankDay = #{rankDay} and type = #{type})
+		as rank from rankList as t 
+		where t.grade = #{grade} and t.rankDay = #{rankDay} and type = #{type}
+		order by rank asc
+	</select>
+	<select id="countKor" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+		select count(*) from rankList where grade = #{grade} and rankDay = #{rankDay}
+	</select>
+	<select id="countMath" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+		select count(*) from rankList where grade = #{grade} and rankDay = #{rankDay} and mathType = #{mathType}
+	</select>
+	<select id="countEng" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+		select count(*) from rankList where grade = #{grade} and rankDay = #{rankDay}
+	</select>
+	<select id="countHis" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+		select count(*) from rankList where grade = #{grade} and rankDay = #{rankDay}
+	</select>
+	<select id="countExp1" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+		select count(*) from rankList where grade = #{grade} and rankDay = #{rankDay} and (expType1 = #{expType1} or expType2 = #{expType1})
+	</select>
+	<select id="countExp2" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+		select count(*) from rankList where grade = #{grade} and rankDay = #{rankDay} and (expType2 = #{expType2} or expType1 = #{expType2})
+	</select>
+	<select id="countLang" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+		select count(*) from rankList where grade = #{grade} and rankDay = #{rankDay} and langType = #{langType}
+	</select>
+	<select id="countSum" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+		select count(*) from rankList where grade = #{grade} and rankDay = #{rankDay} and type = #{type}
+	</select>
+</mapper>

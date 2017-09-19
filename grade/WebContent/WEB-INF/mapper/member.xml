@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+	<select id="login" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from memberList where id = #{id} and pw = #{pw} and type != '탈퇴'
+	</select>
+	<select id="exitList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from exitList where id = #{id}
+	</select>
+	<select id="idCheck" resultType="java.util.HashMap">
+		select * from memberList where id = #{id}
+	</select>
+	<select id="member" resultType="java.util.HashMap">
+		select * from memberList where auto = #{user}
+	</select>
+	<insert id="join" parameterType="java.util.HashMap">
+		insert into memberList(id, name, pw, birth, addr1, addr2, addr3, phone1, phone2, phone3, email1, email2, agSms, agEmail, sales, day, point, admin, type)
+		values(#{id}, #{name}, #{pw}, #{birth}, #{addr1}, #{addr2}, #{addr3}, #{phone1}, #{phone2}, #{phone3}, #{email1}, #{email2},
+					#{agSms}, #{agEmail}, #{sales}, now(), 0, '구매자', '회원')
+	</insert>
+	<insert id="sales" parameterType="java.util.HashMap">
+		insert into salesList(id, haddr, hschool, bank, account, passData, day)
+		values(#{id}, #{haddr}, #{hschool}, #{bank}, #{account}, #{passData}, now())
+	</insert>
+	<select id="salesOne" resultType="java.util.HashMap" parameterType="java.util.HashMap">
+		select * from salesList where id = #{id}
+	</select>
+	<update id="salesChange" parameterType="java.util.HashMap">
+		update salesList set haddr = #{haddr}, hschool = #{hschool}, bank = #{bank}, account = #{account}, 
+		passData = #{passData}, day = now() where id = #{id}
+	</update>
+	<delete id="salesDelete">
+		delete from salesList where id = #{id}
+	</delete>
+	<update id="infoSave" parameterType="java.util.HashMap">
+		update memberList set email1 = #{email1}, email2 = #{email2}, phone1 = #{phone1}, phone2 = #{phone2}, phone3 = #{phone3}
+		where auto = #{user}
+	</update>
+	<update id="infoSave2" parameterType="java.util.HashMap">
+		update memberList set addr1 = #{addr1}, addr2 = #{addr2}, addr3 = #{addr3} where auto = #{user}
+	</update>
+	<update id="passChange" parameterType="java.util.HashMap">
+		update memberList set pw = #{pw} where auto = #{user}
+	</update>
+	<insert id="exit" parameterType="java.util.HashMap">
+		insert into exitList(id, reason, content, day) values(#{user}, #{reason}, #{content}, now())
+	</insert>
+	<update id="exitChange">
+		update memberList set type = '탈퇴' where id = #{user}
+	</update>
+	<insert id="buy" parameterType="java.util.HashMap">
+		insert into buyList(user, item, target, owner, school, subject, point, day)
+		values(#{user}, #{item}, #{target}, #{owner}, #{school}, #{subject}, #{point}, now())
+	</insert>
+	<update id="buyPoint" parameterType="java.util.HashMap">
+		update memberList set point = point-#{price} where auto = #{user}
+	</update>
+	<select id="buyList" resultType="java.util.HashMap">
+		select * from buyList where user = #{user} order by auto desc
+	</select>
+	<select id="myInterview" resultType="java.util.HashMap">
+		select * from interviewList where user = #{user} order by auto desc
+	</select>
+	<select id="myRecord" resultType="java.util.HashMap">
+		select * from recordList where user = #{user} order by auto desc
+	</select>
+	<select id="myIntro" resultType="java.util.HashMap">
+		select * from introList where user = #{user} order by auto desc
+	</select>
+	<select id="myExam" resultType="java.util.HashMap">
+		select * from examList where user = #{user} order by auto desc
+	</select>
+	<insert id="charge" parameterType="java.util.HashMap">
+		insert into chargeList(user, pay, type, day) values(#{user}, #{pay}, #{type}, now())
+	</insert>
+	<update id="chargePoint" parameterType="java.util.HashMap">
+		update memberList set point = point + #{point} where auto = #{user}
+	</update>
+	<select id="recordOne" resultType="java.util.HashMap">
+		select * from recordList where auto = #{num}
+	</select>
+	<select id="introOne" resultType="java.util.HashMap">
+		select * from introList where auto = #{num}
+	</select>
+	<select id="interviewOne" resultType="java.util.HashMap">
+		select * from interviewList where auto = #{num}
+	</select>
+	<select id="examOne" resultType="java.util.HashMap">
+		select * from examList where auto = #{num}
+	</select>
+	<select id="buyList1" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from buyList where user = #{user} order by auto desc limit 10 offset #{page}
+	</select>
+	<insert id="insertSellList" parameterType="java.util.HashMap">
+		insert into sellList(user, item, target, point, day) values(#{user}, #{item}, #{target}, #{point}, now())
+	</insert>
+	<update id="sellPointUpdate" parameterType="java.util.HashMap">
+		update memberList set point = point+#{point} where auto = #{user}
+	</update>
+	<select id="sellList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from sellList where user = #{user} order by auto desc limit 10 offset #{page}
+	</select>
+	<select id="idSearch" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from memberList where name = #{name} and phone1 = #{phone1} and phone2 = #{phone2} and phone3 = #{phone3} and
+		email1 = #{email1} and email2 = #{email2}
+	</select>
+	<select id="pwSearch" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from memberList where id = #{id} and name = #{name} and phone1 = #{phone1} and phone2 = #{phone2} and
+		phone3 = #{phone3} and email1 = #{email1} and email2 = #{email2}
+	</select>
+	<update id="pwChange" parameterType="java.util.HashMap">
+		update memberList set pw = #{uuid} where id = #{id}
+	</update>
+	<select id="certList" resultType="java.util.HashMap">
+		select * from certList where user = #{user} order by auto desc
+	</select>
+</mapper>

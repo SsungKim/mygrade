@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="exam">
+	<select id="schoolList" resultType="java.util.HashMap">
+		select * from schoolList where user = #{user}
+	</select>
+	<insert id="uploadExam1" parameterType="java.util.HashMap">
+		insert into examList
+		(user, id, name, addr, school, subject, type, year, admission, typical, pass, examType, mathType, explorType, innerType1, innerType2,
+		langType, point1, point2, point3, point4, point5, point6, point7, point8, point9, point10, point11, point12, point13, point14, point15,
+		point16, point17, point18, point19, point20, point21, point22, point23, point24, point25, point26, point27, point28, passCount, day)
+		values
+		(#{user}, #{id}, #{name}, #{addr}, #{school}, #{subject}, #{type}, #{year}, #{admission}, #{typical}, #{pass}, #{examType},
+		#{mathType}, #{explorType}, #{innerType1}, #{innerType2}, #{langType}, #{point1}, #{point2}, #{point3}, #{point4}, #{point5},
+		#{point6}, #{point7}, #{point8}, #{point9}, #{point10}, #{point11}, #{point12}, #{point13}, #{point14}, #{point15}, #{point16},
+		#{point17}, #{point18}, #{point19}, #{point20}, #{point21}, #{point22}, #{point23}, #{point24}, #{point25}, #{point26},
+		#{point27}, #{point28}, #{passCount}, now())
+	</insert>
+	<insert id="uploadExam2" parameterType="java.util.HashMap">
+		insert into examList
+		(user, id, name, addr, school, subject, type, year, admission, typical, pass, examType, mathType, explorType, innerType1, innerType2,
+		langType, point1, point2, point3, point4, point5, point6, point7, point8, point9, point10, point11, point12, point13, point14, point15,
+		point16, point17, point18, point19, point20, point21, point22, point23, point24, point25, point26, point27, point28, passCount, day)
+		values
+		(#{user}, #{id}, #{name}, #{addr1}, #{school1}, #{subject1}, #{type1}, #{year1}, #{admission1}, #{typical1}, #{pass1}, #{examType},
+		#{mathType}, #{explorType}, #{innerType1}, #{innerType2}, #{langType}, #{point1}, #{point2}, #{point3}, #{point4}, #{point5},
+		#{point6}, #{point7}, #{point8}, #{point9}, #{point10}, #{point11}, #{point12}, #{point13}, #{point14}, #{point15}, #{point16},
+		#{point17}, #{point18}, #{point19}, #{point20}, #{point21}, #{point22}, #{point23}, #{point24}, #{point25}, #{point26},
+		#{point27}, #{point28}, #{passCount1}, now())
+	</insert>
+	<insert id="uploadExam3" parameterType="java.util.HashMap">
+		insert into examList
+		(user, id, name, addr, school, subject, type, year, admission, typical, pass, examType, mathType, explorType, innerType1, innerType2,
+		langType, point1, point2, point3, point4, point5, point6, point7, point8, point9, point10, point11, point12, point13, point14, point15,
+		point16, point17, point18, point19, point20, point21, point22, point23, point24, point25, point26, point27, point28, passCount, day)
+		values
+		(#{user}, #{id}, #{name}, #{addr1}, #{school2}, #{subject2}, #{type2}, #{year2}, #{admission2}, #{typical2}, #{pass2}, #{examType},
+		#{mathType}, #{explorType}, #{innerType1}, #{innerType2}, #{langType}, #{point1}, #{point2}, #{point3}, #{point4}, #{point5},
+		#{point6}, #{point7}, #{point8}, #{point9}, #{point10}, #{point11}, #{point12}, #{point13}, #{point14}, #{point15}, #{point16},
+		#{point17}, #{point18}, #{point19}, #{point20}, #{point21}, #{point22}, #{point23}, #{point24}, #{point25}, #{point26},
+		#{point27}, #{point28}, #{passCount2}, now())
+	</insert>
+	<insert id="uploadExam4" parameterType="java.util.HashMap">
+		insert into examList
+		(user, id, name, addr, school, subject, type, year, admission, typical, pass, examType, mathType, explorType, innerType1, innerType2,
+		langType, point1, point2, point3, point4, point5, point6, point7, point8, point9, point10, point11, point12, point13, point14, point15,
+		point16, point17, point18, point19, point20, point21, point22, point23, point24, point25, point26, point27, point28, passCount, day)
+		values
+		(#{user}, #{id}, #{name}, #{addr3}, #{school3}, #{subject3}, #{type3}, #{year3}, #{admission3}, #{typical3}, #{pass3}, #{examType},
+		#{mathType}, #{explorType}, #{innerType1}, #{innerType2}, #{langType}, #{point1}, #{point2}, #{point3}, #{point4}, #{point5},
+		#{point6}, #{point7}, #{point8}, #{point9}, #{point10}, #{point11}, #{point12}, #{point13}, #{point14}, #{point15}, #{point16},
+		#{point17}, #{point18}, #{point19}, #{point20}, #{point21}, #{point22}, #{point23}, #{point24}, #{point25}, #{point26},
+		#{point27}, #{point28}, #{passCount3}, now())
+	</insert>
+	<select id="examList" resultType="java.util.HashMap">
+		select * from examList a, salesList b, memberList c
+		where a.id = b.id and b.id = c.id and (c.admin = '판매자' or c.admin = '메인과리자')
+		order by a.auto desc limit 12 offset #{page}
+	</select>
+	<select id="count" resultType="java.lang.Integer">
+		select count(*) from examList a, salesList b where a.id = b.id
+	</select>
+	<select id="examOne" resultType="java.util.HashMap">
+		select * from examList where auto = #{num}
+	</select>
+	<select id="examList2" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from examList a, salesList b where a.id = b.id
+		and (a.school like #{word} or a.subject like #{word})
+		order by a.auto desc limit 12 offset #{page}
+	</select>
+	<select id="count2" resultType="java.lang.Integer">
+		select count(*) from examList a, salesList b where a.id = b.id
+		and (a.school like #{word} or a.subject like #{word})
+	</select>
+	<select id="examCheck2" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from examList where user = #{user} and school = #{school1}
+	</select>
+	<select id="examCheck3" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from examList where user = #{user} and school = #{school2}
+	</select>
+	<select id="examCheck4" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from examList where user = #{user} and school = #{school3}
+	</select>
+	<update id="updateExam2" parameterType="java.util.HashMap">
+		update examList set 
+		examType = #{examType}, mathType = #{mathType}, explorType = #{explorType}, innerType1 = #{innerType1}, innerType2 = #{innerType2},
+		langType = #{langType}, point1 = #{point1}, point2 = #{point2}, point3 = #{point3}, point4 = #{point4}, point5 = #{point5},
+		point6 = #{point6}, point7 = #{point7}, point8 = #{point8}, point9 = #{point9}, point10 = #{point10}, point11 = #{point11},
+		point12 = #{point12}, point13 = #{point13}, point14 = #{point14}, point15 = #{point15}, point16 = #{point16}, point17 = #{point17},
+		point18 = #{point18}, point19 = #{point19}, point20 = #{point20}, point21 = #{point21}, point22 = #{point22}, point23 = #{point23},
+		point24 = #{point24}, point25 = #{point25}, point26 = #{point26}, point27 = #{point27}, point28 = #{point28},
+		passCount = #{passCount1}, day = now() where user = #{user} and school = #{school1}
+	</update>
+	<update id="updateExam3" parameterType="java.util.HashMap">
+		update examList set 
+		examType = #{examType}, mathType = #{mathType}, explorType = #{explorType}, innerType1 = #{innerType1}, innerType2 = #{innerType2},
+		langType = #{langType}, point1 = #{point1}, point2 = #{point2}, point3 = #{point3}, point4 = #{point4}, point5 = #{point5},
+		point6 = #{point6}, point7 = #{point7}, point8 = #{point8}, point9 = #{point9}, point10 = #{point10}, point11 = #{point11},
+		point12 = #{point12}, point13 = #{point13}, point14 = #{point14}, point15 = #{point15}, point16 = #{point16}, point17 = #{point17},
+		point18 = #{point18}, point19 = #{point19}, point20 = #{point20}, point21 = #{point21}, point22 = #{point22}, point23 = #{point23},
+		point24 = #{point24}, point25 = #{point25}, point26 = #{point26}, point27 = #{point27}, point28 = #{point28},
+		passCount = #{passCount2}, day = now() where user = #{user} and school = #{school2}
+	</update>
+	<update id="updateExam4" parameterType="java.util.HashMap">
+		update examList set 
+		examType = #{examType}, mathType = #{mathType}, explorType = #{explorType}, innerType1 = #{innerType1}, innerType2 = #{innerType2},
+		langType = #{langType}, point1 = #{point1}, point2 = #{point2}, point3 = #{point3}, point4 = #{point4}, point5 = #{point5},
+		point6 = #{point6}, point7 = #{point7}, point8 = #{point8}, point9 = #{point9}, point10 = #{point10}, point11 = #{point11},
+		point12 = #{point12}, point13 = #{point13}, point14 = #{point14}, point15 = #{point15}, point16 = #{point16}, point17 = #{point17},
+		point18 = #{point18}, point19 = #{point19}, point20 = #{point20}, point21 = #{point21}, point22 = #{point22}, point23 = #{point23},
+		point24 = #{point24}, point25 = #{point25}, point26 = #{point26}, point27 = #{point27}, point28 = #{point28},
+		passCount = #{passCount3}, day = now() where user = #{user} and school = #{school3}
+	</update>
+</mapper>

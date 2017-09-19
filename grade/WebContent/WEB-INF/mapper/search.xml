@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="search">
+	<select id="searchrecord" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from recordList a, salesList b where a.id = b.id
+		and (a.school like #{word} or a.subject like #{word})
+		order by a.auto desc limit 12 offset #{page}
+	</select>
+	<select id="countrecord" resultType="java.lang.Integer">
+		select count(*) from recordList a, salesList b where a.id = b.id
+		and (a.school like #{word} or a.subject like #{word})
+	</select>
+<!-- 	<select id="searchrecord2" parameterType="java.util.HashMap" resultType="java.util.HashMap"> -->
+<!-- 		select * from schoolList a, infoList b, memberList c, salesList d -->
+<!-- 		where a.user = b.user and a.user = c.auto and c.id = d.id and c.type != '탈퇴' and d.hschool like #{word2} -->
+<!-- 		and (a.school like #{word} or a.type like #{word} or a.subject like #{word}) -->
+<!-- 		order by a.auto desc limit 12 offset #{page} -->
+<!-- 	</select> -->
+<!-- 	<select id="searchrecord3" parameterType="java.util.HashMap" resultType="java.util.HashMap"> -->
+<!-- 		select * from schoolList a, infoList b, memberList c, salesList d -->
+<!-- 		where a.user = b.user and a.user = c.auto and c.id = d.id and c.type != '탈퇴' and d.haddr = #{location} -->
+<!-- 		and (a.school like #{word} or a.type like #{word} or a.subject like #{word}) -->
+<!-- 		order by a.auto desc limit 12 offset #{page} -->
+<!-- 	</select> -->
+<!-- 	<select id="searchrecord4" parameterType="java.util.HashMap" resultType="java.util.HashMap"> -->
+<!-- 		select * from schoolList a, infoList b, memberList c, salesList d -->
+<!-- 		where a.user = b.user and a.user = c.auto and c.id = d.id and c.type != '탈퇴' and d.haddr = #{location} and d.hschool like #{word2} -->
+<!-- 		and (a.school like #{word} or a.type like #{word} or a.subject like #{word}) -->
+<!-- 		order by a.auto desc limit 12 offset #{page} -->
+<!-- 	</select> -->
+<!-- 	<select id="countrecord2" parameterType="java.util.HashMap" resultType="java.lang.Integer"> -->
+<!-- 		select count(*) from schoolList a, infoList b, memberList c, salesList d -->
+<!-- 		where a.user = b.user and a.user = c.auto and c.id = d.id and c.type != '탈퇴' and d.hschool like #{word2} -->
+<!-- 		and (a.school like #{word} or a.type like #{word} or a.subject like #{word}) -->
+<!-- 	</select> -->
+<!-- 	<select id="countrecord3" parameterType="java.util.HashMap" resultType="java.lang.Integer"> -->
+<!-- 		select count(*) from schoolList a, infoList b, memberList c, salesList d -->
+<!-- 		where a.user = b.user and a.user = c.auto and c.id = d.id and c.type != '탈퇴' and d.haddr = #{location} -->
+<!-- 		and (a.school like #{word} or a.type like #{word} or a.subject like #{word}) -->
+<!-- 	</select> -->
+<!-- 	<select id="countrecord4" parameterType="java.util.HashMap" resultType="java.lang.Integer"> -->
+<!-- 		select count(*) from schoolList a, infoList b, memberList c, salesList d -->
+<!-- 		where a.user = b.user and a.user = c.auto and c.id = d.id and c.type != '탈퇴' and d.haddr = #{location} and d.hschool like #{word2} -->
+<!-- 		and (a.school like #{word} or a.type like #{word} or a.subject like #{word}) -->
+<!-- 	</select> -->
+	<select id="searchintro" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from introList a, salesList b where a.id = b.id
+		and (a.school like #{word} or a.subject like #{word})
+		order by a.auto desc limit 12 offset #{page}
+	</select>
+<!-- 	<select id='searchintro2' parameterType="java.util.HashMap" resultType="java.util.HashMap"> -->
+<!-- 		select * from schoolList a, infoList b, memberList c, introList d, salesList e -->
+<!-- 		where a.user = b.user and a.user = c.auto and c.type != '탈퇴' and a.school = d.school and e.hschool like #{word2} -->
+<!-- 		and (a.school like #{word} or a.type like #{word} or a.subject like #{word}) -->
+<!-- 		order by a.auto desc limit 12 offset #{page} -->
+<!-- 	</select> -->
+<!-- 	<select id="searchintro3" parameterType="java.util.HashMap" resultType="java.util.HashMap"> -->
+<!-- 		select * from schoolList a, infoList b, memberList c, introList d, salesList e -->
+<!-- 		where a.user = b.user and a.user = c.auto and c.type != '탈퇴' and a.school = d.school and e.haddr = #{location} -->
+<!-- 		and (a.school like #{word} or a.type like #{word} or a.subject like #{word}) -->
+<!-- 		order by a.auto desc limit 12 offset #{page} -->
+<!-- 	</select> -->
+<!-- 	<select id="searchintro4" parameterType="java.util.HashMap" resultType="java.util.HashMap"> -->
+<!-- 		select * from schoolList a, infoList b, memberList c, introList d, salesList e -->
+<!-- 		where a.user = b.user and a.user = c.auto and c.type != '탈퇴' and a.school = d.school -->
+<!-- 		and e.haddr = #{location} and e.hschool like #{word2} -->
+<!-- 		and (a.school like #{word} or a.type like #{word} or a.subject like #{word}) -->
+<!-- 		order by a.auto desc limit 12 offset #{page} -->
+<!-- 	</select> -->
+	<select id="countintro" resultType="java.lang.Integer">
+		select count(*) from introList a, salesList b where a.id = b.id
+		and (a.school like #{word} or a.subject like #{word})
+	</select>
+<!-- 	<select id="countintro2" parameterType="java.util.HashMap" resultType="java.lang.Integer"> -->
+<!-- 		select count(*) from schoolList a, infoList b, memberList c, introList d, salesList e -->
+<!-- 		where a.user = b.user and a.user = c.auto and c.type != '탈퇴' and a.school = d.school and e.hschool like #{word2} -->
+<!-- 		and (a.school like #{word} or a.type like #{word} or a.subject like #{word}) -->
+<!-- 	</select> -->
+<!-- 	<select id="countintro3" parameterType="java.util.HashMap" resultType="java.lang.Integer"> -->
+<!-- 		select count(*) from schoolList a, infoList b, memberList c, introList d, salesList e -->
+<!-- 		where a.user = b.user and a.user = c.auto and c.type != '탈퇴' and a.school = d.school and e.haddr = #{location} -->
+<!-- 		and (a.school like #{word} or a.type like #{word} or a.subject like #{word}) -->
+<!-- 	</select> -->
+<!-- 	<select id="countintro4" parameterType="java.util.HashMap" resultType="java.lang.Integer"> -->
+<!-- 		select count(*) from schoolList a, infoList b, memberList c, introList d, salesList e -->
+<!-- 		where a.user = b.user and a.user = c.auto and c.type != '탈퇴' and a.school = d.school -->
+<!-- 		and e.haddr = #{location} and e.hschool like #{word2} -->
+<!-- 		and (a.school like #{word} or a.type like #{word} or a.subject like #{word}) -->
+<!-- 	</select> -->
+	<select id="searchinterview" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from interviewList a, salesList b where a.id = b.id
+		and (a.school like #{word} or a.subject like #{word})
+		order by a.auto desc limit 12 offset #{page}
+	</select>
+<!-- 	<select id="searchinterview2" parameterType="java.util.HashMap" resultType="java.util.HashMap"> -->
+<!-- 		select * from interviewList a, memberList b, salesList c -->
+<!-- 		where a.user = b.auto and b.type != '탈퇴' and b.id = c.id and c.hschool like #{word2} -->
+<!-- 		and (a.school like #{word} or a.subject like #{word}) -->
+<!-- 		order by a.auto desc limit 12 offset #{page} -->
+<!-- 	</select> -->
+<!-- 	<select id="searchinterview3" parameterType="java.util.HashMap" resultType="java.util.HashMap"> -->
+<!-- 		select * from interviewList a, memberList b, salesList c -->
+<!-- 		where a.user = b.auto and b.type != '탈퇴' and b.id = c.id and c.haddr = #{location} -->
+<!-- 		and (a.school like #{word} or a.subject like #{word}) -->
+<!-- 		order by a.auto desc limit 12 offset #{page} -->
+<!-- 	</select> -->
+<!-- 	<select id="searchinterview4" parameterType="java.util.HashMap" resultType="java.util.HashMap"> -->
+<!-- 		select * from interviewList a, memberList b, salesList c -->
+<!-- 		where a.user = b.auto and b.type != '탈퇴' and b.id = c.id and c.hschool like #{word2} and c.haddr = #{location} -->
+<!-- 		and (a.school like #{word} or a.subject like #{word}) -->
+<!-- 		order by a.auto desc limit 12 offset #{page} -->
+<!-- 	</select> -->
+	<select id="countinterview" resultType="java.lang.Integer">
+		select count(*) from interviewList a, salesList b where a.id = b.id
+		and (a.school like #{word} or a.subject like #{word})
+	</select>
+<!-- 	<select id="countinterview2" parameterType="java.util.HashMap" resultType="java.lang.Integer"> -->
+<!-- 		select count(*) from interviewList a, memberList b, salesList c -->
+<!-- 		where a.user = b.auto and b.type != '탈퇴' and b.id = c.id and c.hschool like #{word2} -->
+<!-- 		and (a.school like #{word} or a.subject like #{word}) -->
+<!-- 	</select> -->
+<!-- 	<select id="countinterview3" parameterType="java.util.HashMap" resultType="java.lang.Integer"> -->
+<!-- 		select count(*) from interviewList a, memberList b, salesList c -->
+<!-- 		where a.user = b.auto and b.type != '탈퇴' and b.id = c.id and c.haddr = #{location} -->
+<!-- 		and (a.school like #{word} or a.subject like #{word}) -->
+<!-- 	</select> -->
+<!-- 	<select id="countinterview4" parameterType="java.util.HashMap" resultType="java.lang.Integer"> -->
+<!-- 		select count(*) from interviewList a, memberList b, salesList c -->
+<!-- 		where a.user = b.auto and b.type != '탈퇴' and b.id = c.id and c.hschool like #{word2} and c.haddr = #{location} -->
+<!-- 		and (a.school like #{word} or a.subject like #{word}) -->
+<!-- 	</select> -->
+	<select id="searchexam" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from examList a, salesList b where a.id = b.id
+		and (a.school like #{word} or a.subject like #{word})
+		order by a.auto desc limit 12 offset #{page}
+	</select>
+<!-- 	<select id="searchexam2" parameterType="java.util.HashMap" resultType="java.util.HashMap"> -->
+<!-- 		select * from schoolList a, examList b, memberList c, infoList d, salesList e -->
+<!-- 		where a.user = b.user and a.user = c.auto and a.user = d.user and c.id = e.id and c.type != '탈퇴' and e.hschool like #{word2} -->
+<!-- 		and (a.school like #{word} or a.subject like #{word}) -->
+<!-- 		order by a.auto desc limit 12 offset #{page} -->
+<!-- 	</select> -->
+<!-- 	<select id="searchexam3" parameterType="java.util.HashMap" resultType="java.util.HashMap"> -->
+<!-- 		select * from schoolList a, examList b, memberList c, infoList d, salesList e -->
+<!-- 		where a.user = b.user and a.user = c.auto and a.user = d.user and c.id = e.id and c.type != '탈퇴' and e.haddr = #{location} -->
+<!-- 		and (a.school like #{word} or a.subject like #{word}) -->
+<!-- 		order by a.auto desc limit 12 offset #{page} -->
+<!-- 	</select> -->
+<!-- 	<select id="searchexam4" parameterType="java.util.HashMap" resultType="java.util.HashMap"> -->
+<!-- 		select * from schoolList a, examList b, memberList c, infoList d, salesList e -->
+<!-- 		where a.user = b.user and a.user = c.auto and a.user = d.user and c.id = e.id and c.type != '탈퇴' -->
+<!-- 		and e.hschool like #{word2} and e.haddr = #{location} -->
+<!-- 		and (a.school like #{word} or a.subject like #{word}) -->
+<!-- 		order by a.auto desc limit 12 offset #{page} -->
+<!-- 	</select> -->
+	<select id="countexam" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+		select count(*) from examList a, salesList b where a.id = b.id
+		and (a.school like #{word} or a.subject like #{word})
+	</select>
+<!-- 	<select id="countexam2" parameterType="java.util.HashMap" resultType="java.lang.Integer"> -->
+<!-- 		select count(*) from schoolList a, examList b, memberList c, infoList d, salesList e -->
+<!-- 		where a.user = b.user and a.user = c.auto and a.user = d.user and c.id = e.id and c.type != '탈퇴' and e.hschool like #{word2} -->
+<!-- 		and (a.school like #{word} or a.subject like #{word}) -->
+<!-- 	</select> -->
+<!-- 	<select id="countexam3" parameterType="java.util.HashMap" resultType="java.lang.Integer"> -->
+<!-- 		select count(*) from schoolList a, examList b, memberList c, infoList d, salesList e -->
+<!-- 		where a.user = b.user and a.user = c.auto and a.user = d.user and c.id = e.id and c.type != '탈퇴' and e.haddr = #{location} -->
+<!-- 		and (a.school like #{word} or a.subject like #{word}) -->
+<!-- 	</select> -->
+<!-- 	<select id="countexam4" parameterType="java.util.HashMap" resultType="java.lang.Integer"> -->
+<!-- 		select count(*) from schoolList a, examList b, memberList c, infoList d, salesList e -->
+<!-- 		where a.user = b.user and a.user = c.auto and a.user = d.user and c.id = e.id and c.type != '탈퇴' -->
+<!-- 		and e.hschool like #{word2} and e.haddr = #{location} -->
+<!-- 		and (a.school like #{word} or a.subject like #{word}) -->
+<!-- 	</select> -->
+	<select id="word" resultType="java.util.HashMap">
+		select * from university where name = #{word}
+	</select>
+	<select id="word2" resultType="java.util.HashMap">
+		select * from university where num = #{num}
+	</select>
+	<select id="word3" resultType="java.util.HashMap">
+		select * from university where name like #{word}
+	</select>
+</mapper>

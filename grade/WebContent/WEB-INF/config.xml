@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+
+	<mvc:annotation-driven />
+	<mvc:default-servlet-handler />
+
+	<context:component-scan base-package="main" />
+	<context:component-scan base-package="record"/>
+	<context:component-scan base-package="search"/>
+	<context:component-scan base-package="member"/>
+	<context:component-scan base-package="interview"/>
+	<context:component-scan base-package="intro"/>
+	<context:component-scan base-package="exam"/>
+	<context:component-scan base-package="notice"/>
+	<context:component-scan base-package="faq"/>
+	<context:component-scan base-package="admin"/>
+	<context:component-scan base-package="school"/>
+	<context:component-scan base-package="rank"/>
+
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver"
+		id="beanNameViewResolver" p:order="2" />
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		id="internalResourceViewResolver" p:order="9">
+		<property name="prefix" value="/WEB-INF/view" />
+	</bean>
+
+	<!-- mysql DB 연동 -->
+<!-- 	<bean id="dataSource" class="org.apache.tomcat.dbcp.dbcp2.BasicDataSource"> -->
+<!-- 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/> -->
+<!-- 		<property name="url" value="jdbc:mysql://10.108.128.22:3306/grade"/> -->
+<!-- 		<property name="username" value="grade"/> -->
+<!-- 		<property name="password" value="grade"/> -->
+<!-- 	</bean> -->
+
+	<!-- mysql 웹db 연동 -->
+	<bean id="dataSource" class="org.apache.tomcat.dbcp.dbcp2.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/mygrade" />
+		<property name="username" value="mygrade" />
+		<property name="password" value="grade2016@" />
+	</bean>
+
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
+		<property name="dataSource" ref="dataSource" />
+		<property name="mapperLocations">
+			<list>
+				<value>/WEB-INF/mapper/*</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory" />
+	</bean>
+
+	<bean
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+		id="multipartResolver" />
+
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.cafe24.com" />
+		<property name="port" value="587" />
+		<property name="username" value="admin@gogosky.co.kr" />
+		<property name="password" value="mrrgo2016@" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.smtp.auth">true</prop>
+			</props>
+		</property>
+	</bean>
+
+</beans>

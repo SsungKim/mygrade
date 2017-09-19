@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="interview">
+	<insert id="upload" parameterType="java.util.HashMap">
+		insert into
+		interviewList(user, id, name, addr, school, subject, type, year, admission, typical, pass, time, people, kinds, how, tip, content1, content2, day, point, comment)
+		values(#{user}, #{id}, #{name}, #{addr}, #{school}, #{subject}, #{type}, #{year}, #{admission}, #{typical}, #{pass}, #{time}, #{people},
+					#{kinds}, #{how}, #{tip}, #{content1}, #{content2}, now(), 0.0, 0)
+	</insert>
+	<select id="interviewList" resultType="java.util.HashMap">
+		select * from interviewList a, memberList b
+		where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
+		order by a.auto desc limit 10 offset #{page}
+	</select>
+	<select id="count" resultType="java.lang.Integer">
+		select count(*) from interviewList a, memberList b
+		where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
+	</select> 
+	<select id="interviewOne" resultType="java.util.HashMap">
+		select * from interviewList where auto = #{num}
+	</select>
+	<select id="interviewSomeone" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from interviewList a, schoolList b where a.user = b.user and a.user = #{user} and a.school = b.school and b.pass = '합격'
+		and a.subject = b.subject and b.auto = #{num};
+	</select>
+	<select id="commentList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from interviewCommentList where interviewNum = #{num} order by auto desc limit 5 offset #{page}
+	</select>
+	<insert id="comment" parameterType="java.util.HashMap">
+		insert into interviewCommentList(interviewNum, id, comment, point, day)
+		values(#{interviewNum}, #{user}, #{comment}, #{point}, #{day})
+	</insert>
+	<select id="commentCount" resultType="java.lang.Integer">
+		select count(*) from interviewCommentList where interviewNum = #{num}
+	</select>
+	<update id="pointCommentUpdate" parameterType="java.util.HashMap">
+		update interviewList set point = point + #{point}, comment = comment + 1 where auto = #{interviewNum}
+	</update>
+	<select id="interviewList2" resultType="java.util.HashMap">
+		select * from interviewList a, memberList b where a.id = b.id  and (b.admin = '판매자' or b.admin = '메인관리자')
+		and (a.school like #{word} or a.subject like #{word})
+		order by a.auto desc limit 12 offset #{page}
+	</select>
+	<select id="count2" resultType="java.lang.Integer">
+		select count(*) from interviewList a, memberList b where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
+		and (a.school like #{word} or a.subject like #{word})
+	</select> 
+	<update id="modify" parameterType="java.util.HashMap">
+		update interviewList set addr = #{addr}, school = #{school}, subject = #{subject}, type = #{type}, admission = #{admission}, 
+		typical = #{typical}, pass = #{pass}, time = #{time}, people = #{people}, kinds = #{kinds}, how = #{how}, tip = #{tip},
+		content1 = #{content1}, content2 = #{content2}, day = now() where auto = #{auto}
+	</update>
+	<delete id="remove">
+		delete from interviewList where auto = #{num}
+	</delete>
+</mapper>

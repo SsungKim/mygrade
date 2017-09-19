@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="admin">
+	<insert id="chargeData" parameterType="java.util.HashMap">
+		insert into chargeList(user, id, prim, tradeId, pay, applyNum, day)
+		values(#{user}, #{id}, #{prim}, #{tradeId}, #{pay}, #{applyNum}, #{day})
+	</insert>
+
+	<!-- tab7 -->
+	<select id="memberList" resultType="java.util.HashMap">
+		select * from memberList where type != '탈퇴' order by auto desc limit 20 offset #{page}
+	</select>
+	<select id="memberCount" resultType="java.lang.Integer">
+		select count(*) from memberList where type != '탈퇴'
+	</select>
+	<select id="memberSearch" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from memberList where type != '탈퇴' and (id like #{word} or name like #{word}) order by auto desc limit 20 offset #{page}
+	</select>
+	<select id="memberCount2" resultType="java.lang.Integer">
+		select count(*) from memberList where type != '탈퇴' and (id like #{word} or name like #{word})
+	</select>
+	<select id="memberSelect" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from memberList where type != '탈퇴' and admin like #{select} order by auto desc limit 20 offset #{page}
+	</select>
+	<select id="memberCount3" resultType="java.lang.Integer">
+		select count(*) from memberList where type != '탈퇴' and admin like #{select}
+	</select>
+	<select id="memberSearchSelect" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from memberList where type != '탈퇴' and (id like #{word} or name like #{word}) and admin like #{select}
+		order by auto desc limit 20 offset #{page}
+	</select>
+	<select id="memberCount4" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+		select count(*) from memberList where type != '탈퇴' and (id like #{word} or name like #{word}) and admin like #{select}
+	</select>
+	<update id="exitMember">
+		update memberList set type = '탈퇴' where auto = #{user}
+	</update>
+	<insert id="exitAdd">
+		insert exitList(id, reason, content, day) values(#{id}, '추방', '추방', now())
+	</insert>
+	<update id="sales">
+		update memberList set admin = '구매자' where auto = #{user}
+	</update>
+	<update id="admin">
+		update memberList set admin = #{type} where auto = #{user}
+	</update>
+	
+	<!-- tab4 -->
+	<select id="certList" resultType="java.util.HashMap">
+		select a.*, b.id, b.name, c.uuid from schoolList a, memberList b, schoolData c
+		where a.user = b.auto and b.auto = c.user and c.user = a.user and a.school = c.school order by a.auto desc
+		limit 20 offset #{page}
+	</select>
+	<select id="certCount" resultType="java.lang.Integer">
+		select count(*) from schoolList a, memberList b, schoolData c
+		where a.user = b.auto and b.auto = c.user and c.user = a.user and a.school = c.school order by a.auto desc
+	</select>
+	<select id="schoolOne" resultType="java.util.HashMap">
+		select a.*, b.id, b.name, c.uuid from schoolList a, memberList b, schoolData c
+		where a.user = b.auto and b.auto = c.user and c.user = a.user and a.school = c.school and a.auto = #{num} order by a.auto desc
+	</select>
+	<insert id="certSave" parameterType="java.util.HashMap">
+		insert into certList(user, id, name, addr, school, subject, type, year, admission, typical, pass, uuid, hschool, day, certType)
+		values(#{user}, #{id}, #{name}, #{addr}, #{school}, #{subject}, #{type}, #{year}, #{admission}, #{typical}, #{pass}, #{uuid},
+					#{hschool}, #{day}, #{certType})
+	</insert>
+	<delete id="schoolDelete">
+		delete from schoolList where auto = #{auto}
+	</delete>
+	<update id="salesUpdate">
+		update memberList set admin = '판매자' where auto = #{auto}
+	</update>
+	<select id="certEndList" resultType="java.util.HashMap">
+		select * from certList order by auto desc limit 20 offset #{page}
+	</select>
+	<select id="certEndCount" resultType="java.lang.Integer">
+		select count(*) from certList
+	</select>
+	<select id="certAll" resultType="java.util.HashMap">
+		select * from certList order by auto desc
+	</select>
+	
+	<!-- tab5 -->
+	<select id="recordList" resultType="java.util.HashMap">
+		select a.*, b.id, b.name from recordList a, memberList b where a.user = b.auto and b.type != '탈퇴' and a.cert = '미인증' 
+		order by a.auto desc limit 20 offset #{page}
+	</select>
+	<select id="recordCount" resultType="java.lang.Integer">
+		select count(*) from recordList a, memberList b where a.user = b.auto and b.type != '탈퇴' and a.cert = '미인증'
+	</select>
+	<update id="recordUpdate">
+		update recordList set cert = '인증' where auto = #{auto}
+	</update>
+	<select id="recordEndList" resultType="java.util.HashMap">
+		select *, b.id, b.name from recordList a, memberList b where a.user = b.auto and b.type != '탈퇴' and a.cert = '인증'
+		order by a.auto desc limit 20 offset #{page}
+	</select>
+	<select id="recordEndCount" resultType="java.lang.Integer">
+		select count(*) from recordList a, memberList b where a.user = b.auto and b.type != '탈퇴' and a.cert = '인증'
+	</select>
+	<select id="recordFile" resultType="java.util.HashMap">
+		select * from recordFile where auto = #{num}
+	</select>
+	
+	<!-- tab2 -->
+	<select id="chargeList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from chargeList where day &gt;= date(#{day1}) and day &lt;= date(#{day2})
+		order by auto desc limit 20 offset #{page}
+	</select>
+	<select id="chargeCount" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+		select count(*) from chargeList where day &gt;= date(#{day1}) and day &lt;= date(#{day2})
+	</select>
+	<select id="chargeMonth" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from chargeList where day &gt;= date(#{day1}) and day &lt;= date(#{day2})
+	</select>
+	
+	<!-- tab3 -->
+	<select id="useList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select a.*, b.id from buyList a, memberList b where a.user = b.auto and a.day &gt;= date(#{day1}) and a.day &lt;= date(#{day2})
+		order by auto desc limit 20 offset #{page}
+	</select>
+	<select id="useCount" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+		select count(*) from buyList a, memberList b where a.user = b.auto and a.day &gt;= date(#{day1}) and a.day &lt;= date(#{day2})
+	</select>
+	<select id="useAll" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from buyList where day &gt;= date(#{day1}) and day &lt;= date(#{day2})
+	</select>
+	
+	<!-- tab1 -->
+	<select id="payList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select a.*, b.name, c.bank, c.account from sellList a, memberList b, salesList c
+		where a.user = b.id and b.id = c.id and c.id = a.user and a.day &gt;= date(#{day1}) and a.day &lt;= date(#{day2})
+		order by a.auto desc limit 20 offset #{page}
+	</select>
+	<select id="payCount" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+		select count(*) from sellList a, memberList b, salesList c where a.user = b.id and b.id = c.id and c.id = a.user
+		and a.day &gt;= date(#{day1}) and a.day &lt;= date(#{day2})
+	</select>
+	<select id="payAll" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select a.*, b.name, c.bank, c.account from  sellList a, memberList b, salesList c
+		where a.user = b.id and b.id = c.id and c.id = a.user and a.day &gt;= date(#{day1}) and a.day &lt;= date(#{day2})
+		order by a.auto desc
+	</select>
+	
+	<!-- tab6 -->
+	<select id="recordList6" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select a.*, c.name from recordList a, salesList b, memberList c
+		where a.id = b.id and b.id = c.id and (c.name like #{search} or a.id like #{search}) and (c.admin = '판매자' or c.admin = '메인관리자')
+		order by a.auto desc limit 20 offset #{page}
+	</select>
+	<select id="recordAll" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select a.*, c.name from recordList a, salesList b, memberList c
+		where a.id = b.id and b.id = c.id and (c.admin = '판매자' or c.admin = '메인관리자')
+		order by a.auto desc limit 20 offset #{page}
+	</select>
+	<select id="recordCount6" resultType="java.lang.Integer">
+		select count(*) from recordList a, salesList b, memberList c
+		where a.id = b.id and b.id = c.id and (c.name like #{search} or a.id like #{search}) and (c.admin = '판매자' or c.admin = '메인관리자')
+	</select>
+	<select id="recordAllCount" resultType="java.lang.Integer">
+		select count(*) from recordList a, salesList b, memberList c
+		where a.id = b.id and b.id = c.id and (c.admin = '판매자' or c.admin = '메인관리자')
+	</select>
+	<select id="introList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select a.* from introList a, salesList b, memberList c
+		where a.id = b.id and b.id = c.id and (a.name like #{search} or a.id like #{search}) and (c.admin = '판매자' or c.admin = '메인과리자')
+		order by a.auto desc limit 20 offset #{page}
+	</select>
+	<select id="introAll" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select a.* from introList a, salesList b, memberList c
+		where a.id = b.id and b.id = c.id and (c.admin = '판매자' or c.admin = '메인과리자')
+		order by a.auto desc limit 20 offset #{page}
+	</select>
+	<select id="introCount" resultType="java.lang.Integer">
+		select count(*) from introList a, salesList b, memberList c
+		where a.id = b.id and b.id = c.id and (a.name like #{search} or a.id like #{search}) and (c.admin = '판매자' or c.admin = '메인과리자')
+	</select>
+	<select id="introAllCount" resultType="java.lang.Integer">
+		select count(*) from introList a, salesList b, memberList c
+		where a.id = b.id and b.id = c.id and (c.admin = '판매자' or c.admin = '메인과리자')
+	</select>
+	<select id="interviewList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select a.* from interviewList a, memberList b
+		where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자') and (b.id like #{search} or b.name like #{search})
+		order by a.auto desc limit 20 offset #{page}
+	</select>
+	<select id="interviewAll" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select a.* from interviewList a, memberList b
+		where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
+		order by a.auto desc limit 20 offset #{page}
+	</select>
+	<select id="interviewCount" resultType="java.lang.Integer">
+		select count(*) from interviewList a, memberList b
+		where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자') and (b.id like #{search} or b.name like #{search})
+	</select>
+	<select id="interviewAllCount" resultType="java.lang.Integer">
+		select count(*) from interviewList a, memberList b
+		where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
+	</select>
+	<select id="examList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select a.* from examList a, salesList b, memberList c
+		where a.id = b.id and b.id = c.id and (a.id like #{search} or a.name like #{search}) and (c.admin = '판매자' or c.admin = '메인과리자')
+		order by a.auto desc limit 20 offset #{page}
+	</select>
+	<select id="examAll" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select a.* from examList a, salesList b, memberList c
+		where a.id = b.id and b.id = c.id and (c.admin = '판매자' or c.admin = '메인과리자')
+		order by a.auto desc limit 20 offset #{page}
+	</select>
+	<select id="examCount" resultType="java.lang.Integer">
+		select count(*) from examList a, salesList b, memberList c
+		where a.id = b.id and b.id = c.id and (a.id like #{search} or a.name like #{search}) and (c.admin = '판매자' or c.admin = '메인과리자')
+	</select>
+	<select id="examAllCount" resultType="java.lang.Integer">
+		select count(*) from examList a, salesList b, memberList c
+		where a.id = b.id and b.id = c.id and (c.admin = '판매자' or c.admin = '메인과리자')
+	</select>
+	<delete id="recordRemove">
+		delete from recordList where auto = #{num}
+	</delete>
+	<delete id="introRemove">
+		delete from introList where auto = #{num}
+	</delete>
+	<delete id="interviewRemove">
+		delete from interviewList where auto = #{num}
+	</delete>
+	<delete id="examRemove">
+		delete from examList where auto = #{num}
+	</delete>
+</mapper>

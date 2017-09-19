@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="school">
+	<select id="university" resultType="java.util.HashMap">
+		select * from schoolList where school = #{school} and user = #{user}
+	</select>
+	<select id="word" resultType="java.util.HashMap">
+		select * from university where name = #{word}
+	</select>
+	<select id="word2" resultType="java.util.HashMap">
+		select * from university where num = #{num}
+	</select>
+	<delete id="deleteSchool">
+		delete from schoolList where user = #{user}
+	</delete>
+	<insert id="uploadSchool" parameterType="java.util.HashMap">
+		insert into schoolList
+		(user, addr, school, subject, year, admission, typical, hschool, pass, type, day)
+		values(#{user}, #{addr}, #{school}, #{subject}, #{year}, #{admission}, #{typical}, #{hschool}, #{pass}, #{type}, now())
+	</insert>
+	<select id="schoolList" resultType="java.util.HashMap">
+		select * from schoolList where user = #{user}
+	</select>
+	<insert id="uploadData" parameterType="java.util.HashMap">
+		insert into schoolData(user, school, uuid, day) values(#{user}, #{school}, #{uuid}, now())
+	</insert>
+	<select id="schoolData" resultType="java.util.HashMap">
+		select * from schoolData where user = #{user}
+	</select>
+	<select id="schoolOne" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from schoolList where user = #{user} and school = #{school}
+	</select>
+</mapper>
