@@ -31,8 +31,7 @@ public class IntroController {
 	
 	// 자소서 등록
 	@RequestMapping("/uploadIntro")
-	@ResponseBody
-	public boolean uploadIntro(HttpSession session, @RequestParam(name="univ", required=false, defaultValue="s")String univ,
+	public ModelAndView uploadIntro(HttpSession session, @RequestParam(name="univ", required=false, defaultValue="s")String univ,
 												@RequestParam(name="content1")String content1, @RequestParam(name="content2")String content2,
 												@RequestParam(name="content3")String content3, @RequestParam(name="content4")String content4,
 												@RequestParam(name="title")String title, @RequestParam(name="addr", required=false, defaultValue="s")String addr,
@@ -51,10 +50,20 @@ public class IntroController {
 		content3 = content3.replace("\n", "<br>");
 		content4 = content4.replace("\n", "<br>");
 		if(id.equals("admin")){
-			return is.uploadIntroAdmin(user, id, name, content1, content2, content3, content4, title, addr, school, subject, type, year, admission, typical, pass);
+			is.uploadIntroAdmin(user, id, name, content1, content2, content3, content4, title, addr, school, subject, type, year, admission, typical, pass);
 		} else {
-			return is.uploadIntro(user, id, name, univ, content1, content2, content3, content4, title);
+			is.uploadIntro(user, id, name, univ, content1, content2, content3, content4, title);
 		}
+		ModelAndView mav = new ModelAndView("/member/myData.jsp");
+		List<HashMap> interviewList = ms.interviewList(user);
+		mav.addObject("interviewList", interviewList);
+		List<HashMap> recordList = ms.recordList(user);
+		mav.addObject("recordList", recordList);
+		List<HashMap> introList = ms.introList(user);
+		mav.addObject("introList", introList);
+		List<HashMap> examList = ms.examList(user);
+		mav.addObject("examList", examList);
+		return mav;
 	}
 	
 	// 자소서 쓰기
@@ -153,6 +162,54 @@ public class IntroController {
 		mav.addObject("type", "intro");
 		return mav;
 	}
+	
+	// 수정
+	@RequestMapping("/modify/{auto}")
+	public ModelAndView modify(@PathVariable(name="auto")String auto, HttpSession session){
+		ModelAndView mav = new ModelAndView("/intro/modify.jsp");
+		String user = ((HashMap)session.getAttribute("login")).get("auto").toString();
+		HashMap intro = is.introOne(auto);
+		mav.addObject("intro", intro);
+		return mav;
+	}
+	
+	// 자소서 수정
+	@RequestMapping("/modifyIntro")
+	public ModelAndView modifyIntro(HttpSession session, @RequestParam(name="univ", required=false, defaultValue="s")String univ,
+												@RequestParam(name="content1")String content1, @RequestParam(name="content2")String content2,
+												@RequestParam(name="content3")String content3, @RequestParam(name="content4")String content4,
+												@RequestParam(name="title")String title, @RequestParam(name="addr", required=false, defaultValue="s")String addr,
+												@RequestParam(name="school", required=false, defaultValue="s")String school,
+												@RequestParam(name="subject", required=false, defaultValue="s")String subject,
+												@RequestParam(name="type", required=false, defaultValue="s")String type,
+												@RequestParam(name="year", required=false, defaultValue="s")String year,
+												@RequestParam(name="admission", required=false, defaultValue="s")String admission,
+												@RequestParam(name="typical", required=false, defaultValue="s")String typical,
+												@RequestParam(name="pass", required=false, defaultValue="s")String pass,
+												@RequestParam(name="auto")String auto){
+		String user = ((HashMap)session.getAttribute("login")).get("auto").toString();
+		String id = ((HashMap)session.getAttribute("login")).get("id").toString();
+		String name = ((HashMap)session.getAttribute("login")).get("name").toString();
+		content1 = content1.replace("\n", "<br>");
+		content2 = content2.replace("\n", "<br>");
+		content3 = content3.replace("\n", "<br>");
+		content4 = content4.replace("\n", "<br>");
+		if(id.equals("admin")){
+			is.modifyIntroAdmin(auto, user, id, name, content1, content2, content3, content4, title, addr, school, subject, type, year, admission, typical, pass);
+		} else {
+			is.modifyIntro(auto, user, id, name, univ, content1, content2, content3, content4, title);
+		}
+		ModelAndView mav = new ModelAndView("/member/myData.jsp");
+		List<HashMap> interviewList = ms.interviewList(user);
+		mav.addObject("interviewList", interviewList);
+		List<HashMap> recordList = ms.recordList(user);
+		mav.addObject("recordList", recordList);
+		List<HashMap> introList = ms.introList(user);
+		mav.addObject("introList", introList);
+		List<HashMap> examList = ms.examList(user);
+		mav.addObject("examList", examList);
+		return mav;
+	}
 
 	
 	
@@ -171,20 +228,4 @@ public class IntroController {
 												@PathVariable(name="awards")String awards){
 		return rs.uploadInfo(user, year, grade, hschool, book, time, awards);
 	}
-	
-	// 수정
-	@RequestMapping("/modify/{auto}/{user}")
-	public ModelAndView modify(@PathVariable(name="auto")String auto, @PathVariable(name="user")String user){
-		ModelAndView mav = new ModelAndView("/intro/modify.jsp");
-		HashMap intro = is.introOne(auto);
-		mav.addObject("intro", intro);
-		List<HashMap> infoList = rs.infoOne(user);
-		mav.addObject("info", infoList.get(0));
-		List<HashMap> memberList = rs.memberOne(user);
-		mav.addObject("member", memberList.get(0));
-		List<HashMap> schoolList = is.schoolList(user);
-		mav.addObject("schoolList", schoolList);
-		return mav;
-	}
-	
 }

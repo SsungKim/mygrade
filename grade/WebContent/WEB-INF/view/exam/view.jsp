@@ -103,37 +103,19 @@
                                     <div class="txt">${exam.langType }</div>
                                 </div>
                             </div>
-<!--                             <div class="certify_wrap"> -->
-<%--                                 <c:forEach var="t" items="${schoolList }"> --%>
-<!--                                     <div class="certify"> -->
-<!--                                         <div class="star"> -->
-<!--                                             <img src="/img/student_view/star.png"> -->
-<!--                                         </div> -->
-<%--                                         <div class="txt">${t } 합격생</div> --%>
-<!--                                         <div class="stamp"> -->
-<!--                                             <img src="/img/student_view/stamp.png"> -->
-<!--                                         </div> -->
-<!--                                     </div> -->
-<!--                                     <div class="certify"> -->
-<!--                                         <div class="star"> -->
-<!--                                             <img src="/img/student_view/star.png"> -->
-<!--                                         </div> -->
-<%--                                         <div class="txt">${t } 합격생</div> --%>
-<!--                                         <div class="stamp"> -->
-<!--                                             <img src="/img/student_view/stamp.png"> -->
-<!--                                         </div> -->
-<!--                                     </div> -->
-<!--                                     <div class="certify"> -->
-<!--                                         <div class="star"> -->
-<!--                                             <img src="/img/student_view/star.png"> -->
-<!--                                         </div> -->
-<%--                                         <div class="txt">${t } 합격생</div> --%>
-<!--                                         <div class="stamp"> -->
-<!--                                             <img src="/img/student_view/stamp.png"> -->
-<!--                                         </div> -->
-<!--                                     </div> -->
-<%--                                 </c:forEach> --%>
-<!--                             </div> -->
+                            <div class="certify_wrap">
+                                <c:forEach var="t" items="${certList }">
+                                    <div class="certify">
+										<div class="star">
+											<img src="/img/student_view/star.png">
+										</div>
+										<div class="txt">${t.schoolName } ${t.certType }생</div>
+										<div class="stamp">
+											<img src="/img/student_view/stamp.png">
+										</div>
+									</div>
+                                </c:forEach>
+                            </div>
                         </div>
                     </div>
                     <div class="exam_view_txt">※수능성적표는 구매 하셔야 이미지가 정상적으로 보입니다.</div>

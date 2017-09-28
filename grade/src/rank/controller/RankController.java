@@ -71,7 +71,6 @@ public class RankController {
 		int pf = rs.pf(view.get("rankDay").toString(), view.get("grade").toString(), view.get("langType").toString());
 		int ps = rs.ps(view.get("rankDay").toString(), view.get("grade").toString(), view.get("type").toString());
 		mav.addObject("people", people);
-		System.out.println(view);
 		HashMap rank = rs.rank(view.get("user").toString(), view.get("grade").toString(), view.get("rankDay").toString(), view.get("mathType").toString(),
 				view.get("expType1").toString(), view.get("expType2").toString(), view.get("langType").toString(), view.get("type").toString());
 		mav.addObject("rank", rank);

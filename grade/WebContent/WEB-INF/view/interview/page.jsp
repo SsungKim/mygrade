@@ -42,18 +42,18 @@
 </div>
     
 <div class="mobile_page">
-    <div class="prev_pages_wrap pages_wrap" onclick="page(${first })" id="firstWrap">
+    <div class="prev_pages_wrap pages_wrap" onclick="page(${first })" id="firstWrap2">
         <div class="page">
             <img src="/img/admin/prev01.png">
         </div>
     </div>
-    <div class="prev_pages_wrap pages_wrap" onclick="page(${prev })" id="prevWrap">
+    <div class="prev_pages_wrap pages_wrap" onclick="page(${prevM })" id="prevWrap2">
         <div class="page">
             <img src="/img/admin/prev02.png">
         </div>
     </div>
     <div class="now_pages_wrap pages_wrap">
-        <c:forEach var="t" begin="${start }" end="${end }">
+        <c:forEach var="t" begin="${startM }" end="${endM }">
             <c:choose>
                 <c:when test="${t == select }">
                     <div class="page sel" onclick="page(${t })">
@@ -68,12 +68,12 @@
             </c:choose>
         </c:forEach>
     </div>
-    <div class="next_pages_wrap pages_wrap" onclick="page(${next })" id="nextWrap">
+    <div class="next_pages_wrap pages_wrap" onclick="page(${nextM })" id="nextWrap2">
         <div class="page">
             <img src="/img/admin/next02.png">
         </div>
     </div>
-    <div class="next_pages_wrap pages_wrap" onclick="page(${last })" id="lastWrap">
+    <div class="next_pages_wrap pages_wrap" onclick="page(${last })" id="lastWrap2">
         <div class="page">
             <img src="/img/admin/next01.png">
         </div>
@@ -93,15 +93,29 @@
 	}
 	// 화살표 보이기
 	$(document).ready(function(){
-		if(${select > 10 }){
-			$("#firstWrap").css("display", "inline-block");
-			$("#prevWrap").css("display", "inline-block");
-		}
-		if(${last > 10 && end != last }){
-			$("#lastWrap").css("display", "inline-block");
-		}
-		if(${end < last }){
-			$("#nextWrap").css("display", "inline-block");
+		var blo = $(".web_page").css("display");
+		if(blo == "block"){
+			if(${select > 10 }){
+				$("#firstWrap").css("display", "inline-block");
+				$("#prevWrap").css("display", "inline-block");
+			}
+			if(${last > 10 && end != last }){
+				$("#lastWrap").css("display", "inline-block");
+			}
+			if(${end < last }){
+				$("#nextWrap").css("display", "inline-block");
+			}
+		} else {
+			if(${select > 5 }){
+				$("#firstWrap2").css("display", "inline-block");
+				$("#prevWrap2").css("display", "inline-block");
+			}
+			if(${last > 5 && endM != last }){
+				$("#lastWrap2").css("display", "inline-block");
+			}
+			if(${endM < last }){
+				$("#nextWrap2").css("display", "inline-block");
+			}
 		}
 	});
 </script>

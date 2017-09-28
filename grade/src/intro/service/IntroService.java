@@ -192,4 +192,61 @@ public class IntroService {
 		ss.close();
 		return count%12==0 ? count/12 : count/12+1;
 	}
+	
+	// 자소서 수정
+	public void modifyIntro(String auto, String user, String id, String name, String univ, String content1, String content2, String content3,
+			String content4, String title) {
+		SqlSession ss = fac.openSession();
+		HashMap<String, String> map = new HashMap<>();
+		map.put("auto", auto);
+		map.put("user", user);
+		map.put("id", id);
+		map.put("name", name);
+		map.put("school", univ);
+		map.put("content1", content1);
+		map.put("content2", content2);
+		map.put("content3", content3);
+		map.put("content4", content4);
+		map.put("title", title);
+		HashMap school = ss.selectOne("school.schoolOne", map);
+		map.put("addr", school.get("addr").toString());
+		map.put("subject", school.get("subject").toString());
+		map.put("type", school.get("type").toString());
+		map.put("year", school.get("year").toString());
+		map.put("admission", school.get("admission").toString());
+		map.put("typical", school.get("typical").toString());
+		map.put("pass", school.get("pass").toString());
+		List<HashMap> list = ss.selectList("intro.introUniv", map);
+		ss.update("intro.introModify", map);
+		ss.commit();
+		ss.close();
+	}
+	
+	// 자소서 등록 - 관리자
+	public void modifyIntroAdmin(String auto, String user, String id, String name, String content1, String content2, String content3, String content4,
+			String title, String addr, String school, String subject, String type, String year, String admission,
+			String typical, String pass) {
+		SqlSession ss = fac.openSession();
+		HashMap<String, String> map = new HashMap<>();
+		map.put("auto", auto);
+		map.put("user", user);
+		map.put("id", id);
+		map.put("name", name);
+		map.put("content1", content1);
+		map.put("content2", content2);
+		map.put("content3", content3);
+		map.put("content4", content4);
+		map.put("title", title);
+		map.put("addr", addr);
+		map.put("school", school);
+		map.put("subject", subject);
+		map.put("type", type);
+		map.put("year", year);
+		map.put("admission", admission);
+		map.put("typical", typical);
+		map.put("pass", pass);
+		ss.update("intro.introModify", map);
+		ss.commit();
+		ss.close();
+	}
 }

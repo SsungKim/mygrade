@@ -11,9 +11,10 @@
 	<select id="introUniv" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 		select * from introList where user = #{user} and school = #{school}
 	</select>
-	<update id="introUpdate" parameterType="java.util.HashMap">
+	<update id="introModify" parameterType="java.util.HashMap">
 		update introList set content1 = #{content1}, content2 = #{content2}, content3 = #{content3}, title = #{title}, content4 = #{content4},
-		day = now() where user = #{user} and school = #{school}
+		addr = #{addr}, school = #{school}, subject = #{subject}, type = #{type}, year = #{year}, admission = #{admission},
+		typical = #{typical}, pass = #{pass}, day = now() where auto = #{auto}
 	</update>
 	<select id="introList" resultType="java.util.HashMap">
 		select * from introList a, salesList b, memberList c

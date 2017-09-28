@@ -4,7 +4,7 @@
 
 
 <!doctype html>
-<html oncontextmenu='return false' ondragstart='return false' onselectstart='return false'>
+<html>
     <head>
     	<c:import url="/WEB-INF/view/main/head.jsp"/>
     </head>
@@ -32,23 +32,32 @@
                                 <div class="school_logo">
                                     <img src="/img/university/${record.school }.png"/>
                                 </div>
-                                <div class="department">${record.schoolName }</div>
-                                <div class="name">${record.subject }</div>
-                                <div class="name">
-                                    ${record.name.substring(0, 1) }
-                                    <c:forEach var="i" begin="1" end="${record.name.length()-1 }">
-                                        O
-                                    </c:forEach>
+                                <div class="detail_content">
+                                    <div class="department">${record.schoolName }</div>
+                                    <div class="name subject">${record.subject }</div>
+                                    <div class="name">
+                                        ${record.name.substring(0, 1) }
+                                        <c:forEach var="i" begin="1" end="${record.name.length()-1 }">
+                                            O
+                                        </c:forEach>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="certify_wrap certify_wrap1">
+                            <c:forEach var="t" items="${certList }">
+								<div class="certify">
+									<div class="star">
+										<img src="/img/student_view/star.png">
+									</div>
+									<div class="txt">${t.schoolName } ${t.certType }생</div>
+									<div class="stamp">
+										<img src="/img/student_view/stamp.png">
+									</div>
+								</div>
+							</c:forEach>
+                        </div>
                         <div class="detail_info_wrap">
-                            <div class="purchase">
-                                <div class="img">
-                                    <img src="/img/student_view/buy_img.png">
-                                </div>
-                                <div class="txt" onclick="buyPopup()">구매하기</div>
-                            </div>
                             <div class="info_tit">
                                 <div class="img">
                                     <img src="/img/student_view/info_tit.png">
@@ -56,25 +65,25 @@
                                 <div class="tit">기본정보</div>
                             </div>
                             <div class="info_contents blur">
-                                <div class="content">
+                                <div class="content content1">
                                     <div class="img">
                                         <img src="/img/student_view/info01.png">
                                     </div>
                                     <div class="txt">${record.year }</div>
                                 </div>
-                                <div class="content">
+                                <div class="content content1">
                                     <div class="img">
                                         <img src="/img/student_view/info09.png">
                                     </div>
                                     <div class="txt">${record.admission }</div>
                                 </div>
-                                <div class="content">
+                                <div class="content content1">
                                     <div class="img">
                                         <img src="/img/student_view/info06.png">
                                     </div>
                                     <div class="txt">${record.hschool }</div>
                                 </div>
-                                <div class="content">
+                                <div class="content content1">
                                     <div class="img">
                                         <img src="/img/student_view/info15.png">
                                     </div>
@@ -96,47 +105,46 @@
                                     <div class="img">
                                         <img src="/img/student_view/info02.png">
                                     </div>
-                                    <div class="txt">1등급</div>
+                                    <div class="txt">${record.grade }등급</div>
                                 </div>
                                 <div class="content">
                                     <div class="img">
                                         <img src="/img/student_view/info05.png">
                                     </div>
-                                    <div class="txt">2개</div>
+                                    <div class="txt">${record.award }개</div>
                                 </div>
                                 <div class="content">
                                     <div class="img">
                                         <img src="/img/student_view/info03.png">
                                     </div>
-                                    <div class="txt">12권</div>
+                                    <div class="txt">${record.book }권</div>
                                 </div>
                                 <div class="content">
                                     <div class="img">
                                         <img src="/img/student_view/info04.png">
                                     </div>
-                                    <div class="txt">100시간</div>
+                                    <div class="txt">${record.time }시간</div>
                                 </div>
                             </div>
                             <div class="certify_wrap">
-                                <div class="certify">
-                                    <div class="star">
-                                        <img src="/img/student_view/star.png">
-                                    </div>
-                                    <div class="txt">테스트 합격생</div>
-                                    <div class="stamp">
-                                        <img src="/img/student_view/stamp.png">
-                                    </div>
-                                </div>
-                                <div class="certify">
-                                    <div class="star">
-                                        <img src="/img/student_view/star.png">
-                                    </div>
-                                    <div class="txt">테스트 합격생</div>
-                                    <div class="stamp">
-                                        <img src="/img/student_view/stamp.png">
-                                    </div>
-                                </div>
+                                <c:forEach var="t" items="${certList }">
+									<div class="certify">
+										<div class="star">
+											<img src="/img/student_view/star.png">
+										</div>
+										<div class="txt">${t.schoolName } ${t.certType }생</div>
+										<div class="stamp">
+											<img src="/img/student_view/stamp.png">
+										</div>
+									</div>
+								</c:forEach>
                             </div>
+                        </div>
+                        <div class="purchase">
+                            <div class="img">
+                                <img src="/img/student_view/buy_img.png">
+                            </div>
+                            <div class="txt" onclick="buyPopup()">구매하기</div>
                         </div>
                     </div>
                     <div class="detail_container">
@@ -144,18 +152,14 @@
                             <div class="img">
                                 <img src="/img/student_view/info_tit.png">
                             </div>
-                            <div class="txt">
-                                상세정보
-                            </div>
+                            <div class="txt">상세정보</div>
                         </div>
                         <div class="dc_contents">
                             <div class="contents_tit">
                                 <div class="dot">
                                     <img src="/img/student_view/dot.png">
                                 </div>
-                                <div class="txt">
-                                    수상경력
-                                </div>
+                                <div class="txt">수상경력</div>
                             </div>
                             <div class="contents_inner">
                                 <div class="content">
@@ -183,9 +187,7 @@
                                 <div class="dot">
                                     <img src="/img/student_view/dot.png">
                                 </div>
-                                <div class="txt">
-                                    진로희망사항
-                                </div>
+                                <div class="txt">진로희망사항</div>
                             </div>
                             <div class="contents_inner">
                                 <div class="content">
@@ -356,9 +358,7 @@
                                 <div class="dot">
                                     <img src="/img/student_view/dot.png">
                                 </div>
-                                <div class="txt">
-									세부능력 특기사항<span> (세부능력특기사항 중 좋은 기록이라고 생각하는 내용 몇 과목을 적어주세요. )</span>
-                                </div>
+                                <div class="txt">세부능력 특기사항</div>
                             </div>
                             <div class="contents_inner">
                                 <div class="content">
@@ -383,11 +383,11 @@
                         </div>
                     </div>
                     <div class="sv_btn_wrap">
-<%--                     	<c:if test="${record.user == login.auto }"> --%>
-<%-- 	                        <div class="sv_btn" onclick="location.href='/record/modify/${record.auto }'"> --%>
-<!-- 	                            <img src="/img/student_view/btn01.png"> -->
-<!-- 	                        </div> -->
-<%--                     	</c:if> --%>
+                    	<c:if test="${record.user == login.auto }">
+	                        <div class="sv_btn" onclick="location.href='/record/modify/${record.auto }'">
+	                            <img src="/img/student_view/btn01.png">
+	                        </div>
+                    	</c:if>
                         <div class="sv_btn" onclick="history.back()">
                             <img src="/img/student_view/btn02.png">
                         </div>

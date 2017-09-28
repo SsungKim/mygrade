@@ -305,6 +305,107 @@ public class RecordService {
 		return count%12 == 0 ? count/12 : count/12+1;
 	}
 	
+	// 학생부 수정
+	public void modifyRecord(HttpSession session, String addr, String school, String subject, String type, String year,
+			String admission, String typical, String hschool, String pass, String award1, String award2, String award3,
+			String career1, String career2, String career3, String auto1, String auto2, String auto3, String extra1,
+			String extra2, String extra3, String club1, String club2, String club3, String help1, String help2,
+			String help3, String soju1, String soju2, String soju3, String paper1, String paper2, String paper3,
+			String etc1, String etc2, String etc3, String reading1, String reading2, String reading3, String special1,
+			String special2, String special3, String grade, String award, String time, String book, String auto) {
+		SqlSession ss = fac.openSession();
+		HashMap<String, String> map = new HashMap<>();
+		String user = ((HashMap)session.getAttribute("login")).get("auto").toString();
+		String id = ((HashMap)session.getAttribute("login")).get("id").toString();
+		String name = ((HashMap)session.getAttribute("login")).get("name").toString();
+		map.put("user", user);
+		map.put("id", id);
+		map.put("name", name);
+		map.put("addr", addr);
+		map.put("school", school);
+		map.put("subject", subject);
+		map.put("type", type);
+		map.put("year", year);
+		map.put("admission", admission);
+		map.put("typical", typical);
+		map.put("hschool", hschool);
+		map.put("pass", pass);
+		award1 = award1.replace("\n", "<br>");
+		map.put("award1", award1);
+		award2 = award2.replace("\n", "<br>");
+		map.put("award2", award2);
+		award3 = award3.replace("\n", "<br>");
+		map.put("award3", award3);
+		career1 = career1.replace("\n", "<br>");
+		map.put("career1", career1);
+		career2 = career2.replace("\n", "<br>");
+		map.put("career2", career2);
+		career3 = career3.replace("\n", "<br>");
+		map.put("career3", career3);
+		auto1 = auto1.replace("\n", "<br>");
+		map.put("auto1", auto1);
+		auto2 = auto2.replace("\n", "<br>");
+		map.put("auto2", auto2);
+		auto3 = auto3.replace("\n", "<br>");
+		map.put("auto3", auto3);
+		extra1 = extra1.replace("\n", "<br>");
+		map.put("extra1", extra1);
+		extra2 = extra2.replace("\n", "<br>");
+		map.put("extra2", extra2);
+		extra3 = extra3.replace("\n", "<br>");
+		map.put("extra3", extra3);
+		club1 = club1.replace("\n", "<br>");
+		map.put("club1", club1);
+		club2 = club2.replace("\n", "<br>");
+		map.put("club2", club2);
+		club3 = club3.replace("\n", "<br>");
+		map.put("club3", club3);
+		help1 = help1.replace("\n", "<br>");
+		map.put("help1", help1);
+		help2 = help2.replace("\n", "<br>");
+		map.put("help2", help2);
+		help3 = help3.replace("\n", "<br>");
+		map.put("help3", help3);
+		soju1 = soju1.replace("\n", "<br>");
+		map.put("soju1", soju1);
+		soju2 = soju2.replace("\n", "<br>");
+		map.put("soju2", soju2);
+		soju3 = soju3.replace("\n", "<br>");
+		map.put("soju3", soju3);
+		paper1 = paper1.replace("\n", "<br>");
+		map.put("paper1", paper1);
+		paper2 = paper2.replace("\n", "<br>");
+		map.put("paper2", paper2);
+		paper3 = paper3.replace("\n", "<br>");
+		map.put("paper3", paper3);
+		etc1 = etc1.replace("\n", "<br>");
+		map.put("etc1", etc1);
+		etc2 = etc2.replace("\n", "<br>");
+		map.put("etc2", etc2);
+		etc3 = etc3.replace("\n", "<br>");
+		map.put("etc3", etc3);
+		reading1 = reading1.replace("\n", "<br>");
+		map.put("reading1", reading1);
+		reading2 = reading2.replace("\n", "<br>");
+		map.put("reading2", reading2);
+		reading3 = reading3.replace("\n", "<br>");
+		map.put("reading3", reading3);
+		special1 = special1.replace("\n", "<br>");
+		map.put("special1", special1);
+		special2 = special2.replace("\n", "<br>");
+		map.put("special2", special2);
+		special3 = special3.replace("\n", "<br>");
+		map.put("special3", special3);
+		map.put("grade", grade);
+		map.put("award", award);
+		map.put("time", time);
+		map.put("book", book);
+		map.put("auto", auto);
+		ss.update("record.updateRecord", map);
+		ss.commit();
+		ss.close();
+	}
+	
 	
 	
 	

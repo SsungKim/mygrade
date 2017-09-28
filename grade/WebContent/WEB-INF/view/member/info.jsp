@@ -11,136 +11,140 @@
     <body>
     	<div class="popup_cover" id="passPopup1"></div>
     	<div class="charging_popup_wrap" id="chargePopup">
-            <div class="popup_tit">
-                <div class="txt">포인트 충전</div>
-                <div class="img">
-                    <img src="/img/myinfo/close01.png" onclick="$('#passPopup1').hide(), $('#chargePopup').hide(), $('body').css('overflow', 'auto')">
-                </div>
-            </div>
             <div class="popup_inner">
-                <div class="present_point">
-                    <div class="tit">현재 나의 포인트</div>
-                    <div class="point">
-                        <div class="txt">${login.point }</div>
-                        <div class="img">
-                            <img src="/img/myinfo/point.png">
-                        </div>
+                <div class="popup_tit">
+                    <div class="txt">포인트 충전</div>
+                    <div class="img">
+                        <img src="/img/myinfo/close01.png" onclick="$('#passPopup1').hide(), $('#chargePopup').hide(), $('body').css('overflow', 'auto')">
                     </div>
                 </div>
-                <div class="radio_wrap">
-                    <div class="inner">
-                        <div class="tit">충전포인트</div>
-                        <div class="radio">
-                            <input type="radio" id="point1" name="charging">
-                            <label for="point1">1만원</label>
-                        </div>
-                        <div class="radio">
-                            <input type="radio" id="point2" name="charging">
-                            <label for="point2">3만원</label>
-                        </div>
-                        <div class="radio">
-                            <input type="radio" id="point3" name="charging">
-                            <label for="point3">5만원</label>
-                        </div>
-                        <div class="radio">
-                            <input type="radio" id="point4" name="charging">
-                            <label for="point4">7만원</label>
-                        </div>
-                        <div class="radio">
-                            <input type="radio" id="point5" name="charging">
-                            <label for="point5">10만원</label>
+                <div class="popup_contents">
+                    <div class="present_point">
+                        <div class="tit">현재 나의 포인트</div>
+                        <div class="point">
+                            <div class="txt">${login.point }</div>
+                            <div class="img">
+                                <img src="/img/myinfo/point.png">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="radio_wrap radio_wrap1">
-                    <div class="inner">
-                        <div class="tit">결제수단</div>
-                        <div class="radio">
-                            <input type="radio" id="payment1" name="payment">
-                            <label for="payment1">신용카드</label>
-                        </div>
-                        <div class="radio">
-                            <input type="radio" id="payment2" name="payment">
-                            <label for="payment2">핸드폰 소액결제</label>
+                    <div class="radio_wrap">
+                        <div class="inner">
+                            <div class="tit">충전포인트</div>
+                            <div class="radio">
+                                <input type="radio" id="point1" name="charging">
+                                <label for="point1">1만원</label>
+                            </div>
+                            <div class="radio">
+                                <input type="radio" id="point2" name="charging">
+                                <label for="point2">3만원</label>
+                            </div>
+                            <div class="radio">
+                                <input type="radio" id="point3" name="charging">
+                                <label for="point3">5만원</label>
+                            </div>
+                            <div class="radio">
+                                <input type="radio" id="point4" name="charging">
+                                <label for="point4">7만원</label>
+                            </div>
+                            <div class="radio">
+                                <input type="radio" id="point5" name="charging">
+                                <label for="point5">10만원</label>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="tab_wrap">
-                    <div class="tab_tit_wrap">
-                        <div class="tab_tit sel">이용안내
+                    <div class="radio_wrap radio_wrap1">
+                        <div class="inner">
+                            <div class="tit">결제수단</div>
+                            <div class="radio">
+                                <input type="radio" id="payment1" name="payment">
+                                <label for="payment1">신용카드</label>
+                            </div>
+                            <div class="radio">
+                                <input type="radio" id="payment2" name="payment">
+                                <label for="payment2">핸드폰 소액결제</label>
+                            </div>
                         </div>
-                        <div class="tab_tit">유의사항 및 환불정책</div>
                     </div>
-                    <div class="tab_contents">
-                        <div class="contents_tit">포인트 이용안내</div>
-                        <div class="contents_txt">
-                            <div class="txt_tit">1) 학생부 전체 열람 하기</div>
-                            <div class="txt">
-								학생부: 한 건당 40포인트<br>
-                                학생부 한 건 당 40포인트 입니다.<br>
-                                예를 들어 2개의 학생부 전체 보기를 원하면 80포인트가 필요합니다. <br>
-                                (합격, 불합격 학생부 모두 동일 합니다.)
+                    <div class="tab_wrap">
+                        <div class="tab_inner">
+                            <div class="tab_tit_wrap">
+                                <div class="tab_tit sel">이용안내
+                                </div>
+                                <div class="tab_tit">유의사항 및 환불정책</div>
+                            </div>
+                            <div class="tab_contents">
+                                <div class="contents_tit">포인트 이용안내</div>
+                                <div class="contents_txt">
+                                    <div class="txt_tit">1) 학생부 전체 열람 하기</div>
+                                    <div class="txt">
+                                        학생부: 한 건당 40포인트<br>
+                                        학생부 한 건 당 40포인트 입니다.<br>
+                                        예를 들어 2개의 학생부 전체 보기를 원하면 80포인트가 필요합니다. <br>
+                                        (합격, 불합격 학생부 모두 동일 합니다.)
 
-                            </div>
-                            <div class="txt">
-								학생부(합격인증마크): 한 건당 60포인트<br>
-                                학생부(합격인증마크) 한 건 당 60포인트 입니다.<br>
-                                예를 들어 2개의 학생부(합격인증마크) 전체 보기를 원하면 120포인트가 필요합니다.<br>
-                                (학생부 합격인증마크는 합격증명서를 제출 하여 합격이 확인된 경우입니다.) 
-                            </div>
-                        </div>
-                        <div class="contents_txt">
-                            <div class="txt_tit">2) 자소서 전체 열람 하기</div>
-                            <div class="txt">
-                                자소서: 한 건당 40포인트<br>
-                                자소서 한 건 당 40포인트 입니다.<br>
-                                예를 들어 2개의 자소서 전체 보기를 원하면 80포인트가 필요합니다
-                            </div>
-                            <div class="txt">
-                                자소서(합격인증마크): 한 건당 60포인트<br>
-                                자소서(합격인증마크) 한 건 당 60포인트 입니다.<br>
-                                예를 들어 2개의 자소서(합격인증마크) 전체 보기를 원하면 120포인트가 필요합니다.<br>
-                                (학생부 합격인증마크는 합격증명서를 제출 하여 합격이 확인된 경우입니다.) 
+                                    </div>
+                                    <div class="txt">
+                                        학생부(합격인증마크): 한 건당 60포인트<br>
+                                        학생부(합격인증마크) 한 건 당 60포인트 입니다.<br>
+                                        예를 들어 2개의 학생부(합격인증마크) 전체 보기를 원하면 120포인트가 필요합니다.<br>
+                                        (학생부 합격인증마크는 합격증명서를 제출 하여 합격이 확인된 경우입니다.) 
+                                    </div>
+                                </div>
+                                <div class="contents_txt">
+                                    <div class="txt_tit">2) 자소서 전체 열람 하기</div>
+                                    <div class="txt">
+                                        자소서: 한 건당 40포인트<br>
+                                        자소서 한 건 당 40포인트 입니다.<br>
+                                        예를 들어 2개의 자소서 전체 보기를 원하면 80포인트가 필요합니다
+                                    </div>
+                                    <div class="txt">
+                                        자소서(합격인증마크): 한 건당 60포인트<br>
+                                        자소서(합격인증마크) 한 건 당 60포인트 입니다.<br>
+                                        예를 들어 2개의 자소서(합격인증마크) 전체 보기를 원하면 120포인트가 필요합니다.<br>
+                                        (학생부 합격인증마크는 합격증명서를 제출 하여 합격이 확인된 경우입니다.) 
 
-                            </div>
-                        </div>
-                        <div class="contents_txt">
-                            <div class="txt_tit">3) 면접 후기 전체 열람 하기</div>
-                            <div class="txt">
-								면접후기: 한 건당 30포인트<br>
-                                면접 후기 한 건당 30포인트 입니다.<br>
-                                예를 들어 2개의 면접 후기 전체 보기를 원하면 60포인트가 필요합니다.
-                            </div>
-                            <div class="txt">
-								면접후기(합격인증마크): 한 건당 50포인트<br>
-                                면접후기(합격인증마크) 한 건 당 50포인트 입니다.<br>
-                                예를들어 2개의 면접 후기(합격인증마크) 전체 보기를 원하면 100포인트가 필요합니다.
-                            </div>
-                        </div>
-                        <div class="contents_txt">
-                            <div class="txt_tit">4) 정시 합격 점수 보기 </div>
-                            <div class="txt">
-								수능점수보기: 한 건당 10포인트<br>
-                                정시로 합격한 학생의 수능 점수 보기는 한 건당 10포인트 입니다.<br>
-                                예를 들어 5개의 정시 합격 점수를 보기를 원하면 50포인트가 필요합니다. 
-                            </div>
-                            <div class="txt">
-								수능점수(합격인증) 보기: 한 건당 15포인트<br>
-                                정시로 합격한 학생의 수능 점수(합격인증) 보기는 한 건당 15포인트 입니다.<br>
-                                예를 들어 5개의 정시 합격 점수를 보기를 원하면 75포인트가 필요합니다.
- 
-                            </div>
-                        </div>
-                        <div class="contents_tit">이용기간 안내</div>
-                        <div class="contents_txt">
-                            <div class="txt">
-								포인트 결제 시 결제일로부터 15일간 열람 가능합니다.<br>
-                                건당 포인트는 변경될 수 있습니다. 
+                                    </div>
+                                </div>
+                                <div class="contents_txt">
+                                    <div class="txt_tit">3) 면접 후기 전체 열람 하기</div>
+                                    <div class="txt">
+                                        면접후기: 한 건당 30포인트<br>
+                                        면접 후기 한 건당 30포인트 입니다.<br>
+                                        예를 들어 2개의 면접 후기 전체 보기를 원하면 60포인트가 필요합니다.
+                                    </div>
+                                    <div class="txt">
+                                        면접후기(합격인증마크): 한 건당 50포인트<br>
+                                        면접후기(합격인증마크) 한 건 당 50포인트 입니다.<br>
+                                        예를들어 2개의 면접 후기(합격인증마크) 전체 보기를 원하면 100포인트가 필요합니다.
+                                    </div>
+                                </div>
+                                <div class="contents_txt">
+                                    <div class="txt_tit">4) 정시 합격 점수 보기 </div>
+                                    <div class="txt">
+                                        수능점수보기: 한 건당 10포인트<br>
+                                        정시로 합격한 학생의 수능 점수 보기는 한 건당 10포인트 입니다.<br>
+                                        예를 들어 5개의 정시 합격 점수를 보기를 원하면 50포인트가 필요합니다. 
+                                    </div>
+                                    <div class="txt">
+                                        수능점수(합격인증) 보기: 한 건당 15포인트<br>
+                                        정시로 합격한 학생의 수능 점수(합격인증) 보기는 한 건당 15포인트 입니다.<br>
+                                        예를 들어 5개의 정시 합격 점수를 보기를 원하면 75포인트가 필요합니다.
+
+                                    </div>
+                                </div>
+                                <div class="contents_tit">이용기간 안내</div>
+                                <div class="contents_txt">
+                                    <div class="txt">
+                                        포인트 결제 시 결제일로부터 15일간 열람 가능합니다.<br>
+                                        건당 포인트는 변경될 수 있습니다. 
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="charging_btn"onclick="charge()">충전하기</div>
                 </div>
-                <div class="charging_btn"onclick="charge()">충전하기</div>
             </div>
         </div>
 		<div class="password_popup_wrap" id="passPopup2">
@@ -296,29 +300,35 @@
                                 <div class="info_list">
                                     <div class="tit">지역</div>
                                     <div class="txt" id="infoAddrTxt">${login.addr1 }&nbsp;${login.addr2 }&nbsp;${login.addr3 }</div>
-                                    <select class="region_select region_select1" id="infoAddrSelect1">
-                                        <option ${login.addr1 eq '서울' ? 'selected' : '' }>서울</option>
-                                        <option ${login.addr1 eq '인천' ? 'selected' : '' }>인천</option>
-                                        <option ${login.addr1 eq '세종' ? 'selected' : '' }>세종</option>
-                                        <option ${login.addr1 eq '대전' ? 'selected' : '' }>대전</option>
-                                        <option ${login.addr1 eq '대구' ? 'selected' : '' }>대구</option>
-                                        <option ${login.addr1 eq '울산' ? 'selected' : '' }>울산</option>
-                                        <option ${login.addr1 eq '부산' ? 'selected' : '' }>부산</option>
-                                        <option ${login.addr1 eq '경기도' ? 'selected' : '' }>경기도</option>
-                                        <option ${login.addr1 eq '강원도' ? 'selected' : '' }>강원도</option>
-                                        <option ${login.addr1 eq '충청도' ? 'selected' : '' }>충청도</option>
-                                        <option ${login.addr1 eq '전라도' ? 'selected' : '' }>전라도</option>
-                                        <option ${login.addr1 eq '경상도' ? 'selected' : '' }>경상도</option>
-                                        <option ${login.addr1 eq '제주도' ? 'selected' : '' }>제주도</option>
-                                    </select>
-                                    <select class="region_select" id="infoAddrSelect2">
-                                        <option ${login.addr2 eq '강남구' ? 'selected' : '' }>강남구</option>
-                                        <option ${login.addr2 eq '인천' ? 'selected' : '' }>인천</option>
-                                        <option>강남구</option>
-                                        <option>강남구</option>
-                                    </select>
-                                    <input class="region_input" type="text" value="${login.addr3 }" id="infoAddrInput">
-                                    <div class="input_txt" id="infoAddrTxt2">(동만 입력해주세요)</div>
+                                    <div class="form_wrap">
+                                        <div class="sel_wrap">
+                                            <select class="region_select region_select1" id="infoAddrSelect1">
+                                                <option ${login.addr1 eq '서울' ? 'selected' : '' }>서울</option>
+                                                <option ${login.addr1 eq '인천' ? 'selected' : '' }>인천</option>
+                                                <option ${login.addr1 eq '세종' ? 'selected' : '' }>세종</option>
+                                                <option ${login.addr1 eq '대전' ? 'selected' : '' }>대전</option>
+                                                <option ${login.addr1 eq '대구' ? 'selected' : '' }>대구</option>
+                                                <option ${login.addr1 eq '울산' ? 'selected' : '' }>울산</option>
+                                                <option ${login.addr1 eq '부산' ? 'selected' : '' }>부산</option>
+                                                <option ${login.addr1 eq '경기도' ? 'selected' : '' }>경기도</option>
+                                                <option ${login.addr1 eq '강원도' ? 'selected' : '' }>강원도</option>
+                                                <option ${login.addr1 eq '충청도' ? 'selected' : '' }>충청도</option>
+                                                <option ${login.addr1 eq '전라도' ? 'selected' : '' }>전라도</option>
+                                                <option ${login.addr1 eq '경상도' ? 'selected' : '' }>경상도</option>
+                                                <option ${login.addr1 eq '제주도' ? 'selected' : '' }>제주도</option>
+                                            </select>
+                                            <select class="region_select" id="infoAddrSelect2">
+                                                <option ${login.addr2 eq '강남구' ? 'selected' : '' }>강남구</option>
+                                                <option ${login.addr2 eq '인천' ? 'selected' : '' }>인천</option>
+                                                <option>강남구</option>
+                                                <option>강남구</option>
+                                            </select>
+                                        </div>
+                                        <div class="input_wrap">
+                                            <input class="region_input" type="text" value="${login.addr3 }" id="infoAddrInput">
+                                            <div class="input_txt" id="infoAddrTxt2">(동만 입력해주세요)</div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="btn2 btn3 hidden" onclick="infoCancel()" id="cancelAddr">취소</div>
                                 <div class="btn2 hidden" onclick="infoSave('addr')" id="saveAddr">저장</div>
@@ -334,9 +344,7 @@
                                     </div>
                                 </div>
                                 <div class="info_icon" onclick="location.href='/school'">
-                                    <div class="img">
-                                        <img src="/img/myinfo/item13.png">
-                                    </div>
+                                    <img src="/img/myinfo/item13_01.png">
                                 </div>
                                 <div class="info_txt">나의 대학교 올리기</div>
                             </div>
@@ -350,9 +358,7 @@
                                     </div>
                                 </div>
                                 <div class="info_icon" onclick="location.href='/member/myData/${login.auto }'">
-                                    <div class="img">
-                                        <img src="/img/myinfo/item06.png">
-                                    </div>
+                                    <img src="/img/myinfo/item06_01.png">
                                 </div>
                                 <div class="info_txt">내가 올린 자료 보기</div>
                             </div>
@@ -366,9 +372,7 @@
                                     </div>
                                 </div>
                                 <div class="info_icon" onclick="location.href='/rank/${login.auto }'">
-                                    <div class="img">
-                                        <img src="/img/myinfo/item14.png">
-                                    </div>
+                                    <img src="/img/myinfo/item14_01.png">
                                 </div>
                                 <div class="info_txt">내 전국등수 확인하기</div>
                             </div>
@@ -382,9 +386,7 @@
                                     </div>
                                 </div>
                                 <div class="info_icon" onclick="location.href='/member/sales'">
-                                    <div class="img">
-                                        <img src="/img/myinfo/item10.png">
-                                    </div>
+                                    <img src="/img/myinfo/item10_01.png">
                                 </div>
                                 <div class="info_txt">${login.bank }은행<br>
                                     <span>${login.account }</span>
@@ -400,9 +402,7 @@
                                     </div>
                                 </div>
                                 <div class="info_icon" onclick="location.href='/member/sales/buy'">
-                                    <div class="img">
-                                        <img src="/img/myinfo/item11.png">
-                                    </div>
+                                    <img src="/img/myinfo/item11_01.png">
                                 </div>
                                 <div class="info_txt">내가 구매한 내역 보기</div>
                             </div>
@@ -416,9 +416,7 @@
                                     </div>
                                 </div>
                                 <div class="info_icon" onclick="location.href='/member/sales/sell'">
-                                    <div class="img">
-                                        <img src="/img/myinfo/item12.png">
-                                    </div>
+                                    <img src="/img/myinfo/item12_01.png">   
                                 </div>
                                 <div class="info_txt">내가 판매한 내역 보기</div>
                             </div>
@@ -746,24 +744,17 @@
 // 	    	    buyer_postcode : '123-456',
 	    	    m_redirect_url : 'https://www.yourdomain.com/payments/complete'
 	    	}, function(rsp) {
-	    		if ( rsp.success ) {
-	    	        if(rsp.apply_num == "")
-	    	        	rsp.apply_num = "-";
-	    	        $.ajax({
-	    	        	type : "post",
-	    	        	url : "/admin/chargeData/${login.auto }/${login.id }/"+rsp.imp_uid+"/"+rsp.merchant_uid+"/"+rsp.paid_amount+"/"+
-	    	        			rsp.apply_num,
-	    	        	async : false,
-	    	        	success : function(txt){
-	    	        		alert("결제가 완료되었습니다.");
-	    	        		location.reload();
-	    	        	}
-	    	        });
+	    	    if ( rsp.success ) {
+	    	        var msg = '결제가 완료되었습니다.';
+	    	        msg += '고유ID : ' + rsp.imp_uid;
+	    	        msg += '상점 거래ID : ' + rsp.merchant_uid;
+	    	        msg += '결제 금액 : ' + rsp.paid_amount;
+	    	        msg += '카드 승인번호 : ' + rsp.apply_num;
 	    	    } else {
-	    	        var msg = '결제에 실패하였습니다.\n';
-	    	        msg += rsp.error_msg;
-		    	    alert(msg);
+	    	        var msg = '결제에 실패하였습니다.';
+	    	        msg += '에러내용 : ' + rsp.error_msg;
 	    	    }
+	    	    alert(msg);
 	    	});
     	}
     </script>

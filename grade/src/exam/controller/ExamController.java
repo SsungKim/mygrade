@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.*;
 
 import exam.service.*;
+import member.service.*;
 import record.service.*;
 import search.service.*;
 
@@ -22,6 +23,8 @@ public class ExamController {
 	RecordService rs;
 	@Autowired
 	SearchService ss;
+	@Autowired
+	MemberService ms;
 	
 	// upload
 	@RequestMapping("/upload")
@@ -99,6 +102,8 @@ public class ExamController {
 		mav.addObject("exam", exam);
 		mav.addObject("itemNum", exam.get("auto").toString());
 		mav.addObject("itemUser", exam.get("user").toString());
+		List<HashMap> certList = ms.certList(exam.get("user").toString());
+		mav.addObject("certList", certList);
 		return mav;
 	}
 	

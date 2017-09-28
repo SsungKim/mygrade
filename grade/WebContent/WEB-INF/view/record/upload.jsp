@@ -30,14 +30,20 @@
 							※학생부 등록은 최대 50장 까지 가능합니다.(순서대로 올려주세요)
 	                    </div>
 	                    <div class="sv_txt">
-							※학생부를 이미지파일로 첨부하면 확인후 학생부인증 으로 표시됩니다. 올린 학생부는 인증확인용으로만 사용되며 노출되지 않습니다.
+							※학생부를 이미지파일로 첨부하면 확인후 학생부인증 으로 표시됩니다.<br>&nbsp;&nbsp;&nbsp;올린 학생부는 인증확인용으로만 사용되며 노출되지 않습니다.
 	                    </div>
 	                    <div class="sv_txt">
 							※학생부 이미지 첨부 시 우측 상단의 등록하기 버튼을 클릭하셔야 이미지 등록이 완료됩니다.
 	                    </div>
                     </div>
+                    <div class="sv_tit1">
+                        <div class="img">
+                            <img src="/img/student_view/info_tit.png">
+                        </div>
+                        <div class="txt">학생부 파일첨부</div>
+                    </div>
 	                <div class="student_view_slider_wrap">
-						<div class="confirm_btn" onclick="uploadRecord()">등록하기</div>
+	                	<div class="confirm_btn" onclick="uploadRecord()">등록하기</div>
 						<div class="sv_tit">
 					    	<img src="/img/student_view/stu_pic_tit01.png">
 						</div>
@@ -63,9 +69,16 @@
 					        <img src="/img/student_view/arrow_next.png">
 					    </div>
 					</div>
+                    <div class="confirm_btn1" onclick="uploadRecord()">등록하기</div>
 				</div>
-        		<form action="/record/uploadRecord" method="post" id="recordData">
+        		<form action="/record/uploadRecord2" method="post" id="recordData">
 	                <c:import url="/WEB-INF/view/admin/uploadAdminWrap.jsp"/>
+                    <div class="sv_tit1 sv_tit2">
+                        <div class="img">
+                            <img src="/img/student_view/info_tit.png">
+                        </div>
+                        <div class="txt">기본 정보</div>
+                    </div>
 	                <div class="infomation_wrap">
 	                    <div class="inner">
 	                        <div class="iw_tit">
@@ -76,43 +89,47 @@
 	                        </div>
 	                        <div class="id_container1">
 	                            <div class="input_wrapper">
-	                                <div class="input_wrap">
-	                                    <div class="tit">
-	                                        <img src="/img/student_view/info02.png">
-	                                    </div>
-	                                    <input type="text" placeholder="예) 1" id="grade" name="grade">
-	                                    <div class="txt">등급</div>
-	                                </div>
-	                                <div class="input_wrap">
-	                                    <div class="tit">
-	                                        <img src="/img/student_view/info05.png">
-	                                    </div>
-	                                    <input type="text" placeholder="예) 1" id="award" name="award">
-	                                    <div class="txt">개</div>
-	                                </div>
+                                    <div class="input_wrapper_inner">
+                                        <div class="input_wrap">
+                                            <div class="tit">
+                                                <img src="/img/student_view/info02.png">
+                                            </div>
+                                            <input type="text" placeholder="예) 1" id="grade" name="grade">
+                                            <div class="txt">등급</div>
+                                        </div>
+                                        <div class="input_wrap">
+                                            <div class="tit">
+                                                <img src="/img/student_view/info05.png">
+                                            </div>
+                                            <input type="text" placeholder="예) 1" id="award" name="award">
+                                            <div class="txt">개</div>
+                                        </div>
+                                    </div>
 	                            </div>
 	                            <div class="input_wrapper input_wrapper1">
-	                                <div class="input_wrap">
-	                                    <div class="tit">
-	                                        <img src="/img/student_view/info06.png">
-	                                    </div>
-	                                    <input type="text" placeholder="예) 서울네모고등" id="hschool" name="hschool">
-	                                    <div class="txt">학교</div>
-	                                </div>
-	                                <div class="input_wrap">
-	                                    <div class="tit">
-	                                        <img src="/img/student_view/info04.png">
-	                                    </div>
-	                                    <input type="text" placeholder="예) 41" id="time" name="time">
-	                                    <div class="txt">시간</div>
-	                                </div>
-	                                <div class="input_wrap">
-	                                    <div class="tit">
-	                                        <img src="/img/student_view/info03.png">
-	                                    </div>
-	                                    <input type="text" placeholder="예) 52" id="book" name="book">
-	                                    <div class="txt">권</div>
-	                                </div>
+                                    <div class="input_wrapper_inner">
+                                        <div class="input_wrap">
+                                            <div class="tit">
+                                                <img src="/img/student_view/info06.png">
+                                            </div>
+                                            <input type="text" placeholder="예) 서울네모고등" id="hschool" name="hschool">
+                                            <div class="txt">학교</div>
+                                        </div>
+                                        <div class="input_wrap">
+                                            <div class="tit">
+                                                <img src="/img/student_view/info04.png">
+                                            </div>
+                                            <input type="text" placeholder="예) 41" id="time" name="time">
+                                            <div class="txt">시간</div>
+                                        </div>
+                                        <div class="input_wrap">
+                                            <div class="tit">
+                                                <img src="/img/student_view/info03.png">
+                                            </div>
+                                            <input type="text" placeholder="예) 52" id="book" name="book">
+                                            <div class="txt">권</div>
+                                        </div>
+                                    </div>
 	                            </div>
 	                        </div>
 	                    </div>
@@ -131,7 +148,7 @@
 	                                <div class="dot">
 	                                    <img src="/img/student_view/dot.png">
 	                                </div>
-	                                <div class="txt">수상경력</div>
+	                                <div class="txt">수상경력<span> (수상내역을 적어주세요)</span></div>
 	                            </div>
 	                            <div class="contents_inner">
 	                            	<c:forEach var="t" begin="1" end="3">
@@ -171,7 +188,10 @@
 	                                <div class="dot">
 	                                    <img src="/img/student_view/dot.png">
 	                                </div>
-	                                <div class="txt">창의적체험활동</div>
+	                                <div class="txt">
+	                                	창의적체험활동
+	                                	<span> (활동내역을 적어주세요. 만약 활동내역에 해당사항이 없을 경우 빈칸으로 남겨두면 됩니다)</span>
+                                	</div>
 	                            </div>
 	                            <div class="contents_inner">
 	                            	<c:forEach var="t" begin="1" end="3">
@@ -232,7 +252,7 @@
 	                                <div class="dot">
 	                                    <img src="/img/student_view/dot.png">
 	                                </div>
-	                                <div class="txt">독서활동</div>
+	                                <div class="txt">독서활동<span> (독서활동과 과목별독서활동을 적어주세요)</span></div>
 	                            </div>
 	                            <div class="contents_inner">
 	                            	<c:forEach var="t" begin="1" end="3">
@@ -253,7 +273,8 @@
 	                                    <img src="/img/student_view/dot.png">
 	                                </div>
 	                                <div class="txt">
-										세부능력 특기사항<span> (세부능력특기사항 중 좋은 기록이라고 생각하는 내용 몇 과목을 적어주세요. )</span>
+										세부능력 특기사항
+										<span> (세부능력특기사항 중 좋은 기록이라고 생각하는 내용 몇 과목을 적어주세요. )</span>
 	                                </div>
 	                            </div>
 	                            <div class="contents_inner">
@@ -381,10 +402,15 @@
     	// 학생부, 자소서 이전, 다음 클릭
     	$(document).ready(function(){
     		var sn = 0;
+    		var slideSize = $("#viewrecord1")[0].clientWidth+24;
+    		if(slideSize < 200){
+    			slideSize = 230;
+    		}
+    		console.log(slideSize);
     	    $(".sv_arrow_next").click(function(){
     	        sn++;
     	        $(".sv_slider_inner").stop().animate({
-    	            left: -222 * sn
+    	            left: -slideSize * sn
     	        });
     	        check(0, sn);
     	        check2(0, sn);
@@ -392,7 +418,7 @@
     	    $(".sv_arrow_prev").click(function(){
     	        sn--;
     	        $(".sv_slider_inner").stop().animate({
-    	            left: -222 * sn
+    	            left: -slideSize * sn
     	        });
     	        if(sn == 0){
     	    		$(".sv_arrow_prev").hide();
@@ -407,7 +433,7 @@
     	    $(".sv_arrow_next1").click(function(){
     	        sn1++;
     	        $(".sv_slider_inner1").stop().animate({
-    	            left: -222 * sn1
+    	            left: -slideSize * sn1
     	        });
     	        check(1, sn1);
     	        check2(1, sn1);
@@ -415,7 +441,7 @@
     	    $(".sv_arrow_prev1").click(function(){
     	        sn1--;
     	        $(".sv_slider_inner1").stop().animate({
-    	            left: -222 * sn1
+    	            left: -slideSize * sn1
     	        });
     	        check(1, sn1);
     	        check2(1, sn1);
@@ -440,6 +466,10 @@
     	// 다음 클릭 체크
     	function check2(type, sn){
     		var end = 46;
+    		var slideSize = $("#viewrecord1")[0].clientWidth+24;
+    		if(slideSize < 200){
+    			end = 24;
+    		}
     		if(type==0){
 	    		if(sn == end){
 		    		$(".sv_arrow_next").hide();
@@ -556,6 +586,8 @@
 	   				return;
 	   			}
    			}
+   			$("#recordData").submit();
+   			return;
    			$("#recordData").ajaxForm({
        			url : "/record/uploadRecord",
        			enctype : "multipart/form-data",

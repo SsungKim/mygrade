@@ -26,7 +26,7 @@
                         <img src="/img/logo.png" onclick="location.href='/'">
                     </div>
                 </div>
-                <c:import url="/WEB-INF/view/admin/uploadAdminWrap.jsp"/>
+                <c:import url="/WEB-INF/view/admin/uploadInterviewModify.jsp"/>
                 <div class="infomation_wrap infomation_wrap1">
                     <div class="inner">
                     	<select class="uni_sel" id="chooseUniv" name="univ">

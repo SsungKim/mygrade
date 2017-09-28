@@ -53,8 +53,7 @@
 		club3 = #{club3}, help1 = #{help1}, help2 = #{help2}, help3 = #{help3}, soju1 = #{suju1}, soju2 = #{soju2}, soju3 = #{soju3},
 		paper1 = #{paper1}, paper2 = #{paper2}, paper3 = #{paper3}, etc1 = #{etc1}, etc2 = #{etc2}, etc3 = #{etc3}, reading1 = #{reading1},
 		reading2 = #{reading2}, reading3 = #{reading3}, special1 = #{special1}, special2 = #{special2}, special3 = #{special3}, grade = #{grade},
-		award = #{award}, time = #{time}, book = #{book}, day = now()
-		where user = #{user}
+		award = #{award}, time = #{time}, book = #{book}, day = now() where auto = #{auto}
 	</update>
 	<select id="recordList" resultType="java.util.HashMap">
 		select a.*, b.*, c.name from recordList a, salesList b, memberList c

@@ -17,33 +17,33 @@
                     <div class="name">${login.name }</div>
                     <select id="addr" name="addr">
                         <option value="choose">시,도 선택</option>
-	                     <option>서울</option>
-	                     <option>인천</option>
-	                     <option>대전</option>
-	                     <option>대구</option>
-	                     <option>광주</option>
-	                     <option>울산</option>
-	                     <option>부산</option>
-	                     <option>경기</option>
-	                     <option>강원</option>
-	                     <option>충북</option>
-	                     <option>충남</option>
-	                     <option>경북</option>
-	                     <option>경남</option>
-	                     <option>전북</option>
-	                     <option>전남</option>
-	                     <option>제주</option>
+	                     <option ${interview.addr == '서울' ? 'selected' : '' }>서울</option>
+	                     <option ${interview.addr == '인천' ? 'selected' : '' }>인천</option>
+	                     <option ${interview.addr == '대전' ? 'selected' : '' }>대전</option>
+	                     <option ${interview.addr == '대구' ? 'selected' : '' }>대구</option>
+	                     <option ${interview.addr == '광주' ? 'selected' : '' }>광주</option>
+	                     <option ${interview.addr == '울산' ? 'selected' : '' }>울산</option>
+	                     <option ${interview.addr == '부산' ? 'selected' : '' }>부산</option>
+	                     <option ${interview.addr == '경기' ? 'selected' : '' }>경기</option>
+	                     <option ${interview.addr == '강원' ? 'selected' : '' }>강원</option>
+	                     <option ${interview.addr == '충북' ? 'selected' : '' }>충북</option>
+	                     <option ${interview.addr == '충남' ? 'selected' : '' }>충남</option>
+	                     <option ${interview.addr == '경북' ? 'selected' : '' }>경북</option>
+	                     <option ${interview.addr == '경남' ? 'selected' : '' }>경남</option>
+	                     <option ${interview.addr == '전북' ? 'selected' : '' }>전북</option>
+	                     <option ${interview.addr == '전남' ? 'selected' : '' }>전남</option>
+	                     <option ${interview.addr == '제주' ? 'selected' : '' }>제주</option>
                     </select>
                     <select class="ml22" id="school" name="school">
                         <option value="choose">지역을 선택해주세요</option>
                     </select>
                     <div class="input_wrap">
-                        <input type="text" placeholder="학과입력" id="subject" name="subject">
+                        <input type="text" placeholder="학과입력" id="subject" name="subject" value="${interview.subject }">
                     </div>
                     <select class="ml22" id="type" name="type">
                         <option value="choose">정시/수시 선택</option>
-                        <option>정시</option>
-                        <option>수시</option>
+                        <option ${interview.type == '정시' ? 'selected' : '' }>정시</option>
+                        <option ${interview.type == '수시' ? 'selected' : '' }>수시</option>
                     </select>
                 </div>
             </div>
@@ -52,30 +52,30 @@
                     <div class="tit">
                         <img src="/img/interview/interview01/info09.png">
                     </div>
-                    <input class="txt" type="text" placeholder="예) 2017년도" id="year" name="year">
+                    <input class="txt" type="text" placeholder="예) 2017년도" id="year" name="year" value="${interview.year }">
                 </div>
                 <div class="input_wrap">
                     <div class="tit">
                         <img src="/img/interview/interview01/info03.png">
                     </div>
-                    <input class="txt" type="text" placeholder="예) 학생부종합" id="admission" name="admission">
+                    <input class="txt" type="text" placeholder="예) 학생부종합" id="admission" name="admission" value="${interview.admission }">
                 </div>
                 <div class="input_wrap">
                     <div class="tit">
                         <img src="/img/interview/interview01/info04.png">
                     </div>
-                    <input class="txt" type="text" placeholder="예) 창의인재전형" id="typical" name="typical">
+                    <input class="txt" type="text" placeholder="예) 창의인재전형" id="typical" name="typical" value="${interview.typical }">
                 </div>
                 <div class="input_wrap">
                     <div class="tit">
                         <img src="/img/interview/interview01/info02.png">
                     </div>
                     <label>
-                        <input type="radio" value="합격" name="pass" id="passY">
+                        <input type="radio" value="합격" name="pass" id="passY" ${interview.pass == '합격' ? 'checked' : '' }>
                         <div class="label_txt">합격</div>
                     </label>
                     <label>
-                        <input type="radio" value="불합격" name="pass" id="passN">
+                        <input type="radio" value="불합격" name="pass" id="passN" ${interview.pass == '불합격' ? 'checked' : '' }>
                         <div class="label_txt">불합격</div>
                     </label>
                 </div>

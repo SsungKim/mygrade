@@ -30,7 +30,8 @@
                             </div>
                             <div class="tit">학생부</div>
                         </div>
-                        <div class="confirm_btn" onclick="location.href='/record/upload'">등록하기</div>
+<!--                         <div class="confirm_btn" onclick="location.href='/record/upload'">등록하기</div> -->
+                        <div class="confirm_btn" onclick="alert('준비중입니다.')">등록하기</div>
                         <div class="item">
                             <div class="tit_img">
                                 <img src="/img/myinfo/stu_pic_tit01.png">
@@ -85,7 +86,8 @@
                             </div>
                             <div class="tit">자소서</div>
                         </div>
-                        <div class="confirm_btn" onclick="location.href='/intro/upload'">등록하기</div>
+<!--                         <div class="confirm_btn" onclick="location.href='/intro/upload'">등록하기</div> -->
+                        <div class="confirm_btn" onclick="alert('준비중입니다.')">등록하기</div>
                         <div class="item">
                             <div class="tit_img">
                                 <img src="/img/myinfo/stu_pic_tit02.png">
@@ -264,7 +266,8 @@
                             </div>
                             <div class="tit">정시성적</div>
                         </div>
-                        <div class="confirm_btn" onclick="location.href='/exam/upload'">등록하기</div>
+<!--                         <div class="confirm_btn" onclick="location.href='/exam/upload'">등록하기</div> -->
+                        <div class="confirm_btn" onclick="alert('준비중입니다.')">등록하기</div>
                         <div class="item">
                             <div class="tit_img">
                                 <img src="/img/myinfo/stu_pic_tit03.png">

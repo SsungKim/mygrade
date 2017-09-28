@@ -35,7 +35,7 @@
                         <div class="board_tit">
                             <div class="txt" id="titleDiv">${view.title }</div>
                                <div class="txt1">
-                                   <span>${vieq.day }</span><span class="bl">00:00</span>
+                                   <span>${view.day }</span>
                                </div>
                         </div>
                         <div class="info_tit">

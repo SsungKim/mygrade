@@ -287,14 +287,14 @@
     
     <script>
 		// 특수문자 안되게 처리
-	    $(document).ready(function(){
-			$("input[id=searchTxt]").keyup(function(event){ 
-				if (!(event.keyCode >=37 && event.keyCode<=40)) {
-					var inputVal = $(this).val();
-					$(this).val(inputVal.replace(/[^a-z0-9가-힣 ]/gi,''));
-				}
-			});
-		});
+// 	    $(document).ready(function(){
+// 			$("input[id=searchTxt]").keyup(function(event){ 
+// 				if (!(event.keyCode >=37 && event.keyCode<=40)) {
+// 					var inputVal = $(this).val();
+// 					$(this).val(inputVal.replace(/[^a-z0-9가-힣 ]/gi,''));
+// 				}
+// 			});
+// 		});
     	// 검색
     	function search(){
     		var searchType = $("#searchType").val();

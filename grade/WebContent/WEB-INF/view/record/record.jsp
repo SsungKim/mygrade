@@ -74,13 +74,13 @@
     
     <script>
  		// 접근제한
-		$(document).ready(function(){
-			if(${login.id != 'admin' }){
-				alert('열람기간이 완료되었습니다.\n고2(예비고3) 학생들을 위한 오픈시기는 2017년 11월 1일입니다.\n(시기는 변동될 수 있습니다.)');
-				location.href='/';
-				return;
-			}
-		});
+// 		$(document).ready(function(){
+// 			if(${login.id != 'admin' }){
+// 				alert('열람기간이 완료되었습니다.\n고2(예비고3) 학생들을 위한 오픈시기는 2017년 11월 1일입니다.\n(시기는 변동될 수 있습니다.)');
+// 				location.href='/';
+// 				return;
+// 			}
+// 		});
 		// 특수문자 안되게 처리
 	    $(document).ready(function(){
 			$("input[id=searchTxt]").keyup(function(event){ 

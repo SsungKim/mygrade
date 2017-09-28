@@ -76,8 +76,8 @@ public class InterviewService {
 			content1 = content1.replace("<", "&lt");
 			content2 = content2.replace(">", "&gt");
 			content2 = content2.replace("<", "&lt");
-			content1 = content1.replace("<br>", "<br>");
-			content2 = content2.replace("<br>", "<br>");
+			content1 = content1.replace("&ltbr&gt", "&nbsp;");
+			content2 = content2.replace("&ltbr&gt", "&nbsp;");
 			m.put("content1", content1);
 			m.put("content2", content2);
 			list.set(i, m);
@@ -168,8 +168,8 @@ public class InterviewService {
 				content1 = content1.replace("<", "&lt");
 				content2 = content2.replace(">", "&gt");
 				content2 = content2.replace("<", "&lt");
-				content1 = content1.replace("<br>", "<br>");
-				content2 = content2.replace("<br>", "<br>");
+				content1 = content1.replace("&ltbr&gt", "&nbsp;");
+				content2 = content2.replace("&ltbr&gt", "&nbsp;");
 				m2.put("content1", content1);
 				m2.put("content2", content2);
 				list.set(i, m2);

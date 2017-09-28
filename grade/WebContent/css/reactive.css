@@ -27,6 +27,19 @@
     .student_grade .detail_item_wrap { width: 98%; margin: 35px auto; }
     .student_grade .detail_item_wrap .detail_item1 .infomation { width: calc( 100% - 253px ); }
     
+    .student_add .page_inner { width: 98%; }
+    .student_add .infomation_wrap .inner { width: 98%; }
+    .student_add .detail_container .dc_contents .contents_inner { width: 96%; }
+    .student_add .detail_container .dc_contents .content .txt_box1 .txt_wrap .txt { width: calc( 100% - 225px ); }
+    
+    .student_view .page_inner { width: 100%; }
+    .student_view .infomation_wrap { width: 98%; }
+    .student_view .infomation_wrap .detail_info_wrap { width: calc( 100% - 209px ); }
+    .student_view .infomation_wrap .detail_info_wrap .info_contents { width: calc( 100% - 95px ); }
+    .student_view .detail_container { width: 98%; margin: 0 auto 30px; }
+    .student_view .detail_container .dc_contents .contents_inner { width: 96.05%; }
+    .student_view .detail_container .dc_contents .content .txt_box1 .txt_wrap .txt { width: calc( 100% - 255px ); }
+    
     .rank_list .page_inner { width: 100%; }
     .rank_list .contents { width: 98%; margin: 12px auto 0; }
     .rank_list .bbs_wrap .bbs .bbs_exam { width: calc( 100% - 171px ); }
@@ -43,9 +56,52 @@
     .rank_add .table_wrap .table .theader .tit_wrap1 .tit2 select { width: 90.92%; }
     .rank_add .table_wrap .table .tbody .tcontents .content input { width: 90.54%; }
     
+    .rank_view .page_tit .line { width: calc( 100% - 115px ); }
+    .rank_view .page_inner { width: 98%; }
+    .rank_view .form_wrap .sel_box { width: 20.528%; }
+    .rank_view .form_wrap .input_wrap { width: 27.205%; }
+    .rank_view .form_wrap .input_wrap .input_box { width: calc( 100% - 67px ); }
+    .rank_view .form_wrap .ml27 { margin-left: 2.61%; }
+    .rank_view .infomation_wrap .inner { width: 100%; }
+    .rank_view .infomation_wrap .table_wrap .inner { width: 97.9%; }
+    .rank_view .infomation_wrap .table_wrap .table .theader .tit_wrap .tit1 .in_txt { width: 84.75%; }
+    .rank_view .infomation_wrap .table_wrap .table .theader .tit_wrap1 .tit1 .in_txt { width: 91.356%; }
+    .rank_view .infomation_wrap .table_wrap .table .theader .tit_wrap1 .tit2 .in_txt { width: 85.1%; }
+    .rank_view .infomation_wrap .table_wrap .table .tbody .tcontents .content .in_txt { width: 91.33%; }
+    
     .join .page_inner { width: 98%; margin: 0 auto; }
     .join01_01 .page_inner { width: 98%; margin: 0 auto; }
     .join01_02 .page_inner { width: 98%; margin: 0 auto; }
+    
+    .myinfo .page_inner { width: 98%; }
+    .myinfo .section01 { width: 100%; }
+    .myinfo .section01 .info_wrap { width: 46.614%; }
+    .myinfo .section01 .info_wrap .inner { width: 95.525%; }
+    .myinfo .section01 .profile_wrap { margin-right: 6.284%; }
+    .myinfo .section01 .phone_wrap { margin-right: 6.284%; }
+    .myinfo .section01 .info_wrap1 { width: 22.294%; margin-right: 3.243%; }
+    .myinfo .section01 .info_wrap1 .inner { width: 86.36%; }
+    
+    .intro01 .page_inner { width: 100%; }
+    .intro01 .purchase { width: 98%; }
+    .intro01 .infomation_wrap { width: 100%; }
+    .intro01 .infomation_wrap .inner { width: 98%; margin: 0 auto; }
+    .intro01 .infomation_wrap .detail_info_wrap { width: 64.5%; }
+    .intro01 .txtarea_wrap { width: 98%; margin: 20px auto 0; }
+    .intro01 .txtarea_wrap .txta_wrap { width: 89.47%; }
+    .intro01 .sv_btn_wrap { width: 98%; margin: 15px auto 0; }
+    
+    .intro02 .infomation_wrap .inner { width: 98%; }
+    .intro02 .page_inner { width: 98%; }
+    .intro02 .txtarea_wrap .txta_wrap { width: 89.66%; }
+    .intro02 .txtarea_wrap .txta_wrap textarea { width: calc( 100% - 10px ); }
+    .intro02 .txtarea_wrap input { width: calc( 100% - 10px ); }
+    
+    .exam_add .page_inner { width: 98%; }
+    .exam_add .infomation_wrap .inner { width: 98%; }
+    .exam_add .table_wrap .inner { width: 97.853%; }
+    .exam_add .table_wrap .table .theader .tit_wrap .tit1 select { width: 90.54%; }
+    .exam_add .table_wrap .table .tbody .tcontents .content input { width: 90.54%; }
 }
 
 @media all and (max-width: 1000px) {
@@ -69,6 +125,8 @@
     .join01_02 .section01 .info_write_wrap1 .info_write_contents .info_content:first-child { width: 100%; margin: 0 auto; padding-left: 0; }
     .join01_02 .section01 .info_write_wrap1 .info_write_contents .info_content .info_radio_wrap { width: calc( 100% - 2px ); }
     
+    .student_add .student_view_slider_wrap .student_view_slider { width: 666px; }
+    
 }
 
 @media all and (max-width: 980px) {
@@ -76,6 +134,21 @@
     .interview01 .infomation_wrap .search_wrap .img { right: 15px; }
     .interview01 .infomation_wrap .id_container .uni_box { display: block; margin: 0 auto; }
     .interview01 .infomation_wrap .id_container .input_wrapper { display: block;  margin: 15px auto 0; float: none; }
+    
+    .student_add .infomation_wrap .search_wrap { width: 470px; margin: 15px auto 0; }
+    .student_add .infomation_wrap .search_wrap .img { right: 5px; }
+    .student_add .infomation_wrap .id_container .uni_box { display: block; margin: 0 auto; }
+    .student_add .infomation_wrap .id_container .input_wrapper { display: block; margin: 15px auto 0; float: none; }
+    
+    .intro02 .infomation_wrap .search_wrap { width: 470px; margin: 15px auto 0; }
+    .intro02 .infomation_wrap .search_wrap .img { right: 15px; }
+    .intro02 .infomation_wrap .id_container .uni_box { display: block; margin: 0 auto; }
+    .intro02 .infomation_wrap .id_container .input_wrapper { display: block;  margin: 15px auto 0; float: none; }
+    
+    .exam_add .infomation_wrap .search_wrap { width: 470px; margin: 15px auto 0; }
+    .exam_add .infomation_wrap .search_wrap .img { right: 15px; }
+    .exam_add .infomation_wrap .id_container .uni_box { display: block; margin: 0 auto; }
+    .exam_add .infomation_wrap .id_container .input_wrapper { display: block;  margin: 15px auto 0; float: none; }
 }
 
 @media all and (max-width: 971px) {
@@ -95,8 +168,12 @@
     .join01_02 .section01 .info_write_wrap .info_write_contents .info_radio_wrap { width: calc( 100% - 102px ); }
     .join01_02 .section01 .info_write_wrap .info_write_contents .info_radio_wrap .radio_wrap .radio_c .txt { margin-right: calc( 46% - 50px); }
     .join01_02 .section01 .info_write_wrap .info_write_contents .ac .txt1 { margin-top: 9px; margin-left: 100px; }
+    
+    footer .footer_inner { width: 753px; margin: 25px auto 0; }
+    footer .footer_gnb_wrap { display: none; }
+    footer .footer_gnb_wrap1 { display: block; width: 605px; position: absolute; left: 50%; transform: translateX(-50%); }
+    footer .footer_info_wrap { width: 571px; float: none; display: inline-block; vertical-align: middle; margin-top: 0; margin-left: 7px; }
 }
-
 
 @media all and (max-width: 875px) {
     .join01_01 .section01 .inner { width: 100%; }
@@ -109,17 +186,38 @@
     .join01_01 .section01 .join_terms_wrap .join_terms .terms_box .terms_tit .tit { vertical-align: middle; }
     .join01_01 .section01 .confirm_wrap { width: 97%; margin: 0 auto; display: block; }
     .join01_01 .section01 .confirm_wrap .confirm_inner { width: 97%; }
+    
+    .myinfo .section01 .profile_wrap { margin-right: 6.15%; }
+    .myinfo .section01 .phone_wrap { margin-right: 6.15%; }
 }
 
 
 @media all and (max-width: 842px) {
     .join01_02 .section01 .info_write_wrap1 .info_write_contents .info_content .hschool_input { width: 431px; margin: 9px 0 0 100px; }
+    
+    .myinfo .section01 .region_wrap .info_list .input_txt { margin-left: 4%; font-size: 12px; }
+    
+    .student_add .infomation_wrap .id_container1 .input_wrapper1 .input_wrap { margin-left: 12px; }
 }
 
 @media all and (max-width: 820px) {
     .rank_add .form_wrap select { font-size: 11px; }
     .rank_add .form_wrap .input_wrap input { font-size: 11px; }
     .rank_add .form_wrap .input_wrap .txt { font-size: 11px; }
+    
+    .rank_view .form_wrap .sel_box { font-size: 11px; }
+    .rank_view .form_wrap .input_wrap .input_box { font-size: 11px; }
+    .rank_view .form_wrap .input_wrap .txt { font-size: 11px; }
+    .rank_view .form_wrap .ml27 { margin-left: 2.46%; }
+    .rank_view .infomation_wrap .table_wrap .table .theader .tit_wrap .tit { font-size: 11px; }
+    .rank_view .infomation_wrap .table_wrap .table .tbody .tcontents .content { font-size: 11px; }
+}
+
+@media all and (max-width: 810px) {
+    .exam_add .check_wrap .check { width: 50%; padding: 7px 0; }
+    .exam_add .check_wrap .check3 { text-align: left; }
+    .exam_add .check_wrap .check3 input { margin-left: 15px; }
+    .exam_add .check_wrap .check3 label { margin-right: 0; }
 }
 
 @media all and (max-width: 803px) {
@@ -129,8 +227,20 @@
     .join01_02 .section01 .info_write_wrap .info_write_contents .id .txt1 { display: none; }
     .join01_02 .section01 .info_write_wrap .info_write_contents .pw .txt1 { display: none; }
     .join01_02 .section01 .info_write_wrap .info_write_contents .info_content input::-webkit-input-placeholder { color: #c2bfbf; }
+    
+    .student_add .student_view_slider_wrap .student_view_slider { width: 444px; }
 }
 
+@media all and (max-width: 790px) {
+    footer .footer_inner { width: 653px; }
+    footer .footer_info_wrap { width: 471px; }
+    footer .footer_info_wrap li .txt { padding: 0 10px; }
+    footer .footer_info_wrap li .pdl0 { padding: 0 10px 0 0; }
+}
+
+@media all and (max-width: 760px) {
+    .myinfo .section01 .info_wrap1 { margin-right: 3.2%; }
+}
 
 @media all and (max-width: 755px) {
     
@@ -143,7 +253,7 @@
     .sub_header { height: 57px; background-color: #fafafa; }
     
     .main_login_wrap { margin: 15px 10px 0 0; }
-    .main_login_wrap .img { width: 14px; }
+    .main_login_wrap .img { width: 10px; }
     
     .hmenubar { width: 30px; }
     
@@ -152,10 +262,22 @@
     .page_select_wrap .mobile_page { display: block; }
     .page_select_wrap .web_page { display: none; }
     
+    .certify_wrap { display: none; }
+    .certify_wrap1 { display: block; }
+    .certify_wrap1 { margin: 9px auto 6px; text-align: center; }
+    .certify_wrap .certify { height: 27px; }
+    .certify_wrap .certify .star { margin: 10px 10px 9px 7px; }
+    .certify_wrap .certify .txt { font-size: 11px; line-height: 27px; }
+    .certify_wrap .certify .stamp { width: 38px; }
+    
+    
     .main .header_t1 { background-color: #f9f9f9; height: 57px; }
+    .main .logo { width: 80%; margin: 20px auto; }
     .main .main_search_wrap { margin: 0 auto 25px; width: 80%; }
-    .main .main_search_wrap input { border: 1px solid #dbdbdb; }
-    .main .main_item { margin: 75px auto 0; }
+    .main .main_search_wrap select { font-size: 12px; padding: 6px 0 6px 20px; }
+    .main .main_search_wrap .main_search { border: 1px solid #dbdbdb; font-size: 12px; padding: 7px 0 7px 7px; }
+    .main .main_search_wrap .img { width: 18px; }
+    .main .main_item { margin: 0 auto; }
     .main .main_item .item { width: 48.25%; padding-top: 48.28%; margin-right: 2.3%; }
     .main .main_item .item::after { content: ''; display: block; clear: both; }
     .main .main_item .item:nth-child(2n) { margin-right: 0; }
@@ -189,6 +311,29 @@
     .join01_02 .section01 .info_write_wrap1 .info_write_contents .info_content .input_wrap1 label { margin-left: 0; }
     
     .join .logo { width: 400px; margin: 0 auto; }
+    
+    .myinfo .logo { border: none; width: 400px; margin: 0 auto; }
+    .myinfo .section01 .info_wrap { width: calc( 100% - 2px ); height: 160px; margin-right: 0; margin-bottom: 15px; }
+    .myinfo .section01 .info_wrap .info_tit { height: 42px; margin-bottom: 18px; }
+    .myinfo .section01 .info_wrap .info_tit .it_wrap { padding-top: 14px; }
+    .myinfo .section01 .info_wrap .info_tit .img { width: 26px; }
+    .myinfo .section01 .info_wrap .info_tit .tit { font-size: 13px; }
+    .myinfo .section01 .info_wrap .info_list .tit { font-size: 12px; width: 55px; }
+    .myinfo .section01 .info_wrap .info_list .txt { font-size: 11px; }
+    .myinfo .section01 .info_wrap .info_list .btn { font-size: 11px; width: 70px; padding: 1px 0 2px; }
+    .myinfo .section01 .info_wrap .btn1_wrap .btn1 { font-size: 11px; width: 70px; padding: 1px 0 2px; }
+    .myinfo .section01 .info_wrap .btn2 { font-size: 11px; bottom: 11px; }
+    .myinfo .section01 .point_wrap .info_tit .it_wrap { padding-top: 8px; }
+    .myinfo .section01 .phone_wrap .info_tit .it_wrap { padding-top: 8px; }
+    .myinfo .section01 .phone_wrap .info_tit .img { width: 18px; }
+    .myinfo .section01 .region_wrap .info_tit .it_wrap { padding-top: 8px; }
+    .myinfo .section01 .info_wrap1 { width: 48%; }
+    .myinfo .section01 .info_wrap1 .info_tit { height: 30px; margin-bottom: 15px; }
+    .myinfo .section01 .info_wrap1 .info_tit .it_wrap { padding-top: 8px; }
+    .myinfo .section01 .info_wrap1 .info_icon { width: 65px; }
+    .myinfo .section01 .info_wrap1 .info_txt { margin-top: 8px; font-size: 12px; }
+    .myinfo .section01 .iwm1 { margin-right: 3.34%; }
+    .myinfo .section01 .section_txt { bottom: -16px; font-size: 12px; }
     
     .search .logo { border: none; width: 400px; margin: 0 auto; }
     .search .section01 { margin-top: 10px; }
@@ -226,11 +371,80 @@
     .interview03 .logo { width: 400px; }
     .interview03 .main_header { padding-bottom: 25px; background-color: #fafafa; }
     .interview03 .detail_item_wrap { margin: 10px auto; }
-    .interview03 .detail_search_wrap { width: 80%; }
+    .interview03 .detail_search_wrap { margin: 0 auto 25px; width: 80%; }
+    .interview03 .detail_search_wrap .search_wrap select { font-size: 12px; padding: 6px 0 6px 20px; }
+    .interview03 .detail_search_wrap .search_wrap .detail_search { border: 1px solid #dbdbdb; font-size: 12px; padding: 7px 0 7px 7px; }
+    .interview03 .detail_search_wrap .search_wrap .search_img { width: 18px; }
     
     .student_grade .main_header { background-color: #fafafa; padding-bottom: 25px; }
     .student_grade .logo { width: 400px; }
-    .student_grade .sg_search_wrap { width: 80%; }
+    .student_grade .sg_search_wrap { margin: 0 auto 25px; width: 80%; }
+    .student_grade .sg_search_wrap select { font-size: 12px; padding: 6px 0 6px 20px; }
+    .student_grade .sg_search_wrap .sg_search { border: 1px solid #dbdbdb; font-size: 12px; padding: 7px 0 7px 7px; }
+    .student_grade .sg_search_wrap .img { width: 18px; }
+    
+    .student_add .main_header { background-color: #fafafa; padding-bottom: 25px; }
+    .student_add .logo { width: 400px; }
+    .student_add .sv_txt_wrap { margin-top: 10px; }
+    .student_add .sv_txt_wrap .sv_txt { font-size: 11px; line-height: 17px; }
+    .student_add .student_view_slider_wrap { margin-top: 10px; height: 225px; margin-bottom: 10px; }
+    .student_add .student_view_slider_wrap .confirm_btn { font-size: 11px; width: 70px; padding: 4px 0 4px; top: 10px; right: 10px; }
+    .student_add .student_view_slider_wrap .sv_tit { display: none; }
+    .student_add .sv_tit1 { display: block; }
+    .student_add .sv_tit2 { width: 98%; margin: 0 auto; }
+    .student_add .student_view_slider_wrap .confirm_btn { display: none; }
+    .student_add .confirm_btn1 { display: block; }
+    .student_add .student_view_slider_wrap .student_view_slider { width: 230px; height: 225px; }
+    .student_add .student_view_slider_wrap .student_view_slider .sv_slider_inner { height: 153px; top: 56%; }
+    .student_add .student_view_slider_wrap .student_view_slider .sv_slide { width: 103px; height: 130px; margin: 0 5px; }
+    .student_add .student_view_slider_wrap .student_view_slider .sv_slide label { width: 26px; height: 26px; }
+    .student_add .student_view_slider_wrap .student_view_slider .sv_slide .txt { font-size: 11px; bottom: -22px; }
+    .student_add .student_view_slider_wrap .sv_arrow { width: 15px; }
+    .student_add .student_view_slider_wrap .sv_arrow_next { right: 10px; }
+    .student_add .student_view_slider_wrap .sv_arrow_prev { left: 10px; }
+    .student_add .infomation_wrap { margin-top: 10px; }
+    .student_add .infomation_wrap .iw_tit { display: none; }
+    .student_add .infomation_wrap .boundry { display: none; }
+    .student_add .infomation_wrap .id_container1 { margin-top: 15px; margin-bottom: 6px; }
+    .student_add .infomation_wrap .id_container1 .input_wrapper { width: 100%; }
+    .student_add .infomation_wrap .id_container1 .input_wrapper .input_wrapper_inner { width: 470px; margin: 0 auto; }
+    .student_add .infomation_wrap .id_container1 .input_wrapper .input_wrap { margin-left: 0; }
+    .student_add .infomation_wrap .id_container1 .input_wrapper .input_wrap input { width: calc( 100% - 150px ); }
+    .student_add .infomation_wrap .id_container1 .input_wrapper .input_wrap .txt { font-size: 11px; }
+    .student_add .detail_container .dc_tit .img { width: 14px; height: 14px; }
+    .student_add .detail_container .dc_tit .txt { font-size: 12px; }
+    .student_add .detail_container .dc_contents .contents_tit .txt { font-size: 11px; line-height: 18px; width: calc( 100% - 23px ); }
+    .student_add .detail_container .dc_contents .content .txt_box textarea { font-size: 11px; }
+    .student_add .detail_container .dc_contents .content .txt_box1 .txt_wrap .tit { font-size: 11px; width: 130px; }
+    .student_add .detail_container .dc_contents .content .txt_box1 .txt_wrap .txt { width: calc( 100% - 131px ); font-size: 11px; }
+    .student_add .detail_container .dc_contents .content .txt_box1 .txt_wrap .txt textarea { font-size: 11px; height: 15px; padding: 12px 7px 7px ; }
+    .student_add .sv_btn_wrap .sv_btn { width: 70px; margin: 0 10px; }
+    
+    .student_view .main_header { background-color: #fafafa; padding-bottom: 25px; }
+    .student_view .logo { width: 400px; }
+    .student_view .infomation_wrap { width: 100%; }
+    .student_view .infomation_wrap .purchase { position: absolute; right: 10px; top: -27px; }
+    .student_view .infomation_wrap .detail_item { width: 100%; height: auto; padding: 12px 0; margin-top: 40px; border-left: none; float: none; }
+    .student_view .infomation_wrap .detail_item .inner { display: inline-block; left: 50%; transform: translateX(-50%); }
+    .student_view .infomation_wrap .detail_item .school_logo { width: 80px; margin: 0; display: inline-block; vertical-align: middle; }
+    .student_view .infomation_wrap .detail_item .detail_content { display: inline-block; vertical-align: middle; margin-left: 12px; }
+    .student_view .infomation_wrap .detail_item .department { width: initial; padding: 3px 6px; font-size: 12px; }
+    .student_view .infomation_wrap .detail_item .name { font-size: 12px; }
+    .student_view .infomation_wrap .detail_item .subject { font-weight: bold; }
+    .student_view .infomation_wrap .detail_info_wrap { width: 100%; margin: 0 auto; float: none; }
+    .student_view .infomation_wrap .detail_info_wrap .info_tit { width: 98%; display: block; margin: 0 auto; }
+    .student_view .infomation_wrap .detail_info_wrap .info_tit .img { width: 14px; height: 14px; }
+    .student_view .infomation_wrap .detail_info_wrap .info_tit .tit { font-size: 12px; }
+    .student_view .infomation_wrap .detail_info_wrap .info_contents { width: 100%; }
+    .student_view .infomation_wrap .detail_info_wrap .info_contents .content { margin-bottom: 10px; }
+    .student_view .infomation_wrap .detail_info_wrap .info_contents .content .img { vertical-align: middle; }
+    .student_view .infomation_wrap .detail_info_wrap .info_contents .content .txt { vertical-align: middle; font-size: 11px; }
+    .student_view .detail_container .dc_tit .img { width: 14px; height: 14px; }
+    .student_view .detail_container .dc_tit .txt { font-size: 12px; }
+    .student_view .detail_container .dc_contents .contents_tit .txt { font-size: 11px; }
+    .student_view .detail_container .dc_contents .content .txt_box { min-height: 22px; font-size: 11px; }
+    .student_view .detail_container .dc_contents .content .txt_box1 .txt_wrap .tit { font-size: 11px; }
+    .student_view .detail_container .dc_contents .content .txt_box1 .txt_wrap .txt { font-size: 11px; padding: 12px 15px; }
     
     .rank_list .main_header { background-color: #fafafa; }
     .rank_list .logo { width: 400px; }
@@ -245,18 +459,90 @@
     .rank_add .table_wrap .table .theader .tit_wrap .tit { font-size: 11px; }
     .rank_add .table_wrap .table .theader .tit_wrap .tit1 select { font-size: 11px; }
     .rank_add .table_wrap .table .theader .tit_wrap1 .tit2 select { font-size: 11px; }
+    
+    .rank_view .main_header { background-color: #fafafa; }
+    .rank_view .logo { width: 400px; }
+    .rank_view .page_tit { margin: 25px auto; }
+    .rank_view .form_wrap { width: 65%; margin: 0 auto 20px; }
+    .rank_view .form_wrap .sel_box { width: 100%; margin-bottom: 7px; background-size: 30px; background-position: 100% 100%; }
+    .rank_view .form_wrap .input_wrap { width: 100%; }
+    .rank_view .form_wrap .input_wrap .input_box { margin-bottom: 7px; }
+    .rank_view .form_wrap .ml27 { margin-left: 0; }
+    
+    .intro01 .main_header { background-color: #fafafa; padding-bottom: 25px; }
+    .intro01 .logo { width: 400px; }
+    .intro01 .purchase { margin: 8px auto; }
+    .intro01 .infomation_wrap .detail_item { float: none; text-align: center; }
+    .intro01 .infomation_wrap .detail_item .txt_wrap .name { margin: 6px 0 6px 0; }
+    .intro01 .infomation_wrap .detail_item .txt_wrap .university { text-align: left; }
+    .intro01 .infomation_wrap .detail_info_wrap { display: none; }
+    .intro01 .re_info { display: block; background-color: #fafafa; border-bottom: 1px solid #ededed; border-top: 1px solid #ededed; margin-top: 10px; }
+    .intro01 .re_info .detail_info_wrap { display: block; float: none; width: 100%; }
+    .intro01 .iw_tit1 { width: 98%; display: block; margin: 12px auto; }
+    .intro01 .student_view_txt { font-size: 12px; margin: 8px 0 0; }
+    .intro01 .txtarea_wrap > .img { display: none; }
+    .intro01 .txtarea_wrap .sub_tit .txt { margin-top: 15px; font-size: 11px; }
+    .intro01 .txtarea_wrap .txtarea_txt { font-size: 11px; height: 210px; }
+    .intro01 .tw1 .tat1 { height: initial; }
+    
+    .intro02 .main_header { background-color: #fafafa; padding-bottom: 25px; }
+    .intro02 .logo { width: 400px; }
+    .intro02 .infomation_wrap { margin-bottom: 10px; }
+    .intro02 .infomation_wrap .id_container .input_wrapper .input_wrap .txt { font-size: 13px; }
+    .intro02 .infomation_wrap .iw_tit { margin: 15px 0 13px; }
+    .intro02 .infomation_wrap .iw_tit .img { width: 14px; height: 14px; }
+    .intro02 .infomation_wrap .iw_tit .txt { font-size: 12px; }
+    .intro02 .iw_tit1 { display: inline-block; margin-top: 12px; }
+    .intro02 .infomation_wrap .uni_sel_wrap { margin: 0 0 17px 0; width: 100%; }
+    .intro02 .infomation_wrap .uni_sel_wrap select { font-size: 11px; padding: 3px 0 3px 7px; background-size: 16px; background-position: 98% 56%; }
+    .intro02 .txtarea_wrap .img { display: none; }
+    .intro02 .txtarea_wrap { margin-top: 10px; }
+    .intro02 .txtarea_wrap .txta_wrap { margin-top: 20px;}
+    .intro02 .txtarea_wrap input { font-size: 11px; }
+    .intro02 .txtarea_wrap .txta_wrap textarea { font-size: 11px; height: 210px; }
+    .intro02 .txtarea_wrap .tit { font-size: 11px; letter-spacing: -0.5px; }
+    
+    .exam_add .main_header { background-color: #fafafa; }
+    .exam_add .logo { width: 400px; }
+    .exam_add .infomation_wrap { margin-bottom: 10px; }
+    .exam_add .infomation_wrap .iw_tit { margin: 15px 0 13px; }
+    .exam_add .infomation_wrap .iw_tit .img { width: 14px; height: 14px; }
+    .exam_add .infomation_wrap .iw_tit .txt { font-size: 12px; }
+    .exam_add .check_wrap .uni_sel_wrap { width: 255px; }
+    .exam_add .check_wrap .uni_sel_wrap select { background-size: 16px; background-position: 98% 59%; font-size: 11px; }
+    .exam_add .check_wrap .check .cir { width: 12px; height: 12px; }
+    .exam_add .check_wrap .check label { font-size: 11px; }
+    .exam_add .check_wrap .check .input_wrap { margin: -1px 0 0 4px; }
+    .exam_add .check_wrap .check .input_wrap .txt { font-size: 11px; }
+    .exam_add .check_wrap .check .input_wrap input { font-size: 11px; padding: 1px 0 1px 7px; }
+    .exam_add .sv_btn_wrap .sv_btn { width: 72px; margin: 0 12px; }
 }
 
 @media all and (max-width: 706px) {
     .join01_02 .section01 .info_write_wrap .info_write_contents .ac .input_wrap { width: calc( 100% - 200px ); }
     .join01_02 .section01 .info_write_wrap1 .info_write_contents .info_content .input_wrap .account { width: calc( 100% - 9px ); }
     .join01_02 .section01 .info_write_wrap1 .info_write_contents .info_content .input_wrap1 .upload_name { width: calc( 100% - 109px ); }
-}    
+}
+
+@media all and (max-width: 680px) {
+    footer .footer_inner { width: 523px; }
+    footer .footer_logo { width: 110px; }
+    footer .footer_info_wrap { width: 401px; }
+    footer .footer_info_wrap li .txt span { font-size: 9px; }
+    footer .footer_gnb_wrap1 { width: 100%; text-align: center; font-size: 0; }
+    footer .footer_gnb_wrap1 li { width: 16.65%; }
+    footer .footer_gnb_wrap1 li .txt { padding: 0; }
+    footer .footer_gnb_wrap1 li .txt span { font-size: 11px; }
+    footer .footer_gnb_wrap1 li .pdl0 { padding: 0; }
+}
 
 @media all and (max-width: 670px) {
     .join01_02 .section01 .info_write_wrap1 .info_write_contents .info_write_wrap1_txt { border: 1px solid #bd4949; }
 }
 
+@media all and (max-width: 629px) {
+    .myinfo .section01 .iwm1 { margin-right: 3.15%; }
+}
 
 @media all and (max-width: 600px) {
     
@@ -267,9 +553,10 @@
     .gpa_wrap .gpa_header .gpa_num { font-size: 12px; }
     .gpa_wrap .gpa_header .gpa_num span { font-size: 11px; }
     .gpa_wrap .gpa_input_wrap select { font-size: 11px; padding: 1px 0 3px 28px; }
-    .gpa_wrap .gpa_input_wrap textarea { font-size: 11px; }
+    .gpa_wrap .gpa_input_wrap textarea { font-size: 11px; width: calc( 100% - 40px); }
     .gpa_wrap .gpa_input_wrap .gpa_btn { display: none; }
-    .gpa_wrap .gpa_input_wrap .gpa_btn01 { display: block; }
+    .gpa_wrap .gpa_input_wrap .gpa_btn01 { display: block; margin-right: 15px; }
+    .gpa_wrap .gpa_input_wrap .gpa_btn01 img { width: 60px; }
     
     .join01_01 { min-height: 1230px; }
     .join01_01 .section01 .join_terms_wrap { margin: 0 auto; }
@@ -314,6 +601,8 @@
     .student_grade .detail_item_wrap .detail_item1 .infomation { width: calc( 100% - 210px ); }
     .student_grade .detail_item_wrap .detail_item1 .infomation .department { font-size: 12px; margin-left: 6.999%; }
     .student_grade .detail_item_wrap .detail_item1 .infomation .txt { font-size: 11px; padding: 7px 0 0 7.835%; }
+    .student_view .infomation_wrap .detail_info_wrap .info_contents .content1 { width: 100%; }
+    .student_view .sv_btn_wrap .sv_btn { width: 72px; }
     
     .rank_list .upload_btn img { width: 72px; }
     
@@ -322,21 +611,59 @@
     .rank_add .rank_add_txt { font-size: 11px; }
     .rank_add .table_wrap { display: none; }
     .rank_add .table_wrap1 { display: block; }
+    .rank_view .table_wrap2 { display: block; }
+    .rank_add .sv_btn img { width: 72px; }
     .rank_add #btn_pc { display: none; }
     .rank_add #btn_mobile { display: block; }
-    .rank_add .sv_btn img { width: 72px; }
+    
+    .rank_view .page_tit .tit .txt { font-size: 13px; }
+    .rank_view .page_tit .line { width: calc( 100% - 100px ); }
+    .rank_view .table_wrap { display: none; }
+    .rank_view .table_wrap1 { display: block; }
+    .rank_view .infomation_wrap .info_tit .img { width: 20px; }
+    .rank_view .infomation_wrap .info_tit .txt { font-size: 13px; }
+    .rank_view .infomation_wrap .id_wrap .id_box { margin-bottom: 5px; }
+    .rank_view .infomation_wrap .id_wrap .id_box .tit { font-size: 11px; }
+    .rank_view .infomation_wrap .id_wrap .id_box .txt { font-size: 11px; }
+    .rank_view .infomation_wrap01 { width: 98%; margin: 0 auto; }
+    .rank_view .rank_add_txt { font-size: 12px; margin-top: 12px; }
+    .rank_view .rank_add_txt span { font-weight: bold; color: #000; }
+    .rank_view .sv_btn { margin-top: 30px; }
+    .rank_view .sv_btn img { width: 72px; }
+    
+    .intro01 .infomation_wrap .inner { padding: 6px 0; }
+    .intro01 .infomation_wrap .detail_item .txt_wrap .name { font-size: 12px; }
+    .intro01 .infomation_wrap .detail_item .txt_wrap .university { font-size: 12px; }
+    .intro01 .infomation_wrap .detail_item .txt_wrap .department { font-size: 11px; }
+    .intro01 .infomation_wrap .detail_info_wrap .detail_info { width: 100%; float: none; }
+    .intro01 .infomation_wrap .detail_info_wrap .detail_info .info .img { width: 70px; }
+    .intro01 .infomation_wrap .detail_info_wrap .detail_info .info .txt { font-size: 12px; }
+    .intro01 .sv_btn_wrap .sv_btn { width: 72px; }
+    
+    .intro02 .sv_btn_wrap .sv_btn { width: 72px; margin: 0 8px; }
+    
+    .exam_add .table_wrap { display: none; }
+    .exam_add .table_wrap1 { display: block; }
+    .exam_add .tit_sel1 { display: block; }
+    .exam_add .sv_btn_wrap .sv_btn:nth-child(2) { display: none; }
+    .exam_add .sv_btn_wrap .hidden { display: inline-block; }
 
 }
 
 @media all and (max-width: 588px) {
-    
-    .main .logo { width: 80%; }
     
     .join01_02 .section01 .info_write_wrap1 .info_write_contents .info_content .hschool_select { width: calc( 50% - 60px ); }
     .join01_02 .section01 .info_write_wrap1 .info_write_contents .info_content #hschoolType { margin-right: 0; }
     .join01_02 .section01 .info_write_wrap1 .info_write_contents .info_content .hschool_input { width: calc( 100% - 111px ); }
     .join01_02 .section01 .info_write_wrap .info_write_contents .bank input { width:calc( 100% - 111px ); }
     .join01_02 .section01 .info_write_wrap .info_write_contents .ac .input_wrap { width:calc( 100% - 102px ); }
+    
+}
+
+@media all and (max-width: 540px) {
+    footer .footer_inner { width: 98%; }
+    footer .footer_logo { width: 80px; }
+    footer .footer_info_wrap { width: calc( 100% - 92px ); }
     
 }
 
@@ -357,7 +684,6 @@
 }
 
 @media all and (max-width: 524px) {
-    .main .logo { margin: 15px auto; }
     
     .main .main_item { margin: 20px auto 0; }
     .main .main_item .item { margin-right: 2.09%; }
@@ -393,6 +719,12 @@
     
 }
 
+@media all and (max-width: 519px) {
+    footer .footer_info_wrap .footer_txt_wrap li .txt { padding: 0 5px; }
+    footer .footer_info_wrap .footer_txt_wrap li .pdl0 { padding: 0 5px; }
+    
+}
+
 @media all and (max-width: 516px) {
     .join01_02 .section01 .info_write_wrap .info_write_contents .id input { width: calc( 100% - 9px ); }
     .join01_02 .section01 .info_write_wrap .info_write_contents .info_content input { font-size: 12px; }
@@ -401,9 +733,29 @@
 
 @media all and (max-width: 500px) {
     
-    .charging_popup_wrap { width: 98%; }
-    .charging_popup_wrap .popup_inner { width: 95%; }
-    .charging_popup_wrap .charging_btn { width: 73.685%; }
+    .charging_popup_wrap { width: 98%; padding-top: 158.76%; }
+    .charging_popup_wrap .popup_inner { position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
+    .charging_popup_wrap .popup_tit .txt { font-size: 14px; padding: 2.7% 0 3%; }
+    .charging_popup_wrap .popup_tit .img { top: 52%; transform: translateY(-50%); right: 2%; width: 16px; }
+    .charging_popup_wrap .popup_contents { width: 95%; }
+    .charging_popup_wrap .present_point .tit { font-size: 14px; }
+    .charging_popup_wrap .present_point .point { padding: 1.6% 0 1.5% 6.7%; }
+    .charging_popup_wrap .present_point .point .txt { font-size: 18px; vertical-align: middle; }
+    .charging_popup_wrap .present_point .point .img { vertical-align: middle; margin-top: 3px; width: 21px; }
+    .charging_popup_wrap .radio_wrap { margin: 2.6% 0; }
+    .charging_popup_wrap .radio_wrap .inner { width: 92.47%; padding-left: 2.2%; }
+    .charging_popup_wrap .radio_wrap .tit { font-size: 13px; margin: 3% 0 4%; }
+    .charging_popup_wrap .radio_wrap .radio { margin: 0 18% 3.5% 0; }
+    .charging_popup_wrap .radio_wrap .radio label { font-size: 12px; }
+    .charging_popup_wrap .radio_wrap .radio input[type="radio"] + label { padding-left: 21px; }
+    .charging_popup_wrap .radio_wrap .radio input[type="radio"] + label:before { width: 12px; height: 12px; border-radius: 6px; }
+    .charging_popup_wrap .tab_wrap { padding-top: 73.04%; }
+    .charging_popup_wrap .tab_wrap .tab_inner { position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
+    .charging_popup_wrap .tab_wrap .tab_tit_wrap .tab_tit { font-size: 12px; }
+    .charging_popup_wrap .tab_wrap .tab_contents { height: 84%; }
+    .charging_popup_wrap .tab_wrap .tab_contents .contents_tit { font-size: 12px; }
+    .charging_popup_wrap .charging_btn { width: 70%; font-size: 12px; padding:
+    2% 0; margin:  10% auto 3%; }
     
     .point_popup_wrap { width: 98%; }
     .point_popup_wrap .popup_contents { width: 93%; }
@@ -423,21 +775,59 @@
     .interview01 .infomation_wrap1 .detail_info_wrap .detail_info .info1 { width: 100%; }
     .interview01 .sv_btn_wrap .sv_btn { width: 74px; margin: 0 10px; }
     
+    .myinfo .section01 .phone_wrap .info_list .input_wrap .mail_input { font-size: 12px; }
+    .myinfo .section01 .phone_wrap .info_list .input_wrap .mail_select { font-size: 12px; }
+    .myinfo .section01 .phone_wrap .info_list .input_wrap .input_txt { font-size: 13px; }
+    .myinfo .section01 .phone_wrap .info_list .input_wrap .phone_select { font-size: 12px; }
+    .myinfo .section01 .phone_wrap .info_list .input_wrap .phone_input { font-size: 12px; }
+    
+    .student_add .infomation_wrap .search_wrap { width: 100%; }
+    .student_add .infomation_wrap .search_wrap input { padding: 5px 37px 6px 7px; width: calc( 100% - 46px ); }
+    .student_add .infomation_wrap .search_wrap .img { width: 20px; right: 5px; }
+    .student_add .infomation_wrap .id_container .uni_box { width: 100%; }
+    .student_add .infomation_wrap .id_container .input_wrapper { width: 100%; }
+    .student_add .infomation_wrap .id_container1 .input_wrapper .input_wrapper_inner { width: 100%; }
+    
+    .intro02 .infomation_wrap .search_wrap { width: 100%; }
+    .intro02 .infomation_wrap .search_wrap input { padding: 5px 37px 6px 7px; width: calc( 100% - 46px ); }
+    .intro02 .infomation_wrap .search_wrap .img { width: 20px; right: 5px; }
+    .intro02 .infomation_wrap .id_container .uni_box { width: 100%; }
+    .intro02 .infomation_wrap .id_container .input_wrapper { width: 100%; }
+    .intro02 .infomation_wrap .id_container1 .input_wrapper .input_wrapper_inner { width: 100%; }
+    
+    .exam_add .infomation_wrap .search_wrap { width: 100%; }
+    .exam_add .infomation_wrap .search_wrap input { padding: 5px 37px 6px 7px; width: calc( 100% - 46px ); }
+    .exam_add .infomation_wrap .search_wrap .img { width: 20px; right: 5px; }
+    .exam_add .infomation_wrap .id_container .uni_box { width: 100%; }
+    .exam_add .infomation_wrap .id_container .input_wrapper { width: 100%; }
+    .exam_add .infomation_wrap .id_container1 .input_wrapper .input_wrapper_inner { width: 100%; }
+}
+
+@media all and (max-width: 498px) {
+    footer .footer_inner { width: 339px; }
+    footer .footer_info_wrap .footer_txt_wrap li { margin-bottom: 0; }
+    footer .footer_info_wrap .footer_txt_wrap .li2 .boundry { display: none; }
+    footer .footer_info_wrap .footer_txt_wrap .li3 { width: 100%; }
 }
 
 @media all and (max-width: 497px) {
     .join01_02 .section01 .info_write_wrap .info_write_contents .m1 select { width: calc( 23% - 23px ); }
     .join01_02 .section01 .info_write_wrap .info_write_contents .m1 input { width: calc( 32.89% - 52px ); }
+    
+    .exam_add .check_wrap .check1 { width: 130px; }
+    .exam_add .check_wrap .check2 { width: 230px; }
+
 }
 
-@media all and (max-width: 480px) {
-    .charging_popup_wrap .radio_wrap .inner { width: calc( 100% - 10px ); }
+@media all and (max-width: 490px) {
+    .myinfo .section01 .iwm1 { margin-right: 3%; }
+    
+    footer .footer_inner { margin: 55px auto 0; }
+    footer .footer_gnb_wrap1 li { width: 33.3%; margin-bottom: 10px; }
+    footer .footer_gnb_wrap1 li:nth-child(3) .boundry { display: none; }
 }
 
 @media all and (max-width: 473px) {
-    .charging_popup_wrap .radio_wrap .radio:nth-child(3) { margin-right: 0; }
-    .charging_popup_wrap .radio_wrap .radio:nth-child(4) { margin-right: 102px; }
-    .charging_popup_wrap .radio_wrap .radio:nth-child(5) { margin-right: 0; }
     
     .join01_02 .section01 .info_write_wrap1 .info_write_contents .info_radio_wrap .radio_wrap .radio_c { width: calc( 50% - 88px ); }
     .join01_02 .section01 .info_write_wrap .info_write_contents .info_radio_wrap .radio_wrap input { width: 12px; height: 12px; vertical-align: middle; }
@@ -450,6 +840,8 @@
     .join01_02 .section01 .info_write_wrap1 .info_write_contents .info_content .info_radio_wrap .radio_wrap:last-child .radio_tit { margin-right: 0; width: 175px; }
     .join01_02 .section01 .info_write_wrap .info_write_contents .m2 select {  margin-left: 82px; }
     .join01_02 .section01 .info_write_wrap1 .info_write_contents .info_content .hschool_input { margin: 9px 0 0 82px; }
+    
+    .charging_popup_wrap .radio_wrap .radio { margin: 0 12% 3.5% 0; }
     
     .interview01 .infomation_wrap .id_container .uni_box .name { margin: 12px 0 12px; font-size: 13px; }
     .interview01 .infomation_wrap .id_container .uni_box .inner { width: 97.21%; }
@@ -471,6 +863,27 @@
     .student_grade .detail_item_wrap .detail_item1 .logo_wrap .school_logo { width: 32px; margin-right: 8px; }
     .student_grade .detail_item_wrap .detail_item1 .logo_wrap .sname { font-size: 10px; }
     .student_grade .detail_item_wrap .detail_item1 .infomation { width: calc( 100% - 157px ); }
+    
+    .student_add .infomation_wrap .id_container .uni_box .inner { width: 97.21%; }
+    .student_add .infomation_wrap .id_container .uni_box .name { margin: 12px 0 12px; font-size: 13px; }
+    .student_add .infomation_wrap .id_container .uni_box select { width: 47.395%; font-size: 11px; padding: 4px 0 4px 7px; margin-bottom: 8px; }
+    .student_add .infomation_wrap .id_container .uni_box .ml22{ margin-left: 5.21%; }
+    .student_add .infomation_wrap .id_container .uni_box .input_wrap { width: 47.395%; padding: 13px 0 12px; }
+    .student_add .infomation_wrap .id_container .uni_box .input_wrap input { font-size: 11px; padding: 2px 0 2px 7px; width: 86%; }
+    
+    .intro02 .infomation_wrap .id_container .uni_box .inner { width: 97.21%; }
+    .intro02 .infomation_wrap .id_container .uni_box .name { margin: 12px 0 12px; font-size: 13px; }
+    .intro02 .infomation_wrap .id_container .uni_box select { width: 47.395%; font-size: 11px; padding: 4px 0 4px 7px; margin-bottom: 8px; }
+    .intro02 .infomation_wrap .id_container .uni_box .ml22{ margin-left: 5.21%; }
+    .intro02 .infomation_wrap .id_container .uni_box .input_wrap { width: 47.395%; padding: 13px 0 12px; }
+    .intro02 .infomation_wrap .id_container .uni_box .input_wrap input { font-size: 11px; padding: 2px 0 2px 7px; width: 86%; }
+    
+    .exam_add .infomation_wrap .id_container .uni_box .inner { width: 97.21%; }
+    .exam_add .infomation_wrap .id_container .uni_box .name { margin: 12px 0 12px; font-size: 13px; }
+    .exam_add .infomation_wrap .id_container .uni_box select { width: 47.395%; font-size: 11px; padding: 4px 0 4px 7px; margin-bottom: 8px; }
+    .exam_add .infomation_wrap .id_container .uni_box .ml22{ margin-left: 5.21%; }
+    .exam_add .infomation_wrap .id_container .uni_box .input_wrap { width: 47.395%; padding: 13px 0 12px; }
+    .exam_add .infomation_wrap .id_container .uni_box .input_wrap input { font-size: 11px; padding: 2px 0 2px 7px; width: 86%; }
 }
 
 @media all and (max-width: 431px) {
@@ -497,27 +910,42 @@
     
     .join01_02 .section01 .info_write_wrap .info_write_contents .ac .txt1 { margin-left: 0; left: 50%; transform: translateX(-50%); }
     
+    .myinfo .logo { width: 80%; }
+    .myinfo .section01 .iwm1 { margin-right: 2.6%; }
+    
+    .charging_popup_wrap .charging_btn { margin: 6% auto 3%; }
+    .charging_popup_wrap .tab_wrap .tab_contents { height: 80%; }
+    
     .interview01 .logo { width: 80%; margin: 15px auto; }
     
     .interview02 .logo { width: 80%; margin: 15px auto; }
     
     .interview03 .logo { width: 80%; margin: 15px auto; }
-    .interview03 .detail_search_wrap .search_wrap .detail_search { padding: 4px 0 4px 7px; }
-    .interview03 .detail_search_wrap .search_wrap .search_img { width: 15px; }
     
     .search .logo { width: 80%; }
     .search .logo img { width: 100%; }
     
     .student_grade .logo { width: 80%; margin: 15px auto; }
-    .student_grade .sg_search_wrap .sg_search { padding: 7px 0 6px 7px; font-size: 11px; }
     .student_grade .sg_search_wrap .img { width: 19px; }
+    
+    .student_add .logo { width: 80%; margin: 15px auto; }
+    
+    .student_view .logo { width: 80%; margin: 15px auto; }
+    
     .search_gnb_wrap .search_gnb .txt { font-size: 11px; }
     
     .rank_list .logo { width: 80%; }
     
     .rank_add .logo { width: 80%; }
     
-    .charging_popup_wrap .tab_wrap .tab_tit_wrap .tab_tit { font-size: 12px; }
+    .rank_view .logo { width: 80%; }
+    
+    .intro01 .logo { width: 80%; }
+    
+    .intro02 .logo { width: 80%; }
+    
+    .exam_add .logo { width: 80%; }
+    
 }
 @media all and (max-width: 414px) {
     
@@ -527,14 +955,22 @@
     .join01_02 .section01 .info_write_wrap .info_write_contents .info_content #addr2 { width: calc( 47.674% - 50px ); margin-left: 4%;  }
     .join01_02 .section01 .info_write_wrap .info_write_contents .info_content #addr3 { width: calc( 100% - 109px ); }
     
+    
 }
 
 @media all and (max-width: 400px) {
     
     .student_view_popup_wrap .sv_popup_page_wrap { margin: 0 auto; }
     
-    .detail_item_wrap .detail_item1 .infomation .txt { display: none; }
-    .detail_item_wrap .detail_item1 .infomation .mobile_txt { display: block; }
+    .student_view .infomation_wrap .detail_info_wrap .info_contents .content .img { margin-left: 10px; }
+    
+    .charging_popup_wrap .radio_wrap .radio { margin: 0 3.5% 3.5% 0; } 
+    
+    .exam_add .check_wrap .check .cir { margin-right: 5px; }
+    .exam_add .check_wrap .check1 { width: 85px; }
+    .exam_add .check_wrap .check1 input { margin-left: 10px; }
+    .exam_add .check_wrap .check3 input { margin-left: 10px; }
+    
 }
 
 
@@ -549,6 +985,10 @@
     
     .interview01 .infomation_wrap1 .detail_info_wrap .detail_info .info input::-webkit-input-placeholder { font-size: 9px; }
     
+    .charging_popup_wrap .tab_wrap .tab_contents { height: 70%; }
+    .charging_popup_wrap .charging_btn { width: 31%; padding: 1.2% 0; margin: 0 auto 3%; }
+    
+    .exam_add .tit_sel1 select { width: 57%; }
 }
 
 @media all and (max-width: 360px) {
@@ -563,6 +1003,11 @@
     
 }
 
+@media all and (max-width: 356px) {
+    footer .footer_inner { width: 98%; }
+    footer .footer_info_wrap .footer_txt_wrap li { letter-spacing: -1.3px; }
+}
+
 @media all and (max-width: 350px) {
     
     .main .main_btn .mb_header .txt { font-size: 12px; }
@@ -570,7 +1015,12 @@
     
     .password_popup_wrap { width: 98%; padding-top: 141.245%; height: initial; }
     .password_popup_wrap .popup_inner { width: 94.285%; position: absolute; top: 0; left: 50%; transform: translatex(-50%); }
-    .password_popup_wrap .btn_wrap.m1 { margin: 29% auto 0; }
+    .password_popup_wrap .btn_wrap.m1 { margin-top: calc( 100% - 217px ); }
+    
+    .myinfo .section01 .region_wrap .info_list .input_txt { font-size: 10px; margin-left: 3%; }
+    
+    .exam_add .check_wrap .check { width: 100%; }
+    .exam_add .check_wrap .check2 .cir { margin-left: 10px; }
     
 }
 

@@ -4,7 +4,6 @@ import java.text.*;
 import java.util.*;
 
 import org.apache.ibatis.session.*;
-import org.apache.poi.ss.util.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.stereotype.*;
 
@@ -78,13 +77,49 @@ public class RankService {
 		map.put("lang", lang);
 		int sum = Integer.parseInt(kor)+Integer.parseInt(math)+Integer.parseInt(exp1)+Integer.parseInt(exp2);
 		map.put("sum", sum);
-		HashMap m = null;
+		List<HashMap> list = new Vector<>();
 		if(!user.equals("1")){
-			m = ss.selectOne("rank.rankOneDay", map);
+			list = ss.selectList("rank.rankOneDay", map);
 		}
-		if(m == null){
+		if(list.size() == 0){
+			HashMap tmp = (HashMap) map.clone();
 			try{
-				ss.insert("rank.newRank", map);
+				for(int i=0; i<10; i++){
+					int r1 = (int)(Math.random()*10)-4;
+					int kor2 = Integer.parseInt(kor) > 95 ? Integer.parseInt(kor)+r1 > 100 ? Integer.parseInt(kor) : Integer.parseInt(kor)+r1 : 
+						Integer.parseInt(kor) < 4 ? Integer.parseInt(kor)+r1 < 0 ? Integer.parseInt(kor) : Integer.parseInt(kor)+r1 : Integer.parseInt(kor)+r1;
+					int r2 = (int)(Math.random()*10)-4;
+					int math2 = Integer.parseInt(math) > 95 ? Integer.parseInt(math)+r2 > 100 ? Integer.parseInt(math) : Integer.parseInt(math)+r2 : 
+						Integer.parseInt(math) < 4 ? Integer.parseInt(math)+r2 < 0 ? Integer.parseInt(math) : Integer.parseInt(math)+r2 : Integer.parseInt(math)+r2;
+					int r3 = (int)(Math.random()*10)-4;
+					int eng2 = Integer.parseInt(eng) > 95 ? Integer.parseInt(eng)+r3 > 100 ? Integer.parseInt(eng) : Integer.parseInt(eng)+r3 : 
+						Integer.parseInt(eng) < 4 ? Integer.parseInt(eng)+r3 < 0 ? Integer.parseInt(eng) : Integer.parseInt(eng)+r3 : Integer.parseInt(eng)+r3;
+					int r4 = (int)(Math.random()*10)-4;
+					int his2 = Integer.parseInt(his) > 45 ? Integer.parseInt(his)+r4 > 50 ? Integer.parseInt(his) : Integer.parseInt(his)+r4 : 
+						Integer.parseInt(his) < 4 ? Integer.parseInt(his)+r4 < 0 ? Integer.parseInt(his) : Integer.parseInt(his)+r4 : Integer.parseInt(his)+r4;
+					int r5 = (int)(Math.random()*10)-4;
+					int exp12 = Integer.parseInt(exp1) > 45 ? Integer.parseInt(exp1)+r5 > 50 ? Integer.parseInt(exp1) : Integer.parseInt(exp1)+r5 : 
+						Integer.parseInt(exp1) < 4 ? Integer.parseInt(exp1)+r5 < 0 ? Integer.parseInt(exp1) : Integer.parseInt(exp1)+r5 : Integer.parseInt(exp1)+r5;
+					int r6 = (int)(Math.random()*10)-4;
+					int exp22 = Integer.parseInt(exp2) > 45 ? Integer.parseInt(exp2)+r6 > 50 ? Integer.parseInt(exp2) : Integer.parseInt(exp2)+r6 : 
+						Integer.parseInt(exp2) < 4 ? Integer.parseInt(exp2)+r6 < 0 ? Integer.parseInt(exp2) : Integer.parseInt(exp2)+r6 : Integer.parseInt(exp2)+r6;
+					int r7 = (int)(Math.random()*10)-4;
+					int lang2 = 0;
+					if(!lang.equals("0"))
+						lang2 = Integer.parseInt(lang) > 45 ? Integer.parseInt(lang)+r7 > 50 ? Integer.parseInt(lang) : Integer.parseInt(lang)+r7 : 
+							Integer.parseInt(lang) < 4 ? Integer.parseInt(lang)+r7 < 0 ? Integer.parseInt(lang) : Integer.parseInt(lang)+r7 : Integer.parseInt(lang)+r7;
+					map.put("kor", kor2);
+					map.put("math", math2);
+					map.put("eng", eng2);
+					map.put("his", his2);
+					map.put("exp1", exp12);
+					map.put("exp2", exp22);
+					map.put("lang", lang2);
+					int sum2 = kor2 + math2 + exp12 + exp22;
+					map.put("sum", sum2);
+					ss.insert("rank.newRank", map);
+				}
+				ss.insert("rank.newRank", tmp);
 				ss.commit();
 				ss.close();
 				return 0;
@@ -106,14 +141,28 @@ public class RankService {
 		map.put("user", user);
 		map.put("page", (page-1)*10);
 		List<HashMap> list = ss.selectList("rank.rankList", map);
+		List<HashMap> list2 = new Vector<>();
+		if(list.size() > 0){
+			list2.add(list.get(0));
+			for(int i=0; i<list.size(); i++){
+				for(int j=1; j<list2.size(); j++){
+					HashMap m = list.get(i);
+					HashMap m2 = list2.get(j);
+					if(!m.get("rankDay").toString().equals(m2.get("rankDay").toString()) && !m.get("user").toString().equals(m2.get("uesr").toString())){
+						list2.add(m);
+					}
+				}
+			}
+		}
 		ss.close();
-		return list;
+		return list2;
 	}
 
 	// Á¡¼ö °¹¼ö
 	public int rankPage(String user) {
 		SqlSession ss = fac.openSession();
 		int n = ss.selectOne("rank.rankCount", user);
+		n = n/11;
 		ss.close();
 		return n%10 == 0 ? n/10 : n/10+1;
 	}
@@ -159,44 +208,45 @@ public class RankService {
 		List<HashMap> lang = ss.selectList("rank.langRank", map);
 		List<HashMap> sum = ss.selectList("rank.sumRank", map);
 		HashMap rank = new HashMap();
+		List<HashMap> rankList = rankList(user, 1);
 		for(HashMap m : kor){
-			if(m.get("user").toString().equals(user)){
+			if(m.get("user").toString().equals(user) && m.get("kor").toString().equals(rankList.get(0).get("kor").toString())){
 				rank.put("kor", m.get("rank").toString());
 				break;
 			}
 		}
 		for(HashMap m : math){
-			if(m.get("user").toString().equals(user)){
+			if(m.get("user").toString().equals(user) && m.get("math").toString().equals(rankList.get(0).get("math").toString())){
 				rank.put("math", m.get("rank").toString());
 				break;
 			}
 		}
 		for(HashMap m : eng){
-			if(m.get("user").toString().equals(user)){
+			if(m.get("user").toString().equals(user) && m.get("eng").toString().equals(rankList.get(0).get("eng").toString())){
 				rank.put("eng", m.get("rank").toString());
 				break;
 			}
 		}
 		for(HashMap m : his){
-			if(m.get("user").toString().equals(user)){
+			if(m.get("user").toString().equals(user) && m.get("his").toString().equals(rankList.get(0).get("his").toString())){
 				rank.put("his", m.get("rank").toString());
 				break;
 			}
 		}
 		for(HashMap m : exp1){
-			if(m.get("user").toString().equals(user)){
+			if(m.get("user").toString().equals(user) && m.get("exp1").toString().equals(rankList.get(0).get("exp1").toString())){
 				rank.put("exp1", m.get("rank").toString());
 				break;
 			}
 		}
 		for(HashMap m : exp2){
-			if(m.get("user").toString().equals(user)){
+			if(m.get("user").toString().equals(user) && m.get("exp2").toString().equals(rankList.get(0).get("exp2").toString())){
 				rank.put("exp2", m.get("rank").toString());
 				break;
 			}
 		}
 		for(HashMap m : lang){
-			if(m.get("user").toString().equals(user)){
+			if(m.get("user").toString().equals(user) && m.get("lang").toString().equals(rankList.get(0).get("lang").toString())){
 				rank.put("lang", m.get("rank").toString());
 				if(m.get("lang").toString().equals("0")){
 					rank.put("lang", "0");
@@ -205,7 +255,7 @@ public class RankService {
 			}
 		}
 		for(HashMap m : sum){
-			if(m.get("user").toString().equals(user)){
+			if(m.get("user").toString().equals(user) && m.get("sum").toString().equals(rankList.get(0).get("sum").toString())){
 				rank.put("sum", m.get("rank").toString());
 				break;
 			}

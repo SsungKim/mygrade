@@ -30,6 +30,7 @@
 <script src="/js/common.js"></script>
 <script src="/js/ajax-form.js"></script>
 <script src="/js/calendar.js"></script>
+<script src="/js/printThis/printThis.js"></script>
 <script>
 	$(document).ready(function(){
 	     

@@ -31,7 +31,7 @@
 								<option ${sType == '학과' ? 'selected' : '' }>학과</option>
                         	</select>
                             <input class="sg_search" type="text" placeholder="학교나 학과를 검색해주세요" id="searchTxt" maxlength="35" value="${word }">
-                            <div class="img" onclick="search2()">
+                            <div class="img" onclick="search()">
                                 <img src="/img/main/search.png">
                             </div>
                         </div>
@@ -120,20 +120,20 @@
     
     <script>
 		// 특수문자 안되게 처리
-		$(document).ready(function(){
-			$("input[id=searchTxt]").keyup(function(event){ 
-				if (!(event.keyCode >=37 && event.keyCode<=40)) {
-					var inputVal = $(this).val();
-					$(this).val(inputVal.replace(/[^a-z0-9가-힣 ]/gi,''));
-				}
-			});
-			$("input[id=searchTxt2]").keyup(function(event){ 
-				if (!(event.keyCode >=37 && event.keyCode<=40)) {
-					var inputVal = $(this).val();
-					$(this).val(inputVal.replace(/[^a-z0-9가-힣 ]/gi,''));
-				}
-			});
-		});
+// 		$(document).ready(function(){
+// 			$("input[id=searchTxt]").keyup(function(event){ 
+// 				if (!(event.keyCode >=37 && event.keyCode<=40)) {
+// 					var inputVal = $(this).val();
+// 					$(this).val(inputVal.replace(/[^a-z0-9가-힣 ]/gi,''));
+// 				}
+// 			});
+// 			$("input[id=searchTxt2]").keyup(function(event){ 
+// 				if (!(event.keyCode >=37 && event.keyCode<=40)) {
+// 					var inputVal = $(this).val();
+// 					$(this).val(inputVal.replace(/[^a-z0-9가-힣 ]/gi,''));
+// 				}
+// 			});
+// 		});
 		// 검색
     	function search(){
 			var searchType = $("#searchType").val();
@@ -149,7 +149,7 @@
     	// 검색창에서 엔터
     	$("#searchTxt").keydown(function(evt){
     		if(evt.keyCode == 13){
-    			search2();
+    			search();
     		}
     	});
     	// 항목보기
