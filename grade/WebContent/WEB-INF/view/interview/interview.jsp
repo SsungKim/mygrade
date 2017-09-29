@@ -24,18 +24,11 @@
 					<div class="logo">
 						<img src="/img/logo.png" onclick="location.href='/'">
 					</div>
-					<div class="all_view">
-						<span onclick="location.href='/interview'">전체보기</span>
-					</div>
-					<div class="detail_search_wrap">
-						<div class="search_wrap">
-							<select id="searchType">
-								<option ${sType == '학교' ? 'selected' : '' }>학교</option>
-								<option ${sType == '학과' ? 'selected' : '' }>학과</option>
-							</select>
-							<input class="detail_search" type="text" placeholder="상세검색" id="searchTxt" value="${word }">
-							<img class="search_img" src="/img/main/search.png" onclick="search()">
+					<div class="main_search_wrap">
+						<div class="all_view">
+							<span onclick="location.href='/interview'">전체보기</span>
 						</div>
+						<c:import url="/WEB-INF/view/main/searchWrap.jsp"/>
 					</div>
 				</div>
 				<div class="detail_item_wrap">
@@ -173,21 +166,39 @@
     	}
     	// 검색
     	function search(){
-    		var searchType = $("#searchType").val();
     		var searchTxt = $("#searchTxt").val();
-    		if(searchTxt.startsWith(" ")){
-    			alert("검색어는 공백으로 시작할 수 없습니다.");
-    		} else if(searchTxt == ""){
+    		var searchTxt2 = $("#searchTxt2").val();
+    		if(searchTxt == "" && searchTxt2 == ""){
     			alert("검색어를 입력해주세요.");
-    		} else if(searchTxt.length == 1) {
+    			return;
+    		}
+    		if(searchTxt.length == 1 || searchTxt2.length == 1){
     			alert("2글자 이상으로 검색해주세요.");
-    		} else {
-	    		location.href='/interview/search/'+searchType+"/"+searchTxt;
+    			return;
+    		}
+    		if(searchTxt != "" && searchTxt2 != ""){
+    			location.href="/interview/search/both/"+searchTxt+"/"+searchTxt2;
+    			return;
+    		}
+    		if(searchTxt != "" && searchTxt2 == ""){
+    			location.href="/interview/search/school/"+searchTxt;
+    			return;
+    		}
+    		if(searchTxt == "" && searchTxt2 != ""){
+    			location.href="/interview/search/subject/"+searchTxt2;
+    			return;
     		}
     	}
     	// 검색창에서 엔터
     	$(document).ready(function(){
-    		$("#searchTxt").keydown(function(e){
+    		$("#searchTxt").keyup(function(e){
+    			if(e.keyCode == 13){
+    				search();
+    			}
+    		});
+    	});
+    	$(document).ready(function(){
+    		$("#searchTxt2").keyup(function(e){
     			if(e.keyCode == 13){
     				search();
     			}

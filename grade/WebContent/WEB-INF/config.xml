@@ -71,8 +71,8 @@
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="smtp.cafe24.com" />
 		<property name="port" value="587" />
-		<property name="username" value="admin@gogosky.co.kr" />
-		<property name="password" value="mrrgo2016@" />
+		<property name="username" value="no-reply@mygrade.co.kr" />
+		<property name="password" value="grade2016@" />
 		<property name="javaMailProperties">
 			<props>
 				<prop key="mail.smtp.starttls.enable">true</prop>

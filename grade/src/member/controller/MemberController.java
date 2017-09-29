@@ -386,8 +386,10 @@ public class MemberController {
 			}
 			buyList.set(i, m);
 		}
-		if(buyList.get(0) == null)
-			buyList.remove(0);
+		if(buyList.size() > 0){
+			if(buyList.get(0) == null)
+				buyList.remove(0);
+		}
 		mav.addObject("buyList", buyList);
 		mav = pageInner(mav, 1, buyList);
 		mav.addObject("type", "buy");
@@ -459,8 +461,10 @@ public class MemberController {
 			}
 			sellList.set(i, m);
 		}
-		if(sellList.get(0) == null)
-			sellList.remove(0);
+		if(sellList.size() > 0){
+			if(sellList.get(0) == null)
+				sellList.remove(0);
+		}
 		mav.addObject("sellList", sellList);
 		mav = pageInner(mav, 1, sellList);
 		mav.addObject("type", "sell");

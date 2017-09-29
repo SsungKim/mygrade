@@ -150,9 +150,7 @@
                             <div class="img">
                                 <img src="/img/student_view/info_tit.png">
                             </div>
-                            <div class="txt">
-                                면접방법
-                            </div>
+                            <div class="txt">면접방법</div>
                         </div>
                         <div class="detail_info_wrap">
                             <div class="detail_info">

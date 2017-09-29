@@ -10,14 +10,15 @@ import org.springframework.stereotype.*;
 public class SearchService {
 	@Autowired
 	SqlSessionFactory fac;
-
-	// 검색
-	public List<HashMap> searchList(List<HashMap> wordList, int page) {
+	
+	// search both
+	public List<HashMap> selectBoth(List<HashMap> wordList, String subject, int page) {
 		SqlSession ss = fac.openSession();
 		List<HashMap> li = new Vector<>();
 		for(HashMap m : wordList){
 			HashMap map = new HashMap<>();
 			map.put("word", "%"+m.get("num")+"%");
+			map.put("subject", "%"+subject+"%");
 			map.put("page", (page-1)*12);
 //			List<HashMap> list = ss.selectList("search.searchrecord", map);
 			List<HashMap> list = ss.selectList("search.searchinterview", map);
@@ -42,27 +43,113 @@ public class SearchService {
 		ss.close();
 		return li;
 	}
-
+	
 	// 검색 페이지
-	public int searchPage(List<HashMap> wordList) {
+	public int searchPageBoth(List<HashMap> wordList, String subject) {
 		SqlSession ss = fac.openSession();
 		int count = 0;
 		for(HashMap m : wordList){
+			HashMap map = new HashMap();
+			map.put("word", "%"+m.get("num")+"%");
+			map.put("subject", "%"+subject+"%");
 //			int n = ss.selectOne("search.countrecord", "%"+m.get("num")+"%");
-			int n = ss.selectOne("search.countinterview", "%"+m.get("num")+"%");
+			int n = ss.selectOne("search.countinterview", map);
 			count += n;
 		}
 		ss.close();
 		return count%12 == 0 ? count/12 : count/12+1;
 	}
 
+	// 검색
+	public List<HashMap> selectSchool(List<HashMap> wordList, int page) {
+		SqlSession ss = fac.openSession();
+		List<HashMap> li = new Vector<>();
+		for(HashMap m : wordList){
+			HashMap map = new HashMap<>();
+			map.put("word", "%"+m.get("num")+"%");
+			map.put("page", (page-1)*12);
+//			List<HashMap> list = ss.selectList("search.searchrecord", map);
+			List<HashMap> list = ss.selectList("search.searchinterview2", map);
+			for(int i=0; i<list.size(); i++){
+				HashMap m2 = list.get(i);
+				HashMap mm = ss.selectOne("school.word2", m2.get("school").toString());
+				m2.put("schoolName", mm.get("name"));
+				String content1 = m2.get("content1").toString();
+				String content2 = m2.get("content2").toString();
+				content1 = content1.replace(">", "&gt");
+				content1 = content1.replace("<", "&lt");
+				content2 = content2.replace(">", "&gt");
+				content2 = content2.replace("<", "&lt");
+				content1 = content1.replace("&ltbr&gt", "&nbsp;");
+				content2 = content2.replace("&ltbr&gt", "&nbsp;");
+				m2.put("content1", content1);
+				m2.put("content2", content2);
+				list.set(i, m2);
+				li.add(list.get(i));
+			}
+		}
+		ss.close();
+		return li;
+	}
+
+	// 검색 페이지
+	public int searchPageSchool(List<HashMap> wordList) {
+		SqlSession ss = fac.openSession();
+		int count = 0;
+		for(HashMap m : wordList){
+//			int n = ss.selectOne("search.countrecord", "%"+m.get("num")+"%");
+			int n = ss.selectOne("search.countinterview2", "%"+m.get("num")+"%");
+			count += n;
+		}
+		ss.close();
+		return count%12 == 0 ? count/12 : count/12+1;
+	}
+
+	// 검색
+	public List<HashMap> selectSubject(String subject, int page) {
+		SqlSession ss = fac.openSession();
+		HashMap map = new HashMap();
+		map.put("subject", "%"+subject+"%");
+		map.put("page", (page-1)*12);
+		List<HashMap> li = new Vector<>();
+		List<HashMap> list = ss.selectList("search.searchinterview3", map);
+		for(int i=0; i<list.size(); i++){
+			HashMap m2 = list.get(i);
+			HashMap mm = ss.selectOne("school.word2", m2.get("school").toString());
+			m2.put("schoolName", mm.get("name"));
+			String content1 = m2.get("content1").toString();
+			String content2 = m2.get("content2").toString();
+			content1 = content1.replace(">", "&gt");
+			content1 = content1.replace("<", "&lt");
+			content2 = content2.replace(">", "&gt");
+			content2 = content2.replace("<", "&lt");
+			content1 = content1.replace("&ltbr&gt", "&nbsp;");
+			content2 = content2.replace("&ltbr&gt", "&nbsp;");
+			m2.put("content1", content1);
+			m2.put("content2", content2);
+			list.set(i, m2);
+			li.add(list.get(i));
+		}
+		ss.close();
+		return li;
+	}
+	
+	// 검색 페이지
+	public int searchPageSubject(String subject) {
+		SqlSession ss = fac.openSession();
+		int count = ss.selectOne("search.countinterview3", "%"+subject+"%");
+		ss.close();
+		return count%12 == 0 ? count/12 : count/12+1;
+	}
+	
 	// 상세검색
-	public List<HashMap> searchList2(List<HashMap> wordList, int page, String type) {
+	public List<HashMap> searchList2Both(List<HashMap> wordList, String subject, int page, String type) {
 		SqlSession ss = fac.openSession();
 		HashMap map = new HashMap();
 		List<HashMap> li = new Vector<>();
 		for(HashMap m : wordList){
 			map.put("word", "%"+m.get("num")+"%");
+			map.put("subject", "%"+subject+"%");
 			map.put("page", (page-1)*12);
 			List<HashMap> list = ss.selectList("search.search"+type, map);
 			for(int i=0; i<list.size(); i++){
@@ -88,15 +175,98 @@ public class SearchService {
 	}
 
 	// 상세검색 페이지
-	public int searchPage2(List<HashMap> wordList, String type) {
+	public int searchPage2Both(List<HashMap> wordList, String subject, String type) {
 		SqlSession ss = fac.openSession();
 		int count = 0;
 		for(HashMap m : wordList){
 			HashMap<String, String> map = new HashMap<>();
 			map.put("word", "%"+m.get("num")+"%");
+			map.put("subject", "%"+subject+"%");
 			int n = ss.selectOne("search.count"+type, map);
 			count += n;
 		}
+		ss.close();
+		return count%12 == 0 ? count/12 : count/12+1;
+	}
+
+	// 상세검색
+	public List<HashMap> searchList2School(List<HashMap> wordList, int page, String type) {
+		SqlSession ss = fac.openSession();
+		HashMap map = new HashMap();
+		List<HashMap> li = new Vector<>();
+		for(HashMap m : wordList){
+			map.put("word", "%"+m.get("num")+"%");
+			map.put("page", (page-1)*12);
+			List<HashMap> list = ss.selectList("search.search"+type+"2", map);
+			for(int i=0; i<list.size(); i++){
+				HashMap m2 = list.get(i);
+				HashMap mm = ss.selectOne("school.word2", m2.get("school").toString());
+				m2.put("schoolName", mm.get("name"));
+				String content1 = m2.get("content1").toString();
+				String content2 = m2.get("content2").toString();
+				content1 = content1.replace(">", "&gt");
+				content1 = content1.replace("<", "&lt");
+				content2 = content2.replace(">", "&gt");
+				content2 = content2.replace("<", "&lt");
+				content1 = content1.replace("&ltbr&gt", "&nbsp;");
+				content2 = content2.replace("&ltbr&gt", "&nbsp;");
+				m2.put("content1", content1);
+				m2.put("content2", content2);
+				list.set(i, m2);
+				li.add(list.get(i));
+			}
+		}
+		ss.close();
+		return li;
+	}
+
+	// 상세검색 페이지
+	public int searchPage2School(List<HashMap> wordList, String type) {
+		SqlSession ss = fac.openSession();
+		int count = 0;
+		for(HashMap m : wordList){
+			HashMap<String, String> map = new HashMap<>();
+			map.put("word", "%"+m.get("num")+"%");
+			int n = ss.selectOne("search.count"+type+"2", map);
+			count += n;
+		}
+		ss.close();
+		return count%12 == 0 ? count/12 : count/12+1;
+	}
+
+	// 상세검색
+	public List<HashMap> searchList2Subject(String subject, int page, String type) {
+		SqlSession ss = fac.openSession();
+		HashMap map = new HashMap();
+		map.put("subject", "%"+subject+"%");
+		map.put("page", (page-1)*12);
+		List<HashMap> li = new Vector<>();
+		List<HashMap> list = ss.selectList("search.search"+type+"3", map);
+		for(int i=0; i<list.size(); i++){
+			HashMap m2 = list.get(i);
+			HashMap mm = ss.selectOne("school.word2", m2.get("school").toString());
+			m2.put("schoolName", mm.get("name"));
+			String content1 = m2.get("content1").toString();
+			String content2 = m2.get("content2").toString();
+			content1 = content1.replace(">", "&gt");
+			content1 = content1.replace("<", "&lt");
+			content2 = content2.replace(">", "&gt");
+			content2 = content2.replace("<", "&lt");
+			content1 = content1.replace("&ltbr&gt", "&nbsp;");
+			content2 = content2.replace("&ltbr&gt", "&nbsp;");
+			m2.put("content1", content1);
+			m2.put("content2", content2);
+			list.set(i, m2);
+			li.add(list.get(i));
+		}
+		ss.close();
+		return li;
+	}
+	
+	// 상세검색 페이지
+	public int searchPage2Subject(String subject, String type) {
+		SqlSession ss = fac.openSession();
+		int count = ss.selectOne("search.count"+type+"3", "%"+subject+"%");
 		ss.close();
 		return count%12 == 0 ? count/12 : count/12+1;
 	}

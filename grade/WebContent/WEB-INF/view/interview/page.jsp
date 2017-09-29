@@ -83,13 +83,24 @@
 <script>
 	// 페이지 이동
 	function page(num){
-		var searchType = $("#searchType").val();
+		var searchType = "both";
 		var searchTxt = $("#searchTxt").val();
-		if(searchTxt != ""){
-			location.href='/interview/search/page/'+searchType+"/"+searchTxt+"/"+num;
-		} else {
+		var searchTxt2 = $("#searchTxt2").val();
+		if(searchTxt == "" && searchTxt2 == ""){
 			location.href="/interview/page/"+num;
+			return;
 		}
+		if(searchTxt.length == 1 || searchTxt2.length == 1){
+			alert("2글자 이상으로 검색해주세요.");
+			return;
+		}
+		if(searchTxt != "" && searchTxt2 == ""){
+			searchType = "school";
+		}
+		if(searchTxt == "" && searchTxt2 != ""){
+			searchType = "subject";
+		}
+		location.href='/interview/search/page/'+searchType+"/"+searchType+"/"+searchTxt+"/"+num;
 	}
 	// 화살표 보이기
 	$(document).ready(function(){

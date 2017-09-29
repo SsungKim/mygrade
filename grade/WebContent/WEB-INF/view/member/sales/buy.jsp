@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!doctype html>
-<html oncontextmenu='return false' ondragstart='return false' onselectstart='return false'>
+<html>
     <head>
         <c:import url="/WEB-INF/view/main/head.jsp"/>
     </head>
@@ -33,31 +33,33 @@
 	                    </section>
 	                    <section class="section01">
 	                        <div class="bbs_wrap">
-	                            <div class="bbs">
-	                                <div class="tit bbs_buy">카테고리</div>
-	                                <div class="tit bbs_buy">아이디</div>
-	                                <div class="tit bbs_buy">학교</div>
-	                                <div class="tit bbs_buy">학과</div>
-	                                <div class="tit bbs_buy">사용포인트</div>
-	                                <div class="tit bbs_buy">사용일</div>
-	                            </div>
-	                            <c:choose>
-	                            	<c:when test="${buyList.size()>0 }">
-			                            <c:forEach var="t" items="${buyList }">
-				                            <div class="bbs">
-				                                <div class="txt bbs_buy">${t.item }</div>
-				                                <div class="txt bbs_buy">${t.id }</div>
-				                                <div class="txt bbs_buy">${t.schoolName }</div>
-				                                <div class="txt bbs_buy">${t.subject }</div>
-				                                <div class="txt bbs_buy">${t.point }</div>
-				                                <div class="txt bbs_buy">${t.day }</div>
-				                            </div>
-			                            </c:forEach>
-	                            	</c:when>
-	                            	<c:otherwise>
-	                            		<div class="bbs_txt">구매내역이 없습니다.</div>
-	                            	</c:otherwise>
-	                            </c:choose>
+                                <div class="bbs_inner">
+                                    <div class="bbs">
+                                        <div class="tit bbs_buy">카테고리</div>
+                                        <div class="tit bbs_buy">아이디</div>
+                                        <div class="tit bbs_buy">학교</div>
+                                        <div class="tit bbs_buy">학과</div>
+                                        <div class="tit bbs_buy">사용포인트</div>
+                                        <div class="tit bbs_buy">사용일</div>
+                                    </div>
+                                    <c:choose>
+                                        <c:when test="${buyList.size()>0 }">
+                                            <c:forEach var="t" items="${buyList }">
+                                                <div class="bbs">
+                                                    <div class="txt bbs_buy">${t.item }</div>
+                                                    <div class="txt bbs_buy">${t.id }</div>
+                                                    <div class="txt bbs_buy">${t.schoolName }</div>
+                                                    <div class="txt bbs_buy">${t.subject }</div>
+                                                    <div class="txt bbs_buy">${t.point }</div>
+                                                    <div class="txt bbs_buy">${t.day }</div>
+                                                </div>
+                                            </c:forEach>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <div class="bbs_txt">구매내역이 없습니다.</div>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </div>
 	                        </div>
                             <div class="page_select_wrap">
                                 <c:import url="/WEB-INF/view/member/sales/page.jsp"/>

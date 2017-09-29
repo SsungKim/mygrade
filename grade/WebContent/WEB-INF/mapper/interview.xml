@@ -36,14 +36,32 @@
 	<update id="pointCommentUpdate" parameterType="java.util.HashMap">
 		update interviewList set point = point + #{point}, comment = comment + 1 where auto = #{interviewNum}
 	</update>
-	<select id="interviewList2" resultType="java.util.HashMap">
+	<select id="interviewList2" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 		select * from interviewList a, memberList b where a.id = b.id  and (b.admin = '판매자' or b.admin = '메인관리자')
-		and (a.school like #{word} or a.subject like #{word})
+		and (a.school like #{word} and a.subject like #{subject})
+		order by a.auto desc limit 12 offset #{page}
+	</select>
+	<select id="interviewList3" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from interviewList a, memberList b where a.id = b.id  and (b.admin = '판매자' or b.admin = '메인관리자')
+		and a.school like #{word}
+		order by a.auto desc limit 12 offset #{page}
+	</select>
+	<select id="interviewList4" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from interviewList a, memberList b where a.id = b.id  and (b.admin = '판매자' or b.admin = '메인관리자')
+		and a.subject like #{subject}
 		order by a.auto desc limit 12 offset #{page}
 	</select>
 	<select id="count2" resultType="java.lang.Integer">
 		select count(*) from interviewList a, memberList b where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
-		and (a.school like #{word} or a.subject like #{word})
+		and (a.school like #{word} and a.subject like #{subject})
+	</select> 
+	<select id="count3" resultType="java.lang.Integer">
+		select count(*) from interviewList a, memberList b where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
+		and a.school like #{word}
+	</select> 
+	<select id="count4" resultType="java.lang.Integer">
+		select count(*) from interviewList a, memberList b where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
+		and a.subject like #{word}
 	</select> 
 	<update id="modify" parameterType="java.util.HashMap">
 		update interviewList set addr = #{addr}, school = #{school}, subject = #{subject}, type = #{type}, admission = #{admission}, 

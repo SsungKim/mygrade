@@ -25,46 +25,9 @@
                             <img src="/img/logo.png" onclick="location.href='/'">
                         </div>
 <%--                         <div class="all_view"><span onclick="location.href='/search/${word }'">전체보기</span></div> --%>
-                        <div class="sg_search_wrap">
-                        	<select id="searchType">
-                        		<option ${sType == '학교' ? 'selected' : '' }>학교</option>
-								<option ${sType == '학과' ? 'selected' : '' }>학과</option>
-                        	</select>
-                            <input class="sg_search" type="text" placeholder="학교나 학과를 검색해주세요" id="searchTxt" maxlength="35" value="${word }">
-                            <div class="img" onclick="search()">
-                                <img src="/img/main/search.png">
-                            </div>
+                        <div class="main_search_wrap">
+                        	<c:import url="/WEB-INF/view/main/searchWrap.jsp"/>
                         </div>
-<%--                         <c:if test="${login.id == 'admin' }"> --%>
-<!-- 	                        <div class="detail_search_wrap"> -->
-<!-- 	                            <select class="detail detail_select" id="location"> -->
-<!-- 	                                <option value="choose">고등학교지역</option> -->
-<%-- 	                                <option value="서울" ${location eq '서울' ? 'selected' : '' }>서울</option> --%>
-<%-- 	                                <option value="인천" ${location eq '인천' ? 'selected' : '' }>인천</option> --%>
-<%-- 	                                <option value="세종" ${location eq '세종' ? 'selected' : '' }>세종</option> --%>
-<%-- 	                                <option value="대전" ${location eq '대전' ? 'selected' : '' }>대전</option> --%>
-<%-- 	                                <option value="대구" ${location eq '대구' ? 'selected' : '' }>대구</option> --%>
-<%-- 	                                <option value="광주" ${location eq '광주' ? 'selected' : '' }>광주</option> --%>
-<%-- 	                                <option value="울산" ${location eq '울산' ? 'selected' : '' }>울산</option> --%>
-<%-- 	                                <option value="부산" ${location eq '부산' ? 'selected' : '' }>부산</option> --%>
-<%-- 	                                <option value="경기도" ${location eq '경기도' ? 'selected' : '' }>경기도</option> --%>
-<%-- 	                                <option value="강원도" ${location eq '강원도' ? 'selected' : '' }>강원도</option> --%>
-<%-- 	                                <option value="충청도" ${location eq '충청도' ? 'selected' : '' }>충청도</option> --%>
-<%-- 	                                <option value="전라도" ${location eq '전라도' ? 'selected' : '' }>전라도</option> --%>
-<%-- 	                                <option value="경상도" ${location eq '경상도' ? 'selected' : '' }>경상도</option> --%>
-<%-- 	                                <option value="제주도" ${location eq '제주도' ? 'selected' : '' }>제주도</option> --%>
-<!-- 	                            </select> -->
-<!-- 	                            <select class="detail detail_select" id="passCount"> -->
-<!-- 	                                <option value="choose">전체</option> -->
-<%-- 	                                <option ${passCount eq '현역' ? 'selected' : '' }>현역</option> --%>
-<%-- 	                                <option ${passCount eq '재수' ? 'selected' : '' }>재수</option> --%>
-<!-- 	                            </select> -->
-<!-- 	                            <div class="detail search_wrap"> -->
-<%-- 	                                <input class="detail_search" type="text" placeholder="고등학교검색" id="searchTxt2" maxlength="15" value="${word2 }"> --%>
-<!-- 	                                <img class="search_img" src="/img/main/search.png" onclick="search2()"> -->
-<!-- 	                            </div> -->
-<!-- 	                        </div> -->
-<%--                         </c:if> --%>
                     </div>
                     <div class="search_gnb_wrap">
                         <ul>
@@ -136,18 +99,36 @@
 // 		});
 		// 검색
     	function search(){
-			var searchType = $("#searchType").val();
     		var searchTxt = $("#searchTxt").val();
-    		if(searchTxt == ""){
+    		var searchTxt2 = $("#searchTxt2").val();
+    		if(searchTxt == "" && searchTxt2 == ""){
     			alert("검색어를 입력해주세요.");
-    		} else if(searchTxt.length == 1) {
+    			return;
+    		}
+    		if(searchTxt.length == 1 || searchTxt2.length == 1){
     			alert("2글자 이상으로 검색해주세요.");
-    		} else {
-	    		location.href="/search/"+searchType+"/"+searchTxt;
+    			return;
+    		}
+    		if(searchTxt != "" && searchTxt2 != ""){
+    			location.href="/search/both/"+searchTxt+"/"+searchTxt2;
+    			return;
+    		}
+    		if(searchTxt != "" && searchTxt2 == ""){
+    			location.href="/search/school/"+searchTxt;
+    			return;
+    		}
+    		if(searchTxt == "" && searchTxt2 != ""){
+    			location.href="/search/subject/"+searchTxt2;
+    			return;
     		}
     	}
     	// 검색창에서 엔터
     	$("#searchTxt").keydown(function(evt){
+    		if(evt.keyCode == 13){
+    			search();
+    		}
+    	});
+    	$("#searchTxt2").keydown(function(evt){
     		if(evt.keyCode == 13){
     			search();
     		}
@@ -161,27 +142,6 @@
     		}
     		location.href="/"+type+"/view/"+num;
     	}
-    	// 상세검색
-    	function search2(){
-    		var searchType = $("#searchType").val();
-    		var searchTxt = $("#searchTxt").val();
-//     		var searchTxt2 = $("#searchTxt2").val() == "" ? "00" : $("#searchTxt2").val();
-//     		var loc = $("#location").val();
-//     		var passCount = $("#passCount").val();
-    		if(searchTxt == ""){
-    			alert("검색어를 입력해주세요.");
-    		} else if(searchTxt.length == 1) {
-    			alert("2글자 이상으로 검색해주세요.");
-    		} else {
-    			location.href="/search/"+searchType+"/"+searchTxt+"/${searchType }";
-    		}
-    	}
-    	// 상세검색창에서 엔터
-    	$("#searchTxt2").keydown(function(e){
-    		if(e.keyCode == 13){
-    			search2();
-    		}
-    	});
     	// 보기 항목 선택
     	function viewType(type){
     		var searchType = $("#searchType").val();

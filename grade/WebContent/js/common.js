@@ -87,62 +87,62 @@ $(document).ready(function(){
     });
 });
 
-$(document).ready(function(){
-                 
-    var sn = 0;
-
-    $(".item_arrow_next").click(function(){
-        sn++;
-        $(".item_slider_inner").stop().animate({
-            left: -218 * sn
-        });
-    });
-
-    $(".item_arrow_prev").click(function(){
-        sn--;
-        $(".item_slider_inner").stop().animate({
-            left: -218 * sn
-        });
-    });
-});
-
-$(document).ready(function(){
-                 
-    var sn = 0;
-
-    $(".item_arrow_next1").click(function(){
-        sn++;
-        $(".item_slider_inner1").stop().animate({
-            left: -218 * sn
-        });
-    });
-
-    $(".item_arrow_prev1").click(function(){
-        sn--;
-        $(".item_slider_inner1").stop().animate({
-            left: -218 * sn
-        });
-    });
-});
-
-$(document).ready(function(){
-                 
-    var sn = 0;
-
-    $(".item_arrow_next2").click(function(){
-        sn++;
-        $(".item_slider_inner2").stop().animate({
-            left: -218 * sn
-        });
-    });
-
-    $(".item_arrow_prev2").click(function(){
-        sn--;
-        $(".item_slider_inner2").stop().animate({
-            left: -218 * sn
-        });
-    });
-});
+//$(document).ready(function(){
+//                 
+//    var sn = 0;
+//
+//    $(".item_arrow_next").click(function(){
+//        sn++;
+//        $(".item_slider_inner").stop().animate({
+//            left: -218 * sn
+//        });
+//    });
+//
+//    $(".item_arrow_prev").click(function(){
+//        sn--;
+//        $(".item_slider_inner").stop().animate({
+//            left: -218 * sn
+//        });
+//    });
+//});
+//
+//$(document).ready(function(){
+//                 
+//    var sn = 0;
+//
+//    $(".item_arrow_next1").click(function(){
+//        sn++;
+//        $(".item_slider_inner1").stop().animate({
+//            left: -218 * sn
+//        });
+//    });
+//
+//    $(".item_arrow_prev1").click(function(){
+//        sn--;
+//        $(".item_slider_inner1").stop().animate({
+//            left: -218 * sn
+//        });
+//    });
+//});
+//
+//$(document).ready(function(){
+//                 
+//    var sn = 0;
+//
+//    $(".item_arrow_next2").click(function(){
+//        sn++;
+//        $(".item_slider_inner2").stop().animate({
+//            left: -218 * sn
+//        });
+//    });
+//
+//    $(".item_arrow_prev2").click(function(){
+//        sn--;
+//        $(".item_slider_inner2").stop().animate({
+//            left: -218 * sn
+//        });
+//    });
+//});
 
 $(document).ready(function(){
     

@@ -33,29 +33,31 @@
 	                    </section>
 	                    <section class="section01">
 	                        <div class="bbs_wrap">
-	                            <div class="bbs">
-	                                <div class="tit bbs_sell">카테고리</div>
-	                                <div class="tit bbs_sell">학교</div>
-	                                <div class="tit bbs_sell">학과</div>
-	                                <div class="tit bbs_sell">획득포인트</div>
-	                                <div class="tit bbs_sell">획득일</div>
-	                            </div>
-	                            <c:choose>
-	                            	<c:when test="${sellList.size()>0 }">
-			                            <c:forEach var="t" items="${sellList }">
-				                            <div class="bbs">
-				                                <div class="txt bbs_sell">${t.item }</div>
-				                                <div class="txt bbs_sell">${t.schoolName }</div>
-				                                <div class="txt bbs_sell">${t.subject }</div>
-				                                <div class="txt bbs_sell">${t.point }</div>
-				                                <div class="txt bbs_sell">${t.day }</div>
-				                            </div>
-			                            </c:forEach>
-	                            	</c:when>
-	                            	<c:otherwise>
-	                            		<div class="bbs_txt">판매내역이 없습니다.</div>
-	                            	</c:otherwise>
-	                            </c:choose>
+                                <div class="bbs_inner">
+                                    <div class="bbs">
+                                        <div class="tit bbs_sell">카테고리</div>
+                                        <div class="tit bbs_sell">학교</div>
+                                        <div class="tit bbs_sell">학과</div>
+                                        <div class="tit bbs_sell">획득포인트</div>
+                                        <div class="tit bbs_sell">획득일</div>
+                                    </div>
+                                    <c:choose>
+                                        <c:when test="${sellList.size()>0 }">
+                                            <c:forEach var="t" items="${sellList }">
+                                                <div class="bbs">
+                                                    <div class="txt bbs_sell">${t.item }</div>
+                                                    <div class="txt bbs_sell">${t.schoolName }</div>
+                                                    <div class="txt bbs_sell">${t.subject }</div>
+                                                    <div class="txt bbs_sell">${t.point }</div>
+                                                    <div class="txt bbs_sell">${t.day }</div>
+                                                </div>
+                                            </c:forEach>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <div class="bbs_txt">판매내역이 없습니다.</div>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </div>
 	                        </div>
                             <div class="page_select_wrap">
                                 <c:import url="/WEB-INF/view/member/sales/page.jsp"/>

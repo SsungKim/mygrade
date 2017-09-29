@@ -5,7 +5,7 @@
 
 
 <!doctype html>
-<html oncontextmenu='return false' ondragstart='return false' onselectstart='return false'>
+<html>
     <head>
     	<c:import url="/WEB-INF/view/main/head.jsp"/>
     </head>
@@ -116,6 +116,50 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="table_wrap1">
+                                <div class="content color1">구분</div>
+                                <div class="content color2 pd10">원점수</div>
+                                <div class="content color1">국어</div>
+                                <div class="content color2">
+                                    <div class="box_txt">${view.kor }</div>
+                                </div>
+                                <div class="content color1 sel_wrap">
+                                    <div class="box_txt">${view.mathType }</div>
+                                </div>
+                                <div class="content color2">
+                                    <div class="box_txt">${view.math }</div>
+                                </div>
+                                <div class="content color1">영어</div>
+                                <div class="content color2">
+                                    <div class="box_txt">${view.eng }</div>
+                                </div>
+                                <div class="content color1">한국사</div>
+                                <div class="content color2">
+                                    <div class="box_txt">${view.his }</div>
+                                </div>
+                                <div class="content1 color1 sel_wrap">
+                                    <div class="box_txt">${view.expType }</div>
+                                </div>
+                                <div class="content color1 sel_wrap">
+                                    <div class="box_txt">${view.expType1 }</div>
+                                </div>
+                                <div class="content color2">
+                                    <div class="box_txt">${view.exp1 }</div>
+                                </div>
+                                <div class="content color1 sel_wrap">
+                                    <div class="box_txt">${view.expType2 }</div>
+                                </div>
+                                <div class="content color2">
+                                    <div class="box_txt">${view.exp2 }</div>
+                                </div>
+                                <div class="content2 color1">제2외국어</div>
+                                <div class="content2 color1 sel_wrap">
+                                    <div class="box_txt">${view.langType }</div>
+                                </div>
+                                <div class="content color2">
+                                    <div class="box_txt">${view.lang }</div>
                                 </div>
                             </div>
                         </div>
@@ -325,6 +369,143 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="table_wrap2">
+                            <div class="content color1">구분</div>
+                            <div class="content color2 pd10">원점수</div>
+                            <div class="content color2 pd10">등수</div>
+                            <div class="content color2 pd10">백분위</div>
+                            <div class="content color2 pd10">응시자</div>
+                            <div class="content color1">국어</div>
+                            <div class="content color2">
+                                <div class="box_txt">${view.kor }</div>
+                            </div>
+                            <div class="content color2">
+                                <div class="box_txt">${rank.kor }</div>
+                            </div>
+                            <div class="content color2">
+                                <div class="box_txt">
+									<fmt:formatNumber pattern="#.##" value="${hund.kor }"/>
+								</div>
+                            </div>
+                            <div class="content color2">
+                                <div class="box_txt">${pk }</div>
+                            </div>
+                            <div class="content color1 sel_wrap">
+                                <div class="box_txt">${view.mathType }</div>
+                            </div>
+                            <div class="content color2">
+                                <div class="box_txt">${view.math }</div>
+                            </div>
+                            <div class="content color2">
+                                <div class="box_txt">${rank.math }</div>
+                            </div>
+                            <div class="content color2">
+                                <div class="box_txt">
+                                	<fmt:formatNumber pattern="#.##" value="${hund.math }"/>
+                                </div>
+                            </div>
+                            <div class="content color2">
+                                <div class="box_txt">${pm }</div>
+                            </div>
+                            <div class="content color1">영어</div>
+                            <div class="content color2">
+                                <div class="box_txt">${view.eng }</div>
+                            </div>
+                            <div class="content color2">
+                                <div class="box_txt">${rank.eng }</div>
+                            </div>
+                            <div class="content color2">
+                                <div class="box_txt">
+                                	<fmt:formatNumber pattern="#.##" value="${hund.eng }"/>
+                                </div>
+                            </div>
+                            <div class="content color2">
+                                <div class="box_txt">${pe }</div>
+                            </div>
+                            <div class="content color1">한국사</div>
+                            <div class="content color2">
+                                <div class="box_txt">${view.his }</div>
+                            </div>
+                            <div class="content color2">
+                                <div class="box_txt">${rank.his }</div>
+                            </div>
+                            <div class="content color2">
+                                <div class="box_txt">
+                                	<fmt:formatNumber pattern="#.##" value="${hund.his }"/>
+                                </div>
+                            </div>
+                            <div class="content color2">
+                                <div class="box_txt">${ph }</div>
+                            </div>
+                            <div class="content color1 sel_wrap">
+                                <div class="box_txt">${view.expType1 }</div>
+                            </div>
+                            <div class="content color2">
+                                <div class="box_txt">${view.exp1 }</div>
+                            </div>
+                            <div class="content color2">
+                                <div class="box_txt">${rank.exp1 }</div>
+                            </div>
+                            <div class="content color2">
+                                <div class="box_txt">
+                                	<fmt:formatNumber pattern="#.##" value="${hund.exp1 }"/>
+                                </div>
+                            </div>
+                            <div class="content color2">
+                                <div class="box_txt">${px1 }</div>
+                            </div>
+                            <div class="content color1 sel_wrap">
+                                <div class="box_txt">${view.expType2 }</div>
+                            </div>
+                            <div class="content color2">
+                                <div class="box_txt">${view.exp2 }</div>
+                            </div>
+                            <div class="content color2">
+                                <div class="box_txt">${rank.exp2 }</div>
+                            </div>
+                            <div class="content color2">
+                                <div class="box_txt">
+                                	<fmt:formatNumber pattern="#.##" value="${hund.exp2 }"/>
+                                </div>
+                            </div>
+                            <div class="content color2">
+                                <div class="box_txt">${px2 }</div>
+                            </div>
+                            <div class="content color1 sel_wrap">
+                                <div class="box_txt">${view.langType }</div>
+                            </div>
+                            <div class="content color2">
+                                <div class="box_txt">${view.lang }</div>
+                            </div>
+                            <div class="content color2">
+                                <div class="box_txt">${rank.lang }</div>
+                            </div>
+                            <div class="content color2">
+                                <div class="box_txt">
+                                	<fmt:formatNumber pattern="#.##" value="${hund.lang }"/>
+                                </div>
+                            </div>
+                            <div class="content color2">
+                                <div class="box_txt">${pf }</div>
+                            </div>
+                            <div class="last_contents">
+                                <div class="content color1">총점</div>
+                                <div class="content color2">
+                                    <div class="box_txt">${view.sum }</div>
+                                </div>
+                                <div class="content color2">
+                                    <div class="box_txt">${rank.sum }</div>
+                                </div>
+                                <div class="content color2">
+                                    <div class="box_txt">
+                                    	<fmt:formatNumber pattern="#.##" value="${hund.sum }"/>
+                                    </div>
+                                </div>
+                                <div class="content color2">
+                                    <div class="box_txt">${ps }</div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="rank_add_txt">※총점은 국어, 수학, 탐구영역의 합계입니다.</div>
                     </div>
                 </div>
@@ -343,7 +524,14 @@
     </body>
     
     <script>
-		// 프린트
+    	// 로그인 체크
+    	$(document).ready(function(){
+    		if(${login == null}){
+    			alert("세션이 만료되었습니다.\n로그인 페이지로 이동합니다.");
+    			return;
+    		}
+    	});
+   		// 프린트
 		function print(){
 			$("#printWrap").printThis({
 				importCSS : '/css/style.css'

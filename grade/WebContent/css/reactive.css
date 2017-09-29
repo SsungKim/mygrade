@@ -82,6 +82,9 @@
     .myinfo .section01 .info_wrap1 { width: 22.294%; margin-right: 3.243%; }
     .myinfo .section01 .info_wrap1 .inner { width: 86.36%; }
     
+    .myinfo03 .page_inner { width: 98%; }
+    .myinfo03 .section01 .item_wrap .item .item_slider_wrap { width: 621px; }
+    
     .intro01 .page_inner { width: 100%; }
     .intro01 .purchase { width: 98%; }
     .intro01 .infomation_wrap { width: 100%; }
@@ -102,14 +105,36 @@
     .exam_add .table_wrap .inner { width: 97.853%; }
     .exam_add .table_wrap .table .theader .tit_wrap .tit1 select { width: 90.54%; }
     .exam_add .table_wrap .table .tbody .tcontents .content input { width: 90.54%; }
+    
+    .exam_view .page_inner { width: 100%; }
+    .exam_view .infomation_wrap { width: 98%; padding-bottom: 5px; }
+    .exam_view .infomation_wrap .detail_info_wrap { width: calc( 100% - 209px); }
+    .exam_view .infomation_wrap .detail_info_wrap .info_contents { width: calc( 100% - 95px ); }
+    .exam_view .infomation_wrap .table_wrap .table .theader .tit_wrap .tit1 .in_txt { width: 75%; }
+    .exam_view .infomation_wrap .table_wrap .table .tbody .tcontents .content .in_txt { width: calc( 81% - 2px ); }
+    .exam_view .infomation_wrap1 { width: 98%; }
+    .exam_view .infomation_wrap1 .table_wrap .inner { width: 98%; }
+    .exam_view .exam_view_txt { width: 98%; margin: 18px auto 15px; }
+    .exam_view .sv_btn_wrap { width: 98%; margin: 20px auto 0; }
+    
+    .school_add .page_inner { width: 98%; }
+    .school_add .container .contents { width: 649px; margin: 0 auto; }
+    .school_add .container .contents .content:nth-child(3n-1) { margin: 0 0 15px 0; }
+    .school_add .container .contents .content:nth-child(2n) { margin-left: 53px; }
+    
+    .buy01 .page_inner { width: 100%; }
+    .buy01 .contents { width: 98%; margin: 0 auto; }
+    
+    .sell01 .page_inner { width: 100%; }
+    .sell01 .contents { width: 98%; margin: 0 auto; }
 }
 
 @media all and (max-width: 1000px) {
-    .main .main_item { width: 92.5%; }
+    .main .main_item { width: 98%; }
     .main .main_item .item { width: 24.2%; height: 0; padding-top: 30%; margin-right: 0.65%; }
     .main .main_item .item .tit_wrap { position: absolute; top: 0; left: 0; }
     .main .main_item .item .content { position: absolute; bottom: 0; left: 0; }
-    .main .main_btn { width: 92.5%; margin: 15px auto 0; }
+    .main .main_btn { width: 98%; margin: 15px auto 0; }
     .main .boundry_img { width: 96%; }
     .main .info_wrap { width: 94%; margin: 0 auto; }
     
@@ -126,6 +151,9 @@
     .join01_02 .section01 .info_write_wrap1 .info_write_contents .info_content .info_radio_wrap { width: calc( 100% - 2px ); }
     
     .student_add .student_view_slider_wrap .student_view_slider { width: 666px; }
+    
+    .myinfo03 .logo { width: 90%; }
+    .myinfo03 .logo_boundry { width: 90%; margin: 0 auto; }
     
 }
 
@@ -211,6 +239,9 @@
     .rank_view .form_wrap .ml27 { margin-left: 2.46%; }
     .rank_view .infomation_wrap .table_wrap .table .theader .tit_wrap .tit { font-size: 11px; }
     .rank_view .infomation_wrap .table_wrap .table .tbody .tcontents .content { font-size: 11px; }
+    
+    .exam_view .infomation_wrap .detail_info_wrap .info_contents .content .txt br { display: block; }
+    .exam_view .infomation_wrap .table_wrap .table .theader .tit_wrap .tit { font-size: 11px; }
 }
 
 @media all and (max-width: 810px) {
@@ -218,6 +249,11 @@
     .exam_add .check_wrap .check3 { text-align: left; }
     .exam_add .check_wrap .check3 input { margin-left: 15px; }
     .exam_add .check_wrap .check3 label { margin-right: 0; }
+    
+    .exam_view .infomation_wrap .check_wrap .check { width: 50%; padding: 7px 0; }
+    .exam_view .infomation_wrap .check_wrap .check3 { text-align: left; }
+    .exam_view .infomation_wrap .check_wrap .check3 input { margin-left: 15px; }
+    .exam_view .infomation_wrap .check_wrap .check3 label { margin-right: 0; }
 }
 
 @media all and (max-width: 803px) {
@@ -229,6 +265,8 @@
     .join01_02 .section01 .info_write_wrap .info_write_contents .info_content input::-webkit-input-placeholder { color: #c2bfbf; }
     
     .student_add .student_view_slider_wrap .student_view_slider { width: 444px; }
+    
+    .myinfo03 .section01 .item_wrap .item .item_slider_wrap { width: 403px; }
 }
 
 @media all and (max-width: 790px) {
@@ -257,8 +295,6 @@
     
     .hmenubar { width: 30px; }
     
-    .all_view { width: 80%; }
-    
     .page_select_wrap .mobile_page { display: block; }
     .page_select_wrap .web_page { display: none; }
     
@@ -273,10 +309,11 @@
     
     .main .header_t1 { background-color: #f9f9f9; height: 57px; }
     .main .logo { width: 80%; margin: 20px auto; }
-    .main .main_search_wrap { margin: 0 auto 25px; width: 80%; }
-    .main .main_search_wrap select { font-size: 12px; padding: 6px 0 6px 20px; }
-    .main .main_search_wrap .main_search { border: 1px solid #dbdbdb; font-size: 12px; padding: 7px 0 7px 7px; }
-    .main .main_search_wrap .img { width: 18px; }
+    .main_search_wrap { margin: 0 auto 25px; width: 98%; }
+    .main_search_wrap select { font-size: 12px; padding: 6px 0 6px 20px; }
+    .main_search_wrap input { width: calc( 50% - 29px ); border: 1px solid #dbdbdb; font-size: 10px; padding: 7px 0 7px 7px; }
+    .main_search_wrap .main_search1 { margin: 0 5px; }
+    .main_search_wrap .img { width: 30px; }
     .main .main_item { margin: 0 auto; }
     .main .main_item .item { width: 48.25%; padding-top: 48.28%; margin-right: 2.3%; }
     .main .main_item .item::after { content: ''; display: block; clear: both; }
@@ -318,7 +355,7 @@
     .myinfo .section01 .info_wrap .info_tit .it_wrap { padding-top: 14px; }
     .myinfo .section01 .info_wrap .info_tit .img { width: 26px; }
     .myinfo .section01 .info_wrap .info_tit .tit { font-size: 13px; }
-    .myinfo .section01 .info_wrap .info_list .tit { font-size: 12px; width: 55px; }
+    .myinfo .section01 .info_wrap .info_list .tit { font-size: 12px; width: 67px; }
     .myinfo .section01 .info_wrap .info_list .txt { font-size: 11px; }
     .myinfo .section01 .info_wrap .info_list .btn { font-size: 11px; width: 70px; padding: 1px 0 2px; }
     .myinfo .section01 .info_wrap .btn1_wrap .btn1 { font-size: 11px; width: 70px; padding: 1px 0 2px; }
@@ -334,6 +371,19 @@
     .myinfo .section01 .info_wrap1 .info_txt { margin-top: 8px; font-size: 12px; }
     .myinfo .section01 .iwm1 { margin-right: 3.34%; }
     .myinfo .section01 .section_txt { bottom: -16px; font-size: 12px; }
+    
+    .myinfo03 .logo { width: 400px; margin: 0 auto; }
+    .myinfo03 .logo_boundry { display: none; }
+    .myinfo03 .section01 .item_wrap { margin-bottom: 23px; }
+    .myinfo03 .section01 .item_wrap .item .tit_img { display: none; }
+    .myinfo03 .section01 .item_wrap .ssw_tit { display: inline-block; }
+    .myinfo03 .section01 .item_wrap .confirm_btn { width: 75px; font-size: 11px; }
+    .myinfo03 .section01 .item_wrap .item { margin-top: 10px; }
+    .myinfo03 .section01 .item_wrap .item .item_slider_wrap { height: 205px; }
+    .myinfo03 .section01 .item_wrap .item .item_slider_wrap .item_slide { height: 203px; }
+    .myinfo03 .section01 .item_wrap .item .item_slider_wrap .item_slide .department { font-size: 11px; }
+    .myinfo03 .section01 .item_wrap .item .item_slider_wrap .item_slide .infomation .name { font-size: 11px; }
+    .myinfo03 .section01 .item_wrap .item_arrow { width: 15px; }
     
     .search .logo { border: none; width: 400px; margin: 0 auto; }
     .search .section01 { margin-top: 10px; }
@@ -516,6 +566,55 @@
     .exam_add .check_wrap .check .input_wrap .txt { font-size: 11px; }
     .exam_add .check_wrap .check .input_wrap input { font-size: 11px; padding: 1px 0 1px 7px; }
     .exam_add .sv_btn_wrap .sv_btn { width: 72px; margin: 0 12px; }
+    
+    .exam_view .main_header { background-color: #fafafa; }
+    .exam_view .logo { width: 400px; }
+    .exam_view .infomation_wrap { width: 100%; }
+    .exam_view .infomation_wrap .detail_item { width: 100%; height: auto; padding: 12px 0; margin-top: 40px; border-left: none; float: none; }
+    .exam_view .infomation_wrap .detail_item .inner { display: inline-block; left: 50%; transform: translateX(-50%); }
+    .exam_view .infomation_wrap .detail_item .school_logo { width: 80px; margin: 0; display: inline-block; vertical-align: middle; }
+    .exam_view .infomation_wrap .detail_item .detail_content { display: inline-block; vertical-align: middle; margin-left: 12px; }
+    .exam_view .infomation_wrap .detail_item .department { width: initial; padding: 3px 6px; font-size: 12px; }
+    .exam_view .infomation_wrap .detail_item .name { font-size: 12px; }
+    .exam_view .infomation_wrap .detail_item .subject { font-weight: bold; }
+    .exam_view .infomation_wrap .purchase { right: 10px; top: -27px; }
+    .exam_view .infomation_wrap .detail_info_wrap { width: 100%; margin-left: 0; }
+    .exam_view .infomation_wrap .detail_info_wrap .info_tit { width: 98%; margin: 0 auto; display: block; }
+    .exam_view .infomation_wrap .detail_info_wrap .info_tit .img { width: 14px; height: 14px; }
+    .exam_view .infomation_wrap .detail_info_wrap .info_tit .tit { font-size: 12px; }
+    .exam_view .infomation_wrap .detail_info_wrap .info_contents { width: 100%; padding-top: 10px; }
+    .exam_view .infomation_wrap .detail_info_wrap .info_contents .content { margin-bottom: 10px; }
+    .exam_view .infomation_wrap .detail_info_wrap .info_contents .content .txt { font-size: 11px; }
+    .exam_view .infomation_wrap .detail_info_wrap1 { margin-top: 17px; }
+    .exam_view .infomation_wrap1 { width: 98%; }
+    .exam_view .exam_view_txt { font-size: 11px; margin: 0 auto 12px; }
+    .exam_view .infomation_wrap .check_wrap .check .cir { width: 12px; height: 12px; }
+    .exam_view .infomation_wrap .check_wrap .check label { font-size: 11px; }
+    .exam_view .infomation_wrap .check_wrap .check .input_wrap { margin: -1px 0 0 4px; }
+    .exam_view .infomation_wrap .check_wrap .check .input_wrap .txt { font-size: 11px; }
+    .exam_view .infomation_wrap .check_wrap .check .input_wrap input { font-size: 11px; padding: 1px 0 1px 7px; }
+    .exam_view .sv_btn_wrap .sv_btn img { width: 72px; }
+    
+    .school_add .main_header { background-color: #fafafa; }
+    .school_add .logo { width: 400px; }
+    .school_add .container .school_txt_wrap .school_txt .txt { font-size: 11px; }
+    
+    .buy01 { background-color: #fafafa; }
+    .buy01 .main_header { background-color: #fafafa; padding-bottom: 20px; }
+    .buy01 .logo { width: 400px; margin: 0 auto; }
+    .buy01 .contents .contents_tit .img { width: 15px; }
+    .buy01 .contents .contents_tit .tit { font-size: 11px; }
+    .buy01 .section01 .bbs_wrap .bbs .bbs_buy { font-size: 11px; }
+    
+    .sell01 { background-color: #fafafa; }
+    .sell01 .main_header { background-color: #fafafa; padding-bottom: 20px; }
+    .sell01 .logo { width: 400px; margin: 0 auto; }
+    .sell01 .contents .contents_tit .img { width: 15px; }
+    .sell01 .contents .contents_tit .tit { font-size: 11px; }
+    .sell01 .section01 .bbs_wrap .bbs .bbs_buy { font-size: 11px; }
+    
+    .bbs_wrap { overflow-x: scroll; }
+    .bbs_wrap .bbs_inner { width: 720px; }
 }
 
 @media all and (max-width: 706px) {
@@ -538,6 +637,26 @@
 
 @media all and (max-width: 670px) {
     .join01_02 .section01 .info_write_wrap1 .info_write_contents .info_write_wrap1_txt { border: 1px solid #bd4949; }
+    
+    .school_add .container .contents { width: 300px; }
+    .school_add .container .contents .content { margin: 0 auto 15px; display: block; width: 266px; }
+    .school_add .container .contents .content:nth-child(2n) { margin: 0 auto 15px; }
+    .school_add .container .contents .content:nth-child(3n-1) { margin: 0 auto 15px; }
+    .school_add .container .contents .content select { font-size: 11px; padding: 3px 0 4px 15px; width: 250px; }
+    .school_add .container .contents .content input { font-size: 11px; width: 250px; }
+    .school_add .container .contents .content .hschool .txt { font-size: 11px; }
+    .school_add .container .contents .content .hschool input { width: 180px; }
+    .school_add .container .contents .content .pass .tit { font-size: 11px; }
+    .school_add .container .contents .content .pass .radio label { font-size: 11px; vertical-align: middle; }
+    .school_add .container .contents .content .pass .radio input { vertical-align: middle; width: 11px; height: 11px; margin-bottom: 0; }
+    .school_add .container .contents .content .add_file input { width: 175px; }
+    .school_add .container .contents .content .add_file label { font-size: 11px; }
+    .school_add .container .contents .content .clear_btn img { width: 60px; }
+    .school_add .container .contents .content .center_txt { font-size: 12px; letter-spacing: 2px; margin-top: 109px; }
+    .school_add .container .contents .content .plus { margin-bottom: 135px; }
+    .school_add .container .contents .content .plus img { width: 34px; }
+    .school_add .sv_btn_wrap .sv_btn { margin: 0 10px; }
+    .school_add .sv_btn_wrap .sv_btn img { width: 70px; }
 }
 
 @media all and (max-width: 629px) {
@@ -611,7 +730,6 @@
     .rank_add .rank_add_txt { font-size: 11px; }
     .rank_add .table_wrap { display: none; }
     .rank_add .table_wrap1 { display: block; }
-    .rank_view .table_wrap2 { display: block; }
     .rank_add .sv_btn img { width: 72px; }
     .rank_add #btn_pc { display: none; }
     .rank_add #btn_mobile { display: block; }
@@ -620,15 +738,17 @@
     .rank_view .page_tit .line { width: calc( 100% - 100px ); }
     .rank_view .table_wrap { display: none; }
     .rank_view .table_wrap1 { display: block; }
+    .rank_view .table_wrap2 { display: block; }
     .rank_view .infomation_wrap .info_tit .img { width: 20px; }
     .rank_view .infomation_wrap .info_tit .txt { font-size: 13px; }
     .rank_view .infomation_wrap .id_wrap .id_box { margin-bottom: 5px; }
     .rank_view .infomation_wrap .id_wrap .id_box .tit { font-size: 11px; }
     .rank_view .infomation_wrap .id_wrap .id_box .txt { font-size: 11px; }
-    .rank_view .infomation_wrap01 { width: 98%; margin: 0 auto; }
+    .rank_view .infomation_wrap01 { width: 100%; }
+    .rank_view .infomation_wrap01 .inner { width: 98%; margin: 0 auto; }
     .rank_view .rank_add_txt { font-size: 12px; margin-top: 12px; }
     .rank_view .rank_add_txt span { font-weight: bold; color: #000; }
-    .rank_view .sv_btn { margin-top: 30px; }
+    .rank_view .sv_btn { margin: 30px 0; }
     .rank_view .sv_btn img { width: 72px; }
     
     .intro01 .infomation_wrap .inner { padding: 6px 0; }
@@ -647,6 +767,9 @@
     .exam_add .tit_sel1 { display: block; }
     .exam_add .sv_btn_wrap .sv_btn:nth-child(2) { display: none; }
     .exam_add .sv_btn_wrap .hidden { display: inline-block; }
+    
+    .exam_view .table_wrap { display: none; }
+    .exam_view .table_wrap1 { display: block; }
 
 }
 
@@ -661,6 +784,9 @@
 }
 
 @media all and (max-width: 540px) {
+    
+    .myinfo03 .section01 .item_wrap .item .item_slider_wrap { width: 185px; }
+    
     footer .footer_inner { width: 98%; }
     footer .footer_logo { width: 80px; }
     footer .footer_info_wrap { width: calc( 100% - 92px ); }
@@ -816,6 +942,9 @@
     
     .exam_add .check_wrap .check1 { width: 130px; }
     .exam_add .check_wrap .check2 { width: 230px; }
+    
+    .exam_view .infomation_wrap .check_wrap .check1 { width: 130px; }
+    .exam_view .infomation_wrap .check_wrap .check2 { width: 230px; }
 
 }
 
@@ -884,17 +1013,35 @@
     .exam_add .infomation_wrap .id_container .uni_box .ml22{ margin-left: 5.21%; }
     .exam_add .infomation_wrap .id_container .uni_box .input_wrap { width: 47.395%; padding: 13px 0 12px; }
     .exam_add .infomation_wrap .id_container .uni_box .input_wrap input { font-size: 11px; padding: 2px 0 2px 7px; width: 86%; }
+    .exam_view .infomation_wrap .detail_info_wrap1 .info_contents .content { width: 100%; }
+    
 }
 
 @media all and (max-width: 431px) {
     
-    .point_popup_wrap .popup_contents .input_content { width: 100%; margin: 0 0 10px; }
-    .point_popup_wrap .popup_contents .input_content:first-child { width: 100%; margin: 10px 0; }
+    .point_popup_wrap .popup_contents .input_content { width: 100%; margin: 0 0 6px; }
+    .point_popup_wrap .popup_contents .input_content:first-child { width: 100%; margin: 6px 0; }
+    .point_popup_wrap .popup_contents .input_content:nth-child(3) { margin: 0 0 6px; }
     .point_popup_wrap .popup_contents .input_content:nth-child(2n) { margin-left: 0; }
     .point_popup_wrap .popup_contents .input_content1 .point_wrap { width: 100%; }
-    .point_popup_wrap .popup_contents .input_content1 .point_wrap:nth-child(1) { margin: 15px 0 0; }
+    .point_popup_wrap .popup_contents .input_content1 .point_wrap:nth-child(1) { margin: 9px 0 0; }
     .point_popup_wrap .popup_contents .input_content1 .point_wrap:nth-child(3) { text-align: left; }
     .point_popup_wrap .popup_contents .input_content1 .point_boundry { display: none; }
+    .point_popup_wrap .popup_tit .tit { font-size: 11px; }
+    .point_popup_wrap .popup_contents .input_content .input_wrap label .img { width: 18px; }
+    .point_popup_wrap .popup_contents .input_content:nth-child(2) .input_wrap label .img { width: 16px; }
+    .point_popup_wrap .popup_contents .input_content:nth-child(3) .input_wrap label .img { width: 12.5px; }
+    .point_popup_wrap .popup_contents .input_content .input_wrap label .txt { font-size: 11px; }
+    .point_popup_wrap .popup_contents .point { font-size: 12px; }
+    .point_popup_wrap .popup_contents .point_txt_wrap .point_txt { font-size: 11px; }
+    .point_popup_wrap .popup_contents .input_content1 .point_wrap { margin: 9px 0; }
+    .point_popup_wrap .popup_contents .input_content1 .point_wrap .tit { font-size: 13px; }
+    .point_popup_wrap .popup_contents .input_content1 .point_wrap .txt { font-size: 13px; }
+    .point_popup_wrap .popup_contents .point_charge { margin: 8px 0 0; }
+    .point_popup_wrap .popup_contents .point_charge .img { width: 17px; height: 17px; }
+    .point_popup_wrap .popup_contents .point_charge .txt { font-size: 11px; vertical-align: middle; }
+    .point_popup_wrap .popup_contents .popup_btn_wrap { margin: 45px auto 0; width: 188px; }
+    .point_popup_wrap .popup_contents .popup_btn_wrap .confirm_btn { font-size: 11px; width: 83px; margin-bottom: 18px; }
     
     .main .main_btn .mb_header .txt { font-size: 13px; }
     .main .main_btn .mb_header .img { width: 25px; }
@@ -912,6 +1059,8 @@
     
     .myinfo .logo { width: 80%; }
     .myinfo .section01 .iwm1 { margin-right: 2.6%; }
+    
+    .myinfo03 .logo { width: 80%; }
     
     .charging_popup_wrap .charging_btn { margin: 6% auto 3%; }
     .charging_popup_wrap .tab_wrap .tab_contents { height: 80%; }
@@ -946,6 +1095,14 @@
     
     .exam_add .logo { width: 80%; }
     
+    .exam_view .logo { width: 80%; }
+    
+    .school_add .logo { width: 80%; }
+    
+    .buy01 .logo { width: 80%; }
+    
+    .sell01 .logo { width: 80%; }
+    
 }
 @media all and (max-width: 414px) {
     
@@ -970,6 +1127,9 @@
     .exam_add .check_wrap .check1 { width: 85px; }
     .exam_add .check_wrap .check1 input { margin-left: 10px; }
     .exam_add .check_wrap .check3 input { margin-left: 10px; }
+    
+    .exam_view .infomation_wrap .check_wrap .check { width: 100%; }
+    .exam_view .infomation_wrap .check_wrap .check2 .cir { margin-left: 15px; }
     
 }
 

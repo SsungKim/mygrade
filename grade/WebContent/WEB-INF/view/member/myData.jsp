@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <!doctype html>
-<html oncontextmenu='return false' ondragstart='return false' onselectstart='return false'>
+<html>
 <head>
     <c:import url="/WEB-INF/view/main/head.jsp"/>
 </head>
@@ -400,6 +400,11 @@
 		}
 		$("#"+type+"Slider").stop().animate({
 			left: -218*num
+		}, function(){
+			console.log(num);
+			console.log(introNum);
+			console.log(examNum);
+			console.log(type);
 		});
 		switch(type){
 		case "record":

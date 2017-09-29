@@ -25,14 +25,7 @@
                             <img src="/img/logo.png">
                         </div>
                         <div class="main_search_wrap">
-                        	<select id="searchType">
-                        		<option ${sType == '학교' ? 'selected' : '' }>학교</option>
-								<option ${sType == '학과' ? 'selected' : '' }>학과</option>
-                        	</select>
-                            <input class="main_search" type="text" placeholder="학교나 학과를 검색해주세요" maxlength="35" id="searchTxt">
-                            <div class="img">
-                                <img src="/img/main/search.png" onclick="search()">
-                            </div>
+                        	<c:import url="/WEB-INF/view/main/searchWrap.jsp"/>
                         </div>
                     </header>
                     <div class="main_item">
@@ -297,18 +290,36 @@
 // 		});
     	// 검색
     	function search(){
-    		var searchType = $("#searchType").val();
     		var searchTxt = $("#searchTxt").val();
-    		if(searchTxt == ""){
+    		var searchTxt2 = $("#searchTxt2").val();
+    		if(searchTxt == "" && searchTxt2 == ""){
     			alert("검색어를 입력해주세요.");
-    		} else if(searchTxt.length == 1) {
+    			return;
+    		}
+    		if(searchTxt.length == 1 || searchTxt2.length == 1){
     			alert("2글자 이상으로 검색해주세요.");
-    		} else {
-	    		location.href="/search/"+searchType+"/"+searchTxt;
+    			return;
+    		}
+    		if(searchTxt != "" && searchTxt2 != ""){
+    			location.href="/search/both/"+searchTxt+"/"+searchTxt2;
+    			return;
+    		}
+    		if(searchTxt != "" && searchTxt2 == ""){
+    			location.href="/search/school/"+searchTxt;
+    			return;
+    		}
+    		if(searchTxt == "" && searchTxt2 != ""){
+    			location.href="/search/subject/"+searchTxt2;
+    			return;
     		}
     	}
     	// 검색창에서 엔터
     	$("#searchTxt").keydown(function(evt){
+    		if(evt.keyCode == 13){
+    			search();
+    		}
+    	});
+    	$("#searchTxt2").keydown(function(evt){
     		if(evt.keyCode == 13){
     			search();
     		}

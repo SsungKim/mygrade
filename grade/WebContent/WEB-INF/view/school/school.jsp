@@ -40,74 +40,74 @@
                         </div>
                        	<div class="contents" id="schoolContent">
                             <div class="content">
-                       		<form action="/school/uploadSchool" method="post" enctype="multipart/form-data" id="schoolForm1">
-                                <select id="addr1" name="addr" onchange="schoolChange(this)">
-                                    <option value="choose">시,도 선택</option>
-                                    <option>서울</option>
-                                    <option>인천</option>
-                                    <option>대전</option>
-                                    <option>대구</option>
-                                    <option>광주</option>
-                                    <option>울산</option>
-                                    <option>부산</option>
-                                    <option>세종</option>
-                                    <option>경기</option>
-                                    <option>강원</option>
-                                    <option>충북</option>
-                                    <option>충남</option>
-                                    <option>경북</option>
-                                    <option>경남</option>
-                                    <option>전북</option>
-                                    <option>전남</option>
-                                    <option>제주</option>
-                                </select>
-                                <select id="school1" name="school">
-                                    <option value="choose">대학선택</option>
-                                </select>
-                                <input type="text" placeholder="학과입력" id="subject1" name="subject">
-                                <select id="year1" name="year">
-                                    <option value="choose">입학년도 선택</option>
-                                    <c:forEach var="t" begin="0" end="4">
-                                    	<option>${year - t }년</option>
-                                    </c:forEach>
-                                </select>
-                                <input type="text" placeholder="입학전형 입력" id="admission1" name="admission">
-                                <input type="text" placeholder="전형명 입력" id="typical1" name="typical">
-                                <div class="hschool">
-                                    <input type="text" placeholder="고등학교 입력" id="hschool1" name="hschool">
-                                    <div class="txt">고등학교</div>
-                                </div>
-                                <div class="pass">
-                                    <div class="tit">합격여부</div>
-                                    <div class="radio">
-                                        <input type="radio" id="passY1" name="pass" value="합격">
-                                        <label for="passY1">합격</label>
+                                <form action="/school/uploadSchool" method="post" enctype="multipart/form-data" id="schoolForm1">
+                                    <select id="addr1" name="addr" onchange="schoolChange(this)">
+                                        <option value="choose">시,도 선택</option>
+                                        <option>서울</option>
+                                        <option>인천</option>
+                                        <option>대전</option>
+                                        <option>대구</option>
+                                        <option>광주</option>
+                                        <option>울산</option>
+                                        <option>부산</option>
+                                        <option>세종</option>
+                                        <option>경기</option>
+                                        <option>강원</option>
+                                        <option>충북</option>
+                                        <option>충남</option>
+                                        <option>경북</option>
+                                        <option>경남</option>
+                                        <option>전북</option>
+                                        <option>전남</option>
+                                        <option>제주</option>
+                                    </select>
+                                    <select id="school1" name="school">
+                                        <option value="choose">대학선택</option>
+                                    </select>
+                                    <input type="text" placeholder="학과입력" id="subject1" name="subject">
+                                    <select id="year1" name="year">
+                                        <option value="choose">입학년도 선택</option>
+                                        <c:forEach var="t" begin="0" end="4">
+                                            <option>${year - t }년</option>
+                                        </c:forEach>
+                                    </select>
+                                    <input type="text" placeholder="입학전형 입력" id="admission1" name="admission">
+                                    <input type="text" placeholder="전형명 입력" id="typical1" name="typical">
+                                    <div class="hschool">
+                                        <input type="text" placeholder="고등학교 입력" id="hschool1" name="hschool">
+                                        <div class="txt">고등학교</div>
                                     </div>
-                                    <div class="radio">
-                                        <input type="radio" id="passN1" name="pass" value="불합격">
-                                        <label for="passN1">불합격</label>
+                                    <div class="pass">
+                                        <div class="tit">합격여부</div>
+                                        <div class="radio">
+                                            <input type="radio" id="passY1" name="pass" value="합격">
+                                            <label for="passY1">합격</label>
+                                        </div>
+                                        <div class="radio">
+                                            <input type="radio" id="passN1" name="pass" value="불합격">
+                                            <label for="passN1">불합격</label>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="add_file">
-                                    <input class="upload_name" value="합격증or재학증명서 등록" disabled="disabled" id="dataName1">
-                                    <label for="passData1">등록</label>
-                                    <input type="file" id="passData1" class="upload_hidden" name="passData" onchange="dataChange(this)">
-                                </div>
-                                <div class="pass">
-                                    <div class="tit">정/수시</div>
-                                    <div class="radio">
-                                        <input type="radio" id="typeY1" name="type" value="정시">
-                                        <label for="typeY1">정시</label>
+                                    <div class="add_file">
+                                        <input class="upload_name" value="합격증or재학증명서 등록" disabled="disabled" id="dataName1">
+                                        <label for="passData1">등록</label>
+                                        <input type="file" id="passData1" class="upload_hidden" name="passData" onchange="dataChange(this)">
                                     </div>
-                                    <div class="radio">
-                                        <input type="radio" id="typeN1" name="type" value="수시">
-                                        <label for="typeN1">수시</label>
+                                    <div class="pass">
+                                        <div class="tit">정/수시</div>
+                                        <div class="radio">
+                                            <input type="radio" id="typeY1" name="type" value="정시">
+                                            <label for="typeY1">정시</label>
+                                        </div>
+                                        <div class="radio">
+                                            <input type="radio" id="typeN1" name="type" value="수시">
+                                            <label for="typeN1">수시</label>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="clear_btn">
-                                    <img src="/img/school/btn01.png" style="display: none; ">
-                                </div>
-                            </form>
+                                    <div class="clear_btn">
+                                        <img src="/img/school/btn01.png">
+                                    </div>
+                                </form>
                             </div>
 	                        <div class="content" id="addSchool">
                         		<div class="center_txt">대학 추가하기</div>
