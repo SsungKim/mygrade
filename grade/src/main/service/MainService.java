@@ -177,4 +177,43 @@ public class MainService {
 		}
 		ss.close();
 	}
+
+	// db interviewList name change
+	public void interviewNameSet() {
+		SqlSession ss = fac.openSession();
+		String[] lastName = {"김", "이", "박", "최", "정", "강", "조", "윤", "장", "임", "한", "오", "서", "신", "권", "황", "안", "송", "전", "홍", "유", "고", "문", "양", "배", 
+				"조", "백", "허", "유", "남", "신", "노", "정", "하", "곽", "성", "차", "주", "우", "구", "신", "임", "전", "민", "유", "류", "나", "진", "지", "엄", "채", "원", "천", "방",
+				"공", "강", "현", "함", "변", "염", "양", "변", "여", "추", "노", "도", "소", "신", "석", "선", "설", "마", "길", "주", "연", "방", "위", "표", "명", "기", "반", "라", "왕", 
+				"금", "옥", "육", "인", "맹", "제", "모", "장", "남궁", "탁", "국", "여", "진", "어", "은", "편"};
+		String[] firstName1 = {"지", "동", "현", "성", "정", "영", "준", "민", "도", "예", "서", "주", "은", "유", "미"};
+		String[] firstName2 = {"훈", "민", "우", "현", "호", "식", "수", "재", "윤", "준", "연", "현", "서", "혜", "빈", "지", "자", "순"};
+		String name1 = "";
+		String name2 = "";
+		String name3 = "";
+		List<HashMap> interviewList = ss.selectList("interview.interviewAllList");
+		for(int i=0; i<interviewList.size(); i++){
+			double lastNameRate = Math.random();
+			double firstNameRate1 = Math.random();
+			double firstNameRate2 = Math.random();
+			double nameLength = Math.random();
+			int n = (int)(lastNameRate*99);
+			int m = (int)(firstNameRate1*15);
+			int o = (int)(firstNameRate2*18);
+			name1 = lastName[n];
+			name2 = firstName1[m];
+			name3 = firstName2[o];
+			String name = name1+name2+name3;
+			if(!name1.equals("남궁")){
+				if(nameLength > 0.85){
+					name = name1+name2;
+				}
+			}
+			HashMap map = new HashMap();
+			map.put("name", name);
+			map.put("auto", interviewList.get(i).get("auto").toString());
+			ss.update("interview.interviewNameSet", map);
+		}
+		ss.commit();
+		ss.close();
+	}
 }

@@ -24,13 +24,12 @@
                         <div class="logo">
                             <img src="/img/logo.png" onclick="location.href='/'">
                         </div>
-                        <div class="all_view"><span onclick="location.href='/exam'">전체보기</span></div>
-                        <div class="sg_search_wrap">
-                            <input class="sg_search" type="text" placeholder="학교나 학과를 검색해주세요" id="searchTxt" value="${word }">
-                            <div class="img">
-                                <img src="/img/main/search.png">
-                            </div>
-                        </div>
+                        <div class="main_search_wrap">
+							<div class="all_view">
+								<span onclick="location.href='/exam'">전체보기</span>
+							</div>
+							<c:import url="/WEB-INF/view/main/searchWrap.jsp"/>
+						</div>
                     </div>
                     <div class="detail_item_wrap">
                     	<c:forEach var="t" items="${examList }">
@@ -100,23 +99,36 @@
 		// 검색
 		function search(){
 			var searchTxt = $("#searchTxt").val();
-			if(searchTxt == ""){
-				alert("검색어를 입력해주세요.");
-				return;
-			}
-			if(searchTxt.startsWith(" ")){
-				alert("검색어는 공백으로 시작할 수 없습니다.");
-				return;
-			}
-			if(searchTxt.length == 1){
-				alert("2글자 이상으로 검색해주세요.");
-				return;
-			}
-			location.href='/exam/search/'+searchTxt;
+    		var searchTxt2 = $("#searchTxt2").val();
+    		if(searchTxt == "" && searchTxt2 == ""){
+    			alert("검색어를 입력해주세요.");
+    			return;
+    		}
+    		if(searchTxt.length == 1 || searchTxt2.length == 1){
+    			alert("2글자 이상으로 검색해주세요.");
+    			return;
+    		}
+    		if(searchTxt != "" && searchTxt2 != ""){
+    			location.href="/exam/search/both/"+searchTxt+"/"+searchTxt2;
+    			return;
+    		}
+    		if(searchTxt != "" && searchTxt2 == ""){
+    			location.href="/exam/search/school/"+searchTxt;
+    			return;
+    		}
+    		if(searchTxt == "" && searchTxt2 != ""){
+    			location.href="/exam/search/subject/"+searchTxt2;
+    			return;
+    		}
 		}
 		// 입력창에서 엔터
 		$(document).ready(function(){
 			$("#searchTxt").keydown(function(e){
+				if(e.keyCode == 13){
+					search();
+				}
+			});
+			$("#searchTxt2").keydown(function(e){
 				if(e.keyCode == 13){
 					search();
 				}

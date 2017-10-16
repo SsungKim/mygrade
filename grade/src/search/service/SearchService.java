@@ -17,7 +17,7 @@ public class SearchService {
 		List<HashMap> li = new Vector<>();
 		for(HashMap m : wordList){
 			HashMap map = new HashMap<>();
-			map.put("word", "%"+m.get("num")+"%");
+			map.put("word", m.get("num"));
 			map.put("subject", "%"+subject+"%");
 			map.put("page", (page-1)*12);
 //			List<HashMap> list = ss.selectList("search.searchrecord", map);
@@ -50,7 +50,7 @@ public class SearchService {
 		int count = 0;
 		for(HashMap m : wordList){
 			HashMap map = new HashMap();
-			map.put("word", "%"+m.get("num")+"%");
+			map.put("word", m.get("num"));
 			map.put("subject", "%"+subject+"%");
 //			int n = ss.selectOne("search.countrecord", "%"+m.get("num")+"%");
 			int n = ss.selectOne("search.countinterview", map);
@@ -66,7 +66,7 @@ public class SearchService {
 		List<HashMap> li = new Vector<>();
 		for(HashMap m : wordList){
 			HashMap map = new HashMap<>();
-			map.put("word", "%"+m.get("num")+"%");
+			map.put("word", m.get("num"));
 			map.put("page", (page-1)*12);
 //			List<HashMap> list = ss.selectList("search.searchrecord", map);
 			List<HashMap> list = ss.selectList("search.searchinterview2", map);
@@ -98,7 +98,7 @@ public class SearchService {
 		int count = 0;
 		for(HashMap m : wordList){
 //			int n = ss.selectOne("search.countrecord", "%"+m.get("num")+"%");
-			int n = ss.selectOne("search.countinterview2", "%"+m.get("num")+"%");
+			int n = ss.selectOne("search.countinterview2", m.get("num"));
 			count += n;
 		}
 		ss.close();

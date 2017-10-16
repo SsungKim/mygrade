@@ -43,24 +43,26 @@
 	console.log("${end }");
 	//페이지 이동
 	function page(num){
-		var searchTxt = $("#searchTxt").val();
-		var type = "${type }";
-		switch(type){
-		case "record":
-			if(searchTxt == ""){
-				location.href='/record/page/'+num;
-			} else {
-				location.href='/record/search/page/'+searchTxt+"/"+num;
-			}
-			break;
-		case "intro":
-			if(searchTxt == ""){
-				location.href='/intro/page/'+num;
-			} else {
-				location.href='/intro/search/page/'+searchTxt+"/"+num;
-			}
-			break;
+		var searchType = "both";
+		var searchTxt = "${word1 }";
+		var searchTxt2 = "${word2 }";
+		if(searchTxt == "" && searchTxt2 == ""){
+			location.href="/intro/page/"+num;
+			return;
 		}
+		if(searchTxt.length == 1 || searchTxt2.length == 1){
+			alert("2글자 이상으로 검색해주세요.");
+			return;
+		}
+		if(searchTxt != "" && searchTxt2 == ""){
+			searchType = "school";
+			searchTxt2 = "-";
+		}
+		if(searchTxt == "" && searchTxt2 != ""){
+			searchType = "subject";
+			searchTxt = "-";
+		}
+		location.href='/intro/search/page/'+searchType+"/"+searchTxt+"/"+searchTxt2+"/"+num;
 	}
 	// 화살표 보이기
 	$(document).ready(function(){

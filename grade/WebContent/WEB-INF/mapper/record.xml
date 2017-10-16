@@ -73,14 +73,32 @@
 		delete from recordList where user = #{user}
 	</delete>
 	<select id="recordList2" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-		select * from recordList a, salesList b where a.id = b.id 
-		and (a.school like #{word} or a.subject like #{word})
+		select * from recordList a, memberList b where a.id = b.id  and (b.admin = '판매자' or b.admin = '메인관리자')
+		and (a.school = #{word} and a.subject like #{subject})
+		order by a.auto desc limit 12 offset #{page}
+	</select>
+	<select id="recordList3" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from recordList a, memberList b where a.id = b.id  and (b.admin = '판매자' or b.admin = '메인관리자')
+		and a.school = #{word}
+		order by a.auto desc limit 12 offset #{page}
+	</select>
+	<select id="recordList4" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from recordList a, memberList b where a.id = b.id  and (b.admin = '판매자' or b.admin = '메인관리자')
+		and a.subject like #{subject}
 		order by a.auto desc limit 12 offset #{page}
 	</select>
 	<select id="count2" resultType="java.lang.Integer">
-		select count(*) from recordList a, salesList b where a.id = b.id
-		and (a.school like #{word} or a.subject like #{word})
-	</select>
+		select count(*) from recordList a, memberList b where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
+		and (a.school = #{word} and a.subject like #{subject})
+	</select> 
+	<select id="count3" resultType="java.lang.Integer">
+		select count(*) from recordList a, memberList b where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
+		and a.school = #{word}
+	</select> 
+	<select id="count4" resultType="java.lang.Integer">
+		select count(*) from recordList a, memberList b where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
+		and a.subject like #{word}
+	</select> 
 	
 	
 	

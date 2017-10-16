@@ -202,6 +202,103 @@ public class ExamService {
 		return map;
 	}
 	
+	// 면접후기 검색 리스트
+	public List<HashMap> examList2Both(int page, List<HashMap> wordList, String subject) {
+		SqlSession ss = fac.openSession();
+		List<HashMap> li = new Vector<>();
+		for(HashMap m : wordList){
+			HashMap map = new HashMap();
+			map.put("page", (page-1)*10);
+			map.put("word", m.get("num"));
+			map.put("subject", "%"+subject+"%");
+			List<HashMap> list = ss.selectList("exam.examList2", map);
+			for(int i=0; i<list.size(); i++){
+				HashMap m2 = list.get(i);
+				HashMap mm = ss.selectOne("school.word2", m2.get("school"));
+				m2.put("schoolName", mm.get("name"));
+				list.set(i, m2);
+				li.add(list.get(i));
+			}
+		}
+		ss.close();
+		return li;
+	}
+
+	// 면접후기 검색 페이지
+	public int examPage2Both(List<HashMap> wordList, String subject) {
+		SqlSession ss = fac.openSession();
+		HashMap map = new HashMap();
+		int count = 0;
+		for(HashMap m : wordList){
+			map.put("word", m.get("num"));
+			map.put("subject", "%"+subject+"%");
+			int n = ss.selectOne("exam.count2", map);
+			count += n;
+		}
+		ss.close();
+		return count%10 == 0 ? count/10 : count/10+1;
+	}
+	
+	// 면접후기 검색 리스트
+	public List<HashMap> examList2School(int page, List<HashMap> wordList) {
+		SqlSession ss = fac.openSession();
+		List<HashMap> li = new Vector<>();
+		for(HashMap m : wordList){
+			HashMap map = new HashMap();
+			map.put("page", (page-1)*10);
+			map.put("word", m.get("num"));
+			List<HashMap> list = ss.selectList("exam.examList3", map);
+			for(int i=0; i<list.size(); i++){
+				HashMap m2 = list.get(i);
+				HashMap mm = ss.selectOne("school.word2", m2.get("school"));
+				m2.put("schoolName", mm.get("name"));
+				list.set(i, m2);
+				li.add(list.get(i));
+			}
+		}
+		ss.close();
+		return li;
+	}
+
+	// 면접후기 검색 페이지
+	public int examPage2School(List<HashMap> wordList) {
+		SqlSession ss = fac.openSession();
+		int count = 0;
+		for(HashMap m : wordList){
+			int n = ss.selectOne("exam.count3", m.get("num"));
+			count += n;
+		}
+		ss.close();
+		return count%10 == 0 ? count/10 : count/10+1;
+	}
+	
+	// 면접후기 검색 리스트
+	public List<HashMap> examList2Subject(int page, String subject) {
+		SqlSession ss = fac.openSession();
+		List<HashMap> li = new Vector<>();
+		HashMap map = new HashMap();
+		map.put("page", (page-1)*10);
+		map.put("subject", "%"+subject+"%");
+		List<HashMap> list = ss.selectList("exam.examList4", map);
+		for(int i=0; i<list.size(); i++){
+			HashMap m2 = list.get(i);
+			HashMap mm = ss.selectOne("school.word2", m2.get("school"));
+			m2.put("schoolName", mm.get("name"));
+			list.set(i, m2);
+			li.add(list.get(i));
+		}
+		ss.close();
+		return li;
+	}
+
+	// 면접후기 검색 페이지
+	public int examPage2Subject(String subject) {
+		SqlSession ss = fac.openSession();
+		int count = ss.selectOne("exam.count4", "%"+subject+"%");
+		ss.close();
+		return count%10 == 0 ? count/10 : count/10+1;
+	}
+	
 	
 	
 	

@@ -15,7 +15,7 @@ public class AdminService {
 	SqlSessionFactory fac;
 
 	// 충전데이터 저장
-	public void chargeData(String user, String id, String prim, String tradeId, String pay, String applyNum, HttpSession session) {
+	public boolean chargeData(String user, String id, String prim, String tradeId, String pay, String applyNum, HttpSession session) {
 		SqlSession ss = fac.openSession();
 		HashMap map = new HashMap();
 		map.put("user", user);
@@ -37,10 +37,12 @@ public class AdminService {
 			m.put("point", Integer.parseInt(m.get("point").toString())+point);
 			session.setAttribute("login", m);
 			ss.close();
+			return true;
 		} catch(Exception e){
 			e.printStackTrace();
 			ss.rollback();
 			ss.close();
+			return false;
 		}
 	}
 	

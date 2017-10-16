@@ -156,7 +156,7 @@ public class InterviewService {
 		for(HashMap m : wordList){
 			HashMap map = new HashMap();
 			map.put("page", (page-1)*10);
-			map.put("word", "%"+m.get("num")+"%");
+			map.put("word", m.get("num"));
 			map.put("subject", "%"+subject+"%");
 			List<HashMap> list = ss.selectList("interview.interviewList2", map);
 			for(int i=0; i<list.size(); i++){
@@ -187,9 +187,9 @@ public class InterviewService {
 		HashMap map = new HashMap();
 		int count = 0;
 		for(HashMap m : wordList){
-			map.put("word", "%"+m.get("num")+"%");
+			map.put("word", m.get("num"));
 			map.put("subject", "%"+subject+"%");
-			int n = ss.selectOne("interview.count2", "%"+m.get("num")+"%");
+			int n = ss.selectOne("interview.count2", map);
 			count += n;
 		}
 		ss.close();
@@ -203,7 +203,7 @@ public class InterviewService {
 		for(HashMap m : wordList){
 			HashMap map = new HashMap();
 			map.put("page", (page-1)*10);
-			map.put("word", "%"+m.get("num")+"%");
+			map.put("word", m.get("num"));
 			List<HashMap> list = ss.selectList("interview.interviewList3", map);
 			for(int i=0; i<list.size(); i++){
 				HashMap m2 = list.get(i);
@@ -232,7 +232,7 @@ public class InterviewService {
 		SqlSession ss = fac.openSession();
 		int count = 0;
 		for(HashMap m : wordList){
-			int n = ss.selectOne("interview.count3", "%"+m.get("num")+"%");
+			int n = ss.selectOne("interview.count3", m.get("num"));
 			count += n;
 		}
 		ss.close();

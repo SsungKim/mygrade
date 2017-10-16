@@ -84,8 +84,8 @@
 	//페이지 이동
 	function page(num){
 		var searchType = "both";
-		var searchTxt = $("#searchTxt").val();
-		var searchTxt2 = $("#searchTxt2").val();
+		var searchTxt = "${word1 }";
+		var searchTxt2 = "${word2 }";
 		if(searchTxt == "" && searchTxt2 == ""){
 			alert("검색어를 입력해주세요.");
 			return;

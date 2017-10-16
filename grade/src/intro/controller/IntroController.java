@@ -118,47 +118,158 @@ public class IntroController {
 	}
 	
 	// 검색
-	@RequestMapping("/search/{word}")
-	public ModelAndView search(@PathVariable(name="word")String word){
+	@RequestMapping("/search/both/{word}/{word2}")
+	public ModelAndView searchBoth(@PathVariable(name="word")String word, @PathVariable(name="word2")String word2){
 		ModelAndView mav = new ModelAndView("/intro/intro.jsp");
-		mav.addObject("word", word);
+		mav.addObject("word1", word);
+		mav.addObject("word2", word2);
 		word = ss.wordSearchChange(word);
 		List<HashMap> wordList = ss.word(word);
-		List<HashMap> intro = is.search(wordList, 1);
+		List<HashMap> intro = is.introList2Both(1, wordList, word2);
 		mav.addObject("introList", intro);
-		mav = pageInner2(mav, wordList, 1);
+		mav = pageInner2Both(mav, 1, wordList, word2);
 		mav.addObject("type", "intro");
 		return mav;
 	}
 	
-	// 페이지 처리2
-	public ModelAndView pageInner2(ModelAndView mav, List<HashMap> wordList, int select){
-		int page = is.page2(wordList);
+	// 검색 페이지
+	public ModelAndView pageInner2Both(ModelAndView mav, int select, List<HashMap> wordList, String subject){
+		int page = is.introPage2Both(wordList, subject);
 		int first = 1;
 		int last = page;
-		int start = select > first ? (select/10)*10+1 : first;
+		int start = select > first ? select%10 == 0 ? (select/10)*10-10+1 : (select/10)*10+1 : first;
+		int startM = select > first ? select%5 == 0? (select/5)*5-5+1 : (select/5)*5+1 : first;
 		int end = start+9 < last ? start+9 : last;
-		int prev = (start/10)*10-10+1;
+		int endM = startM+4 < last ? startM+4 : last;
+		int prev = select%10 == 0 ? (select/10)*10-20+1 : (start/10)*10-10+1;
+		int prevM = select%5 == 0 ? (select/5)*5-10+1 : (startM/5)*5-5+1;
 		int next = (start/10)*10+10+1;
+		int nextM = (startM/5)*5+5+1;
 		mav.addObject("select", select);
 		mav.addObject("first", first);
 		mav.addObject("last", last);
 		mav.addObject("start", start);
+		mav.addObject("startM", startM);
 		mav.addObject("end", end);
+		mav.addObject("endM", endM);
 		mav.addObject("prev", prev);
+		mav.addObject("prevM", prevM);
 		mav.addObject("next", next);
+		mav.addObject("nextM", nextM);
+		return mav;
+	}
+	
+	// 검색
+	@RequestMapping("/search/school/{word}")
+	public ModelAndView searchSchool(@PathVariable(name="word")String word){
+		ModelAndView mav = new ModelAndView("/intro/intro.jsp");
+		mav.addObject("word1", word);
+		word = ss.wordSearchChange(word);
+		List<HashMap> wordList = ss.word(word);
+		List<HashMap> intro = is.introList2School(1, wordList);
+		mav.addObject("introList", intro);
+		mav = pageInner2School(mav, 1, wordList);
+		mav.addObject("type", "intro");
+		return mav;
+	}
+	
+	// 검색 페이지
+	public ModelAndView pageInner2School(ModelAndView mav, int select, List<HashMap> wordList){
+		int page = is.introPage2School(wordList);
+		int first = 1;
+		int last = page;
+		int start = select > first ? select%10 == 0 ? (select/10)*10-10+1 : (select/10)*10+1 : first;
+		int startM = select > first ? select%5 == 0? (select/5)*5-5+1 : (select/5)*5+1 : first;
+		int end = start+9 < last ? start+9 : last;
+		int endM = startM+4 < last ? startM+4 : last;
+		int prev = select%10 == 0 ? (select/10)*10-20+1 : (start/10)*10-10+1;
+		int prevM = select%5 == 0 ? (select/5)*5-10+1 : (startM/5)*5-5+1;
+		int next = (start/10)*10+10+1;
+		int nextM = (startM/5)*5+5+1;
+		mav.addObject("select", select);
+		mav.addObject("first", first);
+		mav.addObject("last", last);
+		mav.addObject("start", start);
+		mav.addObject("startM", startM);
+		mav.addObject("end", end);
+		mav.addObject("endM", endM);
+		mav.addObject("prev", prev);
+		mav.addObject("prevM", prevM);
+		mav.addObject("next", next);
+		mav.addObject("nextM", nextM);
+		return mav;
+	}
+	
+	// 검색
+	@RequestMapping("/search/subject/{word}")
+	public ModelAndView searchSubject(@PathVariable(name="word")String word){
+		ModelAndView mav = new ModelAndView("/intro/intro.jsp");
+		mav.addObject("word2", word);
+		List<HashMap> intro = is.introList2Subject(1, word);
+		mav.addObject("introList", intro);
+		mav = pageInner2Subject(mav, 1, word);
+		mav.addObject("type", "intro");
+		return mav;
+	}
+	
+	// 검색 페이지
+	public ModelAndView pageInner2Subject(ModelAndView mav, int select, String subject){
+		int page = is.introPage2Subject(subject);
+		int first = 1;
+		int last = page;
+		int start = select > first ? select%10 == 0 ? (select/10)*10-10+1 : (select/10)*10+1 : first;
+		int startM = select > first ? select%5 == 0? (select/5)*5-5+1 : (select/5)*5+1 : first;
+		int end = start+9 < last ? start+9 : last;
+		int endM = startM+4 < last ? startM+4 : last;
+		int prev = select%10 == 0 ? (select/10)*10-20+1 : (start/10)*10-10+1;
+		int prevM = select%5 == 0 ? (select/5)*5-10+1 : (startM/5)*5-5+1;
+		int next = (start/10)*10+10+1;
+		int nextM = (startM/5)*5+5+1;
+		mav.addObject("select", select);
+		mav.addObject("first", first);
+		mav.addObject("last", last);
+		mav.addObject("start", start);
+		mav.addObject("startM", startM);
+		mav.addObject("end", end);
+		mav.addObject("endM", endM);
+		mav.addObject("prev", prev);
+		mav.addObject("prevM", prevM);
+		mav.addObject("next", next);
+		mav.addObject("nextM", nextM);
 		return mav;
 	}
 	
 	// 검색 페이지 이동
-	@RequestMapping("/search/page/{word}/{num}")
-	public ModelAndView search2(@PathVariable(name="word")String word, @PathVariable(name="num")int num){
+	@RequestMapping("/search/page/{type}/{word}/{word2}/{page}")
+	public ModelAndView search2(@PathVariable(name="type")String type, @PathVariable(name="word")String word, 
+													@PathVariable(name="word2")String word2, @PathVariable(name="page")int page){
 		ModelAndView mav = new ModelAndView("/intro/intro.jsp");
+		mav.addObject("word1", word);
+		mav.addObject("word2", word2);
+		if(word2.equals("-")){
+			mav.addObject("word2", "");
+		}
+		if(word.equals("-")){
+			mav.addObject("word1", "");
+		}
 		word = ss.wordSearchChange(word);
 		List<HashMap> wordList = ss.word(word);
-		List<HashMap> intro = is.search(wordList, num);
+		List<HashMap> intro = new Vector<>();
+		switch(type){
+		case "both":
+			intro = is.introList2Both(page, wordList, word2);
+			mav = pageInner2Both(mav, page, wordList, word2);
+			break;
+		case "school":
+			intro = is.introList2School(page, wordList);
+			mav = pageInner2School(mav, page, wordList);
+			break;
+		case "subject":
+			intro = is.introList2Subject(page, word2);
+			mav = pageInner2Subject(mav, page, word2);
+			break;
+		}
 		mav.addObject("introList", intro);
-		mav = pageInner2(mav, wordList, num);
 		mav.addObject("type", "intro");
 		return mav;
 	}

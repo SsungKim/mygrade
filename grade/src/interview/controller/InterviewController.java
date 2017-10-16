@@ -201,7 +201,7 @@ public class InterviewController {
 	@RequestMapping("/search/both/{word}/{word2}")
 	public ModelAndView searchBoth(@PathVariable(name="word")String word, @PathVariable(name="word2")String word2){
 		ModelAndView mav = new ModelAndView("/interview/interview.jsp");
-		mav.addObject("word", word);
+		mav.addObject("word1", word);
 		mav.addObject("word2", word2);
 		word = ss.wordSearchChange(word);
 		List<HashMap> wordList = ss.word(word);
@@ -243,7 +243,7 @@ public class InterviewController {
 	@RequestMapping("/search/school/{word}")
 	public ModelAndView searchSchool(@PathVariable(name="word")String word){
 		ModelAndView mav = new ModelAndView("/interview/interview.jsp");
-		mav.addObject("word", word);
+		mav.addObject("word1", word);
 		word = ss.wordSearchChange(word);
 		List<HashMap> wordList = ss.word(word);
 		List<HashMap> interview = is.interviewList2School(1, wordList);
@@ -284,7 +284,7 @@ public class InterviewController {
 	@RequestMapping("/search/subject/{word}")
 	public ModelAndView searchSubject(@PathVariable(name="word")String word){
 		ModelAndView mav = new ModelAndView("/interview/interview.jsp");
-//		mav.addObject("word2", word);
+		mav.addObject("word2", word);
 		List<HashMap> interview = is.interviewList2Subject(1, word);
 		mav.addObject("interview", interview);
 		mav = pageInner2Subject(mav, 1, word);
@@ -324,22 +324,28 @@ public class InterviewController {
 	public ModelAndView search2(@PathVariable(name="type")String type, @PathVariable(name="word")String word, 
 													@PathVariable(name="word2")String word2, @PathVariable(name="page")int page){
 		ModelAndView mav = new ModelAndView("/interview/interview.jsp");
-		mav.addObject("word", word);
+		mav.addObject("word1", word);
 		mav.addObject("word2", word2);
+		if(word2.equals("-")){
+			mav.addObject("word2", "");
+		}
+		if(word.equals("-")){
+			mav.addObject("word1", "");
+		}
 		word = ss.wordSearchChange(word);
 		List<HashMap> wordList = ss.word(word);
 		List<HashMap> interview = new Vector<>();
 		switch(type){
 		case "both":
-			is.interviewList2Both(page, wordList, word2);
+			interview = is.interviewList2Both(page, wordList, word2);
 			mav = pageInner2Both(mav, page, wordList, word2);
 			break;
 		case "school":
-			is.interviewList2School(page, wordList);
+			interview = is.interviewList2School(page, wordList);
 			mav = pageInner2School(mav, page, wordList);
 			break;
 		case "subject":
-			is.interviewList2Subject(page, word2);
+			interview = is.interviewList2Subject(page, word2);
 			mav = pageInner2Subject(mav, page, word2);
 			break;
 		}

@@ -719,7 +719,7 @@
     	});
     	// 충전 테스트
     	$(document).ready(function(){
-    		IMP.init('imp36486579');
+    		IMP.init('imp43585031');
     	});
     	// 충전
     	function charge(){

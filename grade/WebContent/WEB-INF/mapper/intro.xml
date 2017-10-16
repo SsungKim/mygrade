@@ -17,23 +17,44 @@
 		typical = #{typical}, pass = #{pass}, day = now() where auto = #{auto}
 	</update>
 	<select id="introList" resultType="java.util.HashMap">
-		select * from introList a, salesList b, memberList c
-		where a.id = b.id and b.id = c.id and (c.admin = '판매자' or c.admin = '메인과리자')
-		order by a.auto desc limit 12 offset #{page}
+		select * from introList a, memberList b
+		where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
+		order by a.auto desc limit 10 offset #{page}
 	</select>
 	<select id="introCount" resultType="java.lang.Integer">
-		select count(*) from introList a, salesList b where a.id = b.id
+		select count(*) from introList a, memberList b
+		where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
 	</select>
 	<select id="introOne" resultType="java.util.HashMap">
 		select * from introList where auto = #{num}
 	</select>
-	<select id="search" resultType="java.util.HashMap">
-		select * from introList a, salesList b where a.id = b.id and (a.school like #{word} or a.subject like #{word}) order by a.auto desc
-		limit 12 offset #{page}
+	<select id="introList2" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from introList a, memberList b where a.id = b.id  and (b.admin = '판매자' or b.admin = '메인관리자')
+		and (a.school = #{word} and a.subject like #{subject})
+		order by a.auto desc limit 12 offset #{page}
 	</select>
-	<select id="introCount2" resultType="java.lang.Integer">
-		select count(*) from introList a, salesList b where a.id = b.id and (a.school like #{word} or a.subject like #{word})
+	<select id="introList3" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from introList a, memberList b where a.id = b.id  and (b.admin = '판매자' or b.admin = '메인관리자')
+		and a.school = #{word}
+		order by a.auto desc limit 12 offset #{page}
 	</select>
+	<select id="introList4" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from introList a, memberList b where a.id = b.id  and (b.admin = '판매자' or b.admin = '메인관리자')
+		and a.subject like #{subject}
+		order by a.auto desc limit 12 offset #{page}
+	</select>
+	<select id="count2" resultType="java.lang.Integer">
+		select count(*) from introList a, memberList b where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
+		and (a.school = #{word} and a.subject like #{subject})
+	</select> 
+	<select id="count3" resultType="java.lang.Integer">
+		select count(*) from introList a, memberList b where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
+		and a.school = #{word}
+	</select> 
+	<select id="count4" resultType="java.lang.Integer">
+		select count(*) from introList a, memberList b where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
+		and a.subject like #{word}
+	</select> 
 
 
 

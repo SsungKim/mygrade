@@ -272,38 +272,113 @@ public class RecordService {
 		return count%12 == 0 ? count/12 : count/12+1;
 	}
 	
-	// 검색 학생부 리스트
-	public List<HashMap> recordList2(int page, List<HashMap> wordList) {
+	// 면접후기 검색 리스트
+	public List<HashMap> recordList2Both(int page, List<HashMap> wordList, String subject) {
 		SqlSession ss = fac.openSession();
-		List<HashMap> list = new Vector<>();
+		List<HashMap> li = new Vector<>();
 		for(HashMap m : wordList){
 			HashMap map = new HashMap();
-			map.put("page", (page-1)*12);
-			map.put("word", "%"+m.get("num")+"%");
-			List<HashMap> lis = ss.selectList("record.recordList2", map);
-			for(int i=0; i<lis.size(); i++){
-				HashMap m2 = lis.get(i);
-				HashMap mm = ss.selectOne("school.word2", m2.get("school").toString());
+			map.put("page", (page-1)*10);
+			map.put("word", m.get("num"));
+			map.put("subject", "%"+subject+"%");
+			List<HashMap> list = ss.selectList("record.recordList2", map);
+			for(int i=0; i<list.size(); i++){
+				HashMap m2 = list.get(i);
+				HashMap mm = ss.selectOne("school.word2", m2.get("school"));
 				m2.put("schoolName", mm.get("name"));
-				lis.set(i, m2);
-				list.add(lis.get(i));
+				list.set(i, m2);
+				li.add(list.get(i));
 			}
 		}
 		ss.close();
-		return list;
+		return li;
 	}
-	
-	// 학생부 검색 페이지
-	public int recordPage2(List<HashMap> wordList) {
+
+	// 면접후기 검색 페이지
+	public int recordPage2Both(List<HashMap> wordList, String subject) {
 		SqlSession ss = fac.openSession();
+		HashMap map = new HashMap();
 		int count = 0;
 		for(HashMap m : wordList){
-			int n = ss.selectOne("record.count2", "%"+m.get("num")+"%");
+			map.put("word", m.get("num"));
+			map.put("subject", "%"+subject+"%");
+			int n = ss.selectOne("record.count2", map);
 			count += n;
 		}
 		ss.close();
-		return count%12 == 0 ? count/12 : count/12+1;
+		return count%10 == 0 ? count/10 : count/10+1;
 	}
+	
+	// 면접후기 검색 리스트
+	public List<HashMap> recordList2School(int page, List<HashMap> wordList) {
+		SqlSession ss = fac.openSession();
+		List<HashMap> li = new Vector<>();
+		for(HashMap m : wordList){
+			HashMap map = new HashMap();
+			map.put("page", (page-1)*10);
+			map.put("word", m.get("num"));
+			List<HashMap> list = ss.selectList("record.recordList3", map);
+			for(int i=0; i<list.size(); i++){
+				HashMap m2 = list.get(i);
+				HashMap mm = ss.selectOne("school.word2", m2.get("school"));
+				m2.put("schoolName", mm.get("name"));
+				list.set(i, m2);
+				li.add(list.get(i));
+			}
+		}
+		ss.close();
+		return li;
+	}
+
+	// 면접후기 검색 페이지
+	public int recordPage2School(List<HashMap> wordList) {
+		SqlSession ss = fac.openSession();
+		int count = 0;
+		for(HashMap m : wordList){
+			int n = ss.selectOne("record.count3", m.get("num"));
+			count += n;
+		}
+		ss.close();
+		return count%10 == 0 ? count/10 : count/10+1;
+	}
+	
+	// 면접후기 검색 리스트
+	public List<HashMap> recordList2Subject(int page, String subject) {
+		SqlSession ss = fac.openSession();
+		List<HashMap> li = new Vector<>();
+		HashMap map = new HashMap();
+		map.put("page", (page-1)*10);
+		map.put("subject", "%"+subject+"%");
+		List<HashMap> list = ss.selectList("record.recordList4", map);
+		for(int i=0; i<list.size(); i++){
+			HashMap m2 = list.get(i);
+			HashMap mm = ss.selectOne("school.word2", m2.get("school"));
+			m2.put("schoolName", mm.get("name"));
+			list.set(i, m2);
+			li.add(list.get(i));
+		}
+		ss.close();
+		return li;
+	}
+
+	// 면접후기 검색 페이지
+	public int recordPage2Subject(String subject) {
+		SqlSession ss = fac.openSession();
+		int count = ss.selectOne("record.count4", "%"+subject+"%");
+		ss.close();
+		return count%10 == 0 ? count/10 : count/10+1;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	// 학생부 수정
 	public void modifyRecord(HttpSession session, String addr, String school, String subject, String type, String year,

@@ -153,9 +153,9 @@ public class AdminController {
 	// 충전데이터 저장
 	@RequestMapping("/chargeData/{user}/{id}/{prim}/{tradeId}/{pay}/{applyNum}")
 	@ResponseBody
-	public void chargeData(@PathVariable(name="user")String user, @PathVariable(name="id")String id, 
+	public boolean chargeData(@PathVariable(name="user")String user, @PathVariable(name="id")String id, 
 			@PathVariable(name="prim")String prim, @PathVariable(name="tradeId")String tradeId, @PathVariable(name="pay")String pay,
 			@PathVariable(name="applyNum")String applyNum, HttpSession session){
-		as.chargeData(user, id, prim, tradeId, pay, applyNum, session);
+		return as.chargeData(user, id, prim, tradeId, pay, applyNum, session);
 	}
 }

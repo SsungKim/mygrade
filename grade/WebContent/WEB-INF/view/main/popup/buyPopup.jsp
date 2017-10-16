@@ -381,8 +381,12 @@
     	        			rsp.apply_num,
     	        	async : false,
     	        	success : function(txt){
-    	        		alert("결제가 완료되었습니다.");
-    	        		location.reload();
+    	        		if(txt){
+	    	        		alert("결제가 완료되었습니다.");
+	    	        		location.reload();
+    	        		} else {
+    	        			alert("결제에 실패하였습니다.\n잠시후 다시 시도해주세요.");
+    	        		}
     	        	}
     	        });
     	    } else {

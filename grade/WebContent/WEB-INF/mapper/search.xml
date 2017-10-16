@@ -89,12 +89,12 @@
 <!-- 	</select> -->
 	<select id="searchinterview" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 		select * from interviewList a, salesList b where a.id = b.id
-		and (a.school like #{word} and a.subject like #{subject})
+		and (a.school = #{word} and a.subject like #{subject})
 		order by a.auto desc limit 12 offset #{page}
 	</select>
 	<select id="searchinterview2" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 		select * from interviewList a, salesList b where a.id = b.id
-		and a.school like #{word}
+		and a.school = #{word}
 		order by a.auto desc limit 12 offset #{page}
 	</select>
 	<select id="searchinterview3" parameterType="java.util.HashMap" resultType="java.util.HashMap">
@@ -122,11 +122,11 @@
 <!-- 	</select> -->
 	<select id="countinterview" parameterType="java.util.HashMap" resultType="java.lang.Integer">
 		select count(*) from interviewList a, salesList b where a.id = b.id
-		and (a.school like #{word} and a.subject like #{subject})
+		and (a.school = #{word} and a.subject like #{subject})
 	</select>
 	<select id="countinterview2" parameterType="java.util.HashMap" resultType="java.lang.Integer">
 		select count(*) from interviewList a, salesList b where a.id = b.id
-		and a.school like #{word}
+		and a.school = #{word}
 	</select>
 	<select id="countinterview3" parameterType="java.util.HashMap" resultType="java.lang.Integer">
 		select count(*) from interviewList a, salesList b where a.id = b.id

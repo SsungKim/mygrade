@@ -16,14 +16,14 @@ public class SearchController {
 	SearchService ss;
 	
 	// 메인검색 both
-	@RequestMapping("/both/{word1}/{word2}")
-	public ModelAndView searchBoth(@PathVariable(name="word1")String word1, @PathVariable(name="word2")String word2){
+	@RequestMapping("/both/{word}/{word2}")
+	public ModelAndView searchBoth(@PathVariable(name="word")String word, @PathVariable(name="word2")String word2){
 		ModelAndView mav = new ModelAndView("/search/search.jsp");
-		mav.addObject("word", word1);
+		mav.addObject("word1", word);
 		mav.addObject("word2", word2);
 		List<HashMap> wordList = new Vector<>();
-		word1 = ss.wordSearchChange(word1);
-		wordList = ss.word(word1);
+		word = ss.wordSearchChange(word);
+		wordList = ss.word(word);
 		List<HashMap> searchList = ss.selectBoth(wordList, word2, 1);
 		mav.addObject("searchList", searchList);
 		mav.addObject("searchType", "interview");
@@ -59,13 +59,13 @@ public class SearchController {
 	}
 	
 	// 메인검색 school
-	@RequestMapping("/school/{word1}")
-	public ModelAndView searchSchool(@PathVariable(name="word1")String word1){
+	@RequestMapping("/school/{word}")
+	public ModelAndView searchSchool(@PathVariable(name="word")String word){
 		ModelAndView mav = new ModelAndView("/search/search.jsp");
-		mav.addObject("word", word1);
+		mav.addObject("word1", word);
 		List<HashMap> wordList = new Vector<>();
-		word1 = ss.wordSearchChange(word1);
-		wordList = ss.word(word1);
+		word = ss.wordSearchChange(word);
+		wordList = ss.word(word);
 		List<HashMap> searchList = ss.selectSchool(wordList, 1);
 		mav.addObject("searchList", searchList);
 		mav.addObject("searchType", "interview");
@@ -101,17 +101,15 @@ public class SearchController {
 	}
 	
 	// 메인검색 subject
-	@RequestMapping("/subject/{word1}")
-	public ModelAndView searchSubject(@PathVariable(name="word1")String word1){
+	@RequestMapping("/subject/{word}")
+	public ModelAndView searchSubject(@PathVariable(name="word")String word){
 		ModelAndView mav = new ModelAndView("/search/search.jsp");
-		mav.addObject("word2", word1);
+		mav.addObject("word2", word);
 		List<HashMap> wordList = new Vector<>();
-		word1 = ss.wordSearchChange(word1);
-		wordList = ss.word(word1);
-		List<HashMap> searchList = ss.selectSubject(word1, 1);
+		List<HashMap> searchList = ss.selectSubject(word, 1);
 		mav.addObject("searchList", searchList);
 		mav.addObject("searchType", "interview");
-		mav = pageInnerSubject(mav, 1, word1);
+		mav = pageInnerSubject(mav, 1, word);
 		return mav;
 	}
 	
@@ -148,7 +146,7 @@ public class SearchController {
 	public ModelAndView search2(@PathVariable(name="searchType")String searchType, @PathVariable(name="word")String word, 
 													@PathVariable(name="word2")String word2, @PathVariable(name="type")String type){
 		ModelAndView mav = new ModelAndView("/search/search.jsp");
-		mav.addObject("word", word);
+		mav.addObject("word1", word);
 		mav.addObject("word2", word2);
 		mav.addObject("searchType", type);
 		word = ss.wordSearchChange(word);
@@ -254,7 +252,7 @@ public class SearchController {
 	public ModelAndView search4(@PathVariable(name="searchType")String searchType, @PathVariable(name="word")String word,
 			@PathVariable(name="word2")String word2, @PathVariable(name="type")String type, @PathVariable(name="page")int page){
 		ModelAndView mav = new ModelAndView("/search/search.jsp");
-		mav.addObject("word", word);
+		mav.addObject("word1", word);
 		mav.addObject("word2", word2);
 		mav.addObject("searchType", type);
 		word = ss.wordSearchChange(word);

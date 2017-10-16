@@ -21,7 +21,7 @@
 	</select>
 	<select id="interviewSomeone" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 		select * from interviewList a, schoolList b where a.user = b.user and a.user = #{user} and a.school = b.school and b.pass = '합격'
-		and a.subject = b.subject and b.auto = #{num};
+		and a.subject = b.subject and b.auto = #{num}
 	</select>
 	<select id="commentList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 		select * from interviewCommentList where interviewNum = #{num} order by auto desc limit 5 offset #{page}
@@ -38,12 +38,12 @@
 	</update>
 	<select id="interviewList2" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 		select * from interviewList a, memberList b where a.id = b.id  and (b.admin = '판매자' or b.admin = '메인관리자')
-		and (a.school like #{word} and a.subject like #{subject})
+		and (a.school = #{word} and a.subject like #{subject})
 		order by a.auto desc limit 12 offset #{page}
 	</select>
 	<select id="interviewList3" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 		select * from interviewList a, memberList b where a.id = b.id  and (b.admin = '판매자' or b.admin = '메인관리자')
-		and a.school like #{word}
+		and a.school = #{word}
 		order by a.auto desc limit 12 offset #{page}
 	</select>
 	<select id="interviewList4" parameterType="java.util.HashMap" resultType="java.util.HashMap">
@@ -53,11 +53,11 @@
 	</select>
 	<select id="count2" resultType="java.lang.Integer">
 		select count(*) from interviewList a, memberList b where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
-		and (a.school like #{word} and a.subject like #{subject})
+		and (a.school = #{word} and a.subject like #{subject})
 	</select> 
 	<select id="count3" resultType="java.lang.Integer">
 		select count(*) from interviewList a, memberList b where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
-		and a.school like #{word}
+		and a.school = #{word}
 	</select> 
 	<select id="count4" resultType="java.lang.Integer">
 		select count(*) from interviewList a, memberList b where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
@@ -71,4 +71,10 @@
 	<delete id="remove">
 		delete from interviewList where auto = #{num}
 	</delete>
+	<select id="interviewAllList" resultType="java.util.HashMap">
+		select * from interviewList order by auto desc
+	</select>
+	<update id="interviewNameSet" parameterType="java.util.HashMap">
+		update interviewList set name = #{name} where auto = #{auto}
+	</update>
 </mapper>

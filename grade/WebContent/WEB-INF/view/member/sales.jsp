@@ -10,13 +10,15 @@
     </head>
      
     <body>
-    	<c:import url="/WEB-INF/view/main/login.jsp"/>
         <div id="wrapper">
             <div class="join01_02">
             	<c:import url="/WEB-INF/view/main/side.jsp"/>
-                <div class="hmenubar">
-                    <img src="/img/hmenubar.png">
-                </div>
+                <header class="sub_header">
+                    <div class="hmenubar">
+                        <img src="/img/hmenubar.png">
+                    </div>
+                    <c:import url="/WEB-INF/view/main/login.jsp"/>
+                </header>
                 <div class="page_inner">
                     <div class="logo">
                         <img src="/img/logo.png" onclick="location.href='/'">
@@ -38,14 +40,18 @@
 	                                <div class="line"></div>
 	                            </div>
 	                            <div class="info_write_contents">
-	                                <div class="info_content">
+	                                <div class="info_content wr">
 	                                    <div class="info_radio_wrap">
 	                                        <div class="radio_wrap">
 	                                            <div class="radio_tit">판매자 등록을 하시겠습니까?</div>
-	                                            <input type="radio" value="yes" name="sales" id="salesY" ${login.bank != null ? 'checked' : '' }>
-	                                            <div class="txt"><label for="salesY">예</label></div>
-	                                            <input type="radio" value="no" name="sales" id="salesN" ${login.bank == null ? 'chekced' : '' }>
-	                                            <div class="txt"><label for="salesN">아니오</label></div>
+	                                            <div class="radio_c">
+                                                    <input type="radio" value="yes" name="sales" id="salesY" ${login.bank != null ? 'checked' : '' }>
+	                                               <div class="txt"><label for="salesY">예</label></div>
+                                                </div>
+	                                            <div class="radio_c">
+                                                    <input type="radio" value="no" name="sales" id="salesN" ${login.bank == null ? 'chekced' : '' }>
+	                                               <div class="txt"><label for="salesN">아니오</label></div>
+                                                </div>
 	                                        </div>
 	                                    </div>
 	                                </div>

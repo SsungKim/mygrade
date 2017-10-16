@@ -42,12 +42,26 @@
 <script>
 	// 페이지 이동
 	function page(num){
-		var searchTxt = $("#searchTxt").val();
-		if(searchTxt != ""){
-			location.href='/exam/search/page/'+searchTxt+"/"+num;
-		} else {
+		var searchType = "both";
+		var searchTxt = "${word1 }";
+		var searchTxt2 = "${word2 }";
+		if(searchTxt == "" && searchTxt2 == ""){
 			location.href="/exam/page/"+num;
+			return;
 		}
+		if(searchTxt.length == 1 || searchTxt2.length == 1){
+			alert("2글자 이상으로 검색해주세요.");
+			return;
+		}
+		if(searchTxt != "" && searchTxt2 == ""){
+			searchType = "school";
+			searchTxt2 = "-";
+		}
+		if(searchTxt == "" && searchTxt2 != ""){
+			searchType = "subject";
+			searchTxt = "-";
+		}
+		location.href='/exam/search/page/'+searchType+"/"+searchTxt+"/"+searchTxt2+"/"+num;
 	}
 	// 화살표 보이기
 	$(document).ready(function(){

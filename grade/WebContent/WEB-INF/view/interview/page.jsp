@@ -84,8 +84,8 @@
 	// 페이지 이동
 	function page(num){
 		var searchType = "both";
-		var searchTxt = $("#searchTxt").val();
-		var searchTxt2 = $("#searchTxt2").val();
+		var searchTxt = "${word1 }";
+		var searchTxt2 = "${word2 }";
 		if(searchTxt == "" && searchTxt2 == ""){
 			location.href="/interview/page/"+num;
 			return;
@@ -96,11 +96,13 @@
 		}
 		if(searchTxt != "" && searchTxt2 == ""){
 			searchType = "school";
+			searchTxt2 = "-";
 		}
 		if(searchTxt == "" && searchTxt2 != ""){
 			searchType = "subject";
+			searchTxt = "-";
 		}
-		location.href='/interview/search/page/'+searchType+"/"+searchType+"/"+searchTxt+"/"+num;
+		location.href='/interview/search/page/'+searchType+"/"+searchTxt+"/"+searchTxt2+"/"+num;
 	}
 	// 화살표 보이기
 	$(document).ready(function(){

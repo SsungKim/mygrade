@@ -127,4 +127,11 @@ public class MainController {
 //		ms.dbTestSet();
 //		return "redirect:/";
 //	}
+	
+	// db interviewList name change
+	@RequestMapping("/interviewNameSet")
+	public String interviewNameSet(){
+		ms.interviewNameSet();
+		return "redirect:/";
+	}
 }
