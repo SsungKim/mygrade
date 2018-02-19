@@ -16,7 +16,7 @@
 			</div>
 			<div class="txt" onclick="location.href='/logout'">로그아웃</div>
 			<div class="txt" onclick="location.href='/member/info';">내정보</div>
-			<c:if test="${login.id == 'admin' }">
+			<c:if test="${login.admin == '메인관리자' || login.admin == '인증관리자' }">
 				<div class="txt" onclick="location.href='/admin';">관리자</div>
 			</c:if>
 		</c:otherwise>

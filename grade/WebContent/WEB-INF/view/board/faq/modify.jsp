@@ -38,28 +38,21 @@
                         </div>
                         <div class="tit">문의사항</div>
                     </section>
-                    <form action="/notice/writeSave" enctype="multipart/form-data" method="post" id="form">
-	                    <section class="section01">
-	                        <div class="board_tit">
-	                            <div class="tit">제목</div>
-	                            <input type="text" name="title" placeholder="제목 입력란" id="title" value="${view.title }">
-	                        </div>
-                            <textarea placeholder="내용을 입력해주세요" name="content" id="content">${view.content }</textarea>
-<!-- 	                        <div class="board_password_wrap"> -->
-<!-- 	                            <div class="tit">비밀번호</div> -->
-<!-- 	                            <input type="password" id="board_password"> -->
-<!-- 	                            <div class="txt">(4자리 이상 10자리 이하의 비밀번호를 설정 해주세요)</div> -->
-<!-- 	                        </div> -->
-	                        <div class="btn_wrap">
-                                <div class="btn right" onclick="submit()">
-	                                <div class="txt">수정</div>
-	                            </div>
-	                            <div class="btn left" onclick="history.back()">
-	                                <div class="txt">취소</div>
-	                            </div>
-	                        </div>
-	                    </section>
-					</form>
+                    <section class="section01">
+                        <div class="board_tit">
+                            <div class="tit">제목</div>
+                            <input type="text" name="title" placeholder="제목 입력란" id="title" value="${view.title }" maxlength="50">
+                        </div>
+                           <textarea placeholder="내용을 입력해주세요" name="content" id="content">${view.content }</textarea>
+                        <div class="btn_wrap">
+                               <div class="btn right" onclick="submit()">
+                                <div class="txt">수정</div>
+                            </div>
+                            <div class="btn left" onclick="history.back()">
+                                <div class="txt">취소</div>
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
             <footer>
@@ -79,12 +72,14 @@
     		var title = $("#title").val();
     		var content = $("#content").val();
     		content = content.replace(/\n/g,"<br>");
-    		if(title == ""){
+    		if(title.length == 0){
     			alert("제목을 입력해주세요.");
+    		} else if(content.length == 0){
+    			alert("내용을 입력해주세요.");
     		} else {
     			$.ajax({
     				type : "post",
-    				url : "/notice/modify/"+title+"/"+content+"/${num }",
+    				url : "/faq/modify/"+title+"/"+content+"/${num }",
     				async : false,
     				success : function(txt){
     					if(txt){

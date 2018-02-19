@@ -44,10 +44,6 @@
                                     <div class="tit">작성자</div>
                                     <div class="txt">${view.writer }</div>
                                 </div>
-<!--                                 <div class="tit_wrap"> -->
-<!--                                     <div class="tit">조회</div> -->
-<!--                                     <div class="txt">(3)</div> -->
-<!--                                 </div> -->
                             </div>
                             <div class="board_txt" id="contentDiv">${view.content }</div>
 	                        <div class="board_btn_wrap">

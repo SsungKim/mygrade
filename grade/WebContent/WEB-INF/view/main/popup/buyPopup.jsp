@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div class="popup_cover" id="popup_cover"></div>
-<!-- purchase popup -->
+<!-- buy popup -->
 <div class="point_popup_wrap" id="popup_buy">
 	<div class="popup_tit">
 		<div class="img">
@@ -22,7 +22,7 @@
 					<div class="txt">학생부 구매</div>
 				</label>
 			</div>
-			<div class="point">${certList.size() > 0 ? '60P' : '40P' }</div>
+			<div class="point">40P</div>
 		</div>
 		<div class="input_content">
 			<div class="input_wrap">
@@ -34,7 +34,7 @@
 					<div class="txt">자소서 구매</div>
 				</label>
 			</div>
-			<div class="point">${certList.size() > 0 ? '60P' : '40P' }</div>
+			<div class="point">40P</div>
 		</div>
 		<div class="input_content">
 			<div class="input_wrap">
@@ -46,7 +46,7 @@
 					<div class="txt">면접후기 구매</div>
 				</label>
 			</div>
-			<div class="point">${certList.size() > 0 ? '50P' : '30P' }</div>
+			<div class="point">30P</div>
 		</div>
 		<div class="input_content">
 			<div class="input_wrap">
@@ -58,7 +58,7 @@
 					<div class="txt">정시성적 구매</div>
 				</label>
 			</div>
-			<div class="point">${certList.size() > 0 ? '15P' : '10P' }</div>
+			<div class="point">10P</div>
 		</div>
 		<div class="point_txt_wrap">
 			<div class="point_txt">
@@ -105,116 +105,132 @@
 		</div>
 	</div>
 </div>
-<!-- recharge view -->
+<!-- charge popup -->
 <div class="charging_popup_wrap" id="popup_charge">
-	<div class="popup_tit">
-		<div class="txt">포인트 충전</div>
-		<div class="img">
-			<img src="/img/myinfo/close01.png"
-				onclick="$('#popup_cover').hide(), $('#popup_charge').hide(), $('body').css('overflow', 'auto')">
-		</div>
-	</div>
 	<div class="popup_inner">
-		<div class="present_point">
-			<div class="tit">현재 나의 포인트</div>
-			<div class="point">
-				<div class="txt">${login.point }</div>
-				<div class="img">
-					<img src="/img/myinfo/point.png">
-				</div>
+		<div class="popup_tit">
+			<div class="txt">포인트 충전</div>
+			<div class="img">
+				<img src="/img/myinfo/close01.png"
+					onclick="$('#popup_cover').hide(), $('#popup_charge').hide(), $('body').css('overflow', 'auto')">
 			</div>
 		</div>
-		<div class="radio_wrap">
-			<div class="inner">
-				<div class="tit">충전포인트</div>
-				<div class="radio">
-					<input type="radio" id="point1" name="charging">
-					<label for="point1">1만원</label>
-				</div>
-				<div class="radio">
-					<input type="radio" id="point2" name="charging">
-					<label for="point2">3만원</label>
-				</div>
-				<div class="radio">
-					<input type="radio" id="point3" name="charging">
-					<label for="point3">5만원</label>
-				</div>
-				<div class="radio">
-					<input type="radio" id="point4" name="charging">
-					<label for="point4">7만원</label>
-				</div>
-				<div class="radio">
-					<input type="radio" id="point5" name="charging">
-					<label for="point5">10만원</label>
+		<div class="popup_contents">
+			<div class="present_point">
+				<div class="tit">현재 나의 포인트</div>
+				<div class="point">
+					<div class="txt">${login.point }P</div>
+					<div class="img">
+						<img src="/img/myinfo/point.png">
+					</div>
 				</div>
 			</div>
+			<div class="radio_wrap">
+				<div class="inner">
+					<div class="tit">충전포인트</div>
+					<div class="radio">
+						<input type="radio" id="point1" name="charging"> <label
+							for="point1">1만원</label>
+					</div>
+					<div class="radio">
+						<input type="radio" id="point2" name="charging"> <label
+							for="point2">3만원</label>
+					</div>
+					<div class="radio">
+						<input type="radio" id="point3" name="charging"> <label
+							for="point3">5만원</label>
+					</div>
+					<div class="radio">
+						<input type="radio" id="point4" name="charging"> <label
+							for="point4">7만원</label>
+					</div>
+					<div class="radio">
+						<input type="radio" id="point5" name="charging"> <label
+							for="point5">10만원</label>
+					</div>
+				</div>
+			</div>
+			<div class="radio_wrap radio_wrap1">
+				<div class="inner">
+					<div class="tit">결제수단</div>
+					<div class="radio">
+						<input type="radio" id="card" name="payment"> <label
+							for="card">신용카드</label>
+					</div>
+					<div class="radio">
+						<input type="radio" id="phone" name="payment"> <label
+							for="phone">핸드폰 소액결제</label>
+					</div>
+				</div>
+			</div>
+			<div class="tab_wrap">
+				<div class="tab_inner">
+					<div class="tab_tit_wrap">
+						<div class="tab_tit sel">이용안내</div>
+						<div class="tab_tit">유의사항 및 환불정책</div>
+					</div>
+					<div class="tab_contents">
+						<div class="contents_tit">포인트 이용안내</div>
+						<div class="contents_txt">
+							<div class="txt_tit">1) 학생부 전체 열람 하기</div>
+							<div class="txt">
+								학생부: 한 건당 40포인트<br> 학생부 한 건 당 40포인트 입니다.<br> 예를 들어 2개의
+								학생부 전체 보기를 원하면 80포인트가 필요합니다. <br> (합격, 불합격 학생부 모두 동일 합니다.)
+
+							</div>
+							<div class="txt">
+								학생부(합격인증마크): 한 건당 60포인트<br> 학생부(합격인증마크) 한 건 당 60포인트 입니다.<br>
+								예를 들어 2개의 학생부(합격인증마크) 전체 보기를 원하면 120포인트가 필요합니다.<br> (학생부
+								합격인증마크는 합격증명서를 제출 하여 합격이 확인된 경우입니다.)
+							</div>
+						</div>
+						<div class="contents_txt">
+							<div class="txt_tit">2) 자소서 전체 열람 하기</div>
+							<div class="txt">
+								자소서: 한 건당 40포인트<br> 자소서 한 건 당 40포인트 입니다.<br> 예를 들어 2개의
+								자소서 전체 보기를 원하면 80포인트가 필요합니다
+							</div>
+							<div class="txt">
+								자소서(합격인증마크): 한 건당 60포인트<br> 자소서(합격인증마크) 한 건 당 60포인트 입니다.<br>
+								예를 들어 2개의 자소서(합격인증마크) 전체 보기를 원하면 120포인트가 필요합니다.<br> (학생부
+								합격인증마크는 합격증명서를 제출 하여 합격이 확인된 경우입니다.)
+
+							</div>
+						</div>
+						<div class="contents_txt">
+							<div class="txt_tit">3) 면접 후기 전체 열람 하기</div>
+							<div class="txt">
+								면접후기: 한 건당 30포인트<br> 면접 후기 한 건당 30포인트 입니다.<br> 예를 들어
+								2개의 면접 후기 전체 보기를 원하면 60포인트가 필요합니다.
+							</div>
+							<div class="txt">
+								면접후기(합격인증마크): 한 건당 50포인트<br> 면접후기(합격인증마크) 한 건 당 50포인트 입니다.<br>
+								예를들어 2개의 면접 후기(합격인증마크) 전체 보기를 원하면 100포인트가 필요합니다.
+							</div>
+						</div>
+						<div class="contents_txt">
+							<div class="txt_tit">4) 정시 합격 점수 보기</div>
+							<div class="txt">
+								수능점수보기: 한 건당 10포인트<br> 정시로 합격한 학생의 수능 점수 보기는 한 건당 10포인트
+								입니다.<br> 예를 들어 5개의 정시 합격 점수를 보기를 원하면 50포인트가 필요합니다.
+							</div>
+							<div class="txt">
+								수능점수(합격인증) 보기: 한 건당 15포인트<br> 정시로 합격한 학생의 수능 점수(합격인증) 보기는 한
+								건당 15포인트 입니다.<br> 예를 들어 5개의 정시 합격 점수를 보기를 원하면 75포인트가 필요합니다.
+
+							</div>
+						</div>
+						<div class="contents_tit">이용기간 안내</div>
+						<div class="contents_txt">
+							<div class="txt">
+								포인트 결제 시 결제일로부터 15일간 열람 가능합니다.<br> 건당 포인트는 변경될 수 있습니다.
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="charging_btn" onclick="charge()">충전하기</div>
 		</div>
-		<div class="radio_wrap radio_wrap1">
-			<div class="inner">
-				<div class="tit">결제수단</div>
-				<div class="radio">
-					<input type="radio" id="card" name="payment">
-					<label for="card">신용카드</label>
-				</div>
-				<div class="radio">
-					<input type="radio" id="phone" name="payment">
-					<label for="phone">핸드폰 소액결제</label>
-				</div>
-			</div>
-		</div>
-		<div class="tab_wrap">
-			<div class="tab_tit_wrap">
-				<div class="tab_tit sel">이용안내</div>
-				<div class="tab_tit">유의사항 및 환불정책</div>
-			</div>
-			<div class="tab_contents">
-				<div class="contents_tit">포인트 이용안내</div>
-				<div class="contents_tit" style="font-size: 12px;">1포인트 = 100원</div>
-				<div class="contents_txt">
-					<div class="txt_tit">1) 학생부 전체 열람 하기</div>
-					<div class="txt">
-						학생부: 한 건당 40포인트<br> 학생부 한 건 당 40포인트 입니다.<br> 예를 들어 2개의
-						학생부 전체 보기를 원하면 80포인트가 필요합니다. <br> (합격, 불합격 학생부 모두 동일 합니다.) <br>
-						<br> 학생부(합격인증마크): 한 건당 60포인트<br> 학생부(합격인증마크) 한 건 당
-						60포인트 입니다.<br> 예를 들어 2개의 학생부(합격인증마크) 전체 보기를 원하면 120포인트가
-						필요합니다.<br> (학생부 합격인증마크는 합격증명서를 제출 하여 합격이 확인된 경우입니다.) <br>
-					</div>
-				</div>
-				<div class="contents_txt">
-					<div class="txt_tit">2) 자소서 전체 열람 하기</div>
-					<div class="txt">
-						자소서: 한 건당 40포인트<br> 자소서 한 건 당 40포인트 입니다.<br> 예를 들어 2개의
-						자소서 전체 보기를 원하면 80포인트가 필요합니다. <br> <br> 자소서(합격인증마크): 한
-						건당 60포인트<br> 자소서(합격인증마크) 한 건 당 60포인트 입니다.<br> 예를 들어
-						2개의 자소서(합격인증마크) 전체 보기를 원하면 120포인트가 필요합니다.<br> (학생부 합격인증마크는
-						합격증명서를 제출 하여 합격이 확인된 경우입니다.) <br>
-					</div>
-				</div>
-				<div class="contents_txt">
-					<div class="txt_tit">3) 면접 후기 전체 열람 하기</div>
-					<div class="txt">
-						면접후기: 한 건당 30포인트<br> 면접 후기 한 건당 30포인트 입니다.<br> 예를 들어 2개의
-						면접 후기 전체 보기를 원하면 60포인트가 필요합니다.<br> <br> 면접후기(합격인증마크): 한
-						건당 50포인트<br> 면접후기(합격인증마크) 한 건 당 50포인트 입니다.<br> 예를들어
-						2개의 면접 후기(합격인증마크) 전체 보기를 원하면 100포인트가 필요합니다.<br>
-					</div>
-				</div>
-				<div class="contents_txt">
-					<div class="txt_tit">4) 정시 합격 점수 보기</div>
-					<div class="txt">
-						수능점수보기: 한 건당 10포인트<br> 정시로 합격한 학생의 수능 점수 보기는 한 건당 10포인트 입니다.<br>
-						예를 들어 5개의 정시 합격 점수를 보기를 원하면 50포인트가 필요합니다.<br> <br>
-						수능점수(합격인증) 보기: 한 건당 15포인트<br> 정시로 합격한 학생의 수능 점수(합격인증) 보기는 한
-						건당 15포인트 입니다.<br> 예를 들어 5개의 정시 합격 점수를 보기를 원하면 75포인트가 필요합니다.<br>
-					</div>
-				</div>
-				<div class="contents_txt">
-					<div class="txt_tit">5) 이용기간 안내</div>
-					<div class="txt">포인트 결제 시 결제일로부터 15일간 열람 가능합니다.</div>
-				</div>
-			</div>
-		</div>
-		<div class="charging_btn" onclick="charge()">충전하기</div>
 	</div>
 </div>
 
@@ -311,6 +327,8 @@
 				}
 			});
 		} else {
+			alert("준비중입니다.");
+			return;
 			alert("구매할 포인트가 부족합니다.\n충전후 구매해주세요.");
 			$("#popup_buy").hide();
 			$("#popup_charge").show();
@@ -319,6 +337,8 @@
 	}
 	// 충전하기 팝업
 	function chargePopup(){
+		alert("준비중입니다.");
+		return;
 		$("#popup_cover").show();
 		$("#popup_charge").show();
 		$("#popup_buy").hide();

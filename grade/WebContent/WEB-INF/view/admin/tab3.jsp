@@ -55,7 +55,9 @@
 	            <div class="tab_content">
 	                <div class="content num">${t.auto }</div>
 	                <div class="content c1">${t.day }</div>
-	                <div class="content c2"><span onclick="tab3UseView(${t.user })">${t.id }</span></div>
+	                <div class="content c2">
+	                	<span onclick="tab3UseView(${t.user })">${t.id }</span>
+	                </div>
 	                <div class="content c1">${t.item }</div>
 	                <div class="content c4 c4_1">${t.owner }</div>
 	                <div class="content c4 c4_2">${t.schoolName }</div>

@@ -89,7 +89,7 @@
                                         </div>
                                     </div>
                                     <div class="add_file">
-                                        <input class="upload_name" value="합격증or재학증명서 등록" disabled="disabled" id="dataName1">
+                                        <input class="upload_name" value="합격증or재학증명서(학생증)" disabled="disabled" id="dataName1">
                                         <label for="passData1">등록</label>
                                         <input type="file" id="passData1" class="upload_hidden" name="passData" onchange="dataChange(this)">
                                     </div>
@@ -140,9 +140,8 @@
 		if(${login == null}){
 			alert("세션이 만료되었습니다.\n로그인 페이지로 이동합니다.");
 			location.href='/member/login';
-			return false;
+			return;
 		}
-		return true;
 	}
 	//대학 지역 선택
 	function schoolChange(elem){
@@ -258,7 +257,8 @@
 			       		$("#schoolForm"+i).submit();
 					}
 					if(successSchool.length + failSchool.length == schoolNum){
-						alert(successSchool+"번째 학교 등록완료.\n"+failSchool+"번째 학교 중복으로 등록실패");
+// 						alert(successSchool+"번째 학교 등록완료.\n"+failSchool+"번째 학교 중복으로 등록실패");
+						alert(successSchool.length+"개의 학교 등록완료.");
 						location.href="/member/info";
 					} else {
 						alert("등록에 실패하였습니다.\n잠시후 다시 시도해주세요.");

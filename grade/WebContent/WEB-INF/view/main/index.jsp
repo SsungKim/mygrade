@@ -21,6 +21,9 @@
                 </header>
                 <div class="page_inner">
                     <header class="main_header">
+                    	<c:if test="${login.id == 'admin' }">
+	                    	<div class="visit" style="float: right; font-size: 12px; ">오늘 : ${todayVisit } / 전체 : ${totalVisit }</div>
+                    	</c:if>
                         <div class="logo">
                             <img src="/img/logo.png">
                         </div>
@@ -30,7 +33,7 @@
                     </header>
                     <div class="main_item">
 <!--                         <div class="item" onclick="location.href='/record'"> -->
-                        <div class="item" onclick="alert('열람기간이 완료되었습니다.\n고2(예비고3) 학생들을 위한 오픈시기는 2017년 11월 1일입니다.\n(시기는 변동될 수 있습니다.)')">
+                        <div class="item" onclick="alert('열람기간이 완료되었습니다.\n고1, 2(예비고2, 3) 학생들을 위한 오픈시기는 2018년 1월 1일입니다.\n(시기는 변동될 수 있습니다.)')">
                             <div class="tit_wrap">
                                 <div class="inner">
                                     <div class="img">
@@ -44,7 +47,7 @@
                             </div>
                         </div>
 <!--                         <div class="item" onclick="location.href='/intro'"> -->
-                        <div class="item" onclick="alert('열람기간이 완료되었습니다.\n고2(예비고3) 학생들을 위한 오픈시기는 2017년 12월 1일입니다.\n(시기는 변동될 수 있습니다.)')">
+                        <div class="item" onclick="alert('열람기간이 완료되었습니다.\n고2(예비고3) 학생들을 위한 오픈시기는 2018년 1월 1일입니다.\n(시기는 변동될 수 있습니다.)')">
                             <div class="tit_wrap">
                                 <div class="inner">
                                     <div class="img">
@@ -164,7 +167,7 @@
                                             ∙
                                             </div>
                                             <div class="sub_txt">
-                                                현재 합격하여 다니고 있는 대학의 경우, 재학증명서를 제출하면 재학생 인증으로 표시됩니다. 
+                                                현재 합격하여 다니고 있는 대학의 경우, 재학증명서(학생증)를 제출하면 재학생 인증으로 표시됩니다. 
                                             </div>
                                         </div>
                                         <div class="txt">

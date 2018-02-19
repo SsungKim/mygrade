@@ -4,8 +4,8 @@
 
 <c:if test="${select > 5 }">
 	<div class="prev_pages_wrap pages_wrap">
-		<div class="page">
-			<span onclick="page(${first })">${first }</span>
+		<div class="page" onclick="page(${first })">
+			<span>${first }</span>
 		</div>
 		<div class="omit_page">
 			<span>···</span>
@@ -16,13 +16,13 @@
 	<c:forEach var="t" begin="${start }" end="${end }">
 		<c:choose>
 			<c:when test="${t == select }">
-				<div class="page sel">
-					<span onclick="page(${t })">${t }</span>
+				<div class="page sel" onclick="page(${t })">
+					<span>${t }</span>
 				</div>
 			</c:when>
 			<c:otherwise>
-				<div class="page">
-					<span onclick="page(${t })">${t }</span>
+				<div class="page" onclick="page(${t })">
+					<span>${t }</span>
 				</div>
 			</c:otherwise>
 		</c:choose>
@@ -33,8 +33,8 @@
 		<div class="omit_page">
 			<span>···</span>
 		</div>
-		<div class="page">
-			<span onclick="page(${last })">${last }</span>
+		<div class="page" onclick="page(${last })">
+			<span>${last }</span>
 		</div>
 	</div>
 </c:if>

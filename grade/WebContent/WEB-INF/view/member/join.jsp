@@ -139,7 +139,7 @@
    		document.reqKMCISForm.target = 'KMCISWindow';
 	  }
 	  
-	  document.reqKMCISForm.action = 'https://www.kmcert.com/km cis/web/kmcisReq.jsp';
+	  document.reqKMCISForm.action = 'https://www.kmcert.com/kmcis/web/kmcisReq.jsp';
 	  document.reqKMCISForm.submit();
   }
 //-->

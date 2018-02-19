@@ -129,6 +129,18 @@
     .sell01 .contents { width: 98%; margin: 0 auto; }
     
     .search .page_inner { width: 100%; }
+    
+    .notice01 { width: 100%; }
+    .notice01 .page_inner { width: 100%; width: 98%; margin: 0 auto; }
+    
+    .notice02 { width: 100%; }
+    .notice02 .page_inner { width: 100%; width: 98%; margin: 0 auto; }
+    
+    .notice03 { width: 100%; }
+    .notice03 .page_inner { width: 100%; width: 98%; margin: 0 auto; }
+    
+    .notice04 { width: 100%; }
+    .notice04 .page_inner { width: 100%; width: 98%; margin: 0 auto; }
 }
 
 @media all and (max-width: 1000px) {
@@ -156,6 +168,9 @@
     
     .myinfo03 .logo { width: 90%; }
     .myinfo03 .logo_boundry { width: 90%; margin: 0 auto; }
+    
+    .notice01 .bbs_wrap .bbs .bbs_tit { width: calc( 100% - 353px ); }
+    .notice01 .bbs_wrap .bbs .txt.bbs_tit { padding-left: 0;}
     
 }
 
@@ -311,14 +326,14 @@
     .certify_wrap .certify .txt { font-size: 11px; line-height: 27px; }
     .certify_wrap .certify .stamp { width: 38px; }
     
+    .main_search_wrap { margin: 0 auto 25px; width: 98%; }
+    .main_search_wrap select { font-size: 12px; padding: 6px 0 6px 20px; }
+    .main_search_wrap input { width: calc( 50% - 29px ); border: 1px solid #dbdbdb; font-size: 10px; padding: 7px 0 7px 7px; }
+    .main_search_wrap .main_search1 { margin: 0 5px; }
+    .main_search_wrap .img { width: 30px; }
     
     .main .header_t1 { background-color: #f9f9f9; height: 57px; }
     .main .logo { width: 80%; margin: 20px auto; }
-    .main .main_search_wrap { margin: 0 auto 25px; width: 98%; }
-    .main .main_search_wrap select { font-size: 12px; padding: 6px 0 6px 20px; }
-    .main .main_search_wrap input { width: calc( 50% - 29px ); border: 1px solid #dbdbdb; font-size: 10px; padding: 7px 0 7px 7px; }
-    .main .main_search_wrap .main_search1 { margin: 0 5px; }
-    .main .main_search_wrap .img { width: 30px; }
     .main .main_item { margin: 0 auto; }
     .main .main_item .item { width: 48.25%; padding-top: 48.28%; margin-right: 2.3%; }
     .main .main_item .item::after { content: ''; display: block; clear: both; }
@@ -463,9 +478,10 @@
     .student_add .detail_container .dc_tit .txt { font-size: 12px; }
     .student_add .detail_container .dc_contents .contents_tit .txt { font-size: 11px; line-height: 18px; width: calc( 100% - 23px ); }
     .student_add .detail_container .dc_contents .content .txt_box textarea { font-size: 11px; }
-    .student_add .detail_container .dc_contents .content .txt_box1 .txt_wrap .tit { font-size: 11px; width: 130px; }
-    .student_add .detail_container .dc_contents .content .txt_box1 .txt_wrap .txt { width: calc( 100% - 131px ); font-size: 11px; }
-    .student_add .detail_container .dc_contents .content .txt_box1 .txt_wrap .txt textarea { font-size: 11px; height: 15px; padding: 12px 7px 7px ; }
+    .student_add .detail_container .dc_contents .content .txt_box1 .txt_wrap .tit { font-size: 11px; width: 78px; }
+    .student_add .detail_container .dc_contents .content .txt_box1 .txt_wrap .tit br { display: block; }
+    .student_add .detail_container .dc_contents .content .txt_box1 .txt_wrap .txt { width: calc( 100% - 79px ); font-size: 11px; }
+    .student_add .detail_container .dc_contents .content .txt_box1 .txt_wrap .txt textarea { font-size: 11px; min-height: 15px; padding: 12px 7px 7px ; }
     .student_add .sv_btn_wrap .sv_btn { width: 70px; margin: 0 10px; }
     
     .student_view .main_header { background-color: #fafafa; padding-bottom: 25px; }
@@ -491,8 +507,9 @@
     .student_view .detail_container .dc_tit .txt { font-size: 12px; }
     .student_view .detail_container .dc_contents .contents_tit .txt { font-size: 11px; }
     .student_view .detail_container .dc_contents .content .txt_box { min-height: 22px; font-size: 11px; }
-    .student_view .detail_container .dc_contents .content .txt_box1 .txt_wrap .tit { font-size: 11px; }
-    .student_view .detail_container .dc_contents .content .txt_box1 .txt_wrap .txt { font-size: 11px; padding: 12px 15px; }
+    .student_view .detail_container .dc_contents .content .txt_box1 .txt_wrap .tit { font-size: 11px; width: 80px; }
+    .student_view .detail_container .dc_contents .content .txt_box1 .txt_wrap .tit br { display: block; }
+    .student_view .detail_container .dc_contents .content .txt_box1 .txt_wrap .txt { font-size: 11px; padding: 12px 15px; width: calc( 100% - 112px ); }
     
     .rank_list .main_header { background-color: #fafafa; }
     .rank_list .logo { width: 400px; }
@@ -627,12 +644,59 @@
     .search .section01 .join_input_wrap input { width: calc( 100% - 14px ); background-color: #f9eded; margin: 5px; border: none; font-size: 13px; padding: 1px 0 1px 5px; }
     .search .section01 .join_input_wrap input::-webkit-input-placeholder { color: #a9a8a8; } 
     
+    .notice01 { background-color: #fafafa; }
+    .notice01 .main_header { background-color: #fafafa; border: none; }
+    .notice01 .logo { width: 400px; margin: 0 auto; }
+    .notice01 .contents .contents_tit .tit { font-size: 12px; }
+    .notice01 .bbs_wrap .bbs { font-size: 11px; }
+    .notice01 .bbs_wrap .bbs .bbs_number { width: 55px; }
+    .notice01 .bbs_wrap .bbs .bbs_tit { width: calc( 100% - 257px ); }
+    .notice01 .bbs_wrap .bbs .bbs_name { width: 120px; }
+    .notice01 .bbs_wrap .bbs .bbs_date { width: 72px; }
+    .notice01 .write_btn { font-size: 11px; padding: 4px 0; }
+    
+    .notice02 { background-color: #fafafa; }
+    .notice02 .main_header { background-color: #fafafa; border: none; }
+    .notice02 .logo { width: 400px; margin: 0 auto; }
+    .notice02 .contents_tit { font-size: 12px; }
+    .notice02 .contents .contents_tit .tit { font-size: 12px; }
+    .notice02 .section01 .board_tit .tit { font-size: 12px; }
+    .notice02 .section01 .board_tit input { font-size: 11px; height: 20px;}
+    .notice02 .section01 textarea { font-size: 12px; height: 265px; margin: 20px 0 0; }
+    .notice02 .section01 .btn_wrap .btn { font-size: 11px; width: 55px; }
+    
+    .notice03 { background-color: #fafafa; }
+    .notice03 .main_header { background-color: #fafafa; border: none; }
+    .notice03 .logo { width: 400px; margin: 0 auto; }
+    .notice03 .contents_tit .tit { font-size: 12px; }
+    .notice03 .section01 .board_tit { height: 35px; line-height: 35px; }
+    .notice03 .section01 .board_tit .txt { font-size: 11px; vertical-align: top; }
+    .notice03 .section01 .board_tit .txt1 { font-size: 11px; }
+    .notice03 .section01 .board_txt { height: 265px; font-size: 11px; background-color: #fff; }
+    .notice03 .section01 .board_btn_wrap .board_btn { font-size: 11px; }
+    
+    .notice04 { background-color: #fafafa; }
+    .notice04 .main_header { background-color: #fafafa; border: none; }
+    .notice04 .logo { width: 400px; margin: 0 auto; }
+    .notice04 .contents_tit .tit { font-size: 12px; }
+    .notice04 .section01 .board_tit { height: 35px; line-height: 35px; padding: 0; }
+    .notice04 .section01 .board_tit .tit { font-size: 11px; vertical-align: top; }
+    .notice04 .section01 .board_tit input { font-size: 11px; margin-top: 5px; }
+    .notice04 .section01 textarea { font-size: 12px; height: 265px; margin: 20px 0 0; }
+    .notice04 .section01 .btn_wrap .btn { font-size: 11px; }
 }
 
 @media all and (max-width: 706px) {
     .join01_02 .section01 .info_write_wrap .info_write_contents .ac .input_wrap { width: calc( 100% - 200px ); }
     .join01_02 .section01 .info_write_wrap1 .info_write_contents .info_content .input_wrap .account { width: calc( 100% - 9px ); }
     .join01_02 .section01 .info_write_wrap1 .info_write_contents .info_content .input_wrap1 .upload_name { width: calc( 100% - 109px ); }
+    
+    .myinfo03 .school_add .container .contents { width: 300px; }
+    .myinfo03 .school_add .container .contents .content input { width: 233px; }
+    .myinfo03 .school_add .container .contents .content .hschool input { width: 153px; }
+    .myinfo03 .school_add .container .contents .content .add_file input { width: 158px; }
+    .myinfo03 .school_add .container .contents .content:nth-child(2n) { margin: 0 auto 15px; }
+    .myinfo03 .school_add .container .contents .content:nth-child(3n-1) { margin: 0 auto 15px; }
 }
 
 @media all and (max-width: 680px) {
@@ -669,6 +733,7 @@
     .school_add .container .contents .content .plus img { width: 34px; }
     .school_add .sv_btn_wrap .sv_btn { margin: 0 10px; }
     .school_add .sv_btn_wrap .sv_btn img { width: 70px; }
+    
 }
 
 @media all and (max-width: 629px) {
@@ -689,7 +754,6 @@
     .gpa_wrap .gpa_input_wrap .gpa_btn01 { display: block; margin-right: 15px; }
     .gpa_wrap .gpa_input_wrap .gpa_btn01 img { width: 60px; }
     
-    .join01_01 { min-height: 1230px; }
     .join01_01 .section01 .join_terms_wrap { margin: 0 auto; }
     .join01_01 .section01 .join_terms_wrap .join_terms { width: 100%; margin-bottom: 15px; }
     .join01_01 .section01 .join_terms_wrap .join_terms .terms_box { width: 99%; margin: 0 auto; }
@@ -707,6 +771,7 @@
     .interview02 .infomation_wrap1 .infomation_txt .img { width: 13px; }
     .interview02 .infomation_wrap1 .infomation_txt .txt { font-size: 12px; vertical-align: top; }
     .interview02 .infomation_wrap .detail_info_wrap .detail_info { width: 100%; float: none; }
+    .interview02 .infomation_wrap1 .detail_info_wrap .blur_img { margin-bottom: 15px; }
     .interview02 .infomation_wrap1 .detail_info_wrap .detail_info .info1 { width: 100%; }
     .interview02 .infomation_wrap1 .detail_info_wrap .detail_info .info .txt { font-size: 11px; line-height: 16px; }
     .interview02 .ssw_tit .img { width: 13px; }
@@ -1057,6 +1122,12 @@
     
     .main .main_btn .mb_header .txt { font-size: 13px; }
     .main .main_btn .mb_header .img { width: 25px; }
+    
+    .notice01 .bbs_wrap .bbs { font-size: 8px; }
+    .notice01 .bbs_wrap .bbs .bbs_number { width: 40px; }
+    .notice01 .bbs_wrap .bbs .bbs_tit { width: calc( 100% - 201px ); }
+    .notice01 .bbs_wrap .bbs .bbs_name { width: 85px; }
+    .notice01 .bbs_wrap .bbs .bbs_date { width: 66px; }
 }
 
 @media all and (max-width: 420px) {
@@ -1114,6 +1185,14 @@
     .buy01 .logo { width: 80%; }
     
     .sell01 .logo { width: 80%; }
+    
+    .notice01 .logo { width: 80%; }
+    
+    .notice02 .logo { width: 80%; }
+    
+    .notice03 .logo { width: 80%; }
+    
+    .notice04 .logo { width: 80%; }
     
 }
 @media all and (max-width: 414px) {

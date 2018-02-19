@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="info">
+	<insert id="write" parameterType="java.util.HashMap">
+		insert into info(title, content, day, writer, uuid, fileName) values(#{title}, #{content}, now(), #{writer}, #{uuid}, #{fileName})
+	</insert>
+	<select id="infoList" resultType="java.util.HashMap">
+		select * from info order by auto desc limit 10 offset #{num}
+	</select>
+	<select id="infoOne" resultType="java.util.HashMap">
+		select * from info where auto = #{num}
+	</select>
+	<update id="modify" parameterType="java.util.HashMap">
+		update info set title = #{title}, content = #{content}, day = now() where auto = #{num}
+	</update>
+	<select id="infoCount" resultType="java.lang.Integer">
+		select count(*) from info
+	</select>
+	<delete id="remove">
+		delete from info where auto = #{num}
+	</delete>
+	<select id="infoOne2" resultType="java.util.HashMap">
+		select * from info where uuid = #{uuid}
+	</select>
+</mapper>

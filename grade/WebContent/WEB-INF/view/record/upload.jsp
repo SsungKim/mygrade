@@ -24,53 +24,53 @@
                         <img src="/img/logo.png" onclick="location.href='/'">
                     </div>
                 </div>
-                <div class="page_inner">
-                	<div class="sv_txt_wrap">
-                        <div class="sv_txt">
-							※학생부 등록은 최대 50장 까지 가능합니다.(순서대로 올려주세요)
+	    		<form id="recordForm" action="/record/uploadFile" enctype="multipart/form-data" method="post">
+	                <div class="page_inner">
+	                	<div class="sv_txt_wrap">
+	                        <div class="sv_txt">
+								※학생부 등록은 최대 50장 까지 가능합니다.(순서대로 올려주세요)
+		                    </div>
+		                    <div class="sv_txt">
+								※학생부를 이미지파일로 첨부하면 확인후 학생부인증 으로 표시됩니다.<br>&nbsp;&nbsp;&nbsp;올린 학생부는 인증확인용으로만 사용되며 노출되지 않습니다.
+		                    </div>
+		                    <div class="sv_txt">
+								※학생부 이미지 첨부 시 우측 상단의 등록하기 버튼을 클릭하셔야 이미지 등록이 완료됩니다.
+		                    </div>
 	                    </div>
-	                    <div class="sv_txt">
-							※학생부를 이미지파일로 첨부하면 확인후 학생부인증 으로 표시됩니다.<br>&nbsp;&nbsp;&nbsp;올린 학생부는 인증확인용으로만 사용되며 노출되지 않습니다.
+	                    <div class="sv_tit1">
+	                        <div class="img">
+	                            <img src="/img/student_view/info_tit.png">
+	                        </div>
+	                        <div class="txt">학생부 파일첨부</div>
 	                    </div>
-	                    <div class="sv_txt">
-							※학생부 이미지 첨부 시 우측 상단의 등록하기 버튼을 클릭하셔야 이미지 등록이 완료됩니다.
-	                    </div>
-                    </div>
-                    <div class="sv_tit1">
-                        <div class="img">
-                            <img src="/img/student_view/info_tit.png">
-                        </div>
-                        <div class="txt">학생부 파일첨부</div>
-                    </div>
-	                <div class="student_view_slider_wrap">
-	                	<div class="confirm_btn" onclick="uploadRecord()">등록하기</div>
-						<div class="sv_tit">
-					    	<img src="/img/student_view/stu_pic_tit01.png">
-						</div>
-						<div class="student_view_slider">
-						    <div class="sv_slider_inner">
-					    		<form id="recordForm" action="/record/uploadFile" enctype="multipart/form-data" method="post">
+		                <div class="student_view_slider_wrap">
+		                	<div class="confirm_btn" onclick="uploadRecord()">등록하기</div>
+							<div class="sv_tit">
+						    	<img src="/img/student_view/stu_pic_tit01.png">
+							</div>
+							<div class="student_view_slider">
+							    <div class="sv_slider_inner">
 					     			<c:forEach var="t" begin="1" end="50">
 										<div class="sv_slide no_img" id="viewrecord${t }">
-											<label for="record${t }">
-					    						<img src="/img/student_add/plus.png">
-											</label>
+				    						<img src="/img/student_add/plus.png" class="record_circle">
+											<label for="record${t }"></label>
 											<input type="file" id="record${t }" name="record${t }" onchange="showImg(this)">
 											<div class="txt">${t }P</div>
 										</div>
+<%-- 										<input type="file" id="record${t }" name="record${t }"/> --%>
 									</c:forEach>
-					        	</form>
-					        </div>
-					    </div>
-					    <div class="sv_arrow sv_arrow_prev">
-					        <img src="/img/student_view/arrow_prev.png">
-					    </div>
-					    <div class="sv_arrow sv_arrow_next">
-					        <img src="/img/student_view/arrow_next.png">
-					    </div>
+						        </div>
+						    </div>
+						    <div class="sv_arrow sv_arrow_prev">
+						        <img src="/img/student_view/arrow_prev.png">
+						    </div>
+						    <div class="sv_arrow sv_arrow_next">
+						        <img src="/img/student_view/arrow_next.png">
+						    </div>
+						</div>
+	                    <div class="confirm_btn1" onclick="uploadRecord()">등록하기</div>
 					</div>
-                    <div class="confirm_btn1" onclick="uploadRecord()">등록하기</div>
-				</div>
+	        	</form>
         		<form action="/record/uploadRecord2" method="post" id="recordData">
 	                <c:import url="/WEB-INF/view/admin/uploadAdminWrap.jsp"/>
                     <div class="sv_tit1 sv_tit2">
@@ -108,13 +108,13 @@
 	                            </div>
 	                            <div class="input_wrapper input_wrapper1">
                                     <div class="input_wrapper_inner">
-                                        <div class="input_wrap">
-                                            <div class="tit">
-                                                <img src="/img/student_view/info06.png">
-                                            </div>
-                                            <input type="text" placeholder="예) 서울네모고등" id="hschool" name="hschool">
-                                            <div class="txt">학교</div>
-                                        </div>
+<!--                                         <div class="input_wrap"> -->
+<!--                                             <div class="tit"> -->
+<!--                                                 <img src="/img/student_view/info06.png"> -->
+<!--                                             </div> -->
+<!--                                             <input type="text" placeholder="예) 서울네모고등" id="hschool" name="hschool"> -->
+<!--                                             <div class="txt">학교</div> -->
+<!--                                         </div> -->
                                         <div class="input_wrap">
                                             <div class="tit">
                                                 <img src="/img/student_view/info04.png">
@@ -151,16 +151,14 @@
 	                                <div class="txt">수상경력<span> (수상내역을 적어주세요)</span></div>
 	                            </div>
 	                            <div class="contents_inner">
-	                            	<c:forEach var="t" begin="1" end="3">
-	                            		<div class="content">
-		                                    <div class="tit">
-		                                        <img src="/img/student_view/sub_tit0${t }.png">
-		                                    </div>
-		                                    <div class="txt_box">
-		                                        <textarea placeholder="내용을 입력해주세요." id="award${t }" name="award${t }"></textarea>
-		                                    </div>
-		                                </div>
-	                            	</c:forEach>
+                            		<div class="content">
+	                                    <div class="tit">
+	                                        <img src="/img/student_view/sub_tit01.png">
+	                                    </div>
+	                                    <div class="txt_box">
+	                                        <textarea placeholder="내용을 입력해주세요." id="award1" name="award1"></textarea>
+	                                    </div>
+	                                </div>
 	                            </div>
 	                        </div>
 	                        <div class="dc_contents">
@@ -171,16 +169,14 @@
 	                                <div class="txt">진로희망사항</div>
 	                            </div>
 	                            <div class="contents_inner">
-	                            	<c:forEach var="t" begin="1" end="3">
-	                            		<div class="content">
-		                                    <div class="tit">
-		                                        <img src="/img/student_view/sub_tit0${t }.png">
-		                                    </div>
-		                                    <div class="txt_box">
-		                                        <textarea placeholder="내용을 입력해주세요." id="career${t }" name="career${t }"></textarea>
-		                                    </div>
-		                                </div>
-	                            	</c:forEach>
+                            		<div class="content">
+	                                    <div class="tit">
+	                                        <img src="/img/student_view/sub_tit02.png">
+	                                    </div>
+	                                    <div class="txt_box">
+	                                        <textarea placeholder="내용을 입력해주세요." id="career" name="career"></textarea>
+	                                    </div>
+	                                </div>
 	                            </div>
 	                        </div>
 	                        <div class="dc_contents">
@@ -194,57 +190,55 @@
                                 	</div>
 	                            </div>
 	                            <div class="contents_inner">
-	                            	<c:forEach var="t" begin="1" end="3">
-	                            		<div class="content">
-		                                    <div class="tit">
-		                                        <img src="/img/student_view/sub_tit0${t }.png">
-		                                    </div>
-		                                    <div class="txt_box1">
-		                                        <div class="txt_wrap">
-		                                            <div class="tit">자율활동</div>
-		                                            <div class="txt">
-		                                                <textarea placeholder="내용을 입력해주세요." onkeyup="aaa(this)" id="autonomous${t }" name="autonomous${t }"></textarea>
-		                                            </div>
-		                                        </div>
-		                                        <div class="txt_wrap">
-		                                            <div class="tit">동아리활동</div>
-		                                            <div class="txt">
-		                                                <textarea placeholder="내용을 입력해주세요." onkeyup="aaa(this)" id="extra${t }" name="extra${t }"></textarea>
-		                                            </div>
-		                                        </div>
-		                                        <div class="txt_wrap">
-		                                            <div class="tit">자율동아리</div>
-		                                            <div class="txt">
-		                                                <textarea placeholder="내용을 입력해주세요." onkeyup="aaa(this)" id="club${t }" name="club${t }"></textarea>
-		                                            </div>
-		                                        </div>
-		                                        <div class="txt_wrap">
-		                                            <div class="tit">봉사활동</div>
-		                                            <div class="txt">
-		                                                <textarea placeholder="내용을 입력해주세요." onkeyup="aaa(this)" id="help${t }" name="help${t }"></textarea>
-		                                            </div>
-		                                        </div>
-		                                        <div class="txt_wrap">
-		                                            <div class="tit">진로활동</div>
-		                                            <div class="txt">
-		                                                <textarea placeholder="내용을 입력해주세요." onkeyup="aaa(this)" id="soju${t }" name="soju${t }"></textarea>
-		                                            </div>
-		                                        </div>
-		                                        <div class="txt_wrap">
-		                                            <div class="tit">R&E, 연구보고서, 소논문</div>
-		                                            <div class="txt">
-		                                                <textarea placeholder="내용을 입력해주세요." onkeyup="aaa(this)" id="paper${t }" name="paper${t }"></textarea>
-		                                            </div>
-		                                        </div>
-		                                        <div class="txt_wrap">
-		                                            <div class="tit">기타활동</div>
-		                                            <div class="txt">
-		                                                <textarea placeholder="내용을 입력해주세요." onkeyup="aaa(this)" id="etc${t }" name="etc${t }"></textarea>
-		                                            </div>
-		                                        </div>
-		                                    </div>
-		                                </div>
-	                            	</c:forEach>
+                            		<div class="content">
+	                                    <div class="tit">
+	                                        <img src="/img/student_view/sub_tit03.png">
+	                                    </div>
+	                                    <div class="txt_box1">
+	                                        <div class="txt_wrap">
+	                                            <div class="tit">자율활동</div>
+	                                            <div class="txt">
+	                                                <textarea placeholder="내용을 입력해주세요." onkeyup="aaa(this)" id="autonomous" name="autonomous"></textarea>
+	                                            </div>
+	                                        </div>
+	                                        <div class="txt_wrap">
+	                                            <div class="tit">동아리활동</div>
+	                                            <div class="txt">
+	                                                <textarea placeholder="내용을 입력해주세요." onkeyup="aaa(this)" id="extra" name="extra"></textarea>
+	                                            </div>
+	                                        </div>
+	                                        <div class="txt_wrap">
+	                                            <div class="tit">자율동아리</div>
+	                                            <div class="txt">
+	                                                <textarea placeholder="내용을 입력해주세요." onkeyup="aaa(this)" id="club" name="club"></textarea>
+	                                            </div>
+	                                        </div>
+	                                        <div class="txt_wrap">
+	                                            <div class="tit">봉사활동</div>
+	                                            <div class="txt">
+	                                                <textarea placeholder="내용을 입력해주세요." onkeyup="aaa(this)" id="help" name="help"></textarea>
+	                                            </div>
+	                                        </div>
+	                                        <div class="txt_wrap">
+	                                            <div class="tit">진로활동</div>
+	                                            <div class="txt">
+	                                                <textarea placeholder="내용을 입력해주세요." onkeyup="aaa(this)" id="soju" name="soju"></textarea>
+	                                            </div>
+	                                        </div>
+	                                        <div class="txt_wrap">
+	                                            <div class="tit">R&E,<br> 연구보고서,<br> 소논문</div>
+	                                            <div class="txt">
+	                                                <textarea placeholder="내용을 입력해주세요." id="paper" name="paper"></textarea>
+	                                            </div>
+	                                        </div>
+	                                        <div class="txt_wrap">
+	                                            <div class="tit">기타활동</div>
+	                                            <div class="txt">
+	                                                <textarea placeholder="내용을 입력해주세요." onkeyup="aaa(this)" id="etc" name="etc"></textarea>
+	                                            </div>
+	                                        </div>
+	                                    </div>
+	                                </div>
 	                            </div>
 	                        </div>
 	                        <div class="dc_contents">
@@ -255,16 +249,14 @@
 	                                <div class="txt">독서활동<span> (독서활동과 과목별독서활동을 적어주세요)</span></div>
 	                            </div>
 	                            <div class="contents_inner">
-	                            	<c:forEach var="t" begin="1" end="3">
-	                            		<div class="content">
-		                                    <div class="tit">
-		                                        <img src="/img/student_view/sub_tit0${t }.png">
-		                                    </div>
-		                                    <div class="txt_box">
-		                                        <textarea placeholder="내용을 입력해주세요." id="reading${t }" name="reading${t }"></textarea>
-		                                    </div>
-		                                </div>
-	                            	</c:forEach>
+                            		<div class="content">
+	                                    <div class="tit">
+	                                        <img src="/img/student_view/sub_tit04.png">
+	                                    </div>
+	                                    <div class="txt_box">
+	                                        <textarea placeholder="내용을 입력해주세요." id="reading" name="reading"></textarea>
+	                                    </div>
+	                                </div>
 	                            </div>
 	                        </div>
 	                        <div class="dc_contents">
@@ -278,16 +270,14 @@
 	                                </div>
 	                            </div>
 	                            <div class="contents_inner">
-	                            	<c:forEach var="t" begin="1" end="3">
-	                            		<div class="content">
-		                                    <div class="tit">
-		                                        <img src="/img/student_view/sub_tit0${t }.png">
-		                                    </div>
-		                                    <div class="txt_box">
-		                                        <textarea placeholder="내용을 입력해주세요." id="special${t }" name="special${t }"></textarea>
-		                                    </div>
-		                                </div>
-	                            	</c:forEach>
+                            		<div class="content">
+	                                    <div class="tit">
+	                                        <img src="/img/student_view/sub_tit05.png">
+	                                    </div>
+	                                    <div class="txt_box">
+	                                        <textarea placeholder="내용을 입력해주세요." id="special" name="special"></textarea>
+	                                    </div>
+	                                </div>
 	                            </div>
 	                        </div>
 	                    </div>
@@ -309,6 +299,22 @@
     </body>
     
     <script>
+    	// 학교등록부터 하게끔 유도
+    	$(document).ready(function(){
+    		if(${login.admin == '판매자' || login.admin == '구매자'}){
+	    		$.ajax({
+	    			type : "post",
+	    			url : "/member/schoolCheck/${login.auto }",
+	    			async : false,
+	    			success : function(txt){
+	    				if(txt){
+	    					alert("학교등록을 먼저 진행해주세요.");
+	    					location.href="/school";
+	    				}
+	    			}
+	    		});
+    		}
+    	});
     	// 관리자일경우 입력란 보이기
     	$(document).ready(function(){
     		if(${login.id == 'admin' }){
@@ -320,7 +326,7 @@
 			$("input[id=grade]").keyup(function(event){ 
 				if (!(event.keyCode >=48 && event.keyCode<=57)) {
 					var inputVal = $(this).val();
-					$(this).val(inputVal.replace(/[^0-9]/gi,''));
+					$(this).val(inputVal.replace(/[^0-9.]/gi,''));
 				}
 			});
 			$("input[id=book]").keyup(function(event){ 
@@ -494,94 +500,45 @@
    			var year = $("#year").val();
    			var admission = $("#admission").val();
    			var typical = $("#typical").val();
-   			var hschool = $("#hschool").val();
+//    			var hschool = $("#hschool").val();
+   			var hschool = "학교";
    			var pass = $("#passY").prop("checked") ? "합격" : $("#passN").prop("checked") ? "불합격" : false;
    			var award1 = $("#award1").val();
    			award1 = award1.replace(/\n/g, "<br>");
-   			var award2 = $("#award2").val();
-   			award2 = award2.replace(/\n/g, "<br>");
-   			var award3 = $("#award3").val();
-   			award3 = award3.replace(/\n/g, "<br>");
-   			var career1 = $("#career1").val();
-   			career1 = career1.replace(/\n/g, "<br>");
-   			var career2 = $("#career2").val();
-   			career2 = career2.replace(/\n/g, "<br>");
-   			var career3 = $("#career3").val();
-   			career3 = career3.replace(/\n/g, "<br>");
-   			var autonomous1 = $("#autonomous1").val();
-   			autonomous1 = autonomous1.replace(/\n/g, "<br>");
-   			var extra1 = $("#extra1").val();
-   			extra1 = extra1.replace(/\n/g, "<br>");
-   			var club1 = $("#club1").val();
-   			club1 = club1.replace(/\n/g, "<br>");
-   			var help1 = $("#help1").val();
-   			help1 = help1.replace(/\n/g, "<br>");
-   			var soju1 = $("#soju1").val();
-   			soju1 = soju1.replace(/\n/g, "<br>");
-   			var paper1 = $("#paper1").val();
-   			paper1 = paper1.replace(/\n/g, "<br>");
-   			var etc1 = $("#etc1").val();
-   			etc1 = etc1.replace(/\n/g, "<br>");
-   			var autonomous2 = $("#autonomous2").val();
-   			autonomous2 = autonomous2.replace(/\n/g, "<br>");
-   			var extra2 = $("#extra2").val();
-   			extra2 = extra2.replace(/\n/g, "<br>");
-   			var club2 = $("#club2").val();
-   			club2 = club2.replace(/\n/g, "<br>");
-   			var help2 = $("#help2").val();
-   			help2 = help2.replace(/\n/g, "<br>");
-   			var soju2 = $("#soju2").val();
-   			soju2 = soju2.replace(/\n/g, "<br>");
-   			var paper2 = $("#paper2").val();
-   			paper2 = paper2.replace(/\n/g, "<br>");
-   			var etc2 = $("#etc2").val();
-   			etc2 = etc2.replace(/\n/g, "<br>");
-   			var autonomous3 = $("#autonomous3").val();
-   			autonomous3 = autonomous3.replace(/\n/g, "<br>");
-   			var extra3 = $("#extra3").val();
-   			extra3 = extra3.replace(/\n/g, "<br>");
-   			var club3 = $("#club3").val();
-   			club3 = club3.replace(/\n/g, "<br>");
-   			var help3 = $("#help3").val();
-   			help3 = help3.replace(/\n/g, "<br>");
-   			var soju3 = $("#soju3").val();
-   			soju3 = soju3.replace(/\n/g, "<br>");
-   			var paper3 = $("#paper3").val();
-   			paper3 = paper3.replace(/\n/g, "<br>");
-   			var etc3 = $("#etc3").val();
-   			etc3 = etc3.replace(/\n/g, "<br>");
-   			var reading1 = $("#reading1").val();
-   			reading1 = reading1.replace(/\n/g, "<br>");
-   			var reading2 = $("#reading2").val();
-   			reading2 = reading2.replace(/\n/g, "<br>");
-   			var reading3 = $("#reading3").val();
-   			reading3 = reading3.replace(/\n/g, "<br>");
-   			var special1 = $("#special1").val();
-   			special1 = special1.replace(/\n/g, "<br>");
-   			var special2 = $("#special2").val();
-   			special2 = special2.replace(/\n/g, "<br>");
-   			var special3 = $("#special3").val();
-   			special3 = special3.replace(/\n/g, "<br>");
+   			var career = $("#career").val();
+   			career = career.replace(/\n/g, "<br>");
+   			var autonomous = $("#autonomous").val();
+   			autonomous = autonomous.replace(/\n/g, "<br>");
+   			var extra = $("#extra").val();
+   			extra = extra.replace(/\n/g, "<br>");
+   			var club = $("#club").val();
+   			club = club.replace(/\n/g, "<br>");
+   			var help = $("#help").val();
+   			help = help.replace(/\n/g, "<br>");
+   			var soju = $("#soju").val();
+   			soju = soju.replace(/\n/g, "<br>");
+   			var paper = $("#paper").val();
+   			paper = paper.replace(/\n/g, "<br>");
+   			var etc = $("#etc").val();
+   			etc = etc.replace(/\n/g, "<br>");
+   			var reading = $("#reading").val();
+   			reading = reading.replace(/\n/g, "<br>");
+   			var special = $("#special").val();
+   			special = special.replace(/\n/g, "<br>");
    			var grade = $("#grade").val();
    			var award = $("#award").val();
    			var time = $("#time").val();
    			var book = $("#book").val();
    			if(${login.id == 'admin' }){
 	   			if(addr == "choose" || school == "choose" || subject == "" || type == "choose" || year == "" || admission == "" || typical == "" ||
-	   					hschool == "" || !pass || award1 == "" || award2 == "" || award3 == "" || career1 == "" || career2 == "" || career3 == "" ||
-	   					autonomous1 == "" || autonomous2 == "" || autonomous3 == "" || extra1 == "" || extra2 == "" || extra3 == "" ||
-	   					help1 == "" || help2 == "" || help3 == "" || soju1 == "" || soju2 == "" || soju3 == "" || paper1 == "" || paper2 == "" ||
-	   					paper3 == "" || etc1 == "" || etc2 == "" || etc3 == "" || reading1 == "" || reading2 == "" || reading3 == "" ||
-	   					special1 == "" || special2 == "" || special3 == "" || grade == "" || award == "" || time == "" || book == ""){
+	   					!pass || award1== "" || career == "" || autonomous == "" || extra == "" || help == "" || soju == "" || 
+	   					paper == "" || etc == "" || reading == "" || special == "" || grade == "" || award == "" || time == "" || book == ""){
 	   				alert("입력하지 않은 항목이 있습니다.");
 	   				return;
 	   			}
    			} else {
-   				if(hschool == "" || award1 == "" || award2 == "" || award3 == "" || career1 == "" || career2 == "" || career3 == "" ||
-	   					autonomous1 == "" || autonomous2 == "" || autonomous3 == "" || extra1 == "" || extra2 == "" || extra3 == "" ||
-	   					help1 == "" || help2 == "" || help3 == "" || soju1 == "" || soju2 == "" || soju3 == "" || paper1 == "" || paper2 == "" ||
-	   					paper3 == "" || etc1 == "" || etc2 == "" || etc3 == "" || reading1 == "" || reading2 == "" || reading3 == "" ||
-	   					special1 == "" || special2 == "" || special3 == "" || grade == "" || award == "" || time == "" || book == ""){
+   				if(award1 == "" || career == "" || autonomous == "" || extra == "" || help == "" || soju == "" || paper == "" ||
+   						etc == "" || reading == "" || special == "" || grade == "" || award == "" || time == "" || book == ""){
 	   				alert("입력하지 않은 항목이 있습니다.");
 	   				return;
 	   			}

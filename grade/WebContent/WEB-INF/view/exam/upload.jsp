@@ -395,6 +395,22 @@
     </body>
     
     <script>
+	 	// 학교등록부터 하게끔 유도
+		$(document).ready(function(){
+			if(${login.admin == '판매자' || login.admin == '구매자'}){
+	    		$.ajax({
+	    			type : "post",
+	    			url : "/member/schoolCheck/${login.auto }",
+	    			async : false,
+	    			success : function(txt){
+	    				if(txt){
+	    					alert("학교등록을 먼저 진행해주세요.");
+	    					location.href="/school";
+	    				}
+	    			}
+	    		});
+			}
+		});
     	// 항목들 숫자만 입력가능
     	$(document).ready(function(){
     		for(var i=1; i<=28; i++){

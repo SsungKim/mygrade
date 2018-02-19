@@ -5,7 +5,7 @@
 
 
 <!doctype html>
-<html oncontextmenu='return false' ondragstart='return false' onselectstart='return false'>
+<html>
     <head>
     	<c:import url="/WEB-INF/view/main/head.jsp"/>
     </head>
@@ -153,48 +153,57 @@
                             <div class="txt">면접방법</div>
                         </div>
                         <div class="detail_info_wrap">
-                            <div class="detail_info">
-                                <div class="info">
-                                    <div class="img">
-                                        <img src="/img/interview/interview01/info01.png">
-                                    </div>
-                                    <div class="txt">
-                                        ${interview.time }
-                                    </div>
-                                </div>
-                                <div class="info info1">
-                                    <div class="img">
-                                        <img src="/img/interview/interview01/info05.png">
-                                    </div>
-                                    <div class="txt">
-                                        ${interview.people }
-                                    </div>
-                                </div>
-                                <div class="info info1 fr">
-                                    <div class="img">
-                                        <img src="/img/interview/interview01/info06.png">
-                                    </div>
-                                    <div class="txt">
-										${interview.kinds }
-                                    </div>
-                                </div>
-                                <div class="info">
-                                    <div class="img">
-                                        <img src="/img/interview/interview01/info07.png">
-                                    </div>
-                                    <div class="txt">
-                                        ${interview.how }
-                                    </div>
-                                </div>
-                                <div class="info">
-                                    <div class="img">
-                                        <img src="/img/interview/interview01/info08.png">
-                                    </div>
-                                    <div class="txt">
-                                        ${interview.tip }
-                                    </div>
-                                </div>
-                            </div>
+                        	<c:choose>
+                        		<c:when test="${login.id == 'admin' || interview.user == login.auto  || buyCheck == 'buy' }">
+                        			<div class="detail_info">
+		                                <div class="info">
+		                                    <div class="img">
+		                                        <img src="/img/interview/interview01/info01.png">
+		                                    </div>
+		                                    <div class="txt">
+		                                        ${interview.time }
+		                                    </div>
+		                                </div>
+		                                <div class="info info1">
+		                                    <div class="img">
+		                                        <img src="/img/interview/interview01/info05.png">
+		                                    </div>
+		                                    <div class="txt">
+		                                        ${interview.people }
+		                                    </div>
+		                                </div>
+		                                <div class="info info1 fr">
+		                                    <div class="img">
+		                                        <img src="/img/interview/interview01/info06.png">
+		                                    </div>
+		                                    <div class="txt">
+												${interview.kinds }
+		                                    </div>
+		                                </div>
+		                                <div class="info">
+		                                    <div class="img">
+		                                        <img src="/img/interview/interview01/info07.png">
+		                                    </div>
+		                                    <div class="txt">
+		                                        ${interview.how }
+		                                    </div>
+		                                </div>
+		                                <div class="info">
+		                                    <div class="img">
+		                                        <img src="/img/interview/interview01/info08.png">
+		                                    </div>
+		                                    <div class="txt">
+		                                        ${interview.tip }
+		                                    </div>
+		                                </div>
+		                            </div>
+                        		</c:when>
+                        		<c:otherwise>
+		                            <div class="blur_img">
+		                                <img src="/img/blur02.png">
+		                            </div>
+                        		</c:otherwise>
+                        	</c:choose>
                         </div>
                     </div>
                 </div>
@@ -223,9 +232,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="txtarea_txt blur">
-                        	${interview.content1 }
-						</div>
+                        <c:choose>
+                        	<c:when test="${login.id == 'admin' || interview.user == login.auto || buyCheck == 'buy'}">
+                        		<div class="txtarea_txt blur" style="background-image: none; ">${interview.content1 }</div>
+                        	</c:when>
+                        	<c:otherwise>
+                        		<div class="txtarea_txt blur"></div>
+                        	</c:otherwise>
+                        </c:choose>
                     </div>
                     <div class="ssw_tit">
                         <div class="img">
@@ -250,9 +264,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="txtarea_txt blur">
-                        	${interview.content2 }
-						</div>
+                        <c:choose>
+                        	<c:when test="${login.id == 'admin' || interview.user == login.auto || buyCheck == 'buy' }">
+                        		<div class="txtarea_txt blur" style="background-image: none; ">${interview.content2 }</div>
+                        	</c:when>
+                        	<c:otherwise>
+                        		<div class="txtarea_txt blur"></div>
+                        	</c:otherwise>
+                        </c:choose>
                     </div>
                     <div class="sv_btn_wrap">
                     	<c:if test="${interview.user == login.auto }">
@@ -353,6 +372,17 @@
                             </div>
                         </div>
                         <div class="gpa_input_wrap">
+                            <div class="radio_wrap">
+                                <div class="radio">
+                                    <input type="radio" id="type01" name="star">
+                                    <label for="type01">별점</label>
+                                    <div class="line"></div>
+                                </div>
+                                <div class="radio">
+                                    <input type="radio" id="type02" name="star">
+                                    <label for="type02">별점+댓글</label>
+                                </div>
+                            </div>
                             <select id="commentPoint">
                                 <option value="choose">평점선택</option>
                                 <option value="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1점</option>
@@ -363,7 +393,7 @@
                             </select>
                             <c:choose>
                             	<c:when test="${login.auto == interview.user }">
-		                            <textarea placeholder="(한글 최소 3자이상, 최대 100자 까지 입력 가능합니다.)" id="comment" maxlength="100"></textarea>
+		                            <textarea placeholder="(본인 자료는 평가할 수 없습니다.)" id="comment" maxlength="100" disabled="disabled"></textarea>
                             	</c:when>
                             	<c:when test="${login != null && buy == 0 }">
 		                            <textarea placeholder="(한글 최소 3자이상, 최대 100자 까지 입력 가능합니다.)" id="comment" maxlength="100"></textarea>
@@ -495,40 +525,74 @@
  	 		$("body").css("overflow", "hidden");
  	 	}
     	// 댓글입력
-    	function commentSubmit(){
-    		if(${login == null}){
-    			alert("로그인 후 작성 가능합니다.");
-    			location.href='/member/login';
-    			return;
-    		}
-    		if(${buy == 1}){
-    			alert("구매후 작성 가능합니다.");
-    			return;
-    		}
-    		var point = $("#commentPoint").val();
-    		var comment = $("#comment").val();
-    		if(point == "choose"){
-    			alert("평점을 선택해주세요.");
-    			return;
-    		}
-    		if(comment.length < 3){
-    			alert("댓글은 3자이상, 100자 이하로 작성해주세요.");
-    			return;
-    		}
-    		$.ajax({
-    			type : "post",
-    			url : "/interview/comment/${interview.auto }/${login.id }/"+comment+"/"+point,
-    			async : false,
-    			success : function(txt){
-    				if(txt){
-    					alert("등록되었습니다.");
-    					location.href='/interview/view/${interview.auto }';
-    				} else {
-    					alert("등록에 실패하였습니다.\n잠시후 다시 시도해주세요.");
-    				}
-    			}
-    		});
-    	}
+        function commentSubmit(){
+           if(${login == null}){
+              alert("로그인 후 작성 가능합니다.");
+              location.href='/member/login';
+              return;
+           }
+           if(${interview.user == login.auto }){
+              alert("본인 자료는 평가할 수 없습니다.");
+              return;
+           }
+           if(${buy == 1}){
+              alert("구매후 작성 가능합니다.");
+              return;
+           }
+           var ratingNum = 0;
+           $.ajax({
+        	   type : "post",
+        	   url : "/interview/interviewRating/${interview.auto }/${login.id }",
+        	   async : false,
+        	   success : function(num){
+        		   ratingNum = num;
+        	   }
+           });
+//            if(ratingNum > 0){
+//         	   alert("이미 평가한 자료입니다.");
+//         	   return;
+//            }
+           var point = $("#commentPoint").val();
+           var comment = $("#comment").val();
+           var type = $("#type01").prop("checked") ? true : false;
+           if(point == "choose"){
+              alert("평점을 선택해주세요.");
+              return;
+           }
+           if(type){
+              $.ajax({
+                 type : "post",
+                 url : "/interview/comment/${interview.auto }/${login.id }/"+point,
+                 async : false,
+                 success : function(txt){
+                    if(txt){
+                       alert("평가되었습니다.");
+                       location.reload();
+                    } else {
+                       alert("평가에 실패하였습니다.\n잠시후 다시 시도해주세요.");
+                    }
+                 }
+              });
+           } else {
+              if(comment.length < 3){
+                 alert("댓글은 3자이상, 100자 이하로 작성해주세요.");
+                 return;
+              }
+              $.ajax({
+                 type : "post",
+                 url : "/interview/comment/${interview.auto }/${login.id }/"+comment+"/"+point,
+                 async : false,
+                 success : function(txt){
+                    if(txt){
+                       alert("등록되었습니다.");
+                       location.reload();
+                    } else {
+                       alert("등록에 실패하였습니다.\n잠시후 다시 시도해주세요.");
+                    }
+                 }
+              });
+           }
+        }
 		// 수정하기
 		function modify(){
 			location.href='/interview/modify/${interview.auto }';
@@ -576,6 +640,21 @@
 				});
 			}
 		}
+		// 평점 타입 선택
+	      $(document).ready(function(){
+	         $("#type01").change(function(){
+	            var type = $("#type01").prop("checked");
+	            if(type){
+	               $("#comment").prop("disabled", "disabled");
+	            }
+	         });
+	         $("#type02").change(function(){
+	            var type = $("#type02").prop("checked");
+	            if(type && ${buy != 1}){
+	               $("#comment").prop("disabled", "");
+	            }
+	         });
+	      });
     </script>
     
 </html>

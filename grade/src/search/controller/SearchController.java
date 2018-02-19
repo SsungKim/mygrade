@@ -254,6 +254,12 @@ public class SearchController {
 		ModelAndView mav = new ModelAndView("/search/search.jsp");
 		mav.addObject("word1", word);
 		mav.addObject("word2", word2);
+		if(word2.equals("-")){
+			mav.addObject("word2", "");
+		}
+		if(word.equals("-")){
+			mav.addObject("word1", "");
+		}
 		mav.addObject("searchType", type);
 		word = ss.wordSearchChange(word);
 		List<HashMap> wordList = ss.word(word);
@@ -261,16 +267,16 @@ public class SearchController {
 		List<HashMap> searchList = new Vector<>();
 		switch(searchType){
 		case "both":
-			searchList = ss.searchList2Both(wordList, word2, 1, type);
-			mav = pageInner2Both(mav, 1, wordList, word2, type);
+			searchList = ss.searchList2Both(wordList, word2, page, type);
+			mav = pageInner2Both(mav, page, wordList, word2, type);
 			break;
 		case "school":
-			searchList = ss.searchList2School(wordList, 1, type);
-			mav = pageInner2School(mav, 1, wordList, type);
+			searchList = ss.searchList2School(wordList, page, type);
+			mav = pageInner2School(mav, page, wordList, type);
 			break;
 		case "subject":
-			searchList = ss.searchList2Subject(word2, 1, type);
-			mav = pageInner2Subject(mav, 1, word2, type);
+			searchList = ss.searchList2Subject(word2, page, type);
+			mav = pageInner2Subject(mav, page, word2, type);
 			break;
 		}
 		mav.addObject("searchList", searchList);

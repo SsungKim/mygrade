@@ -10,7 +10,7 @@
             </div>
             <div class="txt">
 <!--                 <span onclick="location.href='/record'">학생부</span> -->
-                <span onclick="alert('열람기간이 완료되었습니다.\n고2(예비고3) 학생들을 위한 오픈시기는 2017년 11월 1일입니다.\n(시기는 변동될 수 있습니다.)')">학생부</span>
+                <span onclick="alert('열람기간이 완료되었습니다.\n고1, 2(예비고2, 3) 학생들을 위한 오픈시기는 2018년 1월 1일입니다.\n(시기는 변동될 수 있습니다.)')">학생부</span>
             </div>
         </li>
         <li class="gnb">
@@ -19,7 +19,7 @@
             </div>
             <div class="txt">
 <!--                 <span onclick="location.href='/intro'">자소서</span> -->
-                <span onclick="alert('열람기간이 완료되었습니다.\n고2(예비고3) 학생들을 위한 오픈시기는 2017년 12월 1일입니다.\n(시기는 변동될 수 있습니다.)')">자소서</span>
+                <span onclick="alert('열람기간이 완료되었습니다.\n고1, 2(예비고2, 3) 학생들을 위한 오픈시기는 2018년 1월 1일입니다.\n(시기는 변동될 수 있습니다.)')">자소서</span>
             </div>
         </li>
         <li class="gnb">
@@ -102,7 +102,7 @@
                 <img src="/img/side/item02.png">
             </div>
 <!--             <div class="txt" onclick="location.href='/record'"> -->
-            <div class="txt" onclick="alert('열람기간이 완료되었습니다.\n고2(예비고3) 학생들을 위한 오픈시기는 2017년 11월 1일입니다.\n(시기는 변동될 수 있습니다.)')">
+            <div class="txt" onclick="alert('열람기간이 완료되었습니다.\n고2(예비고3) 학생들을 위한 오픈시기는 2018년 1월 1일입니다.\n(시기는 변동될 수 있습니다.)')">
                 학생부
             </div>
         </li>
@@ -111,7 +111,7 @@
                 <img src="/img/side/item01.png">
             </div>
 <!--             <div class="txt" onclick="location.href='/intro'"> -->
-            <div class="txt" onclick="alert('열람기간이 완료되었습니다.\n고2(예비고3) 학생들을 위한 오픈시기는 2017년 12월 1일입니다.\n(시기는 변동될 수 있습니다.)')">
+            <div class="txt" onclick="alert('열람기간이 완료되었습니다.\n고2(예비고3) 학생들을 위한 오픈시기는 2018년 1월 1일입니다.\n(시기는 변동될 수 있습니다.)')">
                 자소서
             </div>
         </li>
@@ -142,7 +142,7 @@
         </li>
         <li class="gnb">
             <div class="img">
-                <img src="/img/side/item04.png">
+                <img src="/img/side/item06.png">
             </div>
 <!--             <div class="txt" onclick="info()"> -->
             <div class="txt" onclick="location.href='/notice'">
@@ -151,7 +151,7 @@
         </li>
         <li class="gnb">
             <div class="img">
-                <img src="/img/side/item06.png">
+                <img src="/img/side/item04.png">
             </div>
             <div class="txt" onclick="info()">
                 내정보

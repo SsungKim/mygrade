@@ -267,7 +267,7 @@
 	                                    <div class="txt1">( 본인 명의의 계좌만 등록 가능합니다. )</div>
 	                                </div>
 	                                <div class="info_content">
-	                                    <div class="tit">합격증 or <br> 재학증명서</div>
+	                                    <div class="tit">합격증 or <br> 재학증명서<br>(학생증)</div>
 	                                    <div class="input_wrap1">
 		                                    <input class="upload_name" value="파일선택" disabled="disabled" id="fileName">
 	                                        <label for="passData">파일첨부</label>

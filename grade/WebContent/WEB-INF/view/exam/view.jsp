@@ -122,285 +122,294 @@
                     <div class="exam_view_txt">※수능성적표는 구매 하셔야 이미지가 정상적으로 보입니다.</div>
                     <div class="infomation_wrap infomation_wrap1">
                         <div class="inner blur" id="examView">
-                            <div class="table_wrap">
-                                <div class="inner">
-                                    <div class="table">
-                                        <div class="theader">
-                                            <div class="tit_wrap">
-                                                <div class="tit">구분</div>
-                                            </div>
-                                            <div class="tit_wrap">
-                                                <div class="tit">국어</div>
-                                            </div>
-                                            <div class="tit_wrap">
-                                                <div class="tit tit1">수학</div>
-                                                <div class="tit tit1">
-                                                    <div class="in_txt" id="examMathType">${exam.mathType }</div>
-                                                </div>
-                                            </div>
-                                            <div class="tit_wrap">
-                                                <div class="tit">영어</div>
-                                            </div>
-                                            <div class="tit_wrap">
-                                                <div class="tit"><span>한</span>국사</div>
-                                            </div>
-                                            <div class="tit_wrap tit_wrap1">
-                                                <div class="tit tit1">
-                                                    <div class="in_txt" id="examExplorType">${exam.explorType.substring(0, 4) }<span>${exam.explorType.substring(5) }</span></div>
-                                                </div>
-                                                <div class="tit tit1 tit2">
-                                                    <div class="in_txt" id="examInnerType1">${exam.innerType1.substring(0, 2) }<span>${exam.innerType1.substring(2, exam.innerType1.length()-1) }</span>${exam.innerType1.substring(exam.innerType1.length()-1) }</div>
-                                                </div>
-                                                <div class="tit tit1 tit2">
-                                                    <div class="in_txt" id="examInnerType2">${exam.innerType2.substring(0, 2) }<span>${exam.innerType2.substring(2, exam.innerType2.length()-1) }</span>${exam.innerType2.substring(exam.innerType2.length()-1) }</div>
-                                                </div>
-                                            </div>
-                                            <div class="tit_wrap">
-                                                <div class="tit tit1">제2<span>외국어</span></div>
-                                                <div class="tit tit1">
-                                                    <div class="in_txt" id="examLangType">${exam.langType }</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="tbody">
-                                            <div class="tcontents">
-                                                <div class="content">
-                                                    <div class="txt">원점수</div>
-                                                </div>
-                                                <div class="content">
-                                                    <div class="in_txt white" id="point1">${exam.point1 }</div>
-                                                </div>
-                                                <div class="content">
-                                                    <div class="white in_txt" id="point2">${exam.point2 }</div>
-                                                </div>
-                                                <div class="content">
-                                                    <div class="white in_txt"  id="point3">${exam.point3 }</div>
-                                                </div>
-                                                <div class="content">
-                                                    <div class="white in_txt" id="point4">${exam.point4 }</div>
-                                                </div>
-                                                <div class="content">
-                                                    <div class="white in_txt" id="point5"> ${exam.point5 }</div>
-                                                </div>
-                                                <div class="content">
-                                                    <div class="white in_txt" id="point6">${exam.point6 }</div>
-                                                </div>
-                                                <div class="content">
-                                                    <div class="white in_txt"  id="point7">${exam.point7 }</div>
-                                                </div>
-                                            </div>
-                                            <div class="tcontents">
-                                                <div class="content">
-                                                    <div class="txt">표준점수</div>
-                                                </div>
-                                                <div class="content">
-                                                    <div class="white in_txt" id="point8">${exam.point8 }</div>
-                                                </div>
-                                                <div class="content">
-                                                    <div class="white in_txt"  id="point9">${exam.point9 }</div>
-                                                </div>
-                                                <div class="content">
-                                                    <div class="pink in_txt"  id="point10">${exam.point10 }</div>
-                                                </div>
-                                                <div class="content">
-                                                    <div class="pink in_txt"  id="point11">${exam.point11 }</div>
-                                                </div>
-                                                <div class="content">
-                                                    <div class="white in_txt"  id="point12">${exam.point12 }</div>
-                                                </div>
-                                                <div class="content">
-                                                    <div class="white in_txt"  id="point13">${exam.point13 }</div>
-                                                </div>
-                                                <div class="content">
-                                                    <div class="white in_txt"  id="point14">${exam.point14 }</div>
-                                                </div>
-                                            </div>
-                                            <div class="tcontents">
-                                                <div class="content">
-                                                    <div class="txt">백분위</div>
-                                                </div>
-                                                <div class="content">
-                                                    <div class="white in_txt" id="point15">${exam.point15 }</div>
-                                                </div>
-                                                <div class="content">
-                                                    <div class="white in_txt"  id="point16">${exam.point16 }</div>
-                                                </div>
-                                                <div class="content">
-                                                    <div class="pink in_txt"  id="point17">${exam.point17 }</div>
-                                                </div>
-                                                <div class="content">
-                                                    <div class="pink in_txt"  id="point18">${exam.point18 }</div>
-                                                </div>
-                                                <div class="content">
-                                                    <div class="white in_txt"  id="point19">${exam.point19 }</div>
-                                                </div>
-                                                <div class="content">
-                                                    <div class="white in_txt"  id="point20">${exam.point20 }</div>
-                                                </div>
-                                                <div class="content">
-                                                    <div class="white in_txt"  id="point21">${exam.point21 }</div>
-                                                </div>
-                                            </div>
-                                            <div class="tcontents">
-                                                <div class="content">
-                                                    <div class="txt">등급</div>
-                                                </div>
-                                                <div class="content">
-                                                    <div class="white in_txt" id="point22">${exam.point22 }</div>
-                                                </div>
-                                                <div class="content">
-                                                    <div class="white in_txt"  id="point23">${exam.point23 }</div>
-                                                </div>
-                                                <div class="content">
-                                                    <div class="white in_txt" id="point24">${exam.point24 }</div>
-                                                </div>
-                                                <div class="content">
-                                                    <div class="white in_txt" id="point25">${exam.point25 }</div>
-                                                </div>
-                                                <div class="content">
-                                                    <div class="white in_txt"  id="point26">${exam.point26 }</div>
-                                                </div>
-                                                <div class="content">
-                                                    <div class="white in_txt"  id="point27">${exam.point27 }</div>
-                                                </div>
-                                                <div class="content">
-                                                    <div class="white in_txt"  id="point28">${exam.point28 }</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="table_wrap1">
-                                <div class="content color1">구분</div>
-                                <div class="content color2 pd10">원점수</div>
-                                <div class="content color2 pd10">표준점수</div>
-                                <div class="content color2 pd10">백분위</div>
-                                <div class="content color2 pd10 br_none">등급</div>
-                                <div class="content color1">국어</div>
-                                <div class="content color2">
-                                    <div class="in_txt">${exam.point1 }</div>
-                                </div>
-                                <div class="content color2">
-                                    <div class="in_txt"${exam.point8 }></div>
-                                </div>
-                                <div class="content color2">
-                                    <div class="in_txt">${exam.point15 }</div>
-                                </div>
-                                <div class="content color2 br_none">
-                                    <div class="in_txt">${exam.point22 }</div>
-                                </div>
-                                <div class="content color1 sel_wrap">
-                                    <div class="in_txt">${exam.mathType }</div>
-                                </div>
-                                <div class="content color2">
-                                    <div class="in_txt">${exam.point2 }</div>
-                                </div>
-                                <div class="content color2">
-                                    <div class="in_txt">${exam.point9 }</div>
-                                </div>
-                                <div class="content color2">
-                                    <div class="in_txt">${exam.point16 }</div>
-                                </div>
-                                <div class="content color2 br_none">
-                                    <div class="in_txt">${exam.point23 }</div>
-                                </div>
-                                <div class="content color1">영어</div>
-                                <div class="content color2">
-                                    <div class="in_txt">${exam.point3 }</div>
-                                </div>
-                                <div class="content color2">
-                                    <div class="in_txt pink">${exam.point10 }</div>
-                                </div>
-                                <div class="content color2">
-                                    <div class="in_txt pink">${exam.point17 }</div>
-                                </div>
-                                <div class="content color2 br_none">
-                                    <div class="in_txt">${exam.point24 }</div>
-                                </div>
-                                <div class="content color1">한국사</div>
-                                <div class="content color2">
-                                    <div class="in_txt">${exam.point4 }</div>
-                                </div>
-                                <div class="content color2">
-                                    <div class="in_txt pink">${exam.point11 }</div>
-                                </div>
-                                <div class="content color2">
-                                    <div class="in_txt pink">${exam.point18 }</div>
-                                </div>
-                                <div class="content color2 br_none">
-                                    <div class="in_txt">${exam.point25 }</div>
-                                </div>
-                                <div class="content1 color1 sel_wrap br_none">
-                                    <div class="in_txt">${exam.explorType }</div>
-                                </div>
-                                <div class="content color1 sel_wrap">
-                                    <div class="in_txt">${exam.innerType1 }</div>
-                                </div>
-                                <div class="content color2">
-                                    <div class="in_txt">${exam.point5 }</div>
-                                </div>
-                                <div class="content color2">
-                                    <div class="in_txt">${exam.point12 }</div>
-                                </div>
-                                <div class="content color2">
-                                    <div class="in_txt">${exam.point19 }</div>
-                                </div>
-                                <div class="content color2 br_none">
-                                    <div class="in_txt">${exam.point26 }</div>
-                                </div>
-                                <div class="content color1 sel_wrap">
-                                    <div class="in_txt">${exam.innerType2 }</div>
-                                </div>
-                                <div class="content color2">
-                                    <div class="in_txt">${exam.point6 }</div>
-                                </div>
-                                <div class="content color2">
-                                    <div class="in_txt">${exam.point13 }</div>
-                                </div>
-                                <div class="content color2">
-                                    <div class="in_txt">${exam.point20 }</div>
-                                </div>
-                                <div class="content color2 br_none">
-                                    <div class="in_txt">${exam.point27 }</div>
-                                </div>
-                                <div class="content color1 sel_wrap">
-                                    <div class="in_txt">${exam.langType }</div>
-                                </div>
-                                <div class="content color2">
-                                    <div class="in_txt">${exam.point7 }</div>
-                                </div>
-                                <div class="content color2">
-                                    <div class="in_txt">${exam.point14 }</div>
-                                </div>
-                                <div class="content color2">
-                                    <div class="in_txt">${exam.point21 }</div>
-                                </div>
-                                <div class="content color2 br_none">
-                                    <div class="in_txt">${exam.point28 }</div>
-                                </div>
-                            </div>
-                            <div class="check_wrap">
-                                <div class="check check1">
-                                    <input class="cir" type="radio" id="passFirst" ${exam.passCount.substring(0, 2) == '1차' ? 'checked' : '' } disabled="disabled">
-                                    <label for="passFirst">1차합격</label>
-                                </div>
-                                <div class="check check2">
-                                    <input class="cir" type="radio" id="passAdd" ${exam.passCount.substring(0, 2) == '추가' ? 'checked' : '' } disabled="disabled">
-                                    <label for="passAdd">추가합격</label>
-                                    <div class="input_wrap">
-                                        <div class="txt">( 대기번호</div>
-                                        <div class="input_txt" id="breakNum">
-                                        	${exam.passCount.substring(0, 2) == '추가' ? exam.passCount.substring(5, exam.passCount.indexOf('번')) : '' }
-                                        </div>
-                                        <div class="txt">번 )</div>
-                                    </div>
-                                </div>
-                                <div class="check check3">
-                                    <input class="cir" type="radio" id="passNo" ${exam.passCount == '불합격' ? 'checked' : '' } disabled="disabled">
-                                    <label for="passNo">불합격</label>
-                                </div>
-                            </div>
+                            <c:choose>
+                            	<c:when test="${login.id == 'admin' || exam.user == login.auto || buyCheck == 'buy' }">
+		                            <div class="table_wrap">
+		                                <div class="inner">
+		                                    <div class="table">
+		                                        <div class="theader">
+		                                            <div class="tit_wrap">
+		                                                <div class="tit">구분</div>
+		                                            </div>
+		                                            <div class="tit_wrap">
+		                                                <div class="tit">국어</div>
+		                                            </div>
+		                                            <div class="tit_wrap">
+		                                                <div class="tit tit1">수학</div>
+		                                                <div class="tit tit1">
+		                                                    <div class="in_txt" id="examMathType">${exam.mathType }</div>
+		                                                </div>
+		                                            </div>
+		                                            <div class="tit_wrap">
+		                                                <div class="tit">영어</div>
+		                                            </div>
+		                                            <div class="tit_wrap">
+		                                                <div class="tit"><span>한</span>국사</div>
+		                                            </div>
+		                                            <div class="tit_wrap tit_wrap1">
+		                                                <div class="tit tit1">
+		                                                    <div class="in_txt" id="examExplorType">${exam.explorType.substring(0, 4) }<span>${exam.explorType.substring(5) }</span></div>
+		                                                </div>
+		                                                <div class="tit tit1 tit2">
+		                                                    <div class="in_txt" id="examInnerType1">${exam.innerType1.substring(0, 2) }<span>${exam.innerType1.substring(2, exam.innerType1.length()-1) }</span>${exam.innerType1.substring(exam.innerType1.length()-1) }</div>
+		                                                </div>
+		                                                <div class="tit tit1 tit2">
+		                                                    <div class="in_txt" id="examInnerType2">${exam.innerType2.substring(0, 2) }<span>${exam.innerType2.substring(2, exam.innerType2.length()-1) }</span>${exam.innerType2.substring(exam.innerType2.length()-1) }</div>
+		                                                </div>
+		                                            </div>
+		                                            <div class="tit_wrap">
+		                                                <div class="tit tit1">제2<span>외국어</span></div>
+		                                                <div class="tit tit1">
+		                                                    <div class="in_txt" id="examLangType">${exam.langType }</div>
+		                                                </div>
+		                                            </div>
+		                                        </div>
+		                                        <div class="tbody">
+		                                            <div class="tcontents">
+		                                                <div class="content">
+		                                                    <div class="txt">원점수</div>
+		                                                </div>
+		                                                <div class="content">
+		                                                    <div class="in_txt white" id="point1">${exam.point1 }</div>
+		                                                </div>
+		                                                <div class="content">
+		                                                    <div class="white in_txt" id="point2">${exam.point2 }</div>
+		                                                </div>
+		                                                <div class="content">
+		                                                    <div class="white in_txt"  id="point3">${exam.point3 }</div>
+		                                                </div>
+		                                                <div class="content">
+		                                                    <div class="white in_txt" id="point4">${exam.point4 }</div>
+		                                                </div>
+		                                                <div class="content">
+		                                                    <div class="white in_txt" id="point5"> ${exam.point5 }</div>
+		                                                </div>
+		                                                <div class="content">
+		                                                    <div class="white in_txt" id="point6">${exam.point6 }</div>
+		                                                </div>
+		                                                <div class="content">
+		                                                    <div class="white in_txt"  id="point7">${exam.point7 }</div>
+		                                                </div>
+		                                            </div>
+		                                            <div class="tcontents">
+		                                                <div class="content">
+		                                                    <div class="txt">표준점수</div>
+		                                                </div>
+		                                                <div class="content">
+		                                                    <div class="white in_txt" id="point8">${exam.point8 }</div>
+		                                                </div>
+		                                                <div class="content">
+		                                                    <div class="white in_txt"  id="point9">${exam.point9 }</div>
+		                                                </div>
+		                                                <div class="content">
+		                                                    <div class="pink in_txt"  id="point10">${exam.point10 }</div>
+		                                                </div>
+		                                                <div class="content">
+		                                                    <div class="pink in_txt"  id="point11">${exam.point11 }</div>
+		                                                </div>
+		                                                <div class="content">
+		                                                    <div class="white in_txt"  id="point12">${exam.point12 }</div>
+		                                                </div>
+		                                                <div class="content">
+		                                                    <div class="white in_txt"  id="point13">${exam.point13 }</div>
+		                                                </div>
+		                                                <div class="content">
+		                                                    <div class="white in_txt"  id="point14">${exam.point14 }</div>
+		                                                </div>
+		                                            </div>
+		                                            <div class="tcontents">
+		                                                <div class="content">
+		                                                    <div class="txt">백분위</div>
+		                                                </div>
+		                                                <div class="content">
+		                                                    <div class="white in_txt" id="point15">${exam.point15 }</div>
+		                                                </div>
+		                                                <div class="content">
+		                                                    <div class="white in_txt"  id="point16">${exam.point16 }</div>
+		                                                </div>
+		                                                <div class="content">
+		                                                    <div class="pink in_txt"  id="point17">${exam.point17 }</div>
+		                                                </div>
+		                                                <div class="content">
+		                                                    <div class="pink in_txt"  id="point18">${exam.point18 }</div>
+		                                                </div>
+		                                                <div class="content">
+		                                                    <div class="white in_txt"  id="point19">${exam.point19 }</div>
+		                                                </div>
+		                                                <div class="content">
+		                                                    <div class="white in_txt"  id="point20">${exam.point20 }</div>
+		                                                </div>
+		                                                <div class="content">
+		                                                    <div class="white in_txt"  id="point21">${exam.point21 }</div>
+		                                                </div>
+		                                            </div>
+		                                            <div class="tcontents">
+		                                                <div class="content">
+		                                                    <div class="txt">등급</div>
+		                                                </div>
+		                                                <div class="content">
+		                                                    <div class="white in_txt" id="point22">${exam.point22 }</div>
+		                                                </div>
+		                                                <div class="content">
+		                                                    <div class="white in_txt"  id="point23">${exam.point23 }</div>
+		                                                </div>
+		                                                <div class="content">
+		                                                    <div class="white in_txt" id="point24">${exam.point24 }</div>
+		                                                </div>
+		                                                <div class="content">
+		                                                    <div class="white in_txt" id="point25">${exam.point25 }</div>
+		                                                </div>
+		                                                <div class="content">
+		                                                    <div class="white in_txt"  id="point26">${exam.point26 }</div>
+		                                                </div>
+		                                                <div class="content">
+		                                                    <div class="white in_txt"  id="point27">${exam.point27 }</div>
+		                                                </div>
+		                                                <div class="content">
+		                                                    <div class="white in_txt"  id="point28">${exam.point28 }</div>
+		                                                </div>
+		                                            </div>
+		                                        </div>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                            <div class="table_wrap1">
+		                                <div class="content color1">구분</div>
+		                                <div class="content color2 pd10">원점수</div>
+		                                <div class="content color2 pd10">표준점수</div>
+		                                <div class="content color2 pd10">백분위</div>
+		                                <div class="content color2 pd10 br_none">등급</div>
+		                                <div class="content color1">국어</div>
+		                                <div class="content color2">
+		                                    <div class="in_txt">${exam.point1 }</div>
+		                                </div>
+		                                <div class="content color2">
+		                                    <div class="in_txt"${exam.point8 }></div>
+		                                </div>
+		                                <div class="content color2">
+		                                    <div class="in_txt">${exam.point15 }</div>
+		                                </div>
+		                                <div class="content color2 br_none">
+		                                    <div class="in_txt">${exam.point22 }</div>
+		                                </div>
+		                                <div class="content color1 sel_wrap">
+		                                    <div class="in_txt">${exam.mathType }</div>
+		                                </div>
+		                                <div class="content color2">
+		                                    <div class="in_txt">${exam.point2 }</div>
+		                                </div>
+		                                <div class="content color2">
+		                                    <div class="in_txt">${exam.point9 }</div>
+		                                </div>
+		                                <div class="content color2">
+		                                    <div class="in_txt">${exam.point16 }</div>
+		                                </div>
+		                                <div class="content color2 br_none">
+		                                    <div class="in_txt">${exam.point23 }</div>
+		                                </div>
+		                                <div class="content color1">영어</div>
+		                                <div class="content color2">
+		                                    <div class="in_txt">${exam.point3 }</div>
+		                                </div>
+		                                <div class="content color2">
+		                                    <div class="in_txt pink">${exam.point10 }</div>
+		                                </div>
+		                                <div class="content color2">
+		                                    <div class="in_txt pink">${exam.point17 }</div>
+		                                </div>
+		                                <div class="content color2 br_none">
+		                                    <div class="in_txt">${exam.point24 }</div>
+		                                </div>
+		                                <div class="content color1">한국사</div>
+		                                <div class="content color2">
+		                                    <div class="in_txt">${exam.point4 }</div>
+		                                </div>
+		                                <div class="content color2">
+		                                    <div class="in_txt pink">${exam.point11 }</div>
+		                                </div>
+		                                <div class="content color2">
+		                                    <div class="in_txt pink">${exam.point18 }</div>
+		                                </div>
+		                                <div class="content color2 br_none">
+		                                    <div class="in_txt">${exam.point25 }</div>
+		                                </div>
+		                                <div class="content1 color1 sel_wrap br_none">
+		                                    <div class="in_txt">${exam.explorType }</div>
+		                                </div>
+		                                <div class="content color1 sel_wrap">
+		                                    <div class="in_txt">${exam.innerType1 }</div>
+		                                </div>
+		                                <div class="content color2">
+		                                    <div class="in_txt">${exam.point5 }</div>
+		                                </div>
+		                                <div class="content color2">
+		                                    <div class="in_txt">${exam.point12 }</div>
+		                                </div>
+		                                <div class="content color2">
+		                                    <div class="in_txt">${exam.point19 }</div>
+		                                </div>
+		                                <div class="content color2 br_none">
+		                                    <div class="in_txt">${exam.point26 }</div>
+		                                </div>
+		                                <div class="content color1 sel_wrap">
+		                                    <div class="in_txt">${exam.innerType2 }</div>
+		                                </div>
+		                                <div class="content color2">
+		                                    <div class="in_txt">${exam.point6 }</div>
+		                                </div>
+		                                <div class="content color2">
+		                                    <div class="in_txt">${exam.point13 }</div>
+		                                </div>
+		                                <div class="content color2">
+		                                    <div class="in_txt">${exam.point20 }</div>
+		                                </div>
+		                                <div class="content color2 br_none">
+		                                    <div class="in_txt">${exam.point27 }</div>
+		                                </div>
+		                                <div class="content color1 sel_wrap">
+		                                    <div class="in_txt">${exam.langType }</div>
+		                                </div>
+		                                <div class="content color2">
+		                                    <div class="in_txt">${exam.point7 }</div>
+		                                </div>
+		                                <div class="content color2">
+		                                    <div class="in_txt">${exam.point14 }</div>
+		                                </div>
+		                                <div class="content color2">
+		                                    <div class="in_txt">${exam.point21 }</div>
+		                                </div>
+		                                <div class="content color2 br_none">
+		                                    <div class="in_txt">${exam.point28 }</div>
+		                                </div>
+		                            </div>
+		                            <div class="check_wrap">
+		                                <div class="check check1">
+		                                    <input class="cir" type="radio" id="passFirst" ${exam.passCount.substring(0, 2) == '1차' ? 'checked' : '' } disabled="disabled">
+		                                    <label for="passFirst">1차합격</label>
+		                                </div>
+		                                <div class="check check2">
+		                                    <input class="cir" type="radio" id="passAdd" ${exam.passCount.substring(0, 2) == '추가' ? 'checked' : '' } disabled="disabled">
+		                                    <label for="passAdd">추가합격</label>
+		                                    <div class="input_wrap">
+		                                        <div class="txt">( 대기번호</div>
+		                                        <div class="input_txt" id="breakNum">
+		                                        	${exam.passCount.substring(0, 2) == '추가' ? exam.passCount.substring(5, exam.passCount.indexOf('번')) : '' }
+		                                        </div>
+		                                        <div class="txt">번 )</div>
+		                                    </div>
+		                                </div>
+		                                <div class="check check3">
+		                                    <input class="cir" type="radio" id="passNo" ${exam.passCount == '불합격' ? 'checked' : '' } disabled="disabled">
+		                                    <label for="passNo">불합격</label>
+		                                </div>
+		                            </div>
+                            	</c:when>
+                            	<c:otherwise>
+                            		<div class="blur_img">
+		                                <img src="/img/blur04.png">
+		                            </div>
+                            	</c:otherwise>
+                            </c:choose>
                         </div>
                     </div>
                     <div class="sv_btn_wrap">

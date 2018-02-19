@@ -43,6 +43,12 @@ public class MainController {
 				ms.autoLogin(id, pw, session);
 			}
 		}
+		// 아이피 저장 및 방문자수 리턴
+		String ipSize = ms.visitIp(req);
+		String todayVisit = ipSize.substring(0, ipSize.indexOf('/'));
+		String totalVisit = ipSize.substring(ipSize.indexOf('/')+1);
+		session.setAttribute("todayVisit", todayVisit);
+		session.setAttribute("totalVisit", totalVisit);
 		return mav;
 	}
 	
@@ -129,9 +135,23 @@ public class MainController {
 //	}
 	
 	// db interviewList name change
-	@RequestMapping("/interviewNameSet")
-	public String interviewNameSet(){
-		ms.interviewNameSet();
+//	@RequestMapping("/interviewNameSet")
+//	public String interviewNameSet(){
+//		ms.interviewNameSet();
+//		return "redirect:/";
+//	}
+	
+	// db interview comment id change
+	@RequestMapping("/interviewCommentIdSet")
+	public String interviewCommentIdSet(){
+		ms.interviewCommentIdSet();
 		return "redirect:/";
 	}
+	
+	// db interview comment day change
+//	@RequestMapping("/interviewCommentDaySet")
+//	public String interviewCommentDaySet(){
+//		ms.interviewCommentDaySet();
+//		return "redirect:/";
+//	}
 }

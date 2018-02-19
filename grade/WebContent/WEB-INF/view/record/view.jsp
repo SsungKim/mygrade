@@ -4,7 +4,7 @@
 
 
 <!doctype html>
-<html>
+<html oncontextmenu='return false' ondragstart='return false' onselectstart='return false'>
     <head>
     	<c:import url="/WEB-INF/view/main/head.jsp"/>
     </head>
@@ -77,12 +77,12 @@
                                     </div>
                                     <div class="txt">${record.admission }</div>
                                 </div>
-                                <div class="content content1">
-                                    <div class="img">
-                                        <img src="/img/student_view/info06.png">
-                                    </div>
-                                    <div class="txt">${record.hschool }</div>
-                                </div>
+<!--                                 <div class="content content1"> -->
+<!--                                     <div class="img"> -->
+<!--                                         <img src="/img/student_view/info06.png"> -->
+<!--                                     </div> -->
+<%--                                     <div class="txt">${record.hschool }</div> --%>
+<!--                                 </div> -->
                                 <div class="content content1">
                                     <div class="img">
                                         <img src="/img/student_view/info15.png">
@@ -166,19 +166,14 @@
                                     <div class="tit">
                                         <img src="/img/student_view/sub_tit01.png">
                                     </div>
-                                    <div class="txt_box blur">${record.award1 }</div>
-                                </div>
-                                <div class="content">
-                                    <div class="tit">
-                                        <img src="/img/student_view/sub_tit02.png">
-                                    </div>
-                                    <div class="txt_box blur">${record.award2 }</div>
-                                </div>
-                                <div class="content">
-                                    <div class="tit">
-                                        <img src="/img/student_view/sub_tit03.png">
-                                    </div>
-                                    <div class="txt_box blur">${record.award3 }</div>
+                                    <c:choose>
+                                    	<c:when test="${login.id == 'admin' || record.user == login.auto || buyCheck == 'buy' }">
+		                                    <div class="txt_box blur" style="background-image: none; ">${record.award1 }</div>
+                                    	</c:when>
+                                    	<c:otherwise>
+                                    		<div class="txt_box blur"></div>
+                                    	</c:otherwise>
+                                    </c:choose>
                                 </div>
                             </div>
                         </div>
@@ -192,21 +187,16 @@
                             <div class="contents_inner">
                                 <div class="content">
                                     <div class="tit">
-                                        <img src="/img/student_view/sub_tit01.png">
-                                    </div>
-                                    <div class="txt_box blur">${record.career1 }</div>
-                                </div>
-                                <div class="content">
-                                    <div class="tit">
                                         <img src="/img/student_view/sub_tit02.png">
                                     </div>
-                                    <div class="txt_box blur">${record.career2 }</div>
-                                </div>
-                                <div class="content">
-                                    <div class="tit">
-                                        <img src="/img/student_view/sub_tit03.png">
-                                    </div>
-                                    <div class="txt_box blur">${record.career3 }</div>
+                                    <c:choose>
+                                    	<c:when test="${login.id == 'admin' || record.user == login.auto || buyCheck == 'buy' }">
+		                                    <div class="txt_box blur" style="background-image: none; ">${record.career }</div>
+                                    	</c:when>
+                                    	<c:otherwise>
+                                    		<div class="txt_box blur"></div>
+                                    	</c:otherwise>
+                                    </c:choose>
                                 </div>
                             </div>
                         </div>
@@ -220,106 +210,85 @@
                             <div class="contents_inner">
                                 <div class="content">
                                     <div class="tit">
-                                        <img src="/img/student_view/sub_tit01.png">
-                                    </div>
-                                    <div class="txt_box1">
-                                        <div class="txt_wrap">
-                                            <div class="tit">자율활동</div>
-                                            <div class="txt blur">${record.autonomous1 }</div>
-                                        </div>
-                                        <div class="txt_wrap">
-                                            <div class="tit">동아리활동</div>
-                                            <div class="txt blur">${record.extra1 }</div>
-                                        </div>
-                                        <div class="txt_wrap">
-                                            <div class="tit">자율동아리</div>
-                                            <div class="txt blur">${record.club1 }</div>
-                                        </div>
-                                        <div class="txt_wrap">
-                                            <div class="tit">봉사활동</div>
-                                            <div class="txt blur">${record.help1 }</div>
-                                        </div>
-                                        <div class="txt_wrap">
-                                            <div class="tit">진로활동</div>
-                                            <div class="txt blur">${record.soju1 }</div>
-                                        </div>
-                                        <div class="txt_wrap">
-                                            <div class="tit">R&E, 연구보고서, 소논문</div>
-                                            <div class="txt blur">${record.paper1 }</div>
-                                        </div>
-                                        <div class="txt_wrap">
-                                            <div class="tit">기타활동</div>
-                                            <div class="txt blur">${record.etc1 }</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="content">
-                                    <div class="tit">
-                                        <img src="/img/student_view/sub_tit02.png">
-                                    </div>
-                                    <div class="txt_box1">
-                                        <div class="txt_wrap">
-                                            <div class="tit">자율활동</div>
-                                            <div class="txt blur">${record.autonomous2 }</div>
-                                        </div>
-                                        <div class="txt_wrap">
-                                            <div class="tit">동아리활동</div>
-                                            <div class="txt blur">${record.extra2 }</div>
-                                        </div>
-                                        <div class="txt_wrap">
-                                            <div class="tit">자율동아리</div>
-                                            <div class="txt blur">${record.club2 }</div>
-                                        </div>
-                                        <div class="txt_wrap">
-                                            <div class="tit">봉사활동</div>
-                                            <div class="txt blur">${record.help2 }</div>
-                                        </div>
-                                        <div class="txt_wrap">
-                                            <div class="tit">진로활동</div>
-                                            <div class="txt blur">${record.soju2 }</div>
-                                        </div>
-                                        <div class="txt_wrap">
-                                            <div class="tit">R&E, 연구보고서, 소논문</div>
-                                            <div class="txt blur">${record.paper2 }</div>
-                                        </div>
-                                        <div class="txt_wrap">
-                                            <div class="tit">기타활동</div>
-                                            <div class="txt blur">${record.etc2 }</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="content">
-                                    <div class="tit">
                                         <img src="/img/student_view/sub_tit03.png">
                                     </div>
                                     <div class="txt_box1">
                                         <div class="txt_wrap">
                                             <div class="tit">자율활동</div>
-                                            <div class="txt blur">${record.autonomous3 }</div>
+                                            <c:choose>
+		                                    	<c:when test="${login.id == 'admin' || record.user == login.auto || buyCheck == 'buy' }">
+				                                    <div class="txt blur" style="background-image: none; ">${record.autonomous }</div>
+		                                    	</c:when>
+		                                    	<c:otherwise>
+		                                    		<div class="txt blur"></div>
+		                                    	</c:otherwise>
+		                                    </c:choose>
                                         </div>
                                         <div class="txt_wrap">
                                             <div class="tit">동아리활동</div>
-                                            <div class="txt blur">${record.extra3 }</div>
+                                            <c:choose>
+		                                    	<c:when test="${login.id == 'admin' || record.user == login.auto || buyCheck == 'buy' }">
+				                                    <div class="txt blur" style="background-image: none; ">${record.extra }</div>
+		                                    	</c:when>
+		                                    	<c:otherwise>
+		                                    		<div class="txt blur"></div>
+		                                    	</c:otherwise>
+		                                    </c:choose>
                                         </div>
                                         <div class="txt_wrap">
                                             <div class="tit">자율동아리</div>
-                                            <div class="txt blur">${record.club3 }</div>
+                                            <c:choose>
+		                                    	<c:when test="${login.id == 'admin' || record.user == login.auto || buyCheck == 'buy' }">
+				                                    <div class="txt blur" style="background-image: none; ">${record.club }</div>
+		                                    	</c:when>
+		                                    	<c:otherwise>
+		                                    		<div class="txt blur"></div>
+		                                    	</c:otherwise>
+		                                    </c:choose>
                                         </div>
                                         <div class="txt_wrap">
                                             <div class="tit">봉사활동</div>
-                                            <div class="txt blur">${record.help3 }</div>
+                                            <c:choose>
+		                                    	<c:when test="${login.id == 'admin' || record.user == login.auto || buyCheck == 'buy' }">
+				                                    <div class="txt blur" style="background-image: none; ">${record.help }</div>
+		                                    	</c:when>
+		                                    	<c:otherwise>
+		                                    		<div class="txt blur"></div>
+		                                    	</c:otherwise>
+		                                    </c:choose>
                                         </div>
                                         <div class="txt_wrap">
                                             <div class="tit">진로활동</div>
-                                            <div class="txt blur">${record.soju3 }</div>
+                                            <c:choose>
+		                                    	<c:when test="${login.id == 'admin' || record.user == login.auto || buyCheck == 'buy' }">
+				                                    <div class="txt blur" style="background-image: none; ">${record.soju }</div>
+		                                    	</c:when>
+		                                    	<c:otherwise>
+		                                    		<div class="txt blur"></div>
+		                                    	</c:otherwise>
+		                                    </c:choose>
                                         </div>
                                         <div class="txt_wrap">
-                                            <div class="tit">R&E, 연구보고서, 소논문</div>
-                                            <div class="txt blur">${record.paper3 }</div>
+                                            <div class="tit">R&E,<br> 연구보고서,<br> 소논문</div>
+                                            <c:choose>
+		                                    	<c:when test="${login.id == 'admin' || record.user == login.auto || buyCheck == 'buy' }">
+				                                    <div class="txt blur" style="background-image: none; ">${record.paper }</div>
+		                                    	</c:when>
+		                                    	<c:otherwise>
+		                                    		<div class="txt blur"></div>
+		                                    	</c:otherwise>
+		                                    </c:choose>
                                         </div>
                                         <div class="txt_wrap">
                                             <div class="tit">기타활동</div>
-                                            <div class="txt blur">${record.etc1 }</div>
+                                            <c:choose>
+		                                    	<c:when test="${login.id == 'admin' || record.user == login.auto || buyCheck == 'buy' }">
+				                                    <div class="txt blur" style="background-image: none; ">${record.etc }</div>
+		                                    	</c:when>
+		                                    	<c:otherwise>
+		                                    		<div class="txt blur"></div>
+		                                    	</c:otherwise>
+		                                    </c:choose>
                                         </div>
                                     </div>
                                 </div>
@@ -335,21 +304,16 @@
                             <div class="contents_inner">
                                 <div class="content">
                                     <div class="tit">
-                                        <img src="/img/student_view/sub_tit01.png">
+                                        <img src="/img/student_view/sub_tit04.png">
                                     </div>
-                                    <div class="txt_box blur">${record.reading1 }</div>
-                                </div>
-                                <div class="content">
-                                    <div class="tit">
-                                        <img src="/img/student_view/sub_tit02.png">
-                                    </div>
-                                    <div class="txt_box blur">${record.reading2 }</div>
-                                </div>
-                                <div class="content">
-                                    <div class="tit">
-                                        <img src="/img/student_view/sub_tit03.png">
-                                    </div>
-                                    <div class="txt_box blur">${record.reading3 }</div>
+                                    <c:choose>
+                                    	<c:when test="${login.id == 'admin' || record.user == login.auto || buyCheck == 'buy' }">
+		                                    <div class="txt_box blur" style="background-image: none; ">${record.reading }</div>
+                                    	</c:when>
+                                    	<c:otherwise>
+                                    		<div class="txt_box blur"></div>
+                                    	</c:otherwise>
+                                    </c:choose>
                                 </div>
                             </div>
                         </div>
@@ -363,21 +327,16 @@
                             <div class="contents_inner">
                                 <div class="content">
                                     <div class="tit">
-                                        <img src="/img/student_view/sub_tit01.png">
+                                        <img src="/img/student_view/sub_tit05.png">
                                     </div>
-                                    <div class="txt_box blur">${record.special1 }</div>
-                                </div>
-                                <div class="content">
-                                    <div class="tit">
-                                        <img src="/img/student_view/sub_tit02.png">
-                                    </div>
-                                    <div class="txt_box blur">${record.special2 }</div>
-                                </div>
-                                <div class="content">
-                                    <div class="tit">
-                                        <img src="/img/student_view/sub_tit03.png">
-                                    </div>
-                                    <div class="txt_box blur">${record.special3 }</div>
+                                    <c:choose>
+                                    	<c:when test="${login.id == 'admin' || record.user == login.auto || buyCheck == 'buy' }">
+		                                    <div class="txt_box blur" style="background-image: none; ">${record.special }</div>
+                                    	</c:when>
+                                    	<c:otherwise>
+                                    		<div class="txt_box blur"></div>
+                                    	</c:otherwise>
+                                    </c:choose>
                                 </div>
                             </div>
                         </div>

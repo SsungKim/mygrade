@@ -49,7 +49,6 @@
 	<select id="certList" resultType="java.util.HashMap">
 		select a.*, b.id, b.name, c.uuid from schoolList a, memberList b, schoolData c
 		where a.user = b.auto and b.auto = c.user and c.user = a.user and a.school = c.school order by a.auto desc
-		limit 20 offset #{page}
 	</select>
 	<select id="certCount" resultType="java.lang.Integer">
 		select count(*) from schoolList a, memberList b, schoolData c
@@ -101,6 +100,25 @@
 	<select id="recordFile" resultType="java.util.HashMap">
 		select * from recordFile where auto = #{num}
 	</select>
+	<select id="salesList" resultType="java.util.HashMap">
+		select a.*, b.name from salesList a, memberList b
+		where a.id = b.id and b.type != '탈퇴' and b.admin = '구매자'
+		order by a.auto desc limit 20 offset #{page}
+	</select>
+	<select id="salesCount" resultType="java.lang.Integer">
+		select count(*) from salesList a, memberList b where a.id = b.id and b.type != '탈퇴' and b.admin = '구매자'
+	</select>
+	<select id="salesEndList" resultType="java.util.HashMap">
+		select a.*, b.name from salesList a, memberList b
+		where a.id = b.id and b.type != '탈퇴' and b.admin = '판매자'
+		order by a.auto desc limit 20 offset #{page}
+	</select>
+	<select id="salesEndCount" resultType="java.lang.Integer">
+		select count(*) from salesList a, memberList b where a.id = b.id and b.type != '탈퇴' and b.admin = '판매자'
+	</select>
+	<update id="salesUpdate2">
+		update memberList set admin = '판매자' where id = #{id}
+	</update>
 	
 	<!-- tab2 -->
 	<select id="chargeList" parameterType="java.util.HashMap" resultType="java.util.HashMap">

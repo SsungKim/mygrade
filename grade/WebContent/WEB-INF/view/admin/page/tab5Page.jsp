@@ -16,12 +16,12 @@
 	<c:forEach var="t" begin="${start5 }" end="${end5 }">
 		<c:choose>
 			<c:when test="${t == select5 }">
-				<div class="page sel" onclick="page(${t })">
+				<div class="page sel" onclick="page(${t })" id="page${t }">
 					<span>${t }</span>
 				</div>
 			</c:when>
 			<c:otherwise>
-				<div class="page" onclick="page(${t })">
+				<div class="page" onclick="page(${t })" id="page${t }">
 					<span>${t }</span>
 				</div>
 			</c:otherwise>
@@ -54,6 +54,8 @@
 					async : false,
 					success : function(txt){
 						$("#tab5Page").html(txt);
+						$(".page").removeClass("sel");
+						$("#page"+num).addClass(" sel");
 					}
 				});
 			}

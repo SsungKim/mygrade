@@ -42,16 +42,25 @@ public class AdminController {
 
 	// admin
 	@RequestMapping("")
-	public ModelAndView admin(){
+	public ModelAndView admin(HttpSession session){
 		ModelAndView mav = new ModelAndView("/admin/admin.jsp");
-		List<HashMap> payList = at1.payList(1, "0");
-		mav.addObject("payList", payList);
-		List<HashMap> payAll = at1.payAll("0");
-		mav.addObject("payAll", payAll);
-		SimpleDateFormat sdf = new SimpleDateFormat("M");
-		String month = sdf.format(System.currentTimeMillis());
-		mav.addObject("month", month);
-		mav = at1.payPageInner(mav, 1, "0");
+		String adminType = ((HashMap)session.getAttribute("login")).get("admin").toString();
+		if(adminType.equals("메인관리자")){
+			List<HashMap> payList = at1.payList(1, "0");
+			mav.addObject("payList", payList);
+			List<HashMap> payAll = at1.payAll("0");
+			mav.addObject("payAll", payAll);
+			SimpleDateFormat sdf = new SimpleDateFormat("M");
+			String month = sdf.format(System.currentTimeMillis());
+			mav.addObject("month", month);
+			mav = at1.payPageInner(mav, 1, "0");
+		} else {
+			List<HashMap> certList = at4.certList(1);
+			mav.addObject("certList", certList);
+			mav.addObject("tab", "4");
+			mav = at4.certPageInner(mav, 1);
+			mav.addObject("tab4Type", "normal");
+		}
 		return mav;
 	}
 	

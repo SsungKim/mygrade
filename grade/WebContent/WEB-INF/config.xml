@@ -25,6 +25,8 @@
 	<context:component-scan base-package="admin"/>
 	<context:component-scan base-package="school"/>
 	<context:component-scan base-package="rank"/>
+	<context:component-scan base-package="free"/>
+	<context:component-scan base-package="info"/>
 
 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver"
 		id="beanNameViewResolver" p:order="2" />

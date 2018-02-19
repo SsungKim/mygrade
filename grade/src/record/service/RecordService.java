@@ -30,9 +30,9 @@ public class RecordService {
 		try{
 			String uuid = UUID.randomUUID().toString().substring(0, 8);
 			String extension = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
-			File f = new File(application.getRealPath("/file/record"), uuid+extension);
+			File f = new File(application.getRealPath("/file/record"), uuid);
 			file.transferTo(f);
-			return uuid+extension;
+			return uuid;
 		} catch(Exception e){
 			e.printStackTrace();
 			return null;
@@ -76,12 +76,9 @@ public class RecordService {
 	
 	// 切积何 历厘
 	public boolean uploadRecord(HttpSession session, String addr, String school, String subject, String type,
-			String year, String admission, String typical, String hschool, String pass, String award1, String award2,
-			String award3, String career1, String career2, String career3, String auto1, String auto2, String auto3,
-			String extra1, String extra2, String extra3, String club1, String club2, String club3, String help1,
-			String help2, String help3, String soju1, String soju2, String soju3, String paper1, String paper2,
-			String paper3, String etc1, String etc2, String etc3, String reading1, String reading2, String reading3,
-			String special1, String special2, String special3, String grade, String award, String time, String book) {
+			String year, String admission, String typical, String pass, String award1,
+			String career, String auto, String extra, String club, String help, String soju, String paper,
+			String etc, String reading, String special, String grade, String award, String time, String book) {
 		SqlSession ss = fac.openSession();
 		HashMap<String, String> map = new HashMap<>();
 		String user = ((HashMap)session.getAttribute("login")).get("auto").toString();
@@ -97,74 +94,29 @@ public class RecordService {
 		map.put("year", year);
 		map.put("admission", admission);
 		map.put("typical", typical);
-		map.put("hschool", hschool);
 		map.put("pass", pass);
 		award1 = award1.replace("\n", "<br>");
 		map.put("award1", award1);
-		award2 = award2.replace("\n", "<br>");
-		map.put("award2", award2);
-		award3 = award3.replace("\n", "<br>");
-		map.put("award3", award3);
-		career1 = career1.replace("\n", "<br>");
-		map.put("career1", career1);
-		career2 = career2.replace("\n", "<br>");
-		map.put("career2", career2);
-		career3 = career3.replace("\n", "<br>");
-		map.put("career3", career3);
-		auto1 = auto1.replace("\n", "<br>");
-		map.put("auto1", auto1);
-		auto2 = auto2.replace("\n", "<br>");
-		map.put("auto2", auto2);
-		auto3 = auto3.replace("\n", "<br>");
-		map.put("auto3", auto3);
-		extra1 = extra1.replace("\n", "<br>");
-		map.put("extra1", extra1);
-		extra2 = extra2.replace("\n", "<br>");
-		map.put("extra2", extra2);
-		extra3 = extra3.replace("\n", "<br>");
-		map.put("extra3", extra3);
-		club1 = club1.replace("\n", "<br>");
-		map.put("club1", club1);
-		club2 = club2.replace("\n", "<br>");
-		map.put("club2", club2);
-		club3 = club3.replace("\n", "<br>");
-		map.put("club3", club3);
-		help1 = help1.replace("\n", "<br>");
-		map.put("help1", help1);
-		help2 = help2.replace("\n", "<br>");
-		map.put("help2", help2);
-		help3 = help3.replace("\n", "<br>");
-		map.put("help3", help3);
-		soju1 = soju1.replace("\n", "<br>");
-		map.put("soju1", soju1);
-		soju2 = soju2.replace("\n", "<br>");
-		map.put("soju2", soju2);
-		soju3 = soju3.replace("\n", "<br>");
-		map.put("soju3", soju3);
-		paper1 = paper1.replace("\n", "<br>");
-		map.put("paper1", paper1);
-		paper2 = paper2.replace("\n", "<br>");
-		map.put("paper2", paper2);
-		paper3 = paper3.replace("\n", "<br>");
-		map.put("paper3", paper3);
-		etc1 = etc1.replace("\n", "<br>");
-		map.put("etc1", etc1);
-		etc2 = etc2.replace("\n", "<br>");
-		map.put("etc2", etc2);
-		etc3 = etc3.replace("\n", "<br>");
-		map.put("etc3", etc3);
-		reading1 = reading1.replace("\n", "<br>");
-		map.put("reading1", reading1);
-		reading2 = reading2.replace("\n", "<br>");
-		map.put("reading2", reading2);
-		reading3 = reading3.replace("\n", "<br>");
-		map.put("reading3", reading3);
-		special1 = special1.replace("\n", "<br>");
-		map.put("special1", special1);
-		special2 = special2.replace("\n", "<br>");
-		map.put("special2", special2);
-		special3 = special3.replace("\n", "<br>");
-		map.put("special3", special3);
+		career = career.replace("\n", "<br>");
+		map.put("career", career);
+		auto = auto.replace("\n", "<br>");
+		map.put("auto", auto);
+		extra = extra.replace("\n", "<br>");
+		map.put("extra", extra);
+		club = club.replace("\n", "<br>");
+		map.put("club", club);
+		help = help.replace("\n", "<br>");
+		map.put("help", help);
+		soju = soju.replace("\n", "<br>");
+		map.put("soju", soju);
+		paper = paper.replace("\n", "<br>");
+		map.put("paper", paper);
+		etc = etc.replace("\n", "<br>");
+		map.put("etc", etc);
+		reading = reading.replace("\n", "<br>");
+		map.put("reading", reading);
+		special = special.replace("\n", "<br>");
+		map.put("special", special);
 		map.put("grade", grade);
 		map.put("award", award);
 		map.put("time", time);
@@ -382,12 +334,9 @@ public class RecordService {
 	
 	// 切积何 荐沥
 	public void modifyRecord(HttpSession session, String addr, String school, String subject, String type, String year,
-			String admission, String typical, String hschool, String pass, String award1, String award2, String award3,
-			String career1, String career2, String career3, String auto1, String auto2, String auto3, String extra1,
-			String extra2, String extra3, String club1, String club2, String club3, String help1, String help2,
-			String help3, String soju1, String soju2, String soju3, String paper1, String paper2, String paper3,
-			String etc1, String etc2, String etc3, String reading1, String reading2, String reading3, String special1,
-			String special2, String special3, String grade, String award, String time, String book, String auto) {
+			String admission, String typical, String pass, String award1,
+			String career, String auto1, String extra, String club, String help, String soju, String paper,
+			String etc, String reading, String special, String grade, String award, String time, String book, String auto) {
 		SqlSession ss = fac.openSession();
 		HashMap<String, String> map = new HashMap<>();
 		String user = ((HashMap)session.getAttribute("login")).get("auto").toString();
@@ -403,74 +352,29 @@ public class RecordService {
 		map.put("year", year);
 		map.put("admission", admission);
 		map.put("typical", typical);
-		map.put("hschool", hschool);
 		map.put("pass", pass);
 		award1 = award1.replace("\n", "<br>");
 		map.put("award1", award1);
-		award2 = award2.replace("\n", "<br>");
-		map.put("award2", award2);
-		award3 = award3.replace("\n", "<br>");
-		map.put("award3", award3);
-		career1 = career1.replace("\n", "<br>");
-		map.put("career1", career1);
-		career2 = career2.replace("\n", "<br>");
-		map.put("career2", career2);
-		career3 = career3.replace("\n", "<br>");
-		map.put("career3", career3);
+		career = career.replace("\n", "<br>");
+		map.put("career", career);
 		auto1 = auto1.replace("\n", "<br>");
 		map.put("auto1", auto1);
-		auto2 = auto2.replace("\n", "<br>");
-		map.put("auto2", auto2);
-		auto3 = auto3.replace("\n", "<br>");
-		map.put("auto3", auto3);
-		extra1 = extra1.replace("\n", "<br>");
-		map.put("extra1", extra1);
-		extra2 = extra2.replace("\n", "<br>");
-		map.put("extra2", extra2);
-		extra3 = extra3.replace("\n", "<br>");
-		map.put("extra3", extra3);
-		club1 = club1.replace("\n", "<br>");
-		map.put("club1", club1);
-		club2 = club2.replace("\n", "<br>");
-		map.put("club2", club2);
-		club3 = club3.replace("\n", "<br>");
-		map.put("club3", club3);
-		help1 = help1.replace("\n", "<br>");
-		map.put("help1", help1);
-		help2 = help2.replace("\n", "<br>");
-		map.put("help2", help2);
-		help3 = help3.replace("\n", "<br>");
-		map.put("help3", help3);
-		soju1 = soju1.replace("\n", "<br>");
-		map.put("soju1", soju1);
-		soju2 = soju2.replace("\n", "<br>");
-		map.put("soju2", soju2);
-		soju3 = soju3.replace("\n", "<br>");
-		map.put("soju3", soju3);
-		paper1 = paper1.replace("\n", "<br>");
-		map.put("paper1", paper1);
-		paper2 = paper2.replace("\n", "<br>");
-		map.put("paper2", paper2);
-		paper3 = paper3.replace("\n", "<br>");
-		map.put("paper3", paper3);
-		etc1 = etc1.replace("\n", "<br>");
-		map.put("etc1", etc1);
-		etc2 = etc2.replace("\n", "<br>");
-		map.put("etc2", etc2);
-		etc3 = etc3.replace("\n", "<br>");
-		map.put("etc3", etc3);
-		reading1 = reading1.replace("\n", "<br>");
-		map.put("reading1", reading1);
-		reading2 = reading2.replace("\n", "<br>");
-		map.put("reading2", reading2);
-		reading3 = reading3.replace("\n", "<br>");
-		map.put("reading3", reading3);
-		special1 = special1.replace("\n", "<br>");
-		map.put("special1", special1);
-		special2 = special2.replace("\n", "<br>");
-		map.put("special2", special2);
-		special3 = special3.replace("\n", "<br>");
-		map.put("special3", special3);
+		extra = extra.replace("\n", "<br>");
+		map.put("extra", extra);
+		club = club.replace("\n", "<br>");
+		map.put("club", club);
+		help = help.replace("\n", "<br>");
+		map.put("help", help);
+		soju = soju.replace("\n", "<br>");
+		map.put("soju", soju);
+		paper = paper.replace("\n", "<br>");
+		map.put("paper", paper);
+		etc = etc.replace("\n", "<br>");
+		map.put("etc", etc);
+		reading = reading.replace("\n", "<br>");
+		map.put("reading", reading);
+		special = special.replace("\n", "<br>");
+		map.put("special", special);
 		map.put("grade", grade);
 		map.put("award", award);
 		map.put("time", time);

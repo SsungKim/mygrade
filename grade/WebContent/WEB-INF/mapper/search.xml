@@ -4,7 +4,7 @@
 	<select id="searchrecord" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 		select * from recordList a, salesList b where a.id = b.id
 		and (a.school like #{word} or a.subject like #{word})
-		order by a.auto desc limit 12 offset #{page}
+		order by a.auto desc limit 10 offset #{page}
 	</select>
 	<select id="countrecord" resultType="java.lang.Integer">
 		select count(*) from recordList a, salesList b where a.id = b.id
@@ -46,7 +46,7 @@
 	<select id="searchintro" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 		select * from introList a, salesList b where a.id = b.id
 		and (a.school like #{word} or a.subject like #{word})
-		order by a.auto desc limit 12 offset #{page}
+		order by a.auto desc limit 10 offset #{page}
 	</select>
 <!-- 	<select id='searchintro2' parameterType="java.util.HashMap" resultType="java.util.HashMap"> -->
 <!-- 		select * from schoolList a, infoList b, memberList c, introList d, salesList e -->
@@ -88,19 +88,19 @@
 <!-- 		and (a.school like #{word} or a.type like #{word} or a.subject like #{word}) -->
 <!-- 	</select> -->
 	<select id="searchinterview" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-		select * from interviewList a, salesList b where a.id = b.id
+		select * from interviewList a, memberList b where a.id = b.id  and (b.admin = '판매자' or b.admin = '메인관리자')
 		and (a.school = #{word} and a.subject like #{subject})
-		order by a.auto desc limit 12 offset #{page}
+		order by a.auto desc limit 10 offset #{page}
 	</select>
 	<select id="searchinterview2" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-		select * from interviewList a, salesList b where a.id = b.id
+		select * from interviewList a, memberList b where a.id = b.id  and (b.admin = '판매자' or b.admin = '메인관리자')
 		and a.school = #{word}
-		order by a.auto desc limit 12 offset #{page}
+		order by a.auto desc limit 10 offset #{page}
 	</select>
 	<select id="searchinterview3" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-		select * from interviewList a, salesList b where a.id = b.id
+		select * from interviewList a, memberList b where a.id = b.id  and (b.admin = '판매자' or b.admin = '메인관리자')
 		and a.subject like #{subject}
-		order by a.auto desc limit 12 offset #{page}
+		order by a.auto desc limit 10 offset #{page}
 	</select>
 <!-- 	<select id="searchinterview2" parameterType="java.util.HashMap" resultType="java.util.HashMap"> -->
 <!-- 		select * from interviewList a, memberList b, salesList c -->
@@ -121,16 +121,16 @@
 <!-- 		order by a.auto desc limit 12 offset #{page} -->
 <!-- 	</select> -->
 	<select id="countinterview" parameterType="java.util.HashMap" resultType="java.lang.Integer">
-		select count(*) from interviewList a, salesList b where a.id = b.id
+		select count(*) from interviewList a, memberList b where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
 		and (a.school = #{word} and a.subject like #{subject})
 	</select>
 	<select id="countinterview2" parameterType="java.util.HashMap" resultType="java.lang.Integer">
-		select count(*) from interviewList a, salesList b where a.id = b.id
+		select count(*) from interviewList a, memberList b where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
 		and a.school = #{word}
 	</select>
 	<select id="countinterview3" parameterType="java.util.HashMap" resultType="java.lang.Integer">
-		select count(*) from interviewList a, salesList b where a.id = b.id
-		and a.subject like #{subject}
+		select count(*) from interviewList a, memberList b where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
+		and a.subject like #{word}
 	</select>
 <!-- 	<select id="countinterview2" parameterType="java.util.HashMap" resultType="java.lang.Integer"> -->
 <!-- 		select count(*) from interviewList a, memberList b, salesList c -->
@@ -150,7 +150,7 @@
 	<select id="searchexam" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 		select * from examList a, salesList b where a.id = b.id
 		and (a.school like #{word} or a.subject like #{word})
-		order by a.auto desc limit 12 offset #{page}
+		order by a.auto desc limit 10 offset #{page}
 	</select>
 <!-- 	<select id="searchexam2" parameterType="java.util.HashMap" resultType="java.util.HashMap"> -->
 <!-- 		select * from schoolList a, examList b, memberList c, infoList d, salesList e -->

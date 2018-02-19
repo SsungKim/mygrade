@@ -96,9 +96,11 @@
 		}
 		if(searchTxt != "" && searchTxt2 == ""){
 			searchType = "school";
+			searchTxt2 = "-";
 		}
 		if(searchTxt == "" && searchTxt2 != ""){
 			searchType = "subject";
+			searchTxt = "-";
 		}
 		location.href="/search/"+searchType+"/"+searchTxt+"/"+searchTxt2+"/${searchType }/"+num;
 	}

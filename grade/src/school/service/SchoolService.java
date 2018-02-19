@@ -53,6 +53,7 @@ public class SchoolService {
 		map.put("type", type);
 		HashMap m = ss.selectOne("school.university", map);
 		if(m != null){
+			ss.close();
 			return 2;
 		}
 //		List<HashMap> list = ss.selectList("school.schoolList", user);
@@ -103,6 +104,7 @@ public class SchoolService {
 				return false;
 			}
 		} else {
+			ss.close();
 			return true;
 		}
 	}

@@ -19,7 +19,7 @@ public class SearchService {
 			HashMap map = new HashMap<>();
 			map.put("word", m.get("num"));
 			map.put("subject", "%"+subject+"%");
-			map.put("page", (page-1)*12);
+			map.put("page", (page-1)*10);
 //			List<HashMap> list = ss.selectList("search.searchrecord", map);
 			List<HashMap> list = ss.selectList("search.searchinterview", map);
 			for(int i=0; i<list.size(); i++){
@@ -57,7 +57,7 @@ public class SearchService {
 			count += n;
 		}
 		ss.close();
-		return count%12 == 0 ? count/12 : count/12+1;
+		return count%10 == 0 ? count/10 : count/10+1;
 	}
 
 	// 검색
@@ -67,7 +67,7 @@ public class SearchService {
 		for(HashMap m : wordList){
 			HashMap map = new HashMap<>();
 			map.put("word", m.get("num"));
-			map.put("page", (page-1)*12);
+			map.put("page", (page-1)*10);
 //			List<HashMap> list = ss.selectList("search.searchrecord", map);
 			List<HashMap> list = ss.selectList("search.searchinterview2", map);
 			for(int i=0; i<list.size(); i++){
@@ -102,7 +102,7 @@ public class SearchService {
 			count += n;
 		}
 		ss.close();
-		return count%12 == 0 ? count/12 : count/12+1;
+		return count%10 == 0 ? count/10 : count/10+1;
 	}
 
 	// 검색
@@ -110,7 +110,7 @@ public class SearchService {
 		SqlSession ss = fac.openSession();
 		HashMap map = new HashMap();
 		map.put("subject", "%"+subject+"%");
-		map.put("page", (page-1)*12);
+		map.put("page", (page-1)*10);
 		List<HashMap> li = new Vector<>();
 		List<HashMap> list = ss.selectList("search.searchinterview3", map);
 		for(int i=0; i<list.size(); i++){
@@ -139,7 +139,7 @@ public class SearchService {
 		SqlSession ss = fac.openSession();
 		int count = ss.selectOne("search.countinterview3", "%"+subject+"%");
 		ss.close();
-		return count%12 == 0 ? count/12 : count/12+1;
+		return count%10 == 0 ? count/10 : count/10+1;
 	}
 	
 	// 상세검색
@@ -148,9 +148,9 @@ public class SearchService {
 		HashMap map = new HashMap();
 		List<HashMap> li = new Vector<>();
 		for(HashMap m : wordList){
-			map.put("word", "%"+m.get("num")+"%");
+			map.put("word", m.get("num"));
 			map.put("subject", "%"+subject+"%");
-			map.put("page", (page-1)*12);
+			map.put("page", (page-1)*10);
 			List<HashMap> list = ss.selectList("search.search"+type, map);
 			for(int i=0; i<list.size(); i++){
 				HashMap m2 = list.get(i);
@@ -186,7 +186,7 @@ public class SearchService {
 			count += n;
 		}
 		ss.close();
-		return count%12 == 0 ? count/12 : count/12+1;
+		return count%10 == 0 ? count/10 : count/10+1;
 	}
 
 	// 상세검색
@@ -195,8 +195,8 @@ public class SearchService {
 		HashMap map = new HashMap();
 		List<HashMap> li = new Vector<>();
 		for(HashMap m : wordList){
-			map.put("word", "%"+m.get("num")+"%");
-			map.put("page", (page-1)*12);
+			map.put("word", m.get("num"));
+			map.put("page", (page-1)*10);
 			List<HashMap> list = ss.selectList("search.search"+type+"2", map);
 			for(int i=0; i<list.size(); i++){
 				HashMap m2 = list.get(i);
@@ -226,12 +226,12 @@ public class SearchService {
 		int count = 0;
 		for(HashMap m : wordList){
 			HashMap<String, String> map = new HashMap<>();
-			map.put("word", "%"+m.get("num")+"%");
+			map.put("word", m.get("num").toString());
 			int n = ss.selectOne("search.count"+type+"2", map);
 			count += n;
 		}
 		ss.close();
-		return count%12 == 0 ? count/12 : count/12+1;
+		return count%10 == 0 ? count/10 : count/10+1;
 	}
 
 	// 상세검색
@@ -239,7 +239,7 @@ public class SearchService {
 		SqlSession ss = fac.openSession();
 		HashMap map = new HashMap();
 		map.put("subject", "%"+subject+"%");
-		map.put("page", (page-1)*12);
+		map.put("page", (page-1)*10);
 		List<HashMap> li = new Vector<>();
 		List<HashMap> list = ss.selectList("search.search"+type+"3", map);
 		for(int i=0; i<list.size(); i++){
@@ -268,7 +268,7 @@ public class SearchService {
 		SqlSession ss = fac.openSession();
 		int count = ss.selectOne("search.count"+type+"3", "%"+subject+"%");
 		ss.close();
-		return count%12 == 0 ? count/12 : count/12+1;
+		return count%10 == 0 ? count/10 : count/10+1;
 	}
 
 	// 대학 변환

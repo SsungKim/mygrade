@@ -16,12 +16,12 @@
 	<c:forEach var="t" begin="${start3 }" end="${end3 }">
 		<c:choose>
 			<c:when test="${t == select3 }">
-				<div class="page sel" onclick="page(${t })">
+				<div class="page sel" id="page${t }" onclick="page(${t })">
 					<span>${t }</span>
 				</div>
 			</c:when>
 			<c:otherwise>
-				<div class="page" onclick="page(${t })">
+				<div class="page" id="page${t }" onclick="page(${t })">
 					<span>${t }</span>
 				</div>
 			</c:otherwise>
@@ -52,17 +52,18 @@
 		}
 		$.ajax({
 			type : "post",
-			url : "/admin/tab3/search/"+day1+"/"+day2,
+			url : "/admin/tab3/search/"+day1+"/"+day2+"?page="+num,
 			async : false,
 			success : function(txt){
-				console.log(txt);
 				$("#tab3Content").html(txt);
 				$.ajax({
 					type : "post",
-					url : "/admin/tab3/searchPage/"+day1+"/"+day2,
+					url : "/admin/tab3/searchPage/"+day1+"/"+day2+"?page="+num,
 					async : false,
 					success : function(txt){
 						$("#tab3Page").html(txt);
+						$(".page").removeClass("sel");
+						$("#page"+num).addClass(" sel");
 					}
 				});
 			}

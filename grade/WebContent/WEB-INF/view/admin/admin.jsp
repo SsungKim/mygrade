@@ -51,7 +51,7 @@
                                 <img src="/img/myinfo/arrow_prev.png">
                             </div>
                         </div>
-                        <div class="name">김신</div>
+                        <div class="name" id="recordName"></div>
                     </div>
                 </div>
                 <div class="file_view" id="showImg">
@@ -86,16 +86,23 @@
                         <div class="txt">넌몇대? 관리자 페이지</div>
                     </div>
                     <div class="tab_wrap">
-                        <div class="tab tab_sel" id="tab1" onclick="tabClick(1)">입금자 리스트</div>
+                        <div class="tab ${login.admin == '메인관리자' ? 'tab_sel' : '' }" id="tab1" onclick="tabClick(1)">입금자 리스트</div>
                         <div class="tab" id="tab2" onclick="tabClick(2)">충전 리스트</div>
                         <div class="tab" id="tab3" onclick="tabClick(3)">사용 리스트</div>
-                        <div class="tab" id="tab4" onclick="tabClick(4)">인증 리스트</div>
+                        <div class="tab ${login.admin == '인증관리자' ? 'tab_sel' : '' }" id="tab4" onclick="tabClick(4)">인증 리스트</div>
                         <div class="tab" id="tab5" onclick="tabClick(5)">학생부 인증</div>
                         <div class="tab" id="tab6" onclick="tabClick(6)">게시물 관리</div>
                         <div class="tab" id="tab7" onclick="tabClick(7)">회원 관리</div>
                     </div>
                     <div class="tab_view">
-                    	<c:import url="/WEB-INF/view/admin/tab1.jsp"/>
+                    	<c:choose>
+                    		<c:when test="${login.admin == '메인관리자' }">
+		                    	<c:import url="/WEB-INF/view/admin/tab1.jsp"/>
+                    		</c:when>
+                    		<c:otherwise>
+                    			<c:import url="/WEB-INF/view/admin/tab4.jsp"/>
+                    		</c:otherwise>
+                    	</c:choose>
                     </div>
                 </div>
             </div>
@@ -108,11 +115,12 @@
     <script>
     	// 관리자 아닐경우 페이지 전환
     	$(document).ready(function(){
-    		if(${login.id != 'admin' }){
+    		if(${login.admin != '메인관리자' && login.admin != '인증관리자' }){
     			alert("접근 권한이 없습니다.");
     			location.href="/";
     		}
     	});
+    	// 탭 클릭
 	    function tabClick(num){
 	    	$(".tab").removeClass("tab_sel");
 	    	$("#tab"+num).addClass(" tab_sel");
@@ -125,6 +133,17 @@
 	    		}
 	    	});
 	    }
+	    // 관리자 타입별 탭 노출
+	    $(document).ready(function(){
+	    	for(var i=1; i<8; i++){
+	    		$("#tab"+i).css("display", "inline-block");
+	    		if(${login.admin == '인증관리자' }){
+	    			if(i != 4 && i != 5){
+	    				$("#tab"+i).hide();
+	    			}
+	    		}
+	    	}
+	    });
     </script>
     
 </html>

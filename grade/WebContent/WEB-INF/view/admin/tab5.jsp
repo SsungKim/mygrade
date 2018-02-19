@@ -31,12 +31,12 @@
 	            	<div class="tab_content">
 		                <div class="content num" id="tab5Auto${t }">${certList.get(t-1).auto }</div>
 		                <div class="content c1">${certList.get(t-1).day }</div>
-		                <div class="content c2">${certList.get(t-1).id }</div>
-		                <div class="content c1">${certList.get(t-1).name }</div>
+		                <div class="content c2" id="tab5Id${t }">${certList.get(t-1).id }</div>
+		                <div class="content c1" id="tab5Name${t }">${certList.get(t-1).name }</div>
 		                <div class="content c3">${certList.get(t-1).hschool }</div>
 		                <div class="content c2">
-			                <c:if test="${certList.get(t-1).recordFile != null }">
-			                	<img src="/img/admin/view.png" onclick="tab5View(${certList.get(t-1).recordFile })">
+			                <c:if test="${certList.get(t-1).recordFile != '' && certList.get(t-1).recordFile != null }">
+			                	<img src="/img/admin/view.png" onclick="tab5View('${certList.get(t-1).recordFile }', '${t }')">
 			                </c:if>
 		                </div>
 		                <div class="content num">
@@ -127,10 +127,11 @@
 		});
 	}
 	// 보기
-	function tab5View(num){
+	function tab5View(num, num2){
 		$("#popup_cover").show();
 		$("#recordView").show();
 		$("body").css("overflow", "hidden");
+		$("#recordName").html($("#tab5Name"+num2).html());
 		$.ajax({
 			type : "post",
 			url : "/admin/tab5/recordFile/"+num,

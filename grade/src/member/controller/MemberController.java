@@ -247,6 +247,7 @@ public class MemberController {
 	public int buy(HttpSession session, @PathVariable(name="item")String item, @PathVariable(name="target")String target,
 							@PathVariable(name="user")String user, @PathVariable(name="school")String school, @PathVariable(name="subject")String subject,
 							@PathVariable(name="point")String point){
+		System.out.println(item+"/"+target+"/"+user+"/"+school+"/"+subject+"/"+point);
 		return ms.buy(session, item, target, user, school, subject, point);
 	}
 	
@@ -524,5 +525,12 @@ public class MemberController {
 		mav.addObject("prev", prev);
 		mav.addObject("next", next);
 		return mav;
+	}
+	
+	// 학교등록 여부 확인
+	@RequestMapping("/schoolCheck/{user}")
+	@ResponseBody
+	public boolean schoolCheck(@PathVariable(name="user")String user){
+		return ms.schoolCheck(user);
 	}
 }

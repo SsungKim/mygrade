@@ -1,5 +1,6 @@
 package main.service;
 
+import java.text.*;
 import java.util.*;
 
 import javax.servlet.http.*;
@@ -148,72 +149,191 @@ public class MainService {
 	}
 
 	// db Test id setting
-	public void dbTestSet() {
-		SqlSession ss = fac.openSession();
-		for(int i=501; i<=550; i++){
-			HashMap<String, String> map = new HashMap<>();
-			map.put("id", "test"+i);
-			map.put("name", "test");
-			map.put("pw", "test");
-			map.put("birth", "19991111");
-			map.put("addr1", "서울");
-			map.put("addr2", "강남구");
-			map.put("addr3", "대치동");
-			map.put("phone1", "010");
-			map.put("phone2", "9999");
-			map.put("phone3", "9999");
-			map.put("email1", "test");
-			map.put("email2", "test.com");
-			map.put("agSms", "n");
-			map.put("agEmail", "n");
-			map.put("sales", "n");
-			try{
-				ss.insert("member.join", map);
-				ss.commit();
-			} catch(Exception e){
-				ss.rollback();
-				ss.close();
-			}
-		}
-		ss.close();
-	}
+//	public void dbTestSet() {
+//		SqlSession ss = fac.openSession();
+//		for(int i=501; i<=550; i++){
+//			HashMap<String, String> map = new HashMap<>();
+//			map.put("id", "test"+i);
+//			map.put("name", "test");
+//			map.put("pw", "test");
+//			map.put("birth", "19991111");
+//			map.put("addr1", "서울");
+//			map.put("addr2", "강남구");
+//			map.put("addr3", "대치동");
+//			map.put("phone1", "010");
+//			map.put("phone2", "9999");
+//			map.put("phone3", "9999");
+//			map.put("email1", "test");
+//			map.put("email2", "test.com");
+//			map.put("agSms", "n");
+//			map.put("agEmail", "n");
+//			map.put("sales", "n");
+//			try{
+//				ss.insert("member.join", map);
+//				ss.commit();
+//			} catch(Exception e){
+//				ss.rollback();
+//				ss.close();
+//			}
+//		}
+//		ss.close();
+//	}
 
 	// db interviewList name change
-	public void interviewNameSet() {
+//	public void interviewNameSet() {
+//		SqlSession ss = fac.openSession();
+//		String[] lastName = {"김", "이", "박", "최", "정", "강", "조", "윤", "장", "임", "한", "오", "서", "신", "권", "황", "안", "송", "전", "홍", "유", "고", "문", "양", "배", 
+//				"조", "백", "허", "유", "남", "신", "노", "정", "하", "곽", "성", "차", "주", "우", "구", "신", "임", "전", "민", "유", "류", "나", "진", "지", "엄", "채", "원", "천", "방",
+//				"공", "강", "현", "함", "변", "염", "양", "변", "여", "추", "노", "도", "소", "신", "석", "선", "설", "마", "길", "주", "연", "방", "위", "표", "명", "기", "반", "라", "왕", 
+//				"금", "옥", "육", "인", "맹", "제", "모", "장", "남궁", "탁", "국", "여", "진", "어", "은", "편"};
+//		String[] firstName1 = {"지", "동", "현", "성", "정", "영", "준", "민", "도", "예", "서", "주", "은", "유", "미"};
+//		String[] firstName2 = {"훈", "민", "우", "현", "호", "식", "수", "재", "윤", "준", "연", "현", "서", "혜", "빈", "지", "자", "순"};
+//		String name1 = "";
+//		String name2 = "";
+//		String name3 = "";
+//		List<HashMap> interviewList = ss.selectList("interview.interviewAllList");
+//		for(int i=0; i<interviewList.size(); i++){
+//			double lastNameRate = Math.random();
+//			double firstNameRate1 = Math.random();
+//			double firstNameRate2 = Math.random();
+//			double nameLength = Math.random();
+//			int n = (int)(lastNameRate*99);
+//			int m = (int)(firstNameRate1*15);
+//			int o = (int)(firstNameRate2*18);
+//			name1 = lastName[n];
+//			name2 = firstName1[m];
+//			name3 = firstName2[o];
+//			String name = name1+name2+name3;
+//			if(!name1.equals("남궁")){
+//				if(nameLength > 0.85){
+//					name = name1+name2;
+//				}
+//			}
+//			HashMap map = new HashMap();
+//			map.put("name", name);
+//			map.put("auto", interviewList.get(i).get("auto").toString());
+//			ss.update("interview.interviewNameSet", map);
+//		}
+//		ss.commit();
+//		ss.close();
+//	}
+	
+	// db interview comment id change
+	public void interviewCommentIdSet() {
 		SqlSession ss = fac.openSession();
-		String[] lastName = {"김", "이", "박", "최", "정", "강", "조", "윤", "장", "임", "한", "오", "서", "신", "권", "황", "안", "송", "전", "홍", "유", "고", "문", "양", "배", 
-				"조", "백", "허", "유", "남", "신", "노", "정", "하", "곽", "성", "차", "주", "우", "구", "신", "임", "전", "민", "유", "류", "나", "진", "지", "엄", "채", "원", "천", "방",
-				"공", "강", "현", "함", "변", "염", "양", "변", "여", "추", "노", "도", "소", "신", "석", "선", "설", "마", "길", "주", "연", "방", "위", "표", "명", "기", "반", "라", "왕", 
-				"금", "옥", "육", "인", "맹", "제", "모", "장", "남궁", "탁", "국", "여", "진", "어", "은", "편"};
-		String[] firstName1 = {"지", "동", "현", "성", "정", "영", "준", "민", "도", "예", "서", "주", "은", "유", "미"};
-		String[] firstName2 = {"훈", "민", "우", "현", "호", "식", "수", "재", "윤", "준", "연", "현", "서", "혜", "빈", "지", "자", "순"};
-		String name1 = "";
-		String name2 = "";
-		String name3 = "";
-		List<HashMap> interviewList = ss.selectList("interview.interviewAllList");
-		for(int i=0; i<interviewList.size(); i++){
-			double lastNameRate = Math.random();
-			double firstNameRate1 = Math.random();
-			double firstNameRate2 = Math.random();
-			double nameLength = Math.random();
-			int n = (int)(lastNameRate*99);
-			int m = (int)(firstNameRate1*15);
-			int o = (int)(firstNameRate2*18);
-			name1 = lastName[n];
-			name2 = firstName1[m];
-			name3 = firstName2[o];
-			String name = name1+name2+name3;
-			if(!name1.equals("남궁")){
-				if(nameLength > 0.85){
-					name = name1+name2;
+		String[] alpha = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
+		String[] beta = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
+		int[] num = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0};
+		String id = "";
+		List<HashMap> list = ss.selectList("interview.commentAll");
+		for(int j=0; j<list.size(); j++){
+			id = "";
+			int ranId = (int)(Math.random()*17)+4;
+			for(int i=0; i<ranId; i++){
+				int ran = (int)(Math.random()*3)+1;
+				switch(ran){
+				case 1:
+					ran = (int)(Math.random()*alpha.length);
+					break;
+				case 2:
+					ran = (int)(Math.random()*beta.length);
+					break;
+				case 3:
+					ran = (int)(Math.random()*num.length);
+					break;
+				}
+				if(ran>num.length-1){
+					id += Math.random() > 0.5 ? alpha[ran] : beta[ran];
+				} else {
+					id += num[ran];
 				}
 			}
-			HashMap map = new HashMap();
-			map.put("name", name);
-			map.put("auto", interviewList.get(i).get("auto").toString());
-			ss.update("interview.interviewNameSet", map);
+			String auto = list.get(j).get("auto").toString();
+			HashMap<String, String> map = new HashMap<>();
+			map.put("auto", auto);
+			map.put("id", id);
+			ss.update("interview.commentIdChange", map);
 		}
 		ss.commit();
 		ss.close();
 	}
+
+	// 방문자수 체크 및 아이피 저장
+	public String visitIp(HttpServletRequest req) {
+		SqlSession ss = fac.openSession();
+		String ip = req.getHeader("X-FORWARDED-FOR"); 
+		if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+	        ip = req.getHeader("Proxy-Client-IP");
+	    }
+	    if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+	        ip = req.getHeader("WL-Proxy-Client-IP");
+	    }
+	    if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+	        ip = req.getHeader("HTTP_CLIENT_IP");
+	    }
+	    if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+	        ip = req.getHeader("HTTP_X_FORWARDED_FOR");
+	    }
+	    if(ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
+	        ip = req.getRemoteAddr();
+	    }
+		List<HashMap> ipToday = new Vector<>();
+		List<HashMap> ipAll = ss.selectList("main.getIpAll");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String today = sdf.format(System.currentTimeMillis());
+		for(HashMap m : ipAll){
+			if(m.get("day").toString().equals(today)){
+				ipToday.add(m);
+			}
+		}
+		int n = 0;
+		for(HashMap m : ipToday){
+			if(m.get("ip").toString().equals(ip)){
+				n++;
+				break;
+			}
+		}
+		int todayVisit = ipToday.size();
+		int totalVisit = ipAll.size();
+		if(n==0){
+			try{
+				ss.insert("main.visitIp", ip);
+				ss.commit();
+				ss.close();
+				todayVisit++;
+				totalVisit++;
+			} catch(Exception e){
+				e.printStackTrace();
+				ss.rollback();
+				ss.close();
+			}
+		} else {
+			ss.rollback();
+			ss.close();
+		}
+		return todayVisit+"/"+totalVisit;
+	}
+	
+	// db interview comment day set
+//	public void interviewCommentDaySet() {
+//		SqlSession ss = fac.openSession();
+//		List<HashMap> list = ss.selectList("interview.commentAll");
+//		for(int i=0; i<list.size(); i++){
+//			String year = "2017";
+//			String month = "10";
+//			int dayTmp = (int)(Math.random()*24)+1;
+//			String day = dayTmp < 10 ? "0"+dayTmp : ""+dayTmp;
+//			int hourTmp = (int)(Math.random()*24);
+//			String hour = hourTmp < 10 ? "0"+hourTmp : ""+hourTmp;
+//			int minTmp = (int)(Math.random()*60);
+//			String minute = minTmp < 10 ? "0"+minTmp : ""+minTmp;
+//			String date = year+"-"+month+"-"+day+" "+hour+":"+minute;
+//			HashMap<String, String> map = new HashMap<>();
+//			map.put("auto", list.get(i).get("auto").toString());
+//			map.put("day", date);
+//			ss.update("interview.commentDayChange", map);
+//		}
+//		ss.commit();
+//		ss.close();
+//	}
 }

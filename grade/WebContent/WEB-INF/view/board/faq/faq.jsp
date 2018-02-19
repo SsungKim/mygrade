@@ -31,7 +31,9 @@
                             </div>
 	                        <div class="tit">
 	                        	<span onclick="location.href='/notice'">공지사항</span> |
-	                        	<span class="sel" onclick="location.href='/faq'">문의사항</span>
+	                        	<span class="sel" onclick="location.href='/faq'">문의사항</span> |
+                                <span onclick="location.href='/info'">입시정보</span> |
+                                <span onclick="location.href='/free'">자유게시판</span>
 	                        </div>
 	                    </section>
 	                    <section class="section01">
@@ -43,27 +45,6 @@
 	                                <div class="tit bbs_date">작성일</div>
 	                            </div>
 	                            <c:choose>
-                                    <c:when test="${listNew.size() > 0}">
-                                        <c:forEach var="t" items="${listNew}">
-                                            <div class="bbs bbs_new">
-                                                <div class="txt bbs_number">
-                                                    <img src="/img/notice/notice01/new.png">
-                                                </div>
-                                                <div class="txt bbs_tit" onclick="view('${t.auto }', '${t.writer }')">
-                                                    <c:choose>
-                                                        <c:when test="${t.title.length() > 27 }">
-                                                            <span>${t.title.substring(0, 27) }...</span>
-                                                        </c:when>
-                                                        <c:otherwise>
-                                                            <span>${t.title }</span>
-                                                        </c:otherwise>
-                                                    </c:choose>
-                                                </div>
-                                                <div class="txt bbs_name">${t.writer }</div>
-                                                <div class="txt bbs_date">${t.day }</div>
-                                            </div>
-                                        </c:forEach>
-                                    </c:when>
 	                            	<c:when test="${list.size()>0 }">
 			                            <c:forEach var="t" items="${list }">
 				                            <div class="bbs">
@@ -87,7 +68,6 @@
 	                            		<div class="bbs_txt">등록된 글이 없습니다.</div>
 	                            	</c:otherwise>
 	                            </c:choose>
-	                            
 	                        </div>
 	                        <c:if test="${login != null }">
                                 <div class="write_btn" onclick="location.href='/faq/write'">

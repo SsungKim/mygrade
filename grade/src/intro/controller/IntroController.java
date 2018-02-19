@@ -108,12 +108,18 @@ public class IntroController {
 	
 	// 자소서 보기
 	@RequestMapping("/view/{num}")
-	public ModelAndView view(@PathVariable(name="num")String num){
+	public ModelAndView view(@PathVariable(name="num")String num, HttpSession session){
 		ModelAndView mav = new ModelAndView("/intro/view.jsp");
 		HashMap intro = is.introOne(num);
 		mav.addObject("intro", intro);
 		mav.addObject("itemNum", intro.get("auto").toString());
 		mav.addObject("itemUser", intro.get("user").toString());
+		mav.addObject("itemSchool", intro.get("school").toString());
+		mav.addObject("itemSubject", intro.get("subject").toString());
+		List<HashMap> certList = ms.certList(intro.get("user").toString());
+		mav.addObject("certList", certList);
+		boolean buyCheck = ms.buyCheck(num, session, "자소서");
+		mav.addObject("buyCheck", buyCheck ? "buy" : "no");
 		return mav;
 	}
 	

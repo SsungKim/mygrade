@@ -28,14 +28,28 @@ public class FaqController {
 	// page inner
 	public ModelAndView pageInner(ModelAndView mav, int select){
 		mav.addObject("select", select);
+		int page = fs.faqPage();
 		int first = 1;
-		int last = fs.faqPage();
-		int start = select > 1 ? select : 1;
-		int end = start+4 > last ? last : start+4;
+		int last = page;
+		int start = select > first ? select%10 == 0 ? (select/10)*10-10+1 : (select/10)*10+1 : first;
+		int startM = select > first ? select%5 == 0? (select/5)*5-5+1 : (select/5)*5+1 : first;
+		int end = start+9 < last ? start+9 : last;
+		int endM = startM+4 < last ? startM+4 : last;
+		int prev = select%10 == 0 ? (select/10)*10-20+1 : (start/10)*10-10+1;
+		int prevM = select%5 == 0 ? (select/5)*5-10+1 : (startM/5)*5-5+1;
+		int next = (start/10)*10+10+1;
+		int nextM = (startM/5)*5+5+1;
+		mav.addObject("select", select);
 		mav.addObject("first", first);
 		mav.addObject("last", last);
 		mav.addObject("start", start);
+		mav.addObject("startM", startM);
 		mav.addObject("end", end);
+		mav.addObject("endM", endM);
+		mav.addObject("prev", prev);
+		mav.addObject("prevM", prevM);
+		mav.addObject("next", next);
+		mav.addObject("nextM", nextM);
 		return mav;
 	}
 	

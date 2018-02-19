@@ -199,7 +199,7 @@
                                 </div>
                                 <div class="info_list">
                                     <div class="tit">이름</div>
-                                    <div class="txt">가나다</div>
+                                    <div class="txt">${login.name }</div>
                                 </div>
                                 <div class="info_list">
                                     <div class="tit">아이디</div>
@@ -388,7 +388,7 @@
                                 <div class="info_icon" onclick="location.href='/member/sales'">
                                     <img src="/img/myinfo/item10_01.png">
                                 </div>
-                                <div class="info_txt">${login.bank }은행<br>
+                                <div class="info_txt">${login.bank }<br>
                                     <span>${login.account }</span>
                                 </div>
                             </div>
@@ -670,6 +670,8 @@
     	}
     	// 충전하기 팝업
     	function chargePopup(){
+    		alert("준비중입니다.");
+    		return;
     		$("#passPopup1").show();
     		$("#chargePopup").show();
     		$("body").css("overflow", "hidden");

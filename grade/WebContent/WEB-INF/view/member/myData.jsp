@@ -24,14 +24,19 @@
                 <div class="logo_boundry"></div>
                 <section class="section01">
                     <div class="item_wrap">
+                        <div class="item item_hidden" id="emptyDiv">
+                            <div class="empty_txt" onclick="location.href='/school'">학생부, 자소서 , 면접후기, 정시성적을 입력하기 전에 반드시 학교등록을 진행해 주세요.</div>
+                        </div>
+                    </div>
+                    <div class="item_wrap">
                         <div class="ssw_tit">
                             <div class="img">
                                 <img src="/img/student_view/info_tit.png">
                             </div>
                             <div class="tit">학생부</div>
                         </div>
-<!--                         <div class="confirm_btn" onclick="location.href='/record/upload'">등록하기</div> -->
-                        <div class="confirm_btn" onclick="alert('준비중입니다.')">등록하기</div>
+                        <div class="confirm_btn" onclick="location.href='/record/upload'">등록하기</div>
+<!--                         <div class="confirm_btn" onclick="alert('준비중입니다.')">등록하기</div> -->
                         <div class="item">
                             <div class="tit_img">
                                 <img src="/img/myinfo/stu_pic_tit01.png">
@@ -86,8 +91,8 @@
                             </div>
                             <div class="tit">자소서</div>
                         </div>
-<!--                         <div class="confirm_btn" onclick="location.href='/intro/upload'">등록하기</div> -->
-                        <div class="confirm_btn" onclick="alert('준비중입니다.')">등록하기</div>
+                        <div class="confirm_btn" onclick="location.href='/intro/upload'">등록하기</div>
+<!--                         <div class="confirm_btn" onclick="alert('준비중입니다.')">등록하기</div> -->
                         <div class="item">
                             <div class="tit_img">
                                 <img src="/img/myinfo/stu_pic_tit02.png">
@@ -266,8 +271,8 @@
                             </div>
                             <div class="tit">정시성적</div>
                         </div>
-<!--                         <div class="confirm_btn" onclick="location.href='/exam/upload'">등록하기</div> -->
-                        <div class="confirm_btn" onclick="alert('준비중입니다.')">등록하기</div>
+                        <div class="confirm_btn" onclick="location.href='/exam/upload'">등록하기</div>
+<!--                         <div class="confirm_btn" onclick="alert('준비중입니다.')">등록하기</div> -->
                         <div class="item">
                             <div class="tit_img">
                                 <img src="/img/myinfo/stu_pic_tit03.png">
@@ -326,6 +331,21 @@
 </body>
 
 <script>
+	// 학교등록여부 확인
+	$(document).ready(function(){
+		if(${login.admin == '판매자' || login.admin == '구매자'}){
+			$.ajax({
+				type : "post",
+				url : "/member/schoolCheck/${login.auto }",
+				async : false,
+				success : function(txt){
+					if(txt){
+						$("#emptyDiv").show();
+					}
+				}
+			});
+		}
+	});
 	// 학생부보기
 	function view(type, num){
 		location.href="/"+type+"/view/"+num;

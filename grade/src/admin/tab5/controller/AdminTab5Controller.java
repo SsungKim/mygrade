@@ -71,6 +71,7 @@ public class AdminTab5Controller {
 	@ResponseBody
 	public ModelAndView recordFile(@PathVariable(name="num")String num){
 		ModelAndView mav = new ModelAndView("/admin/content/tab5Content2.jsp");
+		mav.addObject("passData", num);
 		List<String> recordFile = at5.recordFile(num);
 		mav.addObject("recordFile", recordFile);
 		mav.addObject("recordSize", recordFile.size());
@@ -83,8 +84,10 @@ public class AdminTab5Controller {
 	public ModelAndView page(@PathVariable(name="type")String type, @PathVariable(name="page")int page){
 		ModelAndView mav = new ModelAndView("/admin/content/tab5Content.jsp");
 		List<HashMap> certList = at5.certList(page);
-		if(type.equals("end"))
+		mav.addObject("tab5Type", type);
+		if(type.equals("certEnd"))
 			certList = at5.certEndList(page);
+		mav.addObject("certList", certList);
 		return mav;
 	}
 	
@@ -94,7 +97,8 @@ public class AdminTab5Controller {
 	public ModelAndView page2(@PathVariable(name="type")String type, @PathVariable(name="page")int page){
 		ModelAndView mav = new ModelAndView("/admin/page/tab5Page.jsp");
 		mav = at5.certPageInner(mav, 1);
-		if(type.equals("end"))
+		mav.addObject("tab5Type", type);
+		if(type.equals("certEnd"))
 			mav = at5.certEndPageInner(mav, 1);
 		return mav;
 	}

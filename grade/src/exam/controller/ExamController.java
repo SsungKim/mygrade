@@ -96,14 +96,18 @@ public class ExamController {
 	
 	// 보기
 	@RequestMapping("/view/{num}")
-	public ModelAndView view(@PathVariable(name="num")String num){
+	public ModelAndView view(@PathVariable(name="num")String num, HttpSession session){
 		ModelAndView mav = new ModelAndView("/exam/view.jsp");
 		HashMap exam = es.examOne(num);
 		mav.addObject("exam", exam);
 		mav.addObject("itemNum", exam.get("auto").toString());
 		mav.addObject("itemUser", exam.get("user").toString());
+		mav.addObject("itemSchool", exam.get("school").toString());
+		mav.addObject("itemSubject", exam.get("subject").toString());
 		List<HashMap> certList = ms.certList(exam.get("user").toString());
 		mav.addObject("certList", certList);
+		boolean buyCheck = ms.buyCheck(num, session, "정시성적");
+		mav.addObject("buyCheck", buyCheck ? "buy" : "no");
 		return mav;
 	}
 	

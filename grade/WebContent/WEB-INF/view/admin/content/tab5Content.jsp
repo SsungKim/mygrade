@@ -10,7 +10,9 @@
 		<div class="content c1">${certList.get(t-1).name }</div>
 		<div class="content c3">${certList.get(t-1).hschool }</div>
 		<div class="content c2">
-			<img src="/img/admin/view.png" onclick="tab5View(${certList.get(t-1).auto })">
+			<c:if test="${certList.get(t-1).recordFile != '' && certList.get(t-1).recordFile != null }">
+            	<img src="/img/admin/view.png" onclick="tab5View('${certList.get(t-1).recordFile }', '${t }')">
+            </c:if>
 		</div>
 		<div class="content num">
 			<input type="checkbox" id="tab5Cert${t }" ${tab5Type == 'certEnd' ? 'checked' : '' } ${tab5Type == 'certEnd' ? 'disabled' : '' }>

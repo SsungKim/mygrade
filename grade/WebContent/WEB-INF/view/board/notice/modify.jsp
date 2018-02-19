@@ -42,14 +42,9 @@
 	                    <section class="section01">
 	                        <div class="board_tit">
 	                            <div class="tit">제목</div>
-	                            <input type="text" name="title" placeholder="제목 입력란" id="title" value="${view.title }">
+	                            <input type="text" name="title" placeholder="제목 입력란" id="title" value="${view.title }" maxlength="50">
 	                        </div>
                             <textarea placeholder="내용을 입력해주세요" name="content" id="content">${view.content }</textarea>
-<!-- 	                        <div class="board_password_wrap"> -->
-<!-- 	                            <div class="tit">비밀번호</div> -->
-<!-- 	                            <input type="password" id="board_password"> -->
-<!-- 	                            <div class="txt">(4자리 이상 10자리 이하의 비밀번호를 설정 해주세요)</div> -->
-<!-- 	                        </div> -->
 	                        <div class="btn_wrap">
                                 <div class="btn right" onclick="submit()">
 	                                <div class="txt">수정</div>
@@ -79,8 +74,10 @@
     		var title = $("#title").val();
     		var content = $("#content").val();
     		content = content.replace(/\n/g,"<br>");
-    		if(title == ""){
+    		if(title.length == 0){
     			alert("제목을 입력해주세요.");
+    		} else if(content.length == 0){
+    			alert("내용을 입력해주세요.");
     		} else {
     			$.ajax({
     				type : "post",

@@ -15,7 +15,7 @@ public class AdminTab4Service {
 	// cert List
 	public List<HashMap> certList(int page) {
 		SqlSession ss = fac.openSession();
-		List<HashMap> list = ss.selectList("admin.certList", (page-1)*20);
+		List<HashMap> list = ss.selectList("admin.certList");
 		for(int i=0; i<list.size(); i++){
 			HashMap m = list.get(i);
 			HashMap mm = ss.selectOne("school.word2", m.get("school"));
@@ -23,29 +23,70 @@ public class AdminTab4Service {
 			list.set(i, m);
 		}
 		List<HashMap> cert = ss.selectList("admin.certAll");
-		for(int i=0; i<list.size(); i++){
+		a:for(int i=0; i<list.size(); i++){
 			for(int j=0; j<cert.size(); j++){
 				HashMap m = list.get(i);
 				HashMap m2 = cert.get(j);
 				if(m.get("id").toString().equals(m2.get("id").toString())){
 					if(m.get("school").toString().equals(m2.get("school").toString())){
 						list.remove(i);
-						if(i>0)
+						if(list.size() == 0){
+							break a;
+						}
+						j = -1;
+						if(i != 0){
 							i--;
+						}
 					}
 				}
 			}
 		}
 		ss.close();
-		return list;
+		List<HashMap> result = new Vector<>();
+		int si = 20 > list.size() ? list.size() : 20;
+		int start = (page-1)*20; // 0, 20, 40, 60
+		for(int i=0; i<si; i++){
+			result.add(list.get(i));
+		}
+		return result;
 	}
 
 	// cert page
 	public int certPage() {
 		SqlSession ss = fac.openSession();
-		int page = ss.selectOne("admin.certCount");
+		List<HashMap> list = ss.selectList("admin.certList");
+		for(int i=0; i<list.size(); i++){
+			HashMap m = list.get(i);
+			HashMap mm = ss.selectOne("school.word2", m.get("school"));
+			m.put("schoolName", mm.get("name"));
+			list.set(i, m);
+		}
+		List<HashMap> cert = ss.selectList("admin.certAll");
+		a:for(int i=0; i<list.size(); i++){
+			for(int j=0; j<cert.size(); j++){
+				HashMap m = list.get(i);
+				HashMap m2 = cert.get(j);
+				if(m.get("id").toString().equals(m2.get("id").toString())){
+					if(m.get("school").toString().equals(m2.get("school").toString())){
+						list.remove(i);
+						if(list.size() == 0){
+							break a;
+						}
+						j = -1;
+						if(i != 0){
+							i--;
+						}
+					}
+				}
+			}
+		}
 		ss.close();
-		return page%20==0 ? page/20 : page/20+1;
+		List<HashMap> result = new Vector<>();
+		int si = 20 > list.size() ? list.size() : 20;
+		for(int i=0; i<si; i++){
+			result.add(list.get(i));
+		}
+		return result.size()%20 == 0 ? result.size()/20 : result.size()/20+1;
 	}
 
 	// cert page inner method
@@ -77,7 +118,6 @@ public class AdminTab4Service {
 			HashMap m = ss.selectOne("admin.schoolOne", entData[i]);
 			m.put("certType", "ÀçÇÐ");
 			try{
-				System.out.println(m);
 				ss.insert("admin.certSave", m);
 //				ss.delete("admin.schoolDelete", entData[i]);
 				ss.update("admin.salesUpdate", m.get("user"));

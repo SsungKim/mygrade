@@ -30,8 +30,8 @@ public class MemberService {
 			return false;
 		} else {
 			List<HashMap> list2 = ss.selectList("member.exitList", id);
-			ss.close();
 			if(list2.size() > 0){
+				ss.close();
 				return false;
 			}
 		}
@@ -80,9 +80,9 @@ public class MemberService {
 		try{
 			String uuid = UUID.randomUUID().toString().substring(0, 8);
 			String extension = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf("."));
-			File f = new File(application.getRealPath("/file/sales"), uuid+extension);
+			File f = new File(application.getRealPath("/file/sales"), uuid);
 			file.transferTo(f);
-			return uuid+extension;
+			return uuid;
 		} catch(Exception e){
 			e.printStackTrace();
 			return null;
@@ -267,8 +267,8 @@ public class MemberService {
 			ss.commit();
 			List<HashMap> list = ss.selectList("member.member", user);
 			session.setAttribute("login", list.get(0));
+			boolean b = insertSellList(ss, owner, item, target, point);
 			ss.close();
-			boolean b = insertSellList(owner, item, target, point);
 			if(b){
 				return 0;
 			} else {
@@ -283,8 +283,7 @@ public class MemberService {
 	}
 	
 	// 판매리스트 등록
-	public boolean insertSellList(String owner, String item, String target, String point){
-		SqlSession ss = fac.openSession();
+	public boolean insertSellList(SqlSession ss, String owner, String item, String target, String point){
 		HashMap<String, String> map = new HashMap<>();
 		map.put("user", owner);
 		map.put("item", item);
@@ -294,12 +293,10 @@ public class MemberService {
 			ss.insert("member.insertSellList", map);
 			ss.commit();
 			ss.update("member.sellPointUpdate", map);
-			ss.close();
 			return true;
 		} catch(Exception e){
 			e.printStackTrace();
 			ss.rollback();
-			ss.close();
 			return false;
 		}
 	}
@@ -683,6 +680,31 @@ public class MemberService {
 		}
 		ss.close();
 		return list;
+	}
+
+	// 학교등록 여부 확인
+	public boolean schoolCheck(String user) {
+		SqlSession ss = fac.openSession();
+		List<HashMap> schoolData = ss.selectList("school.schoolList", user);
+		ss.close();
+		return schoolData.size() > 0 ? false : true;
+	}
+
+	// 구매확인
+	public boolean buyCheck(String num, HttpSession session, String type) {
+		SqlSession ss = fac.openSession();
+		String user = ((HashMap)session.getAttribute("login")).get("auto").toString();
+		List<HashMap> buyList = ss.selectList("member.buyList", user);
+		for(HashMap m : buyList){
+			if(m.get("item").toString().equals(type)){
+				if(m.get("target").toString().equals(num)){
+					ss.close();
+					return true;
+				}
+			}
+		}
+		ss.close();
+		return false;
 	}
 
 }

@@ -131,6 +131,7 @@ public class InterviewService {
 			ss.commit();
 			ss.update("interview.pointCommentUpdate", map);
 			ss.commit();
+			ss.insert("interview.interviewRating", map);
 			ss.close();
 			return true;
 		} catch(Exception e){
@@ -348,5 +349,38 @@ public class InterviewService {
 			ss.close();
 			return false;
 		}
+	}
+
+	// 평점등록
+	public boolean comment2(String interviewNum, String user, String point) {
+		SqlSession ss = fac.openSession();
+		HashMap<String, String> map = new HashMap<>();
+		map.put("interviewNum", interviewNum);
+		map.put("user", user);
+		map.put("point", point);
+		try{
+			ss.update("interview.pointCommentUpdate", map);
+			ss.commit();
+			ss.insert("interview.interviewRating", map);
+			ss.commit();
+			ss.close();
+			return true;
+		} catch(Exception e){
+			e.printStackTrace();
+			ss.rollback();
+			ss.close();
+			return false;
+		}
+	}
+
+	// 면접후기 평점 및 댓글 등록 여부
+	public int interviewRating(String interviewNum, String user) {
+		SqlSession ss = fac.openSession();
+		HashMap<String, String> map = new HashMap<>();
+		map.put("interviewNum", interviewNum);
+		map.put("user", user);
+		List<HashMap> list = ss.selectList("interview.interviewRatingList", map);
+		ss.close();
+		return list.size();
 	}
 }

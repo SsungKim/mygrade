@@ -40,7 +40,7 @@
                         </div>
                         <div class="info_tit">
                             <div class="tit_wrap">
-                                <div class="tit">${view.writer }</div>
+                                <div class="tit">작성자</div>
                                 <div class="txt">관리자</div>
                             </div>
                         </div>

@@ -165,22 +165,14 @@
                                     ※ 고등학교 재학기간 중 본인이 의미를 두고 노력했던 교내 활동을 배우고 느낀점을 중심으로 3개 이내로 기술해 주시기 바랍니다.<br> 단, 교외 활동 중 학교장의 허락을 받고 참여한 활동은 포함됩니다 ( 1,500자 이내 ).
                                 </div>
                             </div>
-                            <div class="txtarea_txt blur">
-                                <c:choose>
-                                    <c:when test="${login.auto == intro.user }">
-                                        ${intro.content1 }
-                                    </c:when>
-                                    <c:when test="${login.id == 'admin' }">
-                                        ${intro.content1 }
-                                    </c:when>
-                                    <c:when test="${buy == 1 }">
-                                        ${intro.content1.substring(0, intro.content1.length()/10) } ...
-                                    </c:when>
-                                    <c:when test="${buy == 0 }">
-                                        ${intro.content1 }
-                                    </c:when>
-                                </c:choose>
-                            </div>
+                            <c:choose>
+                            	<c:when test="${login.id == 'admin' || intro.user == login.auto || buyCheck == 'buy' }">
+		                            <div class="txtarea_txt blur" style="background-image: none; ">${intro.content1 }</div>
+                            	</c:when>
+                            	<c:otherwise>
+                            		<div class="txtarea_txt blur"></div>
+                            	</c:otherwise>
+                            </c:choose>
                         </div>
                     </div>
                     <div class="iw_tit1">
@@ -204,22 +196,14 @@
                                      ※ 학교 생활 중 배려, 나눔, 협력, 갈등 관리 등을 실천한 사례를 들고, 그 과정을 통해 배우고 느낀 점을 기술해 주시기 바랍니다 ( 1,000자 이내 ).
                                 </div>
                             </div>
-                            <div class="txtarea_txt blur">
-                                <c:choose>
-                                    <c:when test="${login.auto == intro.user }">
-                                        ${intro.content2 }
-                                    </c:when>
-                                    <c:when test="${login.id == 'admin' }">
-                                        ${intro.content2 }
-                                    </c:when>
-                                    <c:when test="${buy == 1 }">
-                                        ${intro.content2.substring(0, intro.content2.length()/10) } ...
-                                    </c:when>
-                                    <c:when test="${buy == 0 }">
-                                        ${intro.content2 }
-                                    </c:when>
-                                </c:choose>
-                            </div>
+                            <c:choose>
+                            	<c:when test="${login.id == 'admin' || intro.user == login.auto  || buyCheck == 'buy' }">
+		                            <div class="txtarea_txt blur" style="background-image: none; ">${intro.content2 }</div>
+                            	</c:when>
+                            	<c:otherwise>
+                            		<div class="txtarea_txt blur"></div>
+                            	</c:otherwise>
+                            </c:choose>
                         </div>
                     </div>
                     <div class="iw_tit1">
@@ -243,22 +227,14 @@
                                      ※ 지원 동기 등 학생을 종합적으로 판단하기 위해 필요한 경우 대학별로 1 개의 자율 문항을 추가하여 활용하시기 바랍니다<br> ( 글자 수는 1,000자 또는 1,500자 이내로 하고 대학에서 선택 ).
                                 </div>
                             </div>
-                            <div class="txtarea_txt blur">
-                                <c:choose>
-                                    <c:when test="${login.auto == intro.user }">
-                                        ${intro.content3 }
-                                    </c:when>
-                                    <c:when test="${login.id == 'admin' }">
-                                        ${intro.content3 }
-                                    </c:when>
-                                    <c:when test="${buy == 1 }">
-                                        ${intro.content3.substring(0, intro.content3.length()/10) } ...
-                                    </c:when>
-                                    <c:when test="${buy == 0 }">
-                                        ${intro.content3 }
-                                    </c:when>
-                                </c:choose>
-                            </div>
+                            <c:choose>
+                            	<c:when test="${login.id == 'admin' || intro.user == login.auto  || buyCheck == 'buy' }">
+		                            <div class="txtarea_txt blur" style="background-image: none; ">${intro.content3 }</div>
+                            	</c:when>
+                            	<c:otherwise>
+                            		<div class="txtarea_txt blur"></div>
+                            	</c:otherwise>
+                            </c:choose>
                         </div>
                     </div>
                     <div class="iw_tit1">
@@ -282,54 +258,22 @@
                                     ※ 지원 동기 등 학생을 종합적으로 판단하기 위해 필요한 경우 대학별로 1 개의 자율 문항을 추가하여 활용하시기 바랍니다<br>대학별 자율문항이 있는 경우만 작성하시면 됩니다.( 글자 수는 1,000자 또는 1,500자 이내 )
                                 </div>
                             </div>
-    <!--                             <div class="sub_tit"> -->
-    <!--                                 <div class="img"> -->
-    <!--                                     <img src="/img/student_view/info_tit.png"> -->
-    <!--                                 </div> -->
-    <!--                                 <div class="txt"> -->
-    <!--                                      질문 -->
-    <!--                                 </div> -->
-    <!--                             </div> -->
-                            <div class="txtarea_txt tat1 blur">
-                                <c:choose>
-                                    <c:when test="${login.auto == intro.user }">
-                                        ${intro.title }
-                                    </c:when>
-                                    <c:when test="${login.id == 'admin' }">
-                                        ${intro.title }
-                                    </c:when>
-                                    <c:when test="${buy == 1 }">
-                                        ${intro.title.substring(0, intro.title.length()/10) } ...
-                                    </c:when>
-                                    <c:when test="${buy == 0 }">
-                                        ${intro.title }
-                                    </c:when>
-                                </c:choose>
-                            </div>
-    <!--                         <div class="sub_tit sub_tit1 sub_tit2"> -->
-    <!--                             <div class="img"> -->
-    <!--                                 <img src="/img/student_view/info_tit.png"> -->
-    <!--                             </div> -->
-    <!--                             <div class="txt"> -->
-    <!--                                  답변내용 -->
-    <!--                             </div> -->
-    <!--                         </div> -->
-                            <div class="txtarea_txt blur">
-                                <c:choose>
-                                    <c:when test="${login.auto == intro.user }">
-                                        ${intro.content4 }
-                                    </c:when>
-                                    <c:when test="${login.id == 'admin' }">
-                                        ${intro.content4 }
-                                    </c:when>
-                                    <c:when test="${buy == 1 }">
-                                        ${intro.content4.substring(0, intro.content4.length()/10) } ...
-                                    </c:when>
-                                    <c:when test="${buy == 0 }">
-                                        ${intro.content4 }
-                                    </c:when>
-                                </c:choose>
-                            </div>
+                            <c:choose>
+                            	<c:when test="${login.id == 'admin' || intro.user == login.auto  || buyCheck == 'buy' }">
+		                            <div class="txtarea_txt tat1 blur" style="background-image: none; ">${intro.title }</div>
+                            	</c:when>
+                            	<c:otherwise>
+                            		<div class="txtarea_txt tat1 blur"></div>
+                            	</c:otherwise>
+                            </c:choose>
+                            <c:choose>
+                            	<c:when test="${login.id == 'admin' || intro.user == login.auto  || buyCheck == 'buy' }">
+		                            <div class="txtarea_txt blur" style="background-image: none; ">${intro.content4 }</div>
+                            	</c:when>
+                            	<c:otherwise>
+                            		<div class="txtarea_txt blur"></div>
+                            	</c:otherwise>
+                            </c:choose>
                         </div>
                     </div>
                     <div class="sv_btn_wrap">

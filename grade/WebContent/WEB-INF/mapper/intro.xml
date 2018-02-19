@@ -19,7 +19,7 @@
 	<select id="introList" resultType="java.util.HashMap">
 		select * from introList a, memberList b
 		where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
-		order by a.auto desc limit 10 offset #{page}
+		order by a.auto desc limit 12 offset #{page}
 	</select>
 	<select id="introCount" resultType="java.lang.Integer">
 		select count(*) from introList a, memberList b

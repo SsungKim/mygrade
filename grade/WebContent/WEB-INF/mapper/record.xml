@@ -34,34 +34,27 @@
 	</select>
 	<insert id="uploadRecord" parameterType="java.util.HashMap">
 		insert into recordList
-		(recordFile, user, id, name, addr, school, subject, type, year, admission, typical, hschool, pass, award1, award2, award3, career1,
-		career2, career3, autonomous1, autonomous2, autonomous3, extra1, extra2, extra3, club1, club2, club3, help1, help2, help3, soju1,
-		soju2, soju3, paper1, paper2, paper3, etc1, etc2, etc3, reading1, reading2, reading3, special1, special2, special3, grade, award,
-		time, book, day, cert)
+		(recordFile, user, id, name, addr, school, subject, type, year, admission, typical, pass, award1, career,
+		autonomous, extra, club, help, soju, paper, etc, reading, special, grade, award, time, book, day, cert)
 		values
-		(#{recordFile}, #{user}, #{id}, #{name}, #{addr}, #{school}, #{subject}, #{type}, #{year}, #{admission}, #{typical}, #{hschool},
-		#{pass}, #{award1}, #{award2}, #{award3}, #{career1}, #{career2}, #{career3}, #{auto1}, #{auto2}, #{auto3}, #{extra1},
-		#{extra2}, #{extra3}, #{club1}, #{club2}, #{club3}, #{help1}, #{help2}, #{help3}, #{soju1}, #{soju2}, #{soju3}, #{paper1},
-		#{paper2}, #{paper3}, #{etc1}, #{etc2}, #{etc3}, #{reading1}, #{reading2}, #{reading3}, #{special1}, #{special2}, #{special3},
-		#{grade}, #{award}, #{time}, #{book}, now(), '미인증')
+		(#{recordFile}, #{user}, #{id}, #{name}, #{addr}, #{school}, #{subject}, #{type}, #{year}, #{admission}, #{typical},
+		#{pass}, #{award1}, #{career}, #{auto}, #{extra}, #{club}, #{help}, #{soju}, #{paper},
+		#{etc}, #{reading}, #{special}, #{grade}, #{award}, #{time}, #{book}, now(), '미인증')
 	</insert>
 	<update id="updateRecord" parameterType="java.util.HashMap">
 		update recordList set addr = #{addr}, school = #{school}, subject = #{subject}, type = #{type}, year = #{year}, admission = #{admission},
-		typical = #{typical}, hschool = #{hschool}, pass = #{pass}, award1 = #{award1}, award2 = #{award2}, award3 = #{award3},
-		career1 = #{career1}, career2 = #{career2}, career3 = #{career3}, autonomous1 = #{auto1}, autonomous2 = #{auto2},
-		autonomous3 = #{auto3}, extra1 = #{extra1}, extra2 = #{extra2}, extra3 = #{extra3}, club1 = #{club1}, club2 = #{club2},
-		club3 = #{club3}, help1 = #{help1}, help2 = #{help2}, help3 = #{help3}, soju1 = #{suju1}, soju2 = #{soju2}, soju3 = #{soju3},
-		paper1 = #{paper1}, paper2 = #{paper2}, paper3 = #{paper3}, etc1 = #{etc1}, etc2 = #{etc2}, etc3 = #{etc3}, reading1 = #{reading1},
-		reading2 = #{reading2}, reading3 = #{reading3}, special1 = #{special1}, special2 = #{special2}, special3 = #{special3}, grade = #{grade},
-		award = #{award}, time = #{time}, book = #{book}, day = now() where auto = #{auto}
+		typical = #{typical}, pass = #{pass}, award1 = #{award1}, career = #{career}, autonomous = #{auto1},
+		extra = #{extra}, club = #{club}, help = #{help}, soju = #{soju}, paper = #{paper}, etc = #{etc}, reading = #{reading},
+		special = #{special}, grade = #{grade}, award = #{award}, time = #{time}, book = #{book}, day = now() where auto = #{auto}
 	</update>
 	<select id="recordList" resultType="java.util.HashMap">
-		select a.*, b.*, c.name from recordList a, salesList b, memberList c
-		where a.id = b.id and b.id = c.id and (c.admin = '판매자' or c.admin = '메인관리자')
+		select * from recordList a, memberList b
+		where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
 		order by a.auto desc limit 12 offset #{page}
 	</select>
 	<select id="count" resultType="java.lang.Integer">
-		select count(*) from recordList a, salesList b where a.id = b.id
+		select count(*) from recordList a, memberList b
+		where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
 	</select>
 	<select id="recordView" resultType="java.util.HashMap">
 		select * from recordList where auto = #{num}
@@ -73,30 +66,36 @@
 		delete from recordList where user = #{user}
 	</delete>
 	<select id="recordList2" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-		select * from recordList a, memberList b where a.id = b.id  and (b.admin = '판매자' or b.admin = '메인관리자')
+		select * from recordList a, memberList b
+		where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
 		and (a.school = #{word} and a.subject like #{subject})
 		order by a.auto desc limit 12 offset #{page}
 	</select>
 	<select id="recordList3" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-		select * from recordList a, memberList b where a.id = b.id  and (b.admin = '판매자' or b.admin = '메인관리자')
+		select * from recordList a, memberList b
+		where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
 		and a.school = #{word}
 		order by a.auto desc limit 12 offset #{page}
 	</select>
 	<select id="recordList4" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-		select * from recordList a, memberList b where a.id = b.id  and (b.admin = '판매자' or b.admin = '메인관리자')
+		select * from recordList a, memberList b
+		where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
 		and a.subject like #{subject}
 		order by a.auto desc limit 12 offset #{page}
 	</select>
 	<select id="count2" resultType="java.lang.Integer">
-		select count(*) from recordList a, memberList b where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
+		select * from recordList a, memberList b
+		where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
 		and (a.school = #{word} and a.subject like #{subject})
 	</select> 
 	<select id="count3" resultType="java.lang.Integer">
-		select count(*) from recordList a, memberList b where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
+		select * from recordList a, memberList b
+		where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
 		and a.school = #{word}
 	</select> 
 	<select id="count4" resultType="java.lang.Integer">
-		select count(*) from recordList a, memberList b where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
+		select * from recordList a, memberList b
+		where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
 		and a.subject like #{word}
 	</select> 
 	

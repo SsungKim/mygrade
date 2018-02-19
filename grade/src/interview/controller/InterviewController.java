@@ -88,6 +88,8 @@ public class InterviewController {
 		}
 		List<HashMap> certList = ms.certList(interview.get("user").toString());
 		mav.addObject("certList", certList);
+		boolean buyCheck = ms.buyCheck(num, session, "면접후기");
+		mav.addObject("buyCheck", buyCheck ? "buy" : "no");
 		return mav;
 	}
 	
@@ -407,20 +409,35 @@ public class InterviewController {
 		return mav;
 	}
 	
-	
-	
-	
-	
-	
-	
-	
 	// 면접후기 댓글등록
 	@RequestMapping("/comment/{interviewNum}/{user}/{comment}/{point}")
 	@ResponseBody
 	public boolean comment(@PathVariable(name="interviewNum")String interviewNum, @PathVariable(name="user")String user,
-											@PathVariable(name="comment")String comment, @PathVariable(name="point")String point){
+			@PathVariable(name="comment")String comment, @PathVariable(name="point")String point){
 		return is.comment(interviewNum, user, comment, point);
 	}
+	
+	// 면접후기 평점등록
+	@RequestMapping("/comment/{interviewNum}/{user}/{point}")
+	@ResponseBody
+	public boolean comment2(@PathVariable(name="interviewNum")String interviewNum, @PathVariable(name="user")String user,
+			@PathVariable(name="point")String point){
+		return is.comment2(interviewNum, user, point);
+	}
+	
+	// 면접후기 평점 및 댓글 등록 여부
+	@RequestMapping("/interviewRating/{interviewNum}/{user}")
+	@ResponseBody
+	public int interviewRating(@PathVariable(name="interviewNum")String interviewNum, @PathVariable(name="user")String user){
+		return is.interviewRating(interviewNum, user);
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	// 수정완료
 //	@RequestMapping("/modifyInterview/{user}/{name}/{addr}/{school}/{subject}/{type}/{admission}/{typical}/{pass}/{time}/"

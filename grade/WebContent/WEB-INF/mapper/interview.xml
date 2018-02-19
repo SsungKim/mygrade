@@ -39,17 +39,17 @@
 	<select id="interviewList2" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 		select * from interviewList a, memberList b where a.id = b.id  and (b.admin = '판매자' or b.admin = '메인관리자')
 		and (a.school = #{word} and a.subject like #{subject})
-		order by a.auto desc limit 12 offset #{page}
+		order by a.auto desc limit 10 offset #{page}
 	</select>
 	<select id="interviewList3" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 		select * from interviewList a, memberList b where a.id = b.id  and (b.admin = '판매자' or b.admin = '메인관리자')
 		and a.school = #{word}
-		order by a.auto desc limit 12 offset #{page}
+		order by a.auto desc limit 10 offset #{page}
 	</select>
 	<select id="interviewList4" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 		select * from interviewList a, memberList b where a.id = b.id  and (b.admin = '판매자' or b.admin = '메인관리자')
 		and a.subject like #{subject}
-		order by a.auto desc limit 12 offset #{page}
+		order by a.auto desc limit 10 offset #{page}
 	</select>
 	<select id="count2" resultType="java.lang.Integer">
 		select count(*) from interviewList a, memberList b where a.id = b.id and (b.admin = '판매자' or b.admin = '메인관리자')
@@ -76,5 +76,20 @@
 	</select>
 	<update id="interviewNameSet" parameterType="java.util.HashMap">
 		update interviewList set name = #{name} where auto = #{auto}
+	</update>
+	<insert id="interviewRating" parameterType="java.util.HashMap">
+		insert into interviewRating(interviewNum, user) values(#{interviewNum}, #{user})
+	</insert>
+	<select id="interviewRatingList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from interviewRating where interviewNum = #{interviewNum} and user = #{user}
+	</select>
+	<select id="commentAll" resultType="java.util.HashMap">
+		select * from interviewCommentList order by auto desc
+	</select>
+	<update id="commentIdChange" parameterType="java.util.HashMap">
+		update interviewCommentList set id = #{id} where auto = #{auto}
+	</update>
+	<update id="commentDayChange" parameterType="java.util.HashMap">
+		update interviewCommentList set day = #{day} where auto = #{auto}
 	</update>
 </mapper>

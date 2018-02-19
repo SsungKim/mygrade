@@ -130,6 +130,7 @@ public class RankService {
 				return 1;
 			}
 		} else {
+			ss.close();
 			return 2;
 		}
 	}
